@@ -1,0 +1,184 @@
+.timelineSection {
+  background-color: var(--color-bg-secondary);
+  border-bottom: var(--border-rule);
+  position: relative;
+  overflow: hidden;
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.titleArea {
+  max-width: 680px;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: #110E0C;
+  margin-top: 8px;
+}
+
+.yearsNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(23, 21, 19, 0.15);
+  padding-bottom: 24px;
+  margin-bottom: 48px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.yearsNav::-webkit-scrollbar {
+  display: none;
+}
+
+.yearButton {
+  background: transparent;
+  border: none;
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  color: var(--color-text-muted);
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 250ms ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.yearButton:hover {
+  color: var(--color-text-primary);
+}
+
+.yearButtonActive {
+  color: var(--color-burgundy);
+  font-weight: 600;
+}
+
+.yearButtonActive::after {
+  content: "";
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-burgundy);
+}
+
+.cardDisplay {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+  background-color: var(--color-bg-paper);
+  border: 1px solid rgba(23, 21, 19, 0.12);
+  padding: clamp(24px, 5vw, 64px);
+  min-height: 480px;
+  transition: opacity 300ms ease;
+}
+
+@media (max-width: 900px) {
+  .cardDisplay {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardYearWatermark {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 7vw, 5.5rem);
+  color: var(--color-burgundy);
+  font-weight: 600;
+  line-height: 0.9;
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #110E0C;
+  margin-bottom: 18px;
+}
+
+.cardDescription {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #1A1410;
+  margin-bottom: 24px;
+}
+
+.cardSignificance {
+  padding: 16px 20px;
+  background-color: var(--color-bg-subtle);
+  border-left: 2px solid var(--color-gold);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+.cardMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid rgba(20, 16, 13, 0.14);
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 600ms var(--ease-editorial);
+}
+
+.cardMedia:hover .cardImage {
+  transform: scale(1.03);
+}
+
+.navControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.controlBtn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(23, 21, 19, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-paper);
+  color: var(--color-text-primary);
+  transition: all 200ms ease;
+}
+
+.controlBtn:hover:not(:disabled) {
+  background-color: var(--color-burgundy);
+  color: #FFFFFF;
+  border-color: var(--color-burgundy);
+}
+
+.controlBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

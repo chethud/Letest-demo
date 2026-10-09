@@ -1,0 +1,656 @@
+/* Header Container: Fixed, Strict Edge-to-Edge with Dynamic Transparency Transitions */
+.headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+  z-index: 100;
+  transition: background-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 1. At the very top of Hero Section: 100% Full Transparent Navbar (Only Mysore Silk Logo) */
+.headerTransparentTop {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.headerTransparentTop .topBadge {
+  display: none !important;
+}
+
+.headerTransparentTop .navMain {
+  background: transparent !important;
+  border: none !important;
+  justify-content: center;
+}
+
+.headerTransparentTop .navGroupLeft {
+  flex: 0 0 0px !important;
+  max-width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+  transform: translateX(30px) scale(0.92) !important;
+}
+
+.headerTransparentTop .navGroupRight {
+  flex: 0 0 0px !important;
+  max-width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+  transform: translateX(-30px) scale(0.92) !important;
+}
+
+.headerTransparentTop .brandGroupCenter {
+  padding: 0;
+}
+
+.headerTransparentTop .brandLogoImg {
+  height: 52px;
+  filter: none !important;
+}
+
+.headerTransparentTop .mobileHamburgerBtn {
+  color: #14100C !important;
+}
+
+.headerTransparentTop .mobileLangButton {
+  border-color: rgba(20, 16, 12, 0.22) !important;
+  color: #14100C !important;
+}
+
+/* 2. Scrolling within the Hero Section: Subtle frosted parchment glass */
+.headerTransparentScrolling {
+  background: rgba(247, 243, 236, 0.82) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(23, 21, 19, 0.12) !important;
+  box-shadow: 0 4px 18px rgba(20, 16, 13, 0.05) !important;
+}
+
+.headerTransparentScrolling .topBadge {
+  background-color: #5C1217 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.headerTransparentScrolling .topBadgeState,
+.headerTransparentScrolling .topBadgeRight {
+  color: #FFFFFF !important;
+}
+
+.headerTransparentScrolling .navLink {
+  color: #16120E !important;
+}
+
+.headerTransparentScrolling .navLink:hover {
+  color: #7A161D !important;
+}
+
+.headerTransparentScrolling .mobileHamburgerBtn {
+  color: #16120E !important;
+}
+
+.headerTransparentScrolling .mobileLangButton {
+  border-color: rgba(20, 16, 12, 0.20) !important;
+  color: #16120E !important;
+}
+
+/* 3. Scrolled past Hero Section or on Inner Pages: Solid parchment glass */
+.headerScrolled {
+  background: rgba(247, 243, 236, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(23, 21, 19, 0.16);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.headerScrolled .topBadge {
+  background-color: #5C1217;
+}
+
+.headerScrolled .topBadgeState,
+.headerScrolled .topBadgeRight {
+  color: #FFFFFF;
+}
+
+.headerScrolled .mobileNavRibbon {
+  background: rgba(245, 239, 230, 0.98);
+}
+
+/* 1. Official Institutional Top Credential Banner */
+.topBadge {
+  background-color: #5C1217;
+  color: #FFFFFF;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  width: 100%;
+  transition: background-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topBadgeWrap {
+  max-width: 1540px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 64px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.topBadgeState {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topBadgeRight {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Primary Centered-Logo Navigation Bar */
+.navMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  max-width: 1540px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3.5vw, 60px);
+  gap: 12px;
+  position: relative;
+  transition: background-color 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              height 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Center Brand Identity */
+.brandGroupCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 0 clamp(16px, 2.5vw, 40px);
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brandGroupCenter:hover {
+  transform: scale(1.03);
+}
+
+.brandLogoImg {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: height 240ms ease;
+  filter: none;
+}
+
+/* Symmetrical Desktop Navigation Groups with Smooth Expand Animation */
+.navLinksList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              max-width 360ms cubic-bezier(0.16, 1, 0.3, 1),
+              flex 360ms cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 320ms;
+}
+
+.navGroupLeft {
+  flex: 1;
+  max-width: 600px;
+  justify-content: flex-end;
+  gap: clamp(16px, 2.2vw, 36px);
+}
+
+.navGroupRight {
+  flex: 1;
+  max-width: 600px;
+  justify-content: flex-start;
+  gap: clamp(16px, 2.2vw, 36px);
+}
+
+.navLinkItem {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #14100C;
+  text-decoration: none;
+  padding: 8px 4px;
+  white-space: nowrap;
+  transition: color 200ms ease, opacity 200ms ease;
+}
+
+.navLink:hover {
+  color: #7A161D;
+}
+
+.navLinkActive {
+  color: #7A161D;
+  font-weight: 700;
+}
+
+.activeDot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background-color: #7A161D;
+  border-radius: 1px;
+}
+
+/* Top Badge Responsive Text rules */
+.topBadgeDesktopText {
+  display: inline;
+}
+
+.topBadgeMobileText {
+  display: none;
+}
+
+/* Mobile Controls - Hidden by default on Desktop */
+.mobileLangButton {
+  display: none;
+}
+
+.mobileHamburgerBtn {
+  display: none;
+}
+
+.mobileDrawerBackdrop {
+  display: none;
+}
+
+.mobileDrawer {
+  display: none;
+}
+
+/* Strict Mobile & Tablet Responsiveness */
+@media (max-width: 960px) {
+  .navLinksList {
+    display: none !important;
+  }
+
+  .navMain {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 58px !important;
+    padding: 0 16px !important;
+    position: relative !important;
+  }
+
+  .brandGroupCenter {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 101;
+  }
+
+  .brandLogoImg {
+    height: 36px !important;
+    width: auto !important;
+  }
+
+  /* Left: Mobile Language Toggle */
+  .mobileLangButton {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    border: 1px solid rgba(23, 21, 19, 0.18) !important;
+    border-radius: 18px !important;
+    padding: 5px 10px !important;
+    color: #1A1410 !important;
+    font-family: var(--font-sans) !important;
+    font-size: 0.70rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 180ms ease !important;
+    z-index: 102;
+  }
+
+  .mobileGlobeIcon {
+    color: #7A161D;
+  }
+
+  .mobileLangLabel {
+    line-height: 1;
+  }
+
+  /* Right: Mobile Luxury Hamburger Button */
+  .mobileHamburgerBtn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #1A1410 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    border-radius: 6px !important;
+    transition: transform 180ms ease, background-color 180ms ease !important;
+    z-index: 102;
+  }
+
+  .mobileHamburgerBtn:active {
+    transform: scale(0.92);
+  }
+
+  .hamburgerIcon {
+    stroke-width: 2.2;
+  }
+
+  /* Mobile Drawer Backdrop */
+  .mobileDrawerBackdrop {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(14, 10, 8, 0.58);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 300ms ease, visibility 300ms ease;
+  }
+
+  .mobileDrawerBackdropOpen {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Royal Silk Drawer Panel */
+  .mobileDrawer {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(85vw, 360px);
+    height: 100%;
+    height: 100dvh;
+    background: #FCF9F3;
+    box-shadow: -12px 0 40px rgba(16, 12, 9, 0.32);
+    z-index: 1001;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-left: 1px solid rgba(135, 105, 59, 0.32);
+  }
+
+  .mobileDrawerOpen {
+    transform: translateX(0);
+  }
+
+  /* Drawer Header */
+  .drawerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(23, 21, 19, 0.1);
+    background: #F5EFE4;
+  }
+
+  .drawerBrandLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .drawerLogoImg {
+    height: 32px;
+    width: auto;
+  }
+
+  .drawerCloseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(23, 21, 19, 0.08);
+    border: none;
+    color: #1A1410;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+
+  .drawerCloseBtn:active {
+    background: rgba(122, 22, 29, 0.16);
+    color: #7A161D;
+    transform: scale(0.92);
+  }
+
+  /* Credential Strip */
+  .drawerCredentialStrip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #5C1217;
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Drawer Navigation Links */
+  .drawerNav {
+    flex: 1;
+    padding: 10px 0;
+  }
+
+  .drawerList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .drawerItem {
+    border-bottom: 1px solid rgba(23, 21, 19, 0.06);
+  }
+
+  .drawerLink {
+    display: flex;
+    align-items: center;
+    padding: 16px 22px;
+    text-decoration: none;
+    color: #16120E;
+    transition: background-color 160ms ease, color 160ms ease;
+    gap: 14px;
+  }
+
+  .drawerLink:active {
+    background-color: rgba(122, 22, 29, 0.06);
+    color: #7A161D;
+  }
+
+  .drawerLinkActive {
+    background-color: rgba(122, 22, 29, 0.08);
+    color: #7A161D;
+    border-left: 3px solid #7A161D;
+    font-weight: 700;
+  }
+
+  .drawerItemNum {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #8C6F3D;
+  }
+
+  .drawerItemLabel {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+
+  .drawerItemArrow {
+    color: #8C6F3D;
+    opacity: 0.6;
+  }
+
+  /* Drawer Footer */
+  .drawerFooter {
+    padding: 18px 20px 24px;
+    background: #F5EFE4;
+    border-top: 1px solid rgba(23, 21, 19, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .drawerLangRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .drawerLangLabel {
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #3A2F25;
+  }
+
+  .drawerLangBtnGroup {
+    display: flex;
+    gap: 6px;
+  }
+
+  .drawerLangBtn {
+    padding: 6px 14px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 14px;
+    border: 1px solid rgba(23, 21, 19, 0.2);
+    background: #FFFFFF;
+    color: #1A1410;
+    cursor: pointer;
+    transition: all 160ms ease;
+  }
+
+  .drawerLangBtnActive {
+    background: #7A161D;
+    color: #FFFFFF;
+    border-color: #7A161D;
+  }
+
+  .drawerHeritageNote {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 4px;
+  }
+
+  .drawerHeritageTitle {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1A1410;
+  }
+
+  .drawerHeritageSub {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    color: #6A5B4D;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media (max-width: 640px) {
+  .topBadgeDesktopText {
+    display: none;
+  }
+
+  .topBadgeMobileText {
+    display: inline;
+  }
+
+  .topBadgeRight {
+    display: none;
+  }
+
+  .topBadgeWrap {
+    justify-content: center;
+    padding: 0 12px;
+  }
+
+  .topBadgeState {
+    font-size: 0.67rem;
+    letter-spacing: 0.02em;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+}

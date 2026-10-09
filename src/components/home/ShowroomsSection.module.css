@@ -1,0 +1,159 @@
+.showroomsSection {
+  background-color: var(--color-bg-primary);
+  border-bottom: var(--border-rule);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: var(--color-text-primary);
+  margin-top: 8px;
+}
+
+.subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.cityTabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cityTabs::-webkit-scrollbar {
+  display: none;
+}
+
+.cityTabBtn {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid rgba(23, 21, 19, 0.15);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+
+.cityTabBtn:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.cityTabBtnActive {
+  background-color: var(--color-burgundy);
+  border-color: var(--color-burgundy);
+  color: #FFFFFF;
+}
+
+.showroomsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 1024px) {
+  .showroomsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .showroomsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.storeCard {
+  background-color: var(--color-bg-paper);
+  border: 1px solid rgba(23, 21, 19, 0.12);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  transition: all 250ms ease;
+}
+
+.storeCard:hover {
+  border-color: var(--color-burgundy);
+  box-shadow: 0 12px 30px rgba(23, 21, 19, 0.05);
+}
+
+.storeType {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.storeName {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.storeAddress {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.storeMetaGroup {
+  border-top: 1px solid rgba(23, 21, 19, 0.08);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.storeDirectionsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+  margin-top: 12px;
+  transition: gap 150ms ease;
+}
+
+.storeDirectionsLink:hover {
+  gap: 10px;
+}

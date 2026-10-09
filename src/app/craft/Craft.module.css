@@ -1,0 +1,213 @@
+.craftPage {
+  padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .craftPage {
+    padding-top: 96px;
+  }
+}
+
+.stagesList {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+@media (max-width: 900px) {
+  .stagesList {
+    gap: 52px;
+  }
+}
+
+.stageCard {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.stageCardEven {
+  grid-template-columns: 1fr 1.15fr;
+}
+
+.stageCard .textContent {
+  order: 1;
+}
+
+.stageCard .mediaContent {
+  order: 2;
+}
+
+.stageCardEven .textContent {
+  order: 2;
+}
+
+.stageCardEven .mediaContent {
+  order: 1;
+}
+
+@media (max-width: 900px) {
+  .stageCard,
+  .stageCardEven {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* On mobile: show visual preview first for high engagement, then editorial story */
+  .stageCard .mediaContent,
+  .stageCardEven .mediaContent {
+    order: 1;
+  }
+
+  .stageCard .textContent,
+  .stageCardEven .textContent {
+    order: 2;
+  }
+}
+
+.stageHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.stageNumber {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  color: var(--color-burgundy);
+  line-height: 1;
+}
+
+.stageKannada {
+  font-family: var(--font-kannada);
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  color: var(--color-gold);
+}
+
+.stageTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  color: var(--color-text-primary);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.stageSummary {
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2.8vw, 1.2rem);
+  color: var(--color-burgundy);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.stageDetails {
+  font-size: clamp(0.95rem, 2.2vw, 1.02rem);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.stageSpecBox {
+  padding: 16px 20px;
+  background-color: var(--color-bg-secondary);
+  border-left: 3px solid var(--color-gold);
+  font-size: 0.88rem;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .stageSpecBox {
+    padding: 14px 16px;
+    font-size: 0.84rem;
+  }
+}
+
+.mediaContent {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border: 1px solid rgba(23, 21, 19, 0.15);
+  background-color: #201A15;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(20, 16, 13, 0.06);
+}
+
+.mediaBadge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background-color: rgba(24, 19, 15, 0.92);
+  padding: 6px 14px;
+  color: var(--color-gold-bright);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-left: 2px solid var(--color-gold-bright);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Metallurgy Section */
+.metallurgyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .metallurgyGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.metallurgyCard {
+  padding: 32px;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid rgba(23, 21, 19, 0.12);
+}
+
+@media (max-width: 480px) {
+  .metallurgyCard {
+    padding: 24px 20px;
+  }
+}
+
+.metallurgyStat {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 3.2rem);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+/* Burning Test Section */
+.burningGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .burningGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+.preservationBox {
+  padding: 36px;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid rgba(23, 21, 19, 0.15);
+}
+
+@media (max-width: 480px) {
+  .preservationBox {
+    padding: 24px 20px;
+  }
+}

@@ -1,0 +1,68 @@
+.institutionPage {
+  padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .institutionPage {
+    padding-top: 96px;
+  }
+}
+
+.mandateGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.corporateMetaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  border-top: 1px solid rgba(23, 21, 19, 0.12);
+  padding-top: 24px;
+}
+
+.divisionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.rtiGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.addressBox {
+  padding: 36px;
+  background-color: var(--color-bg-paper);
+  border: 1px solid rgba(23, 21, 19, 0.15);
+}
+
+.charterBox {
+  padding: 36px;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid rgba(23, 21, 19, 0.15);
+}
+
+@media (max-width: 900px) {
+  .mandateGrid,
+  .divisionsGrid,
+  .rtiGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .corporateMetaGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .addressBox,
+  .charterBox {
+    padding: 24px 20px;
+  }
+}

@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" width="100%" height="100%" fill="none">
+  <!-- Gradients for Royal Antique Mysore Gold -->
+  <defs>
+    <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C5A059"/>
+      <stop offset="40%" stop-color="#8C6934"/>
+      <stop offset="70%" stop-color="#AA8444"/>
+      <stop offset="100%" stop-color="#6B5024"/>
+    </linearGradient>
+    <linearGradient id="goldGleam" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#7B5B28"/>
+      <stop offset="50%" stop-color="#D9B66E"/>
+      <stop offset="100%" stop-color="#7B5B28"/>
+    </linearGradient>
+    <filter id="goldShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#3A2810" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#goldShadow)">
+    <!-- 1. ORNATE PRABHAVALI (ARCH) - TOP FINIAL / KALASHA -->
+    <path d="M160 8 C163 16 166 22 170 26 C166 28 163 32 163 36 C161 34 159 34 157 36 C157 32 154 28 150 26 C154 22 157 16 160 8 Z" fill="url(#goldLinear)"/>
+    <circle cx="160" cy="18" r="2.5" fill="#E8CD8C"/>
+
+    <!-- 2. PRABHAVALI OUTER ARCH - SYMMETRICAL FLORIATED SCROLLWORK -->
+    <!-- Left Arch Side -->
+    <path d="M160 34 C132 36 102 46 80 66 C60 85 46 112 44 140 C42 166 52 192 68 212 C82 229 102 240 124 246 C112 242 96 230 84 216 C70 198 62 176 64 152 C66 128 78 104 96 86 C114 68 136 56 160 54 Z" fill="url(#goldLinear)" opacity="0.95"/>
+    <!-- Right Arch Side -->
+    <path d="M160 34 C188 36 218 46 240 66 C260 85 274 112 276 140 C278 166 268 192 252 212 C238 229 218 240 196 246 C208 242 224 230 236 216 C250 198 258 176 256 152 C254 128 242 104 224 86 C206 68 184 56 160 54 Z" fill="url(#goldLinear)" opacity="0.95"/>
+
+    <!-- Arch Foliate Flame Motifs - Left Edge -->
+    <path d="M142 42 C126 38 108 48 102 62 C108 58 116 56 124 58 C112 66 106 80 110 94 C114 84 122 78 132 78 C122 88 118 104 124 116 C128 106 136 100 144 100 C138 108 136 118 140 126 C144 118 150 114 156 114" stroke="url(#goldGleam)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M78 78 C62 88 52 108 54 126 C58 118 64 114 72 116 C64 126 62 140 68 152 C72 142 80 138 88 140 C80 152 82 168 90 178 C94 168 102 164 110 166" stroke="url(#goldGleam)" stroke-width="2" stroke-linecap="round" fill="none"/>
+    
+    <!-- Arch Foliate Flame Motifs - Right Edge -->
+    <path d="M178 42 C194 38 212 48 218 62 C212 58 204 56 196 58 C208 66 214 80 210 94 C206 84 198 78 188 78 C198 88 202 104 196 116 C192 106 184 100 176 100 C182 108 184 118 180 126 C176 118 170 114 164 114" stroke="url(#goldGleam)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <path d="M242 78 C258 88 268 108 266 126 C262 118 256 114 248 116 C256 126 258 140 252 152 C248 142 240 138 232 140 C240 152 238 168 230 178 C226 168 218 164 210 166" stroke="url(#goldGleam)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Ornate Arch Crest Jewels / Beads -->
+    <circle cx="160" cy="45" r="3.5" fill="#E8CD8C"/>
+    <circle cx="138" cy="50" r="3" fill="#D9B66E"/>
+    <circle cx="182" cy="50" r="3" fill="#D9B66E"/>
+    <circle cx="118" cy="62" r="3" fill="#D9B66E"/>
+    <circle cx="202" cy="62" r="3" fill="#D9B66E"/>
+    <circle cx="98" cy="80" r="3" fill="#D9B66E"/>
+    <circle cx="222" cy="80" r="3" fill="#D9B66E"/>
+    <circle cx="80" cy="104" r="3" fill="#D9B66E"/>
+    <circle cx="240" cy="104" r="3" fill="#D9B66E"/>
+    <circle cx="68" cy="132" r="3" fill="#D9B66E"/>
+    <circle cx="252" cy="132" r="3" fill="#D9B66E"/>
+    <circle cx="64" cy="164" r="3" fill="#D9B66E"/>
+    <circle cx="256" cy="164" r="3" fill="#D9B66E"/>
+
+    <!-- 3. CENTRAL GANDABERUNDA (THE TWO-HEADED ROYAL EAGLE) -->
+    
+    <!-- Central Royal Crown (Kireeta) connecting the dual heads -->
+    <path d="M160 62 L163 74 L168 67 L171 77 L160 84 L149 77 L152 67 L157 74 Z" fill="url(#goldGleam)"/>
+    <circle cx="160" cy="60" r="2" fill="#FFFFFF"/>
+
+    <!-- Left Crown & Crest -->
+    <path d="M136 78 C134 70 128 66 122 66 C126 72 128 78 128 84 Z" fill="url(#goldLinear)"/>
+    <!-- Right Crown & Crest -->
+    <path d="M184 78 C186 70 192 66 198 66 C194 72 192 78 192 84 Z" fill="url(#goldLinear)"/>
+
+    <!-- LEFT EAGLE HEAD & HOOKED BEAK (FACING WEST/LEFT) -->
+    <!-- Head silhouette -->
+    <path d="M152 82 C146 80 138 80 132 84 C126 88 122 94 122 100 C122 108 128 114 136 116 C144 118 152 116 156 112 C154 102 153 92 152 82 Z" fill="url(#goldLinear)"/>
+    <!-- Left Curved Hooked Beak -->
+    <path d="M124 92 C116 92 108 96 104 102 C108 105 114 106 120 104 C116 108 114 112 114 116 C120 114 124 110 126 106 Z" fill="url(#goldGleam)"/>
+    <!-- Left Alert Eye -->
+    <circle cx="132" cy="94" r="3" fill="#2A1B0A"/>
+    <circle cx="133" cy="93" r="1.2" fill="#FFFFFF"/>
+
+    <!-- RIGHT EAGLE HEAD & HOOKED BEAK (FACING EAST/RIGHT) -->
+    <!-- Head silhouette -->
+    <path d="M168 82 C174 80 182 80 188 84 C194 88 198 94 198 100 C198 108 192 114 184 116 C176 118 168 116 164 112 C166 102 167 92 168 82 Z" fill="url(#goldLinear)"/>
+    <!-- Right Curved Hooked Beak -->
+    <path d="M196 92 C204 92 212 96 216 102 C212 105 206 106 200 104 C204 108 206 112 206 116 C200 114 196 110 194 106 Z" fill="url(#goldGleam)"/>
+    <!-- Right Alert Eye -->
+    <circle cx="188" cy="94" r="3" fill="#2A1B0A"/>
+    <circle cx="187" cy="93" r="1.2" fill="#FFFFFF"/>
+
+    <!-- Neck & Conjoined Collar (Wadiyar Royal Torque / Hara) -->
+    <path d="M140 115 C146 122 154 124 160 124 C166 124 174 122 180 115 C176 128 172 136 160 138 C148 136 144 128 140 115 Z" fill="url(#goldGleam)"/>
+    <!-- Royal Necklace Jewels -->
+    <circle cx="148" cy="122" r="2" fill="#FFFFFF"/>
+    <circle cx="160" cy="125" r="2.5" fill="#E8CD8C"/>
+    <circle cx="172" cy="122" r="2" fill="#FFFFFF"/>
+
+    <!-- 4. MAJESTIC EXPANDED WINGS (SPREAD SYMMETRICALLY) -->
+    
+    <!-- LEFT WING - Layer 1 (Upper Primary Pinions) -->
+    <path d="M142 126 C124 120 102 114 84 118 C78 120 74 126 78 130 C86 132 98 130 112 132 C96 136 86 142 88 148 C94 150 104 146 116 144 C100 152 94 160 98 166 C104 168 116 160 126 156 C112 168 110 178 116 182 C122 182 132 172 138 164 C132 176 134 186 140 188 C146 186 152 174 154 162 Z" fill="url(#goldLinear)"/>
+    
+    <!-- LEFT WING - Layer 2 (Feather Filigree & Rhythms) -->
+    <path d="M142 128 C128 132 114 138 104 148 M140 142 C128 148 118 156 112 166 M142 156 C134 164 128 174 126 182" stroke="url(#goldGleam)" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- RIGHT WING - Layer 1 (Upper Primary Pinions) -->
+    <path d="M178 126 C196 120 218 114 236 118 C242 120 246 126 242 130 C234 132 222 130 208 132 C224 136 234 142 232 148 C226 150 216 146 204 144 C220 152 226 160 222 166 C216 168 204 160 194 156 C208 168 210 178 204 182 C198 182 188 172 182 164 C188 176 186 186 180 188 C174 186 168 174 166 162 Z" fill="url(#goldLinear)"/>
+
+    <!-- RIGHT WING - Layer 2 (Feather Filigree & Rhythms) -->
+    <path d="M178 128 C192 132 206 138 216 148 M180 142 C192 148 202 156 208 166 M178 156 C186 164 192 174 194 182" stroke="url(#goldGleam)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- 5. CENTRAL CHEST & TORSO (REGAL HERALDIC PLUMAGE) -->
+    <path d="M160 136 C150 138 144 148 144 162 C144 178 150 194 160 204 C170 194 176 178 176 162 C176 148 170 138 160 136 Z" fill="url(#goldLinear)"/>
+    <!-- Chest Feather Scales (Symmetrical Chevron Escutcheon) -->
+    <path d="M152 148 Q160 154 168 148 M150 160 Q160 168 170 160 M152 172 Q160 180 168 172 M154 184 Q160 190 166 184" stroke="url(#goldGleam)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- 6. TALONS & CEREMONIAL LOTUS CLUTCH -->
+    <!-- Left Talon -->
+    <path d="M148 202 C142 206 136 214 132 222 C136 222 142 218 146 214 C144 220 142 226 140 230 C146 226 150 220 152 214 C152 220 154 224 156 228 C158 222 158 214 156 208 Z" fill="url(#goldGleam)"/>
+    <!-- Right Talon -->
+    <path d="M172 202 C178 206 184 214 188 222 C184 222 178 218 174 214 C176 220 178 226 180 230 C174 226 170 220 168 214 C168 220 166 224 164 228 C162 222 162 214 164 208 Z" fill="url(#goldGleam)"/>
+
+    <!-- 7. LOWER FAN TAIL FEATHERS (ROYAL PEACOCK/EAGLE FLOURISH) -->
+    <path d="M160 206 C156 216 150 228 142 238 C148 238 154 232 158 226 C158 236 156 248 152 258 C158 252 160 242 160 234 C160 242 162 252 168 258 C164 248 162 236 162 226 C166 232 172 238 178 238 C170 228 164 216 160 206 Z" fill="url(#goldLinear)"/>
+
+    <!-- 8. PEDESTAL BASE (LOTUS / MAKARA MOTIF) -->
+    <path d="M130 252 C140 248 150 246 160 246 C170 246 180 248 190 252 C182 256 172 258 160 258 C148 258 138 256 130 252 Z" fill="url(#goldGleam)"/>
+    <path d="M120 258 C134 266 146 270 160 270 C174 270 186 266 200 258 C186 264 174 266 160 266 C146 266 134 264 120 258 Z" fill="url(#goldLinear)"/>
+    <circle cx="160" cy="262" r="2.5" fill="#E8CD8C"/>
+    <circle cx="144" cy="258" r="2" fill="#D9B66E"/>
+    <circle cx="176" cy="258" r="2" fill="#D9B66E"/>
+  </g>
+</svg>

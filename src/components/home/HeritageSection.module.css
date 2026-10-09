@@ -1,0 +1,114 @@
+.heritageSection {
+  background-color: var(--color-bg-primary);
+  border-bottom: var(--border-rule);
+}
+
+.heritageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .heritageGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.archivalFrame {
+  position: relative;
+  border: 1px solid rgba(23, 21, 19, 0.15);
+  background-color: var(--color-bg-secondary);
+  padding: 16px;
+  box-shadow: 0 16px 40px rgba(23, 21, 19, 0.05);
+}
+
+.archivalImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+.archivalImage {
+  object-fit: cover;
+  object-position: center 15%;
+  filter: sepia(0.12) contrast(1.08);
+  transition: transform 600ms var(--ease-editorial);
+}
+
+.archivalFrame:hover .archivalImage {
+  transform: scale(1.03);
+}
+
+.archivalCaption {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-top: 1px solid rgba(23, 21, 19, 0.08);
+  padding-top: 10px;
+}
+
+.archivalCaption strong {
+  color: var(--color-burgundy);
+  font-weight: 600;
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.yearDisplay {
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 9.5vw, 8.5rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--color-burgundy);
+  margin-bottom: 12px;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: #110E0C;
+  margin-bottom: 24px;
+}
+
+.paragraph {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: #1A1410;
+  margin-bottom: 20px;
+}
+
+.paragraphHighlight {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #110E0C;
+  padding-left: 20px;
+  border-left: 2px solid var(--color-gold);
+  margin-bottom: 36px;
+  font-style: italic;
+  font-weight: 600;
+  font-family: var(--font-serif);
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}

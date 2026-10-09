@@ -1,0 +1,326 @@
+.karnatakaSection {
+  background-color: var(--color-bg-primary);
+  border-bottom: var(--border-rule);
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(36px, 5vw, 72px);
+  align-items: flex-start;
+}
+
+@media (max-width: 1040px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.narrativeCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--color-text-primary);
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.leadParagraph {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.hubsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hubItem {
+  border: 1px solid rgba(23, 21, 19, 0.12);
+  background-color: var(--color-bg-paper);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all 220ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 2px;
+}
+
+.hubItem:hover {
+  border-color: var(--color-burgundy);
+  background-color: #FAF4EB;
+}
+
+.hubItemActive {
+  border-color: var(--color-burgundy);
+  border-left: 5px solid var(--color-burgundy);
+  background-color: #F8EFE4;
+  box-shadow: 0 4px 16px rgba(122, 22, 29, 0.06);
+}
+
+.hubHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.hubName {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.hubKannada {
+  font-family: var(--font-kannada);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.hubRole {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+  background-color: rgba(122, 22, 29, 0.08);
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.hubDescription {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Key Stats Badges Grid */
+.hubStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(122, 22, 29, 0.2);
+}
+
+@media (max-width: 600px) {
+  .hubStatsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statBadge {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 6px 10px;
+  border: 1px solid rgba(23, 21, 19, 0.06);
+  border-radius: 2px;
+}
+
+.statLabel {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-top: 2px;
+}
+
+/* Map Frame */
+.mapFrame {
+  position: relative;
+  background-color: #F3EBDD;
+  border: 1px solid rgba(23, 21, 19, 0.15);
+  padding: clamp(20px, 3.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.02);
+}
+
+.mapHeaderRow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mapTag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6E5325;
+}
+
+.mapStateSeal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+}
+
+.svgContainer {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.karnatakaSvg {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  filter: drop-shadow(0 8px 24px rgba(23, 21, 19, 0.06));
+}
+
+/* District Boundaries */
+.districtsGroup {
+  fill: #E8E0D1;
+  stroke: #8D7452;
+  stroke-width: 2.2;
+}
+
+.districtPath {
+  transition: fill 250ms ease, stroke-width 250ms ease;
+}
+
+.districtPath:hover {
+  fill: #DFD3BF;
+  stroke-width: 3.5;
+}
+
+/* Cauvery River Vector */
+.cauveryRiverPath {
+  stroke: #6E5325;
+  stroke-width: 3.5;
+  stroke-dasharray: 8 6;
+  fill: none;
+  opacity: 0.65;
+}
+
+.riverText {
+  fill: #6E5325;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  font-family: var(--font-sans);
+  opacity: 0.75;
+}
+
+/* Hub Pins & Ripples */
+.markerRippleOuter {
+  fill: rgba(122, 22, 29, 0.12);
+  stroke: #7A161D;
+  stroke-width: 2;
+  animation: ripplePulse 2.8s infinite ease-out;
+}
+
+.markerRippleInner {
+  fill: rgba(122, 22, 29, 0.22);
+  stroke: #7A161D;
+  stroke-width: 2.5;
+}
+
+@keyframes ripplePulse {
+  0% {
+    r: 32px;
+    opacity: 0.8;
+  }
+  100% {
+    r: 90px;
+    opacity: 0;
+  }
+}
+
+.markerDot {
+  stroke: #FFFFFF;
+  stroke-width: 3.5;
+  transition: all 250ms ease;
+}
+
+.markerDotActive {
+  fill: #7A161D;
+}
+
+.markerDotInactive {
+  fill: #997843;
+}
+
+.hubMarkerGroup:hover .markerDot {
+  fill: #7A161D;
+  transform: scale(1.1);
+}
+
+.mapPinLabel {
+  font-family: var(--font-sans);
+  font-size: 34px;
+  letter-spacing: 0.04em;
+  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.9));
+}
+
+.mapPinLabelActive {
+  fill: #7A161D;
+  font-weight: 700;
+}
+
+.mapPinLabelInactive {
+  fill: #2B231D;
+  font-weight: 500;
+}
+
+/* Map Legend */
+.mapLegend {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(23, 21, 19, 0.12);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-burgundy);
+  flex-shrink: 0;
+}
+
+.mapLegend strong {
+  color: var(--color-burgundy);
+}

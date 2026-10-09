@@ -1,0 +1,78 @@
+.storesPage {
+  padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .storesPage {
+    padding-top: 96px;
+  }
+}
+
+.factoryTourGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.authenticityNotice {
+  padding: 28px;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid rgba(23, 21, 19, 0.12);
+}
+
+.controlsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cityTabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+  padding-bottom: 4px;
+}
+
+.searchInput {
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  font-family: var(--font-sans);
+  border: 1px solid rgba(23, 21, 19, 0.2);
+  background-color: var(--color-bg-paper);
+  width: 280px;
+  max-width: 100%;
+  outline: none;
+}
+
+.storesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .factoryTourGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .storesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .controlsBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
