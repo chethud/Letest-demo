@@ -63,7 +63,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "138 specialized looms operating continuously since the royal era.",
     details: "At the Mysore Silk Weaving Factory on Mananthody Road, warp yarns are dressed across century-old Swiss-built power looms. The synchronized shuttle throws weft threads under controlled humidity, creating the tight, durable, and supple weave unique to KSIC.",
     technicalSpec: "138 Swiss-engineered looms \u00b7 Dobby and Jacquard shedding mechanisms",
-    image: "/assets/craft/05-loom-weaving.jpg",
+    image: "/assets/craft/05-swiss-jacquard-weaving.jpg",
     attributes: ["JACQUARD WEAVE", "SWISS PRECISION", "CONTROLLED HUMIDITY"],
   },
   {
