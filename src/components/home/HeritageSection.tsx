@@ -3,106 +3,201 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Award, History, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import styles from "./HeritageSection.module.css";
-import { useLanguage } from "@/context/LanguageContext";
 
 export const HeritageSection: React.FC = () => {
-  const { lang, t } = useLanguage();
-  const isKn = lang === "kn";
-
   return (
     <section
       className={styles.heritageSection}
       id="heritage"
-      aria-label="KSIC Royal Heritage — The Beginning of a Living Legacy"
+      aria-label="Our Heritage — 1912: The Beginning of a Living Legacy"
     >
+      {/* Decorative low-opacity royal watermark on the far right */}
+      <div className={styles.heritageWatermark} aria-hidden="true">
+        <Image
+          src="/assets/brand/gandaberunda-crest-royal.svg"
+          alt=""
+          width={420}
+          height={420}
+          className={styles.watermarkImg}
+          priority={false}
+        />
+      </div>
+
       <div className="container-institutional">
         <div className={styles.heritageGrid}>
-          {/* Left: Museum Archival Frame */}
-          <div className={`${styles.archivalFrame} reveal-scale`}>
-            <div className={styles.archivalImageWrap}>
-              <Image
-                src="/assets/heritage/nalvadi-krishnaraja-wadiyar.jpg"
-                alt="Sri Nalvadi Krishnaraja Wadiyar, Maharaja of Mysore, founder of Mysore Silk Weaving Factory in 1912"
-                fill
-                sizes="(max-width: 960px) 100vw, 45vw"
-                className={styles.archivalImage}
-                priority={false}
-              />
-              <div className={styles.founderSealBadge}>
-                <Award size={13} />
-                <span>{isKn ? "ಸಂಸ್ಥಾಪಕರು · ೧೯೧೨" : "FOUNDER · 1912"}</span>
+          {/* Left Column: Historical Portrait in Museum Archival Ivory Frame */}
+          <div className={styles.portraitColumn}>
+            <div className={styles.archivalFrame}>
+              <div className={styles.archivalImageWrap}>
+                <Image
+                  src="/assets/heritage/nalvadi-krishnaraja-wadiyar.jpg"
+                  alt="Sri Nalvadi Krishnaraja Wadiyar, Maharaja of Mysore province and Founder of Mysore Silk Weaving Factory in 1912"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 42vw"
+                  className={styles.archivalImage}
+                  priority={false}
+                />
+                
+                {/* Founder Overlay Badge */}
+                <div className={styles.founderBadge}>
+                  <svg
+                    className={styles.badgeCrownIcon}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7z" />
+                    <line x1="5" y1="20" x2="19" y2="20" />
+                  </svg>
+                  <span>FOUNDER · 1912</span>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.archivalCaption}>
-              <span>{t.heritageFounderLabel}</span>
-              <strong>{t.heritageFounderCity}</strong>
+              {/* Compact Caption Row */}
+              <div className={styles.archivalCaption}>
+                <span className={styles.captionFounder}>
+                  ROYAL FOUNDER · NALVADI KRISHNARAJA WADIYAR
+                </span>
+                <span className={styles.captionDivider} aria-hidden="true" />
+                <span className={styles.captionOrigin}>
+                  MYSURU · 1912
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right: Editorial Narrative */}
-          <div className={`${styles.contentCol} reveal-up`}>
+          {/* Right Column: Heritage Narrative */}
+          <div className={styles.narrativeColumn}>
+            {/* Eyebrow */}
             <div className={styles.eyebrowWrapper}>
-              <span className={styles.eyebrowRule} />
-              <span className={styles.eyebrowText}>{t.heritageKicker}</span>
+              <span className={styles.eyebrowRule} aria-hidden="true" />
+              <span className={styles.eyebrowText}>OUR HERITAGE</span>
             </div>
 
-            <div className={styles.yearDisplayRow}>
+            {/* Historical Year and Patronage Label */}
+            <div className={styles.yearRow}>
               <div className={styles.yearDisplay}>1912</div>
               <div className={styles.yearSubtitle}>
-                {isKn ? "ರಾಜಮನೆತನದ ಸಾಂಸ್ಥಿಕ ನೇಯ್ಗೆ" : "ROYAL COURT PATRONAGE"}
+                ROYAL COURT PATRONAGE
               </div>
             </div>
 
+            {/* Main Editorial Heading */}
             <h2 className={styles.headline}>
-              {t.heritageTitle}
+              THE BEGINNING OF A LIVING LEGACY.
             </h2>
 
-            <p className={styles.paragraph}>
-              {t.heritageText1}
+            {/* Historical Narrative Description */}
+            <p className={styles.description}>
+              The Mysore Silk Weaving Factory was established in Mysuru in 1912 under Sri Nalvadi Krishnaraja Wadiyar, the Maharaja of Mysore province. Initially, the fabrics were crafted exclusively to meet the ceremonial requirements of the royal family and ornamental silk regalia for the state armed forces.
             </p>
 
-            <div className={styles.quoteBox}>
+            {/* Historical Quotation Panel */}
+            <div className={styles.quotePanel}>
               <p className={styles.quoteText}>
-                &ldquo;{t.heritageQuote}&rdquo;
+                &ldquo;Started with 10 Swiss looms imported under royal patronage, the factory introduced modern machine-woven crepe de chine to the subcontinent—pioneering an unadulterated combination of pure mulberry silk and electroplated gold zari that endures today.&rdquo;
               </p>
             </div>
 
-            {/* Provenance Highlights Row */}
-            <div className={styles.highlightsRow}>
-              <div className={styles.highlightItem}>
-                <span className={styles.highlightNumber}>10</span>
-                <span className={styles.highlightLabel}>
-                  {isKn ? "ಸ್ವಿಸ್ ಯಾಂತ್ರಿಕ ಲೂಮ್‌ಗಳು" : "SWISS POWER LOOMS"}
-                </span>
+            {/* Heritage Statistics (Three Aligned Informational Items) */}
+            <div className={styles.statsRow}>
+              {/* Stat 1: Swiss Power Looms */}
+              <div className={styles.statItem}>
+                <div className={styles.statHeader}>
+                  <div className={styles.statIcon} aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="3" y="4" width="18" height="16" rx="1.5" />
+                      <line x1="7" y1="4" x2="7" y2="20" />
+                      <line x1="17" y1="4" x2="17" y2="20" />
+                      <line x1="3" y1="9" x2="21" y2="9" />
+                      <line x1="3" y1="15" x2="21" y2="15" />
+                    </svg>
+                  </div>
+                  <span className={styles.statNumber}>10</span>
+                </div>
+                <div className={styles.statLabel}>SWISS POWER LOOMS</div>
+                <div className={styles.statSubtext}>
+                  INTRODUCED UNDER<br />ROYAL PATRONAGE
+                </div>
               </div>
 
-              <div className={styles.highlightItem}>
-                <span className={styles.highlightNumber}>100+</span>
-                <span className={styles.highlightLabel}>
-                  {isKn ? "ನಿರಂತರ ವರ್ಷಗಳ ಪರಂಪರೆ" : "YEARS OF SOVEREIGN WEAVE"}
-                </span>
+              <div className={styles.statDivider} aria-hidden="true" />
+
+              {/* Stat 2: Years of Sovereign Weave */}
+              <div className={styles.statItem}>
+                <div className={styles.statHeader}>
+                  <div className={styles.statIcon} aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m12 3-9 4.5 9 4.5 9-4.5-9-4.5Z" />
+                      <path d="m3 12 9 4.5 9-4.5" />
+                      <path d="m3 16.5 9 4.5 9-4.5" />
+                    </svg>
+                  </div>
+                  <span className={styles.statNumber}>100+</span>
+                </div>
+                <div className={styles.statLabel}>YEARS OF SOVEREIGN WEAVE</div>
+                <div className={styles.statSubtext}>
+                  A CONTINUING<br />LEGACY OF EXCELLENCE
+                </div>
               </div>
 
-              <div className={styles.highlightItem}>
-                <span className={styles.highlightNumber}>GI-11</span>
-                <span className={styles.highlightLabel}>
-                  {isKn ? "ಭಾರತ ಸರ್ಕಾರ ರಕ್ಷಿತ ಮೂಲ" : "GOVT. PROTECTED ORIGIN"}
-                </span>
+              <div className={styles.statDivider} aria-hidden="true" />
+
+              {/* Stat 3: Govt. Protected Origin */}
+              <div className={styles.statItem}>
+                <div className={styles.statHeader}>
+                  <div className={styles.statIcon} aria-hidden="true">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 22s8-4.5 8-11.5V5.5l-8-3-8 3v5C4 17.5 12 22 12 22Z" />
+                      <circle cx="12" cy="11.5" r="2.5" />
+                      <path d="m9.5 14 5-5" />
+                    </svg>
+                  </div>
+                  <span className={styles.statNumber}>GI-11</span>
+                </div>
+                <div className={styles.statLabel}>GOVT. PROTECTED ORIGIN</div>
+                <div className={styles.statSubtext}>
+                  RECOGNIZED HERITAGE<br />OF MYSORE SILK
+                </div>
               </div>
             </div>
 
-            {/* Curved Action Buttons */}
-            <div className={styles.actionsRow}>
-              <Link href="/heritage" className={styles.curvedBurgundyBtn}>
-                <span>{t.heritageExploreBtn}</span>
-                <ArrowRight size={15} />
+            {/* Calls to Action */}
+            <div className={styles.ctaRow}>
+              <Link href="/heritage" className={styles.primaryCtaBtn}>
+                <span>EXPLORE OUR HISTORY</span>
+                <ArrowRight size={15} className={styles.ctaArrow} aria-hidden="true" />
               </Link>
-              <Link href="/heritage#timeline" className={styles.curvedOutlineBtn}>
-                <span>{t.heritageTimelineBtn}</span>
-                <ArrowRight size={14} />
+              <Link href="/heritage#timeline" className={styles.secondaryCtaBtn}>
+                <span>VIEW 100+ YEAR TIMELINE</span>
+                <ArrowRight size={14} className={styles.ctaArrow} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -111,4 +206,3 @@ export const HeritageSection: React.FC = () => {
     </section>
   );
 };
-

@@ -19,7 +19,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "Reared exclusively by certified sericulture farmers across the old Mysore tract.",
     details: "Karnataka produces the world's finest multivoltine\u2013bivoltine hybrid mulberry silkworm cocoons. Sourced from sericulture clusters in Ramanagara, Kolar, and Mandya, these cocoons yield filaments of exceptional tensile purity and natural ivory sheen.",
     technicalSpec: "Bivoltine & Multivoltine hybrids \u00b7 100% natural Bombyx mori filament",
-    image: "/assets/craft/01-silkworm-cocoons.jpg",
+    image: "/assets/craft/01-mulberry-cocoons.jpg",
     attributes: ["NATURAL MULBERRY", "PREMIUM SERICULTURE", "IVORY SHEEN"],
   },
   {

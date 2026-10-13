@@ -43,8 +43,8 @@
 
   /* Spacing System */
   --space-unit: 8px;
-  --section-padding-y: 128px;
-  --section-padding-y-sm: 80px;
+  --section-padding-y: 52px;
+  --section-padding-y-sm: 36px;
   --container-max-width: 1440px;
   --container-narrow-width: 1120px;
   --container-editorial-width: 900px;

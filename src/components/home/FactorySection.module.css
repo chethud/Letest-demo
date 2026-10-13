@@ -1,124 +1,277 @@
+/* =========================================================================
+   SILK WEAVING FACTORY HERITAGE — CINEMATIC EDITORIAL REDESIGN
+   ========================================================================= */
+
 .factorySection {
   position: relative;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
+  background-color: #0E0A08;
+  background-image: 
+    linear-gradient(to top, rgba(14, 10, 8, 0.88) 0%, rgba(14, 10, 8, 0.45) 22%, transparent 45%),
+    linear-gradient(to right, rgba(14, 10, 8, 0.96) 0%, rgba(14, 10, 8, 0.88) 34%, rgba(14, 10, 8, 0.35) 58%, rgba(14, 10, 8, 0.05) 82%, transparent 100%),
+    url('/assets/factory/ksic-factory-heritage-cinematic.jpg');
+  background-position: right center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #FAF6EF;
   overflow: hidden;
-  padding: 120px 0;
+  padding: 64px 0 36px;
+  border-top: 1px solid rgba(197, 160, 89, 0.3);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+  scroll-margin-top: 80px;
 }
 
-.factoryBgWrap {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.factoryImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.42) contrast(1.15);
-}
-
-.factoryOverlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(24, 19, 15, 0.4) 0%,
-    rgba(24, 19, 15, 0.88) 100%
-  );
-  z-index: 2;
-}
-
-.contentContainer {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: var(--container-max-width);
+.container {
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 64px);
-}
-
-.factoryKicker {
-  color: var(--color-gold-bright);
-}
-
-.factoryKicker::before {
-  background-color: var(--color-gold-bright);
-}
-
-.factoryHeadline {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 6.5vw, 5.6rem);
-  font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  max-width: 900px;
-  margin-top: 12px;
-  margin-bottom: 28px;
-}
-
-.factoryDescription {
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  font-family: var(--font-serif);
-  line-height: 1.6;
-  color: #FFFFFF;
-  max-width: 720px;
-  margin-bottom: 64px;
-}
-
-.metricsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(24px, 4vw, 48px);
-  border-top: 1px solid rgba(247, 243, 236, 0.2);
-  padding-top: 48px;
-}
-
-@media (max-width: 900px) {
-  .metricsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .metricsGrid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-}
-
-.metricItem {
+  padding: 0 clamp(20px, 4.5vw, 64px);
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
 }
 
-.metricValue {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 4.8vw, 4.4rem);
-  font-weight: 600;
-  line-height: 0.95;
-  color: var(--color-gold-bright);
-  letter-spacing: -0.02em;
+/* =========================================================================
+   LEFT HERO CONTENT: EYEBROW, EDITORIAL HEADLINE, DESCRIPTION, CTA
+   ========================================================================= */
+
+.heroContent {
+  max-width: 580px;
+  margin-bottom: 52px;
 }
 
-.metricLabel {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+/* Location Eyebrow */
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.eyebrowLine {
+  width: 28px;
+  height: 1px;
+  background-color: #C5A059;
+  flex-shrink: 0;
+}
+
+.eyebrowText {
+  font-family: var(--font-dm), var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  color: #C5A059;
   text-transform: uppercase;
-  color: var(--color-text-light);
-  margin-top: 12px;
 }
 
-.metricDetail {
-  font-size: 0.82rem;
-  color: var(--color-text-light-muted);
-  margin-top: 6px;
-  line-height: 1.5;
+/* Three-line Large Editorial Headline */
+.headline {
+  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: #FAF6EF;
+  margin: 0 0 22px;
+  text-transform: uppercase;
+}
+
+.goldWord {
+  color: #C5A059;
+  font-weight: 400;
+}
+
+/* Historical Description */
+.description {
+  font-family: var(--font-dm), var(--font-sans);
+  font-size: clamp(0.90rem, 1.12vw, 1.02rem);
+  line-height: 1.68;
+  color: #D6C9BB;
+  margin: 0 0 28px;
+  max-width: 540px;
+}
+
+/* Primary CTA Button */
+.ctaWrapper {
+  display: flex;
+}
+
+.primaryCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: #861722;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-radius: 9999px;
+  font-family: var(--font-dm), var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FAF6EF;
+  text-decoration: none;
+  transition: all 220ms ease;
+  box-shadow: 0 4px 16px rgba(134, 23, 34, 0.35);
+}
+
+.primaryCtaBtn:hover {
+  background: #6D111A;
+  border-color: #C5A059;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(134, 23, 34, 0.48);
+}
+
+.ctaArrow {
+  transition: transform 200ms ease;
+}
+
+.primaryCtaBtn:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+/* =========================================================================
+   BOTTOM HERITAGE STATISTICS STRIP (4 COLUMNS)
+   ========================================================================= */
+
+.statsStrip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding-top: 16px;
+}
+
+.statColumn {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-right: 18px;
+}
+
+.statDivider {
+  border-right: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.statIconWrap {
+  color: #C5A059;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.statNumber {
+  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
+  font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: #FAF6EF;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.statLabel {
+  font-family: var(--font-dm), var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #C5A059;
+  margin-bottom: 6px;
+}
+
+.statDesc {
+  font-family: var(--font-dm), var(--font-sans);
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: #AFA090;
+}
+
+/* =========================================================================
+   BOTTOM DECORATIVE DIVIDER WITH GEOMETRIC ORNAMENT
+   ========================================================================= */
+
+.bottomDecorativeLine {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.bottomLineSegment {
+  flex: 1;
+  height: 1px;
+  background: rgba(197, 160, 89, 0.28);
+}
+
+.bottomFlourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #C5A059;
+}
+
+/* =========================================================================
+   RESPONSIVE BEHAVIOR
+   ========================================================================= */
+
+@media (max-width: 1024px) {
+  .factorySection {
+    background-position: 72% center;
+    padding: 56px 0 32px;
+  }
+
+  .statsStrip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .statColumn:nth-child(2) {
+    border-right: none;
+  }
+
+  .statColumn:nth-child(3) {
+    padding-top: 12px;
+    border-top: 1px solid rgba(197, 160, 89, 0.15);
+  }
+
+  .statColumn:nth-child(4) {
+    padding-top: 12px;
+    border-top: 1px solid rgba(197, 160, 89, 0.15);
+    border-right: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .factorySection {
+    background-position: 80% top;
+    padding: 48px 0 28px;
+  }
+
+  .heroContent {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .statsStrip {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .statColumn {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+    padding-bottom: 16px;
+  }
+
+  .statColumn:nth-child(3),
+  .statColumn:nth-child(4) {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .statColumn:last-child {
+    border-bottom: none;
+  }
 }

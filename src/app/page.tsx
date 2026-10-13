@@ -1,7 +1,6 @@
 import React from "react";
 import { Hero } from "@/components/home/Hero";
 import { JourneyOfSilkSection } from "@/components/home/JourneyOfSilkSection";
-import { HeritageSection } from "@/components/home/HeritageSection";
 import { TimelineSection } from "@/components/home/TimelineSection";
 import { CraftSection } from "@/components/home/CraftSection";
 import { FactorySection } from "@/components/home/FactorySection";
@@ -16,9 +15,6 @@ export default function HomePage() {
 
       {/* 02 THE JOURNEY OF SILK */}
       <JourneyOfSilkSection />
-
-      {/* 03 HERITAGE */}
-      <HeritageSection />
 
       {/* 03 TIMELINE */}
       <TimelineSection />

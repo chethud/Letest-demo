@@ -3,16 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowRight, Award, History, Building2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import styles from "./TimelineSection.module.css";
 import { HERITAGE_MILESTONES } from "@/data/heritage";
-import { useLanguage } from "@/context/LanguageContext";
 
 export const TimelineSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { lang, t } = useLanguage();
-  const isKn = lang === "kn";
-
   const current = HERITAGE_MILESTONES[activeIndex];
 
   const handlePrev = () => {
@@ -23,15 +19,6 @@ export const TimelineSection: React.FC = () => {
     setActiveIndex((prev) => (prev < HERITAGE_MILESTONES.length - 1 ? prev + 1 : prev));
   };
 
-  const displayTitle = isKn && current.kannadaTitle ? current.kannadaTitle : current.title;
-  const displayDesc = isKn && current.kannadaDescription ? current.kannadaDescription : current.description;
-  const displaySignificance = isKn && current.kannadaSignificance ? current.kannadaSignificance : current.significance;
-  const displayStatLabel = isKn && current.statLabelKn ? current.statLabelKn : current.statLabel;
-  const displayProvenance = isKn && current.provenanceKn ? current.provenanceKn : current.provenance;
-
-  // Active progress rail percentage
-  const progressPercent = (activeIndex / (HERITAGE_MILESTONES.length - 1)) * 100;
-
   return (
     <section
       className={styles.timelineSection}
@@ -39,35 +26,24 @@ export const TimelineSection: React.FC = () => {
       aria-label="Century of Stewardship — The Chronology of Mysore Silk"
     >
       <div className={styles.container}>
-        {/* 01. Editorial Header */}
+        {/* 01. Sophisticated Section Introduction */}
         <div className={styles.timelineHeader}>
-          <div className={styles.eyebrowWrapper}>
-            <span className={styles.eyebrowRule} />
-            <span className={styles.eyebrowText}>
-              {isKn ? "ಶತಮಾನದ ಸಾಂಸ್ಥಿಕ ಪಯಣ" : "CENTURY OF STEWARDSHIP"}
-            </span>
-            <span className={styles.eyebrowRuleRight} />
+          <div className={styles.eyebrowText}>
+            CENTURY OF STEWARDSHIP
           </div>
 
           <h2 className={styles.sectionTitle}>
-            {isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಶತಮಾನದ ಕಾಲಕ್ರಮ" : "The Chronology of Mysore Silk"}
+            The Chronology of <span className={styles.burgundyWord}>Mysore Silk</span>
           </h2>
 
           <p className={styles.subtitle}>
-            {isKn
-              ? "೧೯೧೨ ರಲ್ಲಿ ಮಹಾರಾಜ ನಾಲ್ವಡಿ ಕೃಷ್ಣರಾಜ ಒಡೆಯರ್ ಅವರಿಂದ ಆರಂಭವಾದ ರಾಜಮನೆತನದ ನೇಯ್ಗೆಯಿಂದ ಇಂದಿನವರೆಗಿನ ಅಖಂಡ ಸಾಂಸ್ಥಿಕ ಹೆಜ್ಜೆಗುರುತುಗಳು."
-              : "From the royal founding in 1912 by Maharaja Nalvadi Krishnaraja Wadiyar to the present day, explore over a century of unbroken textile sovereignty."}
+            From the royal founding in 1912 by Maharaja Nalvadi Krishnaraja Wadiyar to the present day, explore over a century of unbroken textile sovereignty.
           </p>
         </div>
 
-        {/* 02. Interactive Timeline Rail */}
+        {/* 02. Minimalist Horizontal Timeline Navigation */}
         <div className={styles.timelineRailWrapper} aria-label="Chronological era selector">
           <div className={styles.railLineBackground} aria-hidden="true" />
-          <div
-            className={styles.railLineActive}
-            style={{ width: `${progressPercent}%` }}
-            aria-hidden="true"
-          />
 
           <div className={styles.yearsNav} role="tablist">
             {HERITAGE_MILESTONES.map((item, idx) => {
@@ -89,102 +65,150 @@ export const TimelineSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 03. Grand Epoch Editorial Display Card */}
+        {/* 03. Main Historical Content Panel (Two Columns) */}
         <article className={styles.editorialCard} aria-live="polite">
-          {/* Archival Year Watermark */}
-          <div className={styles.cardYearWatermark} aria-hidden="true">
-            {current.year}
-          </div>
+          {/* Subtle gold corner filigree flourishes */}
+          <svg className={`${styles.cornerFlourish} ${styles.cornerTl}`} viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M1 15 V4 C1 2.34 2.34 1 4 1 H15" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="4" cy="4" r="1.5" fill="#C5A059" />
+          </svg>
+          <svg className={`${styles.cornerFlourish} ${styles.cornerTr}`} viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M15 15 V4 C15 2.34 13.66 1 12 1 H1" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="12" cy="4" r="1.5" fill="#C5A059" />
+          </svg>
+          <svg className={`${styles.cornerFlourish} ${styles.cornerBl}`} viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M1 1 V12 C1 13.66 2.34 15 4 15 H15" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="4" cy="12" r="1.5" fill="#C5A059" />
+          </svg>
+          <svg className={`${styles.cornerFlourish} ${styles.cornerBr}`} viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M15 1 V12 C15 13.66 13.66 15 12 15 H1" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill="#C5A059" />
+          </svg>
 
-          {/* Left Column: Narrative & Significance */}
+          {/* Left Column: Historical Information */}
           <div className={styles.cardContent}>
             <div className={styles.epochKicker}>
-              <History size={13} style={{ color: "#B79A65" }} />
+              <span className={styles.kickerDiamond}>❖</span>
               <span>{current.epoch}</span>
             </div>
 
-            <h3 className={styles.cardTitle}>{displayTitle}</h3>
+            <h3 className={styles.cardTitle}>{current.title}</h3>
 
-            <p className={styles.cardDescription}>{displayDesc}</p>
+            <p className={styles.cardDescription}>{current.description}</p>
 
             <div className={styles.significanceBox}>
               <div className={styles.significanceText}>
-                <strong>{isKn ? "ಸಾಂಸ್ಥಿಕ ಮಹತ್ವ: " : "Institutional Significance: "}</strong>
-                {displaySignificance}
+                <strong className={styles.significancePrefix}>Institutional Significance: </strong>
+                {current.significance}
               </div>
+            </div>
+
+            {/* Subtle Divider with Gold Diamond */}
+            <div className={styles.cardDivider} aria-hidden="true">
+              <span className={styles.dividerLine} />
+              <span className={styles.dividerDiamond}>❖</span>
+              <span className={styles.dividerLine} />
             </div>
 
             {/* Archival Stats & Provenance */}
             <div className={styles.metaRow}>
               {current.statNumber && (
                 <div className={styles.statItem}>
-                  <span className={styles.statNumber}>{current.statNumber}</span>
-                  <span className={styles.statLabel}>{displayStatLabel}</span>
+                  <div className={styles.statIconWrap}>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#861B26"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 4h16v3H4zM4 17h16v3H4zM6 7v10M10 7v10M14 7v10M18 7v10M2 12h20" />
+                    </svg>
+                  </div>
+                  <div className={styles.statTextWrap}>
+                    <span className={styles.statNumber}>{current.statNumber}</span>
+                    <span className={styles.statLabel}>{current.statLabel}</span>
+                  </div>
                 </div>
               )}
 
-              {displayProvenance && (
-                <div className={styles.provenanceText}>
-                  Provenance: {displayProvenance}
+              {current.provenance && (
+                <div className={styles.provenanceBox}>
+                  <span className={styles.provenanceLabel}>Provenance: </span>
+                  <span className={styles.provenanceText}>{current.provenance}</span>
                 </div>
               )}
             </div>
           </div>
 
-          {/* Right Column: Archival Media */}
+          {/* Right Column: Archival Photograph */}
           <div className={styles.mediaFrame}>
             {current.image && (
               <Image
                 src={current.image}
-                alt={`${current.year} - ${displayTitle}`}
+                alt={`${current.year} - ${current.title}`}
                 fill
-                sizes="(max-width: 960px) 100vw, 50vw"
+                sizes="(max-width: 960px) 100vw, 52vw"
                 className={styles.cardImage}
-                priority={false}
+                priority
               />
             )}
             <div className={styles.mediaSealBadge}>
-              <Award size={12} />
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#861B26"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 2L2 7h20L12 2z" />
+              </svg>
               <span>ARCHIVAL RECORD · {current.year}</span>
             </div>
           </div>
         </article>
 
-        {/* 04. Bottom Navigation Controls & Action Row */}
+        {/* 04. Bottom Navigation and Actions */}
         <div className={styles.controlsRow}>
           <div className={styles.stepCounter}>
-            {isKn
-              ? `ಹಂತ ${activeIndex + 1} / ${HERITAGE_MILESTONES.length} · ${current.year}`
-              : `EPOCH ${activeIndex + 1} OF ${HERITAGE_MILESTONES.length} · ${current.year}`}
+            EPOCH {activeIndex + 1} OF {HERITAGE_MILESTONES.length} · {current.year}
           </div>
 
           <div className={styles.navButtonGroup}>
             <button
               type="button"
-              className={styles.curvedNavBtn}
+              className={styles.epochNavBtn}
               onClick={handlePrev}
               disabled={activeIndex === 0}
-              aria-label="Previous milestone epoch"
+              aria-label="Previous epoch"
             >
-              <ChevronLeft size={16} />
-              <span>{isKn ? "ಹಿಂದಿನ ಕಾಲಘಟ್ಟ" : "PREVIOUS EPOCH"}</span>
+              <ChevronLeft size={15} />
+              <span>PREVIOUS EPOCH</span>
             </button>
 
             <button
               type="button"
-              className={styles.curvedNavBtn}
+              className={styles.epochNavBtn}
               onClick={handleNext}
               disabled={activeIndex === HERITAGE_MILESTONES.length - 1}
-              aria-label="Next milestone epoch"
+              aria-label="Next epoch"
             >
-              <span>{isKn ? "ಮುಂದಿನ ಕಾಲಘಟ್ಟ" : "NEXT EPOCH"}</span>
-              <ChevronRight size={16} />
+              <span>NEXT EPOCH</span>
+              <ChevronRight size={15} />
             </button>
           </div>
 
-          <Link href="/heritage" className={styles.curvedMonographBtn}>
-            <span>{isKn ? "ಸಂಪೂರ್ಣ ಐತಿಹಾಸಿಕ ಗ್ರಂಥ ವೀಕ್ಷಿಸಿ" : "EXPLORE ARCHIVAL MONOGRAPH"}</span>
-            <ArrowRight size={15} className={styles.monographArrow} />
+          <Link href="/heritage" className={styles.monographBtn}>
+            <span>EXPLORE ARCHIVAL MONOGRAPH</span>
+            <ArrowRight size={14} className={styles.monographArrow} />
           </Link>
         </div>
       </div>
