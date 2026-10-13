@@ -5,11 +5,6 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 export type Language = "en" | "kn";
 
 export interface Translations {
-  // Top Banner
-  topBannerGovt: string;
-  topBannerState: string;
-  topBannerCities: string;
-
   // Header Nav
   navHeritage: string;
   navCraft: string;
@@ -106,10 +101,6 @@ export interface Translations {
 
 const TRANSLATIONS: Record<Language, Translations> = {
   en: {
-    topBannerGovt: "A Government of Karnataka Enterprise · Estd. 1912 · GI-11 Certified",
-    topBannerState: "ಕರ್ನಾಟಕ ಸರ್ಕಾರ",
-    topBannerCities: "Mysuru · Bengaluru",
-
     navHeritage: "HERITAGE",
     navCraft: "CRAFT",
     navCollection: "COLLECTION",
@@ -117,13 +108,13 @@ const TRANSLATIONS: Record<Language, Translations> = {
     navStores: "STORES",
     navContact: "CONTACT",
 
-    heroKickerEn: "A ROYAL HERITAGE · SINCE 1912",
-    heroKickerKn: "ಕರ್ನಾಟಕ ಮೈಸೂರು ಸಿಲ್ಕ್ · ರಾಜಪರಂಪರೆಯ ಅಮರ ನೇಯ್ಗೆ",
-    heroTitleMain: "MYSORE SILK",
-    heroPoetic1: "Pure silk.",
-    heroPoetic2: "Woven in Mysore.",
-    heroPoetic3: "For generations.",
-    heroExploreBtn: "EXPLORE COLLECTION",
+    heroKickerEn: "A LEGACY OF INDIAN CRAFTSMANSHIP",
+    heroKickerKn: "ಭಾರತೀಯ ಕರಕುಶಲದ ಪರಂಪರೆ",
+    heroTitleMain: "Woven in Gold.",
+    heroPoetic1: "Rooted in Royalty.",
+    heroPoetic2: "A timeless expression of silk, artistry and heritage.",
+    heroPoetic3: "",
+    heroExploreBtn: "DISCOVER THE COLLECTION",
     gandaberundaTitle: "GANDA BERUNDA",
     gandaberundaSubtitle: "A SYMBOL OF ROYALTY",
 
@@ -195,10 +186,6 @@ const TRANSLATIONS: Record<Language, Translations> = {
   },
 
   kn: {
-    topBannerGovt: "ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಉದ್ಯಮ · ಸ್ಥಾಪನೆ 1912 · ಜಿಐ-11 ಮಾನ್ಯತೆ",
-    topBannerState: "ಕರ್ನಾಟಕ ಸರ್ಕಾರ",
-    topBannerCities: "ಮೈಸೂರು · ಬೆಂಗಳೂರು",
-
     navHeritage: "ಪರಂಪರೆ",
     navCraft: "ಕಲೆ & ನೇಯ್ಗೆ",
     navCollection: "ಸಂಗ್ರಹ",
@@ -206,13 +193,13 @@ const TRANSLATIONS: Record<Language, Translations> = {
     navStores: "ಮಳಿಗೆಗಳು",
     navContact: "ಸಂಪರ್ಕ",
 
-    heroKickerEn: "ರಾಜಪರಂಪರೆ · 1912 ರಿಂದ",
-    heroKickerKn: "ಕರ್ನಾಟಕ ಮೈಸೂರು ಸಿಲ್ಕ್ · ರಾಜಪರಂಪರೆಯ ಅಮರ ನೇಯ್ಗೆ",
-    heroTitleMain: "ಮೈಸೂರು ಸಿಲ್ಕ್",
-    heroPoetic1: "ಶುದ್ಧ ನೈಸರ್ಗಿಕ ರೇಷ್ಮೆ.",
-    heroPoetic2: "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದದ್ದು.",
-    heroPoetic3: "ತಲೆಮಾರುಗಳ ಪರಂಪರೆ.",
-    heroExploreBtn: "ಸಂಗ್ರಹ ವೀಕ್ಷಿಸಿ",
+    heroKickerEn: "ಭಾರತೀಯ ಕರಕುಶಲದ ಪರಂಪರೆ",
+    heroKickerKn: "ಭಾರತೀಯ ಕರಕುಶಲದ ಪರಂಪರೆ",
+    heroTitleMain: "ಚಿನ್ನದಲ್ಲಿ ನೇಯಲ್ಪಟ್ಟದ್ದು.",
+    heroPoetic1: "ರಾಜಪರಂಪರೆಯಲ್ಲಿ ಬೇರೂರಿದ್ದು.",
+    heroPoetic2: "ರೇಷ್ಮೆ, ಕಲೆ ಮತ್ತು ಪರಂಪರೆಯ ಕಾಲಾತೀತ ಅಭಿವ್ಯಕ್ತಿ.",
+    heroPoetic3: "",
+    heroExploreBtn: "ಸಂಗ್ರಹವನ್ನು ಅನ್ವೇಷಿಸಿ",
     gandaberundaTitle: "ಗಂಡಭೇರುಂಡ",
     gandaberundaSubtitle: "ರಾಜಪರಂಪರೆಯ ಅಮರ ಲಾಂಛನ",
 

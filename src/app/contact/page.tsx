@@ -23,7 +23,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div style={{ paddingTop: "120px" }}>
+    <div style={{ paddingTop: "90px" }}>
       {/* Header */}
       <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-secondary)", borderBottom: "var(--border-rule)" }}>
         <div className="container-institutional reveal-up">

@@ -1,10 +1,10 @@
 .heritagePage {
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 @media (max-width: 768px) {
   .heritagePage {
-    padding-top: 96px;
+    padding-top: 68px;
   }
 }
 
@@ -52,36 +52,352 @@
   }
 }
 
-/* Timeline Milestones */
-.timelineItem {
-  display: grid;
-  grid-template-columns: 160px 1fr 1.2fr;
-  gap: 36px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(23, 21, 19, 0.12);
-  align-items: baseline;
+/* ==========================================================================
+   CENTURY OF STEWARDSHIP — THE CHRONOLOGY OF MYSORE SILK (ARCHIVAL DOSSIER)
+   ========================================================================== */
+.timelineSection {
+  padding: 100px 0;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid rgba(183, 154, 101, 0.2);
+  position: relative;
 }
 
-.timelineYear {
+.timelineHeader {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 72px;
+}
+
+.eyebrowWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.eyebrowRule {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #B79A65);
+}
+
+.eyebrowRuleRight {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, #B79A65, transparent);
+}
+
+.eyebrowText {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #B79A65;
+  font-weight: 600;
+}
+
+.sectionTitle {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 7vw, 3.8rem);
-  color: var(--color-burgundy);
-  line-height: 1;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-bottom: 16px;
 }
 
-.timelineSignificance {
+.sectionSubtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Milestone Cards Stack */
+.milestonesStack {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.milestoneCard {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(183, 154, 101, 0.25);
+  border-radius: 8px;
+  padding: 44px;
+  box-shadow: 0 16px 40px rgba(20, 16, 13, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.milestoneCard:hover {
+  box-shadow: 0 20px 48px rgba(20, 16, 13, 0.08);
+  border-color: rgba(183, 154, 101, 0.45);
+}
+
+.cardWatermarkYear {
+  position: absolute;
+  top: 12px;
+  right: 28px;
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 14vw, 9.5rem);
+  font-weight: 300;
+  line-height: 0.8;
+  color: rgba(183, 154, 101, 0.09);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cardGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.cardGridReverse {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.cardGridReverse .cardMediaCol {
+  order: 2;
+}
+
+.cardGridReverse .cardContentCol {
+  order: 1;
+}
+
+/* Media Frame */
+.cardMediaCol {
+  position: relative;
+  width: 100%;
+}
+
+.cardMediaFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(183, 154, 101, 0.35);
+  box-shadow: 0 12px 30px rgba(20, 16, 13, 0.12);
+  background-color: #1A1412;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.milestoneCard:hover .cardImage {
+  transform: scale(1.03);
+}
+
+.cardSealBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(20, 16, 13, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* Content Column */
+.cardContentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.epochKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #B79A65;
+  margin-bottom: 8px;
+}
+
+.cardYearHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  color: #7A161D;
+  line-height: 1;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.cardDescription {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.significanceBox {
+  background-color: #FAF7F2;
+  border-left: 3px solid #7A161D;
   padding: 16px 20px;
-  background-color: var(--color-bg-secondary);
-  border-left: 2px solid var(--color-gold);
-  font-size: 0.88rem;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 24px;
+}
+
+.significanceText {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
   color: var(--color-text-primary);
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
-  .timelineItem {
+.significanceText strong {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7A161D;
+  display: inline;
+  margin-right: 6px;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(23, 21, 19, 0.08);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statNumber {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: #7A161D;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+
+.provenanceText {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+}
+
+/* Curved CTA Button */
+.ctaRow {
+  margin-top: 72px;
+  display: flex;
+  justify-content: center;
+}
+
+.curvedCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #7A161D;
+  color: #FAF7F2;
+  padding: 15px 36px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(122, 22, 29, 0.28);
+  transition: all 0.25s ease;
+}
+
+.curvedCtaBtn:hover {
+  background-color: #5F1116;
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(122, 22, 29, 0.38);
+  color: #FFFFFF;
+}
+
+.curvedCtaBtn svg {
+  transition: transform 0.2s ease;
+}
+
+.curvedCtaBtn:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 960px) {
+  .cardGrid,
+  .cardGridReverse {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding-bottom: 36px;
+    gap: 32px;
+  }
+
+  .cardGridReverse .cardMediaCol {
+    order: 1;
+  }
+
+  .cardGridReverse .cardContentCol {
+    order: 2;
+  }
+
+  .milestoneCard {
+    padding: 28px 20px;
+  }
+
+  .timelineSection {
+    padding: 64px 0;
   }
 }

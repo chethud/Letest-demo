@@ -99,24 +99,7 @@ export const Header: React.FC = () => {
   return (
     <>
       <header className={`${styles.headerContainer} ${headerStateClass}`}>
-        {/* 1. Official Institutional Top Credential Banner */}
-        <div className={styles.topBadge}>
-          <div className={styles.topBadgeWrap}>
-            <span className={styles.topBadgeState}>
-              <ShieldCheck size={12} style={{ display: "inline-block", flexShrink: 0 }} />
-              <span className={styles.topBadgeDesktopText}>{t.topBannerGovt}</span>
-              <span className={styles.topBadgeMobileText}>
-                {lang === "kn" ? "ಕರ್ನಾಟಕ ಸರ್ಕಾರ · 1912 ರಿಂದ · GI-11" : "Govt. of Karnataka · Estd. 1912 · GI-11"}
-              </span>
-            </span>
-            <div className={styles.topBadgeRight}>
-              <span>{t.topBannerState}</span>
-              <span>{t.topBannerCities}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* 2. Primary Navigation Bar with Centered Royal Brand Logo */}
+        {/* Primary Navigation Bar with Centered Royal Brand Logo */}
         <nav className={styles.navMain} aria-label="Main Navigation">
           {/* Mobile Left: Language Switcher Button */}
           <button

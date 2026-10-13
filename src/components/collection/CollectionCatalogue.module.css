@@ -40,7 +40,7 @@
   width: 100%;
   box-sizing: border-box;
   position: sticky;
-  top: 74px;
+  top: 84px;
   z-index: 40;
   backdrop-filter: blur(12px);
 }

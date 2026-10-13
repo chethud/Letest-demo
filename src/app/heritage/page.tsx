@@ -105,47 +105,94 @@ export default function HeritagePage() {
         </div>
       </section>
 
-      {/* Complete Historical Chronology */}
-      <section className="section-spacing" id="timeline" style={{ backgroundColor: "var(--color-bg-primary)" }}>
+      {/* Complete Historical Chronology — Century of Stewardship */}
+      <section className={styles.timelineSection} id="timeline">
         <div className="container-institutional">
-          <div className="reveal-up" style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 64px" }}>
-            <span className="editorial-label" style={{ justifyContent: "center" }}>MILESTONES OF EXCELLENCE</span>
-            <h2 className="display-section">THE CHRONOLOGICAL RECORD</h2>
-            <p style={{ marginTop: "12px", color: "var(--color-text-secondary)" }}>
-              Six defining epochs of Karnataka&apos;s premier textile institution.
+          <div className={`reveal-up ${styles.timelineHeader}`}>
+            <div className={styles.eyebrowWrapper}>
+              <span className={styles.eyebrowRule} />
+              <span className={styles.eyebrowText}>CENTURY OF STEWARDSHIP</span>
+              <span className={styles.eyebrowRuleRight} />
+            </div>
+            <h2 className={styles.sectionTitle}>THE CHRONOLOGY OF MYSORE SILK</h2>
+            <p className={styles.sectionSubtitle}>
+              Six defining epochs of unbroken royal stewardship and sovereign textile art, from 1912 to the present day.
             </p>
           </div>
 
-          <div className="reveal-stagger" style={{ display: "flex", flexDirection: "column", gap: "48px" }}>
-            {HERITAGE_MILESTONES.map((m, idx) => (
-              <div
-                key={m.year}
-                className={styles.timelineItem}
-                style={{ borderBottom: idx !== HERITAGE_MILESTONES.length - 1 ? "1px solid rgba(23, 21, 19, 0.12)" : "none" }}
-              >
-                <div>
-                  <div className={styles.timelineYear}>
+          <div className={`reveal-stagger ${styles.milestonesStack}`}>
+            {HERITAGE_MILESTONES.map((m, idx) => {
+              const isEven = idx % 2 === 0;
+              return (
+                <article key={m.year} className={styles.milestoneCard}>
+                  {/* Archival Year Watermark */}
+                  <div className={styles.cardWatermarkYear} aria-hidden="true">
                     {m.year}
                   </div>
-                </div>
-                <div>
-                  <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", color: "var(--color-text-primary)", marginBottom: "8px" }}>
-                    {m.title}
-                  </h3>
-                  <p style={{ fontSize: "0.95rem", color: "var(--color-text-secondary)", lineHeight: 1.65 }}>
-                    {m.description}
-                  </p>
-                </div>
-                <div className={styles.timelineSignificance}>
-                  <strong>Significance: </strong>
-                  {m.significance}
-                </div>
-              </div>
-            ))}
+
+                  <div className={isEven ? styles.cardGrid : styles.cardGridReverse}>
+                    {/* Media Column */}
+                    <div className={styles.cardMediaCol}>
+                      <div className={styles.cardMediaFrame}>
+                        {m.image && (
+                          <Image
+                            src={m.image}
+                            alt={`${m.year} — ${m.title}`}
+                            fill
+                            sizes="(max-width: 960px) 100vw, 50vw"
+                            className={styles.cardImage}
+                          />
+                        )}
+                        <div className={styles.cardSealBadge}>
+                          <Award size={12} />
+                          <span>ARCHIVAL RECORD · {m.year}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Content Column */}
+                    <div className={styles.cardContentCol}>
+                      <div className={styles.epochKicker}>
+                        <History size={13} style={{ color: "#B79A65" }} />
+                        <span>{m.epoch}</span>
+                      </div>
+
+                      <div className={styles.cardYearHeading}>{m.year}</div>
+
+                      <h3 className={styles.cardTitle}>{m.title}</h3>
+
+                      <p className={styles.cardDescription}>{m.description}</p>
+
+                      <div className={styles.significanceBox}>
+                        <div className={styles.significanceText}>
+                          <strong>INSTITUTIONAL SIGNIFICANCE: </strong>
+                          {m.significance}
+                        </div>
+                      </div>
+
+                      <div className={styles.metaRow}>
+                        {m.statNumber && (
+                          <div className={styles.statItem}>
+                            <span className={styles.statNumber}>{m.statNumber}</span>
+                            <span className={styles.statLabel}>{m.statLabel}</span>
+                          </div>
+                        )}
+
+                        {m.provenance && (
+                          <div className={styles.provenanceText}>
+                            Provenance: {m.provenance}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
-          <div className="reveal-up" style={{ marginTop: "64px", textAlign: "center" }}>
-            <Link href="/craft" className="action-editorial action-editorial-burgundy">
+          <div className={`reveal-up ${styles.ctaRow}`}>
+            <Link href="/craft" className={styles.curvedCtaBtn}>
               <span>EXPLORE SILK CRAFTSMANSHIP</span>
               <ArrowRight size={15} />
             </Link>

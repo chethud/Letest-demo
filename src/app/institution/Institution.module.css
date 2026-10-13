@@ -1,10 +1,10 @@
 .institutionPage {
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 @media (max-width: 768px) {
   .institutionPage {
-    padding-top: 96px;
+    padding-top: 68px;
   }
 }
 
