@@ -74,7 +74,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "65% pure silver with 0.65% pure 24-carat electroplated gold.",
     details: "Unlike market sarees that use synthetic metallic plastic (tested as copper or polyester), genuine KSIC zari contains a silk core wrapped in a flattened ribbon of 65% pure silver, electroplated with 0.65% authentic 24-carat gold. It never oxidizes to black and maintains its quiet royal glimmer across decades.",
     technicalSpec: "65% Fine Silver \u00b7 0.65% 24K Gold electroplate \u00b7 Pure silk core filament",
-    image: "/assets/craft/06-gold-zari.jpg",
+    image: "/assets/craft/06-pure-gold-silver-zari.jpg",
     attributes: ["24K GOLD", "PURE SILVER", "SILK CORE"],
   },
   {
@@ -85,7 +85,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "Every authentic saree receives an embroidered code and GI-11 hologram.",
     details: "Each completed length undergoes stringent physical inspection for weight, thread count, and zari purity. Upon clearing examination, a discrete unique serial identification number is embroidered directly into the pallu seam alongside the KSIC optical hologram and GI-11 certification mark.",
     technicalSpec: "GI-11 Certified \u00b7 Unique embroidered serial code \u00b7 100% Mulberry Guarantee",
-    image: "/assets/craft/07-finished-mysore-silk.jpg",
+    image: "/assets/craft/07-laser-authentication-pallu.jpg",
     attributes: ["GI-11 CERTIFIED", "SERIAL CODED", "100% MULBERRY"],
   },
 ];
