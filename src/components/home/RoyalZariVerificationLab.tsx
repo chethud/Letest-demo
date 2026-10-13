@@ -45,7 +45,7 @@ export const RoyalZariVerificationLab: React.FC = () => {
 
   const [inputCode, setInputCode] = useState("KSIC-MYS-1912-ROYAL");
   const [isVerifying, setIsVerifying] = useState(false);
-  const [activeTab, setActiveTab] = useState<"validator" | "metallurgy" | "hologram">("validator");
+  const [activeTab, setActiveTab] = useState<"validator" | "hologram">("validator");
   const [result, setResult] = useState<VerificationResult | null>({
     serial: "KSIC-MYS-1912-ROYAL",
     sareeTitle: "Royal Durbar Heritage Crepe Saree",
@@ -146,16 +146,6 @@ export const RoyalZariVerificationLab: React.FC = () => {
             <span>{isKn ? "ಕ್ರಮಸಂಖ್ಯೆ ಪರಿಶೀಲಕ" : "Serial Authenticator"}</span>
           </button>
 
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "metallurgy"}
-            className={`${styles.tabBtn} ${activeTab === "metallurgy" ? styles.tabBtnActive : ""}`}
-            onClick={() => setActiveTab("metallurgy")}
-          >
-            <Sparkles size={16} />
-            <span>{isKn ? "ಲೋಹ ಪರಿಶುದ್ಧತೆ ಸಂಯೋಜನೆ" : "Metallurgical Assay"}</span>
-          </button>
 
           <button
             type="button"
@@ -321,104 +311,6 @@ export const RoyalZariVerificationLab: React.FC = () => {
           </div>
         )}
 
-        {/* TAB 2: Metallurgical Assay Breakdown */}
-        {activeTab === "metallurgy" && (
-          <div className={styles.tabContentCard}>
-            <div className={styles.metallurgyGrid}>
-              <div className={styles.metallurgyIntro}>
-                <span className={styles.labelMuted}>
-                  {isKn ? "ನಿಜವಾದ ಜರಿ ರಸಾಯನಶಾಸ್ತ್ರ" : "THE ANATOMY OF GENUINE MYSORE ZARI"}
-                </span>
-                <h3 className={styles.metallurgyHeading}>
-                  {isKn
-                    ? "ಶುದ್ಧ ಚಿನ್ನ ಮತ್ತು ಬೆಳ್ಳಿಯ ವೈಜ್ಞಾನಿಕ ಪ್ರಮಾಣೀಕರಣ"
-                    : "0.65% Pure Gold · 65% Pure Silver · 100% Mulberry Silk"}
-                </h3>
-                <p className={styles.metallurgyText}>
-                  {isKn
-                    ? "ಮೈಸೂರು ರೇಷ್ಮೆ ಸೀರೆಯು ತನ್ನ ಅಸಾಧಾರಣ ದೀರ್ಘಾಯುಷ್ಯಕ್ಕೆ ಹೆಸರುವಾಸಿಯಾಗಿದೆ. ಇತರ ಸೀರೆಗಳಂತೆ ಪ್ಲಾಸ್ಟಿಕ್ ಅಥವಾ ತಾಮ್ರದ ಬಣ್ಣ ಬಳಸದೆ, ಶುದ್ಧ ಬೆಳ್ಳಿಯ ತಂತಿಯ ಮೇಲೆ ೨೪-ಕ್ಯಾರೆಟ್ ಚಿನ್ನವನ್ನು ಲೇಪಿಸಿ ನೇಯಲಾಗುತ್ತದೆ."
-                    : "Unlike commercial sarees that substitute copper wire or metallic polyester film, KSIC Mysore Silk uses a centuries-old electroplating formula: an inner silk core wrapped in 65% fine silver wire, electroplated with pure 24-karat gold."}
-                </p>
-
-                {/* Visual Ratio Bars */}
-                <div className={styles.ratioBars}>
-                  <div className={styles.ratioItem}>
-                    <div className={styles.ratioHeader}>
-                      <span>Pure 24-Karat Gold (Electroplated)</span>
-                      <strong>0.65%</strong>
-                    </div>
-                    <div className={styles.barTrack}>
-                      <div className={styles.barFillGold} style={{ width: "20%" }} />
-                    </div>
-                    <span className={styles.ratioDesc}>Provides eternal royal sheen &amp; oxidation resistance</span>
-                  </div>
-
-                  <div className={styles.ratioItem}>
-                    <div className={styles.ratioHeader}>
-                      <span>Hallmarked Pure Silver (Core Filament)</span>
-                      <strong>65.0%</strong>
-                    </div>
-                    <div className={styles.barTrack}>
-                      <div className={styles.barFillSilver} style={{ width: "65%" }} />
-                    </div>
-                    <span className={styles.ratioDesc}>Delivers majestic metallic drape weight &amp; supple flexibility</span>
-                  </div>
-
-                  <div className={styles.ratioItem}>
-                    <div className={styles.ratioHeader}>
-                      <span>Natural Mulberry Silk Yarn (Inner Carrier Core)</span>
-                      <strong>34.35%</strong>
-                    </div>
-                    <div className={styles.barTrack}>
-                      <div className={styles.barFillSilk} style={{ width: "35%" }} />
-                    </div>
-                    <span className={styles.ratioDesc}>Unbroken tensile thread strength that withstands generations</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Comparison Table */}
-              <div className={styles.comparisonBox}>
-                <h4 className={styles.comparisonTitle}>
-                  {isKn ? "ಅಧಿಕೃತ ಮೈಸೂರು ರೇಷ್ಮೆ vs ಮಾರುಕಟ್ಟೆಯ ನಕಲಿ ಜರಿ" : "Official KSIC vs Market Imitations"}
-                </h4>
-
-                <div className={styles.comparisonTable}>
-                  <div className={styles.compRowHeader}>
-                    <span>Parameter</span>
-                    <span className={styles.compHighlight}>Official KSIC Mysore Silk</span>
-                    <span>Commercial Imitation</span>
-                  </div>
-                  <div className={styles.compRow}>
-                    <span>Gold Content</span>
-                    <span className={styles.compHighlight}>0.65% Certified 24K Gold</span>
-                    <span>0.00% (Plastic / Dye)</span>
-                  </div>
-                  <div className={styles.compRow}>
-                    <span>Silver Core</span>
-                    <span className={styles.compHighlight}>65.0% Hallmarked Silver</span>
-                    <span>Copper / Aluminium</span>
-                  </div>
-                  <div className={styles.compRow}>
-                    <span>GI Tag Protection</span>
-                    <span className={styles.compHighlight}>GI Tag No. 11 (Sole Holder)</span>
-                    <span>None / False labels</span>
-                  </div>
-                  <div className={styles.compRow}>
-                    <span>Longevity</span>
-                    <span className={styles.compHighlight}>100+ Years (Heirloom)</span>
-                    <span>Tarnishes in 2–3 Years</span>
-                  </div>
-                  <div className={styles.compRow}>
-                    <span>Pallu Serial Code</span>
-                    <span className={styles.compHighlight}>Permanently Micro-woven</span>
-                    <span>Sticker or Absent</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* TAB 3: Optical Security Hologram Seal */}
         {activeTab === "hologram" && (

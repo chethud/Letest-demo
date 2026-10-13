@@ -7,6 +7,7 @@ export interface CraftStage {
   details: string;
   technicalSpec: string;
   image: string;
+  attributes: string[];
 }
 
 export const CRAFT_STAGES: CraftStage[] = [
@@ -16,9 +17,10 @@ export const CRAFT_STAGES: CraftStage[] = [
     kannadaName: "ಗೂಡು",
     title: "Mulberry Cocoons from Karnataka Sericulture",
     summary: "Reared exclusively by certified sericulture farmers across the old Mysore tract.",
-    details: "Karnataka produces the world's finest multivoltine-bivoltine hybrid mulberry silkworm cocoons. Sourced from sericulture clusters in Ramanagara, Kolar, and Mandya, these cocoons yield filaments of exceptional tensile purity and natural ivory sheen.",
-    technicalSpec: "Bivoltine & Multivoltine hybrids · 100% natural Bombyx mori filament",
+    details: "Karnataka produces the world's finest multivoltine\u2013bivoltine hybrid mulberry silkworm cocoons. Sourced from sericulture clusters in Ramanagara, Kolar, and Mandya, these cocoons yield filaments of exceptional tensile purity and natural ivory sheen.",
+    technicalSpec: "Bivoltine & Multivoltine hybrids \u00b7 100% natural Bombyx mori filament",
     image: "/assets/craft/01-silkworm-cocoons.jpg",
+    attributes: ["NATURAL MULBERRY", "PREMIUM SERICULTURE", "IVORY SHEEN"],
   },
   {
     step: "02",
@@ -27,8 +29,9 @@ export const CRAFT_STAGES: CraftStage[] = [
     title: "Filature Reeling at T. Narasipura",
     summary: "Gentle boiling and filament extraction on the banks of the Cauvery river.",
     details: "At KSIC's historical filature unit at T. Narasipura, cocoons are immersed in temperature-regulated water to soften the natural sericin protein. Multiple continuous filaments are gathered and reeled into single composite raw silk strands without synthetic lubricants.",
-    technicalSpec: "Multi-end filature basin · Cauvery basin soft water treatment",
+    technicalSpec: "Multi-end filature basin \u00b7 Cauvery basin soft water treatment",
     image: "/assets/craft/02-silk-reeling.jpg",
+    attributes: ["SOFT WATER REELING", "NATURAL SERICIN", "CONTINUOUS FILAMENT"],
   },
   {
     step: "03",
@@ -37,8 +40,9 @@ export const CRAFT_STAGES: CraftStage[] = [
     title: "High-Speed Twisting & Winding",
     summary: "26 to 28 Denier yarn with specialized high-speed S & Z twists.",
     details: "Mysore Silk derives its characteristic drape, weight, and pebble-crepe finish from a specialized high-speed twist. Raw silk filaments are wound onto bobbins and twisted up to 2,000 to 2,400 turns per meter before weaving, creating the natural elasticity of pure crepe.",
-    technicalSpec: "26–28 Denier warp & weft · 2,000–2,400 TPM twist density",
+    technicalSpec: "26\u201328 Denier warp & weft \u00b7 2,000\u20132,400 TPM twist density",
     image: "/assets/craft/03-silk-yarn.jpg",
+    attributes: ["HIGH TWIST YARN", "PURE CREPE FINISH", "NATURAL ELASTICITY"],
   },
   {
     step: "04",
@@ -46,9 +50,10 @@ export const CRAFT_STAGES: CraftStage[] = [
     kannadaName: "ಬಣ್ಣ ಹಾಕುವಿಕೆ",
     title: "Eco-Friendly Precision Color Formulation",
     summary: "Permanent penetration of heritage hues in pressurized open jiggers.",
-    details: "Yarn bundles are degummed to remove residual sericin, revealing silk's luminous crystalline core. Colorists formulate timeless royal pigments—from Deep Vermilion and Rani Pink to Peacock Blue and Mysore Sandal—using certified metal-free dyes that withstand generations of gentle care.",
-    technicalSpec: "Pure degummed core · Boiling temperature dye vat immersion · Zero bleeding",
+    details: "Yarn bundles are degummed to remove residual sericin, revealing silk's luminous crystalline core. Colorists formulate timeless royal pigments\u2014from Deep Vermilion and Rani Pink to Peacock Blue and Mysore Sandal\u2014using certified metal-free dyes that withstand generations of gentle care.",
+    technicalSpec: "Pure degummed core \u00b7 Boiling temperature dye vat immersion \u00b7 Zero bleeding",
     image: "/assets/craft/04-silk-dyeing.jpg",
+    attributes: ["METAL-FREE DYES", "HERITAGE HUES", "ZERO BLEEDING"],
   },
   {
     step: "05",
@@ -57,8 +62,9 @@ export const CRAFT_STAGES: CraftStage[] = [
     title: "Swiss Loom Jacquard Precision",
     summary: "138 specialized looms operating continuously since the royal era.",
     details: "At the Mysore Silk Weaving Factory on Mananthody Road, warp yarns are dressed across century-old Swiss-built power looms. The synchronized shuttle throws weft threads under controlled humidity, creating the tight, durable, and supple weave unique to KSIC.",
-    technicalSpec: "138 Swiss-engineered looms · Dobby and Jacquard shedding mechanisms",
+    technicalSpec: "138 Swiss-engineered looms \u00b7 Dobby and Jacquard shedding mechanisms",
     image: "/assets/craft/05-loom-weaving.jpg",
+    attributes: ["JACQUARD WEAVE", "SWISS PRECISION", "CONTROLLED HUMIDITY"],
   },
   {
     step: "06",
@@ -67,8 +73,9 @@ export const CRAFT_STAGES: CraftStage[] = [
     title: "Pure Gold & Silver Zari",
     summary: "65% pure silver with 0.65% pure 24-carat electroplated gold.",
     details: "Unlike market sarees that use synthetic metallic plastic (tested as copper or polyester), genuine KSIC zari contains a silk core wrapped in a flattened ribbon of 65% pure silver, electroplated with 0.65% authentic 24-carat gold. It never oxidizes to black and maintains its quiet royal glimmer across decades.",
-    technicalSpec: "65% Fine Silver · 0.65% 24K Gold electroplate · Pure silk core filament",
+    technicalSpec: "65% Fine Silver \u00b7 0.65% 24K Gold electroplate \u00b7 Pure silk core filament",
     image: "/assets/craft/06-gold-zari.jpg",
+    attributes: ["24K GOLD", "PURE SILVER", "SILK CORE"],
   },
   {
     step: "07",
@@ -77,7 +84,8 @@ export const CRAFT_STAGES: CraftStage[] = [
     title: "Laser Authentication & Unique Pallu Code",
     summary: "Every authentic saree receives an embroidered code and GI-11 hologram.",
     details: "Each completed length undergoes stringent physical inspection for weight, thread count, and zari purity. Upon clearing examination, a discrete unique serial identification number is embroidered directly into the pallu seam alongside the KSIC optical hologram and GI-11 certification mark.",
-    technicalSpec: "GI-11 Certified · Unique embroidered serial code · 100% Mulberry Guarantee",
+    technicalSpec: "GI-11 Certified \u00b7 Unique embroidered serial code \u00b7 100% Mulberry Guarantee",
     image: "/assets/craft/07-finished-mysore-silk.jpg",
+    attributes: ["GI-11 CERTIFIED", "SERIAL CODED", "100% MULBERRY"],
   },
 ];
