@@ -7,9 +7,6 @@ import { CraftSection } from "@/components/home/CraftSection";
 import { FactorySection } from "@/components/home/FactorySection";
 import { CollectionSection } from "@/components/home/CollectionSection";
 import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
-import { KarnatakaMapSection } from "@/components/home/KarnatakaMapSection";
-import { InstitutionSection } from "@/components/home/InstitutionSection";
-import { ShowroomsSection } from "@/components/home/ShowroomsSection";
 
 export default function HomePage() {
   return (
@@ -37,15 +34,6 @@ export default function HomePage() {
 
       {/* 07 ROYAL ZARI AUTHENTICITY & GI TAG VERIFICATION LAB */}
       <RoyalZariVerificationLab />
-
-      {/* 08 KARNATAKA GEOGRAPHICAL ROOTS */}
-      <KarnatakaMapSection />
-
-      {/* 09 INSTITUTION */}
-      <InstitutionSection />
-
-      {/* 10 STORES */}
-      <ShowroomsSection />
     </>
   );
 }
