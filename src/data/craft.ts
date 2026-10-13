@@ -30,7 +30,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "Gentle boiling and filament extraction on the banks of the Cauvery river.",
     details: "At KSIC's historical filature unit at T. Narasipura, cocoons are immersed in temperature-regulated water to soften the natural sericin protein. Multiple continuous filaments are gathered and reeled into single composite raw silk strands without synthetic lubricants.",
     technicalSpec: "Multi-end filature basin \u00b7 Cauvery basin soft water treatment",
-    image: "/assets/craft/02-silk-reeling.jpg",
+    image: "/assets/craft/02-filature-reeling.jpg",
     attributes: ["SOFT WATER REELING", "NATURAL SERICIN", "CONTINUOUS FILAMENT"],
   },
   {
@@ -41,7 +41,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "26 to 28 Denier yarn with specialized high-speed S & Z twists.",
     details: "Mysore Silk derives its characteristic drape, weight, and pebble-crepe finish from a specialized high-speed twist. Raw silk filaments are wound onto bobbins and twisted up to 2,000 to 2,400 turns per meter before weaving, creating the natural elasticity of pure crepe.",
     technicalSpec: "26\u201328 Denier warp & weft \u00b7 2,000\u20132,400 TPM twist density",
-    image: "/assets/craft/03-silk-yarn.jpg",
+    image: "/assets/craft/03-yarn-twisting.jpg",
     attributes: ["HIGH TWIST YARN", "PURE CREPE FINISH", "NATURAL ELASTICITY"],
   },
   {
@@ -52,7 +52,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     summary: "Permanent penetration of heritage hues in pressurized open jiggers.",
     details: "Yarn bundles are degummed to remove residual sericin, revealing silk's luminous crystalline core. Colorists formulate timeless royal pigments\u2014from Deep Vermilion and Rani Pink to Peacock Blue and Mysore Sandal\u2014using certified metal-free dyes that withstand generations of gentle care.",
     technicalSpec: "Pure degummed core \u00b7 Boiling temperature dye vat immersion \u00b7 Zero bleeding",
-    image: "/assets/craft/04-silk-dyeing.jpg",
+    image: "/assets/craft/04-precision-dyeing.jpg",
     attributes: ["METAL-FREE DYES", "HERITAGE HUES", "ZERO BLEEDING"],
   },
   {

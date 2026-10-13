@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, ArrowRight, Search } from "lucide-react";
 import styles from "./CraftSection.module.css";
+// Technical Monograph silk craft stages
 import { CRAFT_STAGES } from "@/data/craft";
 
 const ATTRIBUTE_SUBTEXTS: Record<string, [string, string, string]> = {
