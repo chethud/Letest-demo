@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers } from "lucide-react";
 import styles from "./CraftSection.module.css";
 import { CRAFT_STAGES } from "@/data/craft";
 import { useLanguage } from "@/context/LanguageContext";
@@ -11,6 +11,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export const CraftSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
   const { lang, t } = useLanguage();
+  const isKn = lang === "kn";
   const stage = CRAFT_STAGES[activeStep];
 
   const handlePrev = () => {
@@ -21,33 +22,50 @@ export const CraftSection: React.FC = () => {
     setActiveStep((prev) => (prev < CRAFT_STAGES.length - 1 ? prev + 1 : prev));
   };
 
-  const stageDisplayName = lang === "kn" && stage.kannadaName ? stage.kannadaName : stage.name;
+  const stageDisplayName = isKn && stage.kannadaName ? stage.kannadaName : stage.name;
 
   return (
-    <section className={`section-spacing ${styles.craftSection}`} id="craft" aria-label="From Cocoon to Silk Process">
+    <section
+      className={styles.craftSection}
+      id="craft"
+      aria-label="Technical Monograph — From Cocoon to Silk"
+    >
       <div className="container-institutional">
         {/* Section Header */}
         <div className={`${styles.headerRow} reveal-up`}>
           <div>
-            <span className="editorial-label">{t.craftKicker}</span>
-            <h2 className={styles.headline}>{t.craftTitle}</h2>
-            <p className={styles.subheading}>{t.craftSubtitle}</p>
+            <div className={styles.eyebrowWrapper}>
+              <span className={styles.eyebrowRule} />
+              <span className={styles.eyebrowText}>
+                {isKn ? "ತಾಂತ್ರಿಕ ಸಂಶೋಧನಾ ಗ್ರಂಥ" : "TECHNICAL MONOGRAPH"}
+              </span>
+            </div>
+            <h2 className={styles.headline}>
+              {isKn ? "ರೇಷ್ಮೆ ಗೂಡಿನಿಂದ ಅಪ್ಪಟ ಸೀರೆಯವರೆಗೆ." : "FROM COCOON TO SILK."}
+            </h2>
+            <p className={styles.subheading}>
+              {isKn
+                ? "ರಾಮನಗರದ ಶುದ್ಧ ಮಲ್ಬರಿ ರೇಷ್ಮೆ ಗೂಡುಗಳಿಂದ ಹಿಡಿದು ಮೈಸೂರಿನ ಸ್ವಿಸ್ ಜಾಕ್ವಾರ್ಡ್ ನೇಯ್ಗೆಯವರೆಗೆ ಏಳು ಹಂತಗಳ ಪರಿಶುದ್ಧ ಪ್ರಕ್ರಿಯೆ."
+                : "Seven calibrated stages of unbroken state mastery — from pure mulberry sericulture in Ramanagara to Swiss Jacquard weaving in Mysuru."}
+            </p>
           </div>
-          <div style={{ fontSize: "0.82rem", color: "var(--color-text-muted)", letterSpacing: "0.14em" }}>
-            {lang === "kn"
+
+          <div className={styles.counterBadge}>
+            {isKn
               ? `ಹಂತ ${activeStep + 1} / 07 · ಸಮಗ್ರ ಪ್ರಕ್ರಿಯೆ`
               : `STAGE ${activeStep + 1} OF 07 · THE COMPLETE CYCLE`}
           </div>
         </div>
 
-        {/* 7-Step Sequence Selector */}
+        {/* 7-Step Sequence Selector (Curved Pills) */}
         <div className={`${styles.stepPills} reveal-up`} role="tablist" aria-label="Craft Stages">
           {CRAFT_STAGES.map((s, idx) => {
             const isActive = idx === activeStep;
-            const pName = lang === "kn" && s.kannadaName ? s.kannadaName : s.name;
+            const pName = isKn && s.kannadaName ? s.kannadaName : s.name;
             return (
               <button
                 key={s.step}
+                type="button"
                 role="tab"
                 aria-selected={isActive}
                 className={`${styles.pillBtn} ${isActive ? styles.pillBtnActive : ""}`}
@@ -60,9 +78,14 @@ export const CraftSection: React.FC = () => {
           })}
         </div>
 
-        {/* Process Detail Grid */}
+        {/* Process Detail Showcase */}
         <div className={styles.craftInteractiveGrid}>
-          {/* Material Visual Texture */}
+          {/* Background Watermark */}
+          <div className={styles.cardWatermark} aria-hidden="true">
+            {stage.step}
+          </div>
+
+          {/* Left: Material Visual Texture */}
           <div className={`${styles.textureFrame} reveal-scale`}>
             <Image
               src={stage.image}
@@ -72,11 +95,11 @@ export const CraftSection: React.FC = () => {
               className={styles.textureImage}
             />
             <div className={styles.textureBadge}>
-              {stage.step} · {stageDisplayName}
+              STAGE {stage.step} OF 07 · {stageDisplayName}
             </div>
           </div>
 
-          {/* Editorial Content */}
+          {/* Right: Editorial Narrative */}
           <div className={`${styles.detailCol} reveal-up`}>
             <div className={styles.stageIndicatorRow}>
               <div className={styles.stageStepLarge}>{stage.step}</div>
@@ -91,36 +114,36 @@ export const CraftSection: React.FC = () => {
 
             <div className={styles.specBox}>
               <span className={styles.specLabel}>
-                {lang === "kn" ? "ತಾಂತ್ರಿಕ ವಿಶೇಷತೆ" : "TECHNICAL SPECIFICATION"}
+                {isKn ? "ತಾಂತ್ರಿಕ ವಿಶೇಷತೆ" : "TECHNICAL SPECIFICATION"}
               </span>
               <span>{stage.technicalSpec}</span>
             </div>
 
-            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            <div className={styles.controlsRow}>
               <button
                 type="button"
-                className="action-editorial"
+                className={styles.curvedNavBtn}
                 onClick={handlePrev}
                 disabled={activeStep === 0}
-                style={{ opacity: activeStep === 0 ? 0.35 : 1, padding: "12px 20px" }}
-                aria-label="Previous step"
+                aria-label="Previous craft step"
               >
-                <ChevronLeft size={16} />
-                <span>{lang === "kn" ? "ಹಿಂದೆ" : "PREV"}</span>
+                <ChevronLeft size={15} />
+                <span>{isKn ? "ಹಿಂದಿನ ಹಂತ" : "PREVIOUS"}</span>
               </button>
+
               <button
                 type="button"
-                className="action-editorial"
+                className={styles.curvedNavBtn}
                 onClick={handleNext}
                 disabled={activeStep === CRAFT_STAGES.length - 1}
-                style={{ opacity: activeStep === CRAFT_STAGES.length - 1 ? 0.35 : 1, padding: "12px 20px" }}
-                aria-label="Next step"
+                aria-label="Next craft step"
               >
-                <span>{lang === "kn" ? "ಮುಂದಿನ ಹಂತ" : "NEXT STAGE"}</span>
-                <ChevronRight size={16} />
+                <span>{isKn ? "ಮುಂದಿನ ಹಂತ" : "NEXT STAGE"}</span>
+                <ChevronRight size={15} />
               </button>
-              <Link href="/craft" className="action-link" style={{ marginLeft: "auto" }}>
-                <span>{lang === "kn" ? "ಸಂಪೂರ್ಣ ವಿವರಣೆ" : "READ FULL MONOGRAPH"}</span>
+
+              <Link href="/craft" className={styles.curvedMonographBtn}>
+                <span>{isKn ? "ಸಂಪೂರ್ಣ ತಾಂತ್ರಿಕ ವಿವರಣೆ" : "EXPLORE TECHNICAL MONOGRAPH"}</span>
                 <ArrowRight size={14} />
               </Link>
             </div>
@@ -130,3 +153,4 @@ export const CraftSection: React.FC = () => {
     </section>
   );
 };
+
