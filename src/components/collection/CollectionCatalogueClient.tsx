@@ -3,7 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { KSIC_PRODUCTS, COLLECTION_CATEGORIES, KSICProduct } from "@/data/collections";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./CollectionCatalogue.module.css";
@@ -23,6 +24,7 @@ function pad(value: number) {
 
 export default function CollectionCatalogueClient() {
   const { t } = useLanguage();
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
@@ -68,7 +70,18 @@ export default function CollectionCatalogueClient() {
     <div className={styles.catalogueWrapper}>
       <section className={styles.headerSection}>
         <div className={`container-institutional ${styles.masthead}`}>
-          <div>
+          <div className={styles.mastheadTitle}>
+            <button
+              type="button"
+              className={styles.backButton}
+              onClick={() => {
+                if (window.history.length > 1) router.back();
+                else router.push("/");
+              }}
+            >
+              <ArrowLeft size={15} aria-hidden="true" />
+              <span>Back</span>
+            </button>
             <h1 className={styles.pageTitle}>
               The House of <span>KSIC.</span>
             </h1>

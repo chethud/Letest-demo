@@ -6,6 +6,16 @@ import Image from "next/image";
 import styles from "./Footer.module.css";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
 
+const PAGE_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Our Story", href: "/heritage" },
+  { label: "How It's Made", href: "/craft" },
+  { label: "Collection", href: "/collection" },
+  { label: "About KSIC", href: "/institution" },
+  { label: "Our Stores", href: "/stores" },
+  { label: "Contact Us", href: "/contact" },
+];
+
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
@@ -38,25 +48,20 @@ export const Footer: React.FC = () => {
             <p className={styles.brandNote}>Government of Karnataka · Factory 1912 · KSIC 1980</p>
           </div>
 
-          <nav aria-label="Heritage and craft">
-            <p className={styles.navColumnTitle}>Heritage & Craft</p>
+          <nav className={styles.pageNav} aria-label="Pages">
             <ul className={styles.navColumnList}>
-              <li><Link href="/heritage">The 1912 Legacy</Link></li>
-              <li><Link href="/heritage#timeline">Historical Timeline</Link></li>
-              <li><Link href="/craft">From Cocoon to Silk</Link></li>
-              <li><Link href="/craft#zari">Zari specification</Link></li>
-              <li><Link href="/craft#factory">Silk Weaving Factory</Link></li>
+              {PAGE_LINKS.slice(0, 4).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
             </ul>
-          </nav>
-
-          <nav aria-label="Catalogue and stores">
-            <p className={styles.navColumnTitle}>Catalogue & Stores</p>
             <ul className={styles.navColumnList}>
-              <li><Link href="/collection">The House of KSIC</Link></li>
-              <li><Link href="/#authenticity">Identification and GIR-11</Link></li>
-              <li><Link href="/stores">Showroom Network</Link></li>
-              <li><Link href="/stores?city=Mysuru">Mysuru Factory Store</Link></li>
-              <li><Link href="/stores?city=Bengaluru">Bengaluru Jubilee</Link></li>
+              {PAGE_LINKS.slice(4).map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -82,13 +87,6 @@ export const Footer: React.FC = () => {
 
         <div className={styles.footerBottomRow}>
           <p>© {year} Karnataka Silk Industries Corporation Limited. All rights reserved.</p>
-          <nav className={styles.footerSecondaryLinks} aria-label="Institutional information">
-            <Link href="/institution#rti">Right to Information (RTI)</Link>
-            <Link href="/institution#charter">Citizen’s Charter</Link>
-            <Link href="/institution#tenders">Tenders & Notifications</Link>
-            <Link href="/contact">Privacy Policy</Link>
-            <Link href="/contact">Accessibility Statement</Link>
-          </nav>
         </div>
       </div>
     </footer>

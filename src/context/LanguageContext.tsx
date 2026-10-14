@@ -101,12 +101,12 @@ export interface Translations {
 
 const TRANSLATIONS: Record<Language, Translations> = {
   en: {
-    navHeritage: "HERITAGE",
-    navCraft: "CRAFT",
+    navHeritage: "OUR STORY",
+    navCraft: "HOW IT'S MADE",
     navCollection: "COLLECTION",
-    navInstitution: "INSTITUTION",
-    navStores: "STORES",
-    navContact: "CONTACT",
+    navInstitution: "ABOUT KSIC",
+    navStores: "OUR STORES",
+    navContact: "CONTACT US",
 
     heroKickerEn: "A LEGACY OF INDIAN CRAFTSMANSHIP",
     heroKickerKn: "ಭಾರತೀಯ ಕರಕುಶಲದ ಪರಂಪರೆ",

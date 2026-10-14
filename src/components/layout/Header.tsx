@@ -11,10 +11,9 @@ import { useLanguage } from "@/context/LanguageContext";
 export const Header: React.FC = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [isAtTop, setIsAtTop] = useState(true);
   const [isInHero, setIsInHero] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
 
   // Close mobile drawer on route change
   useEffect(() => {
@@ -47,14 +46,11 @@ export const Header: React.FC = () => {
   useEffect(() => {
     if (!isHome) {
       setIsInHero(false);
-      setIsAtTop(false);
       return;
     }
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setIsAtTop(scrollY <= 20);
-
       const heroEl = document.getElementById("hero-section");
       if (heroEl) {
         const rect = heroEl.getBoundingClientRect();
@@ -88,12 +84,14 @@ export const Header: React.FC = () => {
 
   const allNavItems = [...navLeft, ...navRight];
 
+  const isNavActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
   // Dynamic header state:
   // - In hero section at top: transparent
   // - In hero section while scrolling: subtle frosted glass
   // - Outside hero section or on inner pages: solid institutional parchment
   const headerStateClass = isHome && isInHero
-    ? (isAtTop ? styles.headerTransparentTop : styles.headerTransparentScrolling)
+    ? styles.headerTransparentScrolling
     : styles.headerScrolled;
 
   return (
@@ -104,7 +102,7 @@ export const Header: React.FC = () => {
           {/* Desktop Left Navigation Group */}
           <ul className={`${styles.navLinksList} ${styles.navGroupLeft}`}>
             {navLeft.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = isNavActive(item.href);
               return (
                 <li key={item.href} className={styles.navLinkItem}>
                   <Link
@@ -134,7 +132,7 @@ export const Header: React.FC = () => {
           {/* Desktop Right Navigation Group */}
           <ul className={`${styles.navLinksList} ${styles.navGroupRight}`}>
             {navRight.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = isNavActive(item.href);
               return (
                 <li key={item.href} className={styles.navLinkItem}>
                   <Link
@@ -203,18 +201,14 @@ export const Header: React.FC = () => {
         {/* Govt Credential Strip */}
         <div className={styles.drawerCredentialStrip}>
           <ShieldCheck size={13} style={{ flexShrink: 0 }} />
-          <span>
-            {lang === "kn"
-              ? "ಕರ್ನಾಟಕ ಸರ್ಕಾರ · ಕಾರ್ಖಾನೆ 1912 · ಕೆ.ಎಸ್.ಐ.ಸಿ 1980 · GIR-11"
-              : "Govt. of Karnataka · Factory 1912 · KSIC 1980 · GIR-11"}
-          </span>
+          <span>Govt. of Karnataka · Factory 1912 · KSIC 1980 · GIR-11</span>
         </div>
 
         {/* Navigation Links */}
         <nav className={styles.drawerNav}>
           <ul className={styles.drawerList}>
             {allNavItems.map((item, index) => {
-              const isActive = pathname === item.href;
+              const isActive = isNavActive(item.href);
               const numStr = `0${index + 1}`;
               return (
                 <li key={item.href} className={styles.drawerItem}>

@@ -188,10 +188,10 @@ export const TimelineSection: React.FC = () => {
               className={styles.epochNavBtn}
               onClick={handlePrev}
               disabled={activeIndex === 0}
-              aria-label="Previous epoch"
+              aria-label="Previous"
             >
               <ChevronLeft size={15} />
-              <span>PREVIOUS EPOCH</span>
+              <span>Previous</span>
             </button>
 
             <button
@@ -199,9 +199,9 @@ export const TimelineSection: React.FC = () => {
               className={styles.epochNavBtn}
               onClick={handleNext}
               disabled={activeIndex === HERITAGE_MILESTONES.length - 1}
-              aria-label="Next epoch"
+              aria-label="Next"
             >
-              <span>NEXT EPOCH</span>
+              <span>Next</span>
               <ChevronRight size={15} />
             </button>
           </div>

@@ -17,19 +17,19 @@ export const Hero: React.FC = () => {
       style={{ position: "relative", overflow: "hidden" }}
       aria-label="Official Karnataka Mysore Silk Heritage"
     >
-      {/* Full-bleed still life: ruby fuchsia silk, jasmine, glass lotus, Gandaberunda watermark */}
+      {/* Full-bleed still life: rose silk, jasmine, and a lotus diya */}
       <div className={styles.heroBackground} style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
         <Image
-          src="/assets/heritage/ruby-fuchsia-silk-saree.png"
-          alt="Ruby fuchsia Mysore silk saree with a gold zari border, jasmine blossoms, and a glass lotus in warm ivory light"
+          src="/assets/heritage/rose-silk-saree-jasmine.png"
+          alt="Rose Mysore silk saree with a gold zari border, jasmine blossoms, and a lotus diya in warm ivory light"
           fill
           priority
           sizes="(max-width: 900px) 1px, 100vw"
           className={styles.heroBackgroundImageDesktop}
         />
         <Image
-          src="/assets/heritage/ruby-fuchsia-silk-saree.png"
-          alt="Ruby fuchsia Mysore silk saree with a gold zari border, jasmine blossoms, and a glass lotus in warm ivory light"
+          src="/assets/heritage/rose-silk-saree-jasmine.png"
+          alt="Rose Mysore silk saree with a gold zari border, jasmine blossoms, and a lotus diya in warm ivory light"
           fill
           priority
           sizes="(max-width: 900px) 100vw, 1px"

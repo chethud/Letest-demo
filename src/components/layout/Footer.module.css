@@ -12,7 +12,7 @@
 
 .footerTopGrid {
   display: grid;
-  grid-template-columns: minmax(220px, 1.35fr) 1fr 1fr minmax(220px, 1.25fr);
+  grid-template-columns: minmax(220px, 1.1fr) minmax(280px, 1fr) minmax(240px, 1.1fr);
   gap: 36px 40px;
   padding-bottom: 36px;
   border-bottom: 1px solid rgba(181, 138, 80, 0.4);
@@ -72,6 +72,13 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #89151E;
+}
+
+.pageNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 28px;
+  align-items: start;
 }
 
 .navColumnList {
@@ -163,13 +170,9 @@
   color: #6E645C;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 760px) {
   .footerTopGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .brandColumn {
-    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
   }
 }
 
