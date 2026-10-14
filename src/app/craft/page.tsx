@@ -7,21 +7,21 @@ import styles from "./Craft.module.css";
 
 export const metadata = {
   title: "Craft & Technical Monograph · From Cocoon to Silk | KSIC",
-  description: "Detailed technical monograph of Mysore Silk production. Integrated sericulture, T. Narasipura filature reeling, 26-28 denier twist chemistry, and 24K gold zari weaving.",
+  description: "From cocoon to saree: Ramanagara, T. Narasipura reeling, twisting, weaving in Mysore, degumming, dyeing, and finishing, as described in the supplied sources.",
 };
 
 export default function CraftPage() {
   return (
     <div className={styles.craftPage}>
       {/* Header */}
-      <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-secondary)", borderBottom: "var(--border-rule)" }}>
+      <section className={`section-spacing ${styles.hero}`}>
         <div className="container-institutional reveal-up">
           <span className="editorial-label">TECHNICAL MONOGRAPH</span>
           <h1 className="display-hero" style={{ marginTop: "12px", marginBottom: "24px" }}>
             FROM COCOON TO SILK.
           </h1>
           <p className="subheadline" style={{ maxWidth: "800px" }}>
-            An integrated state process commanded entirely under one roof—from mulberry sericulture on the Cauvery basin to Swiss Jacquard power-weaving in Mysuru.
+            Cocoons from Ramanagara, raw silk at T. Narasipura, then weaving, washing, dyeing, and finishing in Mysore, as the supplied accounts describe them.
           </p>
         </div>
       </section>
@@ -43,11 +43,6 @@ export default function CraftPage() {
                       <span className={styles.stageNumber}>
                         {stage.step}
                       </span>
-                      {stage.kannadaName && (
-                        <span className={styles.stageKannada}>
-                          {stage.kannadaName}
-                        </span>
-                      )}
                     </div>
 
                     <h2 className={styles.stageTitle}>
@@ -91,10 +86,10 @@ export default function CraftPage() {
       <section className="section-spacing" id="zari" style={{ backgroundColor: "var(--color-bg-paper)", borderBottom: "var(--border-rule)" }}>
         <div className="container-institutional">
           <div className="reveal-up" style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center", marginBottom: "56px" }}>
-            <span className="editorial-label" style={{ justifyContent: "center" }}>METALLURGY OF PRESTIGE</span>
-            <h2 className="display-section">THE PURE GOLD ZARI STANDARD</h2>
+            <span className="editorial-label" style={{ justifyContent: "center" }}>ZARI SPECIFICATION</span>
+            <h2 className="display-section">65% SILVER, 0.65% GOLD</h2>
             <p style={{ marginTop: "12px", color: "var(--color-text-secondary)" }}>
-              Why genuine KSIC Mysore Silk retains its rich royal gleam for over a generation without tarnishing.
+              Zari is specified as 65% pure silver and 0.65% gold. Madhurya describes genuine gold and silver zari. Neither figure is extended into a no-tarnish guarantee.
             </p>
           </div>
 
@@ -107,7 +102,7 @@ export default function CraftPage() {
                 Pure Silver Ribbon
               </h3>
               <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                Fine silver is precision drawn into microscopic wires and flattened into an ultra-thin laminar metallic ribbon that wraps tightly around a natural core silk yarn.
+                The supplied specification is 65% pure silver. The sources do not add a silk-core construction or a comparison with copper and polyester.
               </p>
             </div>
 
@@ -116,10 +111,10 @@ export default function CraftPage() {
                 0.65%
               </div>
               <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", marginBottom: "12px" }}>
-                24-Carat Gold Electroplate
+                Gold, as specified
               </h3>
               <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                The silver-wound silk filament passes through continuous electroplating baths of pure 24-carat gold, bonding an unadulterated gold casing that will never flake or oxidize.
+                The gold share is specified as 0.65%. Madhurya describes genuine gold zari. Electroplating, 24-carat baths, and a claim that the metal will never flake are not in those accounts.
               </p>
             </div>
 
@@ -128,10 +123,10 @@ export default function CraftPage() {
                 100%
               </div>
               <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", marginBottom: "12px" }}>
-                Natural Silk Core
+                Pure mulberry silk
               </h3>
               <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                Unlike market imitations that use synthetic copper, plastic polyester, or cotton cores, KSIC zari uses high-tensile Mulberry silk as the core yarn, ensuring unmatched softness and zero stiff creasing.
+                Madhurya describes pure mulberry silk with a smooth feel, a light drape, and a natural sheen. It does not add a lifespan or a durability guarantee.
               </p>
             </div>
           </div>
@@ -143,24 +138,24 @@ export default function CraftPage() {
         <div className="container-institutional">
           <div className={styles.burningGrid}>
             <div className="reveal-left">
-              <span className="editorial-label">TESTING PROTOCOL</span>
+              <span className="editorial-label">IDENTIFICATION AND CARE</span>
               <h2 className="display-section" style={{ marginBottom: "20px" }}>
-                HOW TO IDENTIFY PURE SILK: THE BURNING TEST
+                WHAT THE SUPPLIED ACCOUNTS ACTUALLY SAY
               </h2>
               <p style={{ marginBottom: "16px" }}>
-                All that shines is not silk. What is commonly marketed as &ldquo;art silk&rdquo; or synthetic satin is polyester or rayon. Pure silk is a natural animal protein derived from the mulberry silkworm cocoon.
+                Each saree is described as carrying a unique identification number and a hologram. This website does not check those numbers.
               </p>
               <p style={{ marginBottom: "24px" }}>
-                To carry out the authentic test at home: take a minute thread from the fringe or warp edge and apply a flame.
+                Care notes below are taken from the Madhurya article. No washing temperature or extra chemical instruction is added.
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
                   <CheckCircle2 size={18} color="var(--color-burgundy)" style={{ flexShrink: 0, marginTop: "3px" }} />
                   <div>
-                    <strong>Burning Odor: </strong>
+                    <strong>Dry clean: </strong>
                     <span style={{ color: "var(--color-text-secondary)" }}>
-                      Pure silk burns slowly with the characteristic smell of burning hair. Synthetic silk smells of burning plastic or paper.
+                      Madhurya recommends dry cleaning to help preserve the shine.
                     </span>
                   </div>
                 </div>
@@ -168,9 +163,9 @@ export default function CraftPage() {
                 <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
                   <CheckCircle2 size={18} color="var(--color-burgundy)" style={{ flexShrink: 0, marginTop: "3px" }} />
                   <div>
-                    <strong>Residue Examination: </strong>
+                    <strong>Store: </strong>
                     <span style={{ color: "var(--color-text-secondary)" }}>
-                      Pure silk leaves a dark, brittle bead that crumbles completely to fine ash between the fingertips. Synthetic fibers melt into a hard, sticky plastic bead.
+                      Keep the saree in soft muslin or cotton, away from sunlight and moisture.
                     </span>
                   </div>
                 </div>
@@ -178,9 +173,9 @@ export default function CraftPage() {
                 <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
                   <CheckCircle2 size={18} color="var(--color-burgundy)" style={{ flexShrink: 0, marginTop: "3px" }} />
                   <div>
-                    <strong>Embroidered Pallu Code: </strong>
+                    <strong>In use: </strong>
                     <span style={{ color: "var(--color-text-secondary)" }}>
-                      Every genuine KSIC saree features an embroidered code number with the year of manufacture on the inner seam, backed by the optical GI-11 hologram.
+                      Avoid spraying perfume directly on the saree, and refold a stored saree every few months.
                     </span>
                   </div>
                 </div>
@@ -192,11 +187,11 @@ export default function CraftPage() {
                 Preservation Guidelines
               </div>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                <li>• Always dry clean luxury zari sarees or wash in neutral soft water.</li>
-                <li>• Wrap zari pallus in pure unbleached muslin/cotton to avoid oxidation.</li>
-                <li>• Never spray perfume or water directly on gold zari ribbons.</li>
-                <li>• Iron on low to medium heat on the reverse fabric side while slightly damp.</li>
-                <li>• Periodically unfold and air in mild shade to preserve natural fiber elasticity.</li>
+                <li>• Dry clean, to help preserve the shine.</li>
+                <li>• Store in soft muslin or cotton.</li>
+                <li>• Keep away from sunlight and moisture.</li>
+                <li>• Do not spray perfume directly on the saree.</li>
+                <li>• Refold a stored saree every few months.</li>
               </ul>
             </div>
           </div>

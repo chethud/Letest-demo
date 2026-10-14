@@ -42,7 +42,7 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     nameKn: "ಚಿನ್ನದ ಎಳೆ",
     headline: "Gold, woven with precision and tradition.",
     headlineKn: "ಪರಂಪರೆ ಮತ್ತು ನಿಖರತೆಯಿಂದ ನೇಯ್ದ ಶುದ್ಧ ಚಿನ್ನ.",
-    description: "Pure gold zari is intricately woven, adding a legacy of royalty to every thread.",
+    description: "The documented zari is 65% pure silver and 0.65% gold. Madhurya describes genuine gold and silver zari.",
     descriptionKn: "ಶುದ್ಧ ಚಿನ್ನದ ಜರಿಯನ್ನು ಸಂಕೀರ್ಣವಾಗಿ ನೇಯ್ದು, ಪ್ರತಿ ಎಳೆಗೂ ರಾಜವಂಶದ ಪರಂಪರೆಯನ್ನು ನೀಡಲಾಗುತ್ತದೆ.",
     image: "/assets/craft/journey-stage-3.jpg",
     detailBadge: "0.65% Gold · 65% Silver Zari",

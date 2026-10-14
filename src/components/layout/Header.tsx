@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ShieldCheck, Menu, X, ArrowRight, Globe } from "lucide-react";
+import { ShieldCheck, Menu, X, ArrowRight } from "lucide-react";
 import styles from "./Header.module.css";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
   const [isAtTop, setIsAtTop] = useState(true);
   const [isInHero, setIsInHero] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { lang, setLang, toggleLang, t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   // Close mobile drawer on route change
   useEffect(() => {
@@ -101,17 +101,6 @@ export const Header: React.FC = () => {
       <header className={`${styles.headerContainer} ${headerStateClass}`}>
         {/* Primary Navigation Bar with Centered Royal Brand Logo */}
         <nav className={styles.navMain} aria-label="Main Navigation">
-          {/* Mobile Left: Language Switcher Button */}
-          <button
-            type="button"
-            onClick={toggleLang}
-            className={styles.mobileLangButton}
-            aria-label={lang === "en" ? "ಕನ್ನಡಕ್ಕೆ ಬದಲಿಸಿ" : "Switch to English"}
-          >
-            <Globe size={14} className={styles.mobileGlobeIcon} />
-            <span className={styles.mobileLangLabel}>{lang === "en" ? "ಕನ್ನಡ" : "EN"}</span>
-          </button>
-
           {/* Desktop Left Navigation Group */}
           <ul className={`${styles.navLinksList} ${styles.navGroupLeft}`}>
             {navLeft.map((item) => {
@@ -216,8 +205,8 @@ export const Header: React.FC = () => {
           <ShieldCheck size={13} style={{ flexShrink: 0 }} />
           <span>
             {lang === "kn"
-              ? "ಕರ್ನಾಟಕ ಸರ್ಕಾರ · 1912 ರಿಂದ · GI-11 ಪ್ರಮಾಣೀಕೃತ"
-              : "Govt. of Karnataka · Estd. 1912 · GI-11 Certified"}
+              ? "ಕರ್ನಾಟಕ ಸರ್ಕಾರ · ಕಾರ್ಖಾನೆ 1912 · ಕೆ.ಎಸ್.ಐ.ಸಿ 1980 · GIR-11"
+              : "Govt. of Karnataka · Factory 1912 · KSIC 1980 · GIR-11"}
           </span>
         </div>
 
@@ -246,34 +235,12 @@ export const Header: React.FC = () => {
 
         {/* Drawer Footer with Language Selection & Royal Heritage Note */}
         <div className={styles.drawerFooter}>
-          <div className={styles.drawerLangRow}>
-            <span className={styles.drawerLangLabel}>
-              {lang === "kn" ? "ಭಾಷೆ / Language:" : "Language:"}
-            </span>
-            <div className={styles.drawerLangBtnGroup}>
-              <button
-                type="button"
-                className={`${styles.drawerLangBtn} ${lang === "en" ? styles.drawerLangBtnActive : ""}`}
-                onClick={() => setLang("en")}
-              >
-                English
-              </button>
-              <button
-                type="button"
-                className={`${styles.drawerLangBtn} ${lang === "kn" ? styles.drawerLangBtnActive : ""}`}
-                onClick={() => setLang("kn")}
-              >
-                ಕನ್ನಡ
-              </button>
-            </div>
-          </div>
-
           <div className={styles.drawerHeritageNote}>
             <p className={styles.drawerHeritageTitle}>
               Karnataka Silk Industries Corporation
             </p>
             <p className={styles.drawerHeritageSub}>
-              Pure Silk &bull; 100% Pure Gold Zari &bull; Mysuru
+              Pure silk &bull; 65% silver, 0.65% gold zari &bull; Mysuru
             </p>
           </div>
         </div>

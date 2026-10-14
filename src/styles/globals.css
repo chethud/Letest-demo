@@ -145,14 +145,6 @@ button {
   margin-bottom: 18px;
 }
 
-.editorial-label::before {
-  content: "";
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background-color: var(--color-burgundy);
-}
-
 .editorial-label-light {
   color: #F5CE7E;
   background-color: rgba(18, 14, 11, 0.88);
@@ -163,10 +155,6 @@ button {
   letter-spacing: 0.22em;
   font-weight: 600;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-}
-
-.editorial-label-light::before {
-  background-color: #F5CE7E;
 }
 
 /* Main Display Headlines */

@@ -76,7 +76,6 @@ export const HeritageSection: React.FC = () => {
           <div className={styles.narrativeColumn}>
             {/* Eyebrow */}
             <div className={styles.eyebrowWrapper}>
-              <span className={styles.eyebrowRule} aria-hidden="true" />
               <span className={styles.eyebrowText}>OUR HERITAGE</span>
             </div>
 
@@ -101,7 +100,7 @@ export const HeritageSection: React.FC = () => {
             {/* Historical Quotation Panel */}
             <div className={styles.quotePanel}>
               <p className={styles.quoteText}>
-                &ldquo;Started with 10 Swiss looms imported under royal patronage, the factory introduced modern machine-woven crepe de chine to the subcontinent—pioneering an unadulterated combination of pure mulberry silk and electroplated gold zari that endures today.&rdquo;
+                The factory produced premium silk for the royal family and the armed forces. Madhurya separately describes an interest in Swiss silk. The two accounts are not merged into one quotation.
               </p>
             </div>
 
@@ -126,11 +125,11 @@ export const HeritageSection: React.FC = () => {
                       <line x1="3" y1="15" x2="21" y2="15" />
                     </svg>
                   </div>
-                  <span className={styles.statNumber}>10</span>
+                  <span className={styles.statNumber}>1912</span>
                 </div>
-                <div className={styles.statLabel}>SWISS POWER LOOMS</div>
+                <div className={styles.statLabel}>WEAVING FACTORY</div>
                 <div className={styles.statSubtext}>
-                  INTRODUCED UNDER<br />ROYAL PATRONAGE
+                  ROYAL FAMILY AND<br />ARMED FORCES
                 </div>
               </div>
 

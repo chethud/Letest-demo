@@ -34,11 +34,11 @@ export const FactorySection: React.FC = () => {
       ),
     },
     {
-      value: "138",
-      label: isKn ? "ಸ್ವಿಸ್ ಪವರ್ ಲೂಮ್‌ಗಳು" : "SWISS POWER LOOMS",
+      value: "1980",
+      label: isKn ? "ಕೆ.ಎಸ್.ಐ.ಸಿ ಸ್ಥಾಪನೆ" : "KSIC INCORPORATED",
       desc: isKn
-        ? "ಕ್ಯಾಲಿಬ್ರೇಟೆಡ್ ನಿಖರ ನೇಯ್ಗೆ ಯಂತ್ರೋಪಕರಣಗಳು"
-        : "Calibrated precision weaving machinery",
+        ? "ಕಂಪನಿ ಕಾಯ್ದೆಯಡಿ. ಟಿಪ್ಪಣಿ ವಿಶ್ವ ಬ್ಯಾಂಕ್ ಬೆಂಬಲಿತ ಆಧುನೀಕರಣವನ್ನು ಸಹ ಉಲ್ಲೇಖಿಸುತ್ತದೆ."
+        : "Under the Companies Act. The note also associates this with World Bank-supported modernisation.",
       icon: (
         <svg
           width="26"
@@ -80,10 +80,10 @@ export const FactorySection: React.FC = () => {
     },
     {
       value: "0.65%",
-      label: isKn ? "೨೪K ಚಿನ್ನದ ಜರಿ" : "24K GOLD ZARI",
+      label: isKn ? "ಜರಿಯಲ್ಲಿನ ಚಿನ್ನ" : "GOLD IN THE ZARI",
       desc: isKn
-        ? "೬೫% ಶುದ್ಧ ಬೆಳ್ಳಿ ರಿಬ್ಬನ್ ಮೇಲೆ ವಿದ್ಯುತ್ ಲೇಪಿತ"
-        : "Electroplated over 65% pure silver ribbon",
+        ? "ಖಾತೆ 65% ಶುದ್ಧ ಬೆಳ್ಳಿ ಮತ್ತು 0.65% ಚಿನ್ನ ಎಂದು ನಿರ್ದಿಷ್ಟಪಡಿಸುತ್ತದೆ."
+        : "Zari is specified as 65% pure silver and 0.65% gold.",
       icon: (
         <svg
           width="26"
@@ -113,9 +113,7 @@ export const FactorySection: React.FC = () => {
       <div className={styles.container}>
         {/* Main Content (Aligned Left, uncluttered over dark workshop shadow) */}
         <div className={styles.heroContent}>
-          {/* Eyebrow with gold dash */}
           <div className={styles.eyebrowRow}>
-            <span className={styles.eyebrowLine} aria-hidden="true" />
             <span className={styles.eyebrowText}>
               {isKn
                 ? "ರೇಷ್ಮೆ ನೇಯ್ಗೆ ಕಾರ್ಖಾನೆ · ಮಾನಂದವಾಡಿ ರಸ್ತೆ, ಮೈಸೂರು"
@@ -144,7 +142,7 @@ export const FactorySection: React.FC = () => {
           <p className={styles.description}>
             {isKn
               ? "೧೯೧೨ ರಲ್ಲಿ ಮಹಾರಾಜ ಶ್ರೀ ನಾಲ್ವಡಿ ಕೃಷ್ಣರಾಜ ಒಡೆಯರ್ ಅವರಿಂದ ಸ್ಥಾಪಿಸಲ್ಪಟ್ಟ ಮೈಸೂರು ರೇಷ್ಮೆ ನೇಯ್ಗೆ ಕಾರ್ಖಾನೆಯು ಭಾರತದ ಅತ್ಯಂತ ಪುರಾತನ ಯಂತ್ರ-ನೇಯ್ಗೆ ಘಟಕವಾಗಿದೆ. ಶತಮಾನದಷ್ಟು ಹಳೆಯದಾದ ಸ್ವಿಸ್-ನಿರ್ಮಿತ ಜಕಾರ್ಡ್ ಪವರ್ ಲೂಮ್‌ಗಳು ಮಾನಂದವಾಡಿ ರಸ್ತೆಯಲ್ಲಿ ಇಂದಿಗೂ ಸಕ್ರಿಯವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದ್ದು, ರಾಷ್ಟ್ರದ ಅಖಂಡ ಜವಳಿ ಪರಂಪರೆಯನ್ನು ಕಾಪಾಡಿಕೊಂಡು ಬರುತ್ತಿವೆ."
-              : "Established in 1912 by Maharaja Sri Nalvadi Krishnaraja Wadiyar, the Mysore Silk Weaving Factory is the oldest operating machine-weaving unit in India. Century-old Swiss-built Jacquard power looms continue to run on Mananthody Road, preserving unbroken textile heritage for the nation."}
+              : "The weaving factory was established in 1912 under Maharaja Sri Nalvadi Krishnaraja Wadiyar. KSIC, the corporation, was established in 1980. Weaving is described on dobby and jacquard looms; the KSIC note also records electric looms and e-jacquard machinery."}
           </p>
 
           {/* Primary CTA */}
@@ -172,26 +170,6 @@ export const FactorySection: React.FC = () => {
               <div className={styles.statDesc}>{stat.desc}</div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom Decorative Divider Line with Central Diamond Flourish */}
-        <div className={styles.bottomDecorativeLine} aria-hidden="true">
-          <span className={styles.bottomLineSegment} />
-          <div className={styles.bottomFlourish}>
-            <svg
-              width="36"
-              height="18"
-              viewBox="0 0 36 18"
-              fill="none"
-              stroke="#C5A059"
-              strokeWidth="1.2"
-            >
-              <path d="M18 2 L25 9 L18 16 L11 9 Z" fill="none" />
-              <path d="M18 5 L22 9 L18 13 L14 9 Z" fill="#C5A059" />
-              <path d="M3 9 L11 9 M25 9 L33 9" strokeWidth="1" />
-            </svg>
-          </div>
-          <span className={styles.bottomLineSegment} />
         </div>
       </div>
     </section>

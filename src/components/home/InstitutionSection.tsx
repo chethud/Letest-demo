@@ -47,10 +47,6 @@ export const InstitutionSection: React.FC = () => {
             )}
           </h2>
 
-          <div className={styles.kannadaStatement}>
-            {INSTITUTIONAL_OVERVIEW.kannadaName}
-          </div>
-
           <p className={styles.factualSummary}>
             {lang === "kn"
               ? "1980 ರಲ್ಲಿ ಕರ್ನಾಟಕ ಸರ್ಕಾರದಿಂದ ರೇಷ್ಮೆ ಇಲಾಖೆಯಡಿ ಸ್ಥಾಪಿಸಲ್ಪಟ್ಟ ಕೆ.ಎಸ್.ಐ.ಸಿ, 1912 ರಲ್ಲಿ ಆರಂಭಗೊಂಡ ಮೈಸೂರು ರೇಷ್ಮೆ ನೇಯ್ಗೆ ಕಾರ್ಖಾನೆಯ ಏಕೈಕ ಸಂರಕ್ಷಕ ಸಂಸ್ಥೆಯಾಗಿದೆ. ಲಕ್ಷಾಂತರ ರೇಷ್ಮೆ ಕೃಷಿಕರ ಬದುಕನ್ನು ಬೆಂಬಲಿಸುತ್ತಾ, ಯಾವುದೇ ಕಲಬೆರಕೆಯಿಲ್ಲದ ಶುದ್ಧ ಬಂಗಾರದ ಜರಿ ರೇಷ್ಮೆ ಸೀರೆಗಳನ್ನು ಸಾರ್ವಜನಿಕರಿಗೆ ಒದಗಿಸುತ್ತಿದೆ."

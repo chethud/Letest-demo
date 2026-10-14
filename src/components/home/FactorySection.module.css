@@ -4,19 +4,17 @@
 
 .factorySection {
   position: relative;
-  background-color: #0E0A08;
+  background-color: #2A0C12;
   background-image: 
-    linear-gradient(to top, rgba(14, 10, 8, 0.88) 0%, rgba(14, 10, 8, 0.45) 22%, transparent 45%),
-    linear-gradient(to right, rgba(14, 10, 8, 0.96) 0%, rgba(14, 10, 8, 0.88) 34%, rgba(14, 10, 8, 0.35) 58%, rgba(14, 10, 8, 0.05) 82%, transparent 100%),
-    url('/assets/factory/ksic-factory-heritage-cinematic.jpg');
-  background-position: right center;
+    linear-gradient(to top, rgba(42, 12, 18, 0.78) 0%, rgba(42, 12, 18, 0.32) 28%, transparent 52%),
+    linear-gradient(to right, rgba(42, 12, 18, 0.82) 0%, rgba(42, 12, 18, 0.58) 30%, rgba(42, 12, 18, 0.22) 56%, rgba(42, 12, 18, 0.06) 100%),
+    url('/assets/factory/factory-silk-sunlit.png');
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   color: #FAF6EF;
   overflow: hidden;
   padding: 36px 0 24px;
-  border-top: 1px solid rgba(197, 160, 89, 0.3);
-  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
   scroll-margin-top: 80px;
 }
 
@@ -45,13 +43,6 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 18px;
-}
-
-.eyebrowLine {
-  width: 28px;
-  height: 1px;
-  background-color: #C5A059;
-  flex-shrink: 0;
 }
 
 .eyebrowText {
@@ -184,31 +175,6 @@
   font-size: 0.76rem;
   line-height: 1.45;
   color: #AFA090;
-}
-
-/* =========================================================================
-   BOTTOM DECORATIVE DIVIDER WITH GEOMETRIC ORNAMENT
-   ========================================================================= */
-
-.bottomDecorativeLine {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 16px;
-  width: 100%;
-}
-
-.bottomLineSegment {
-  flex: 1;
-  height: 1px;
-  background: rgba(197, 160, 89, 0.28);
-}
-
-.bottomFlourish {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #C5A059;
 }
 
 /* =========================================================================

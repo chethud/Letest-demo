@@ -1,190 +1,190 @@
 .footerContainer {
-  background-color: #f6efe4;
-  color: #302a29;
-  border-top: 1px solid rgba(122, 22, 29, 0.18);
-  position: relative;
-  overflow: hidden;
+  background: #F7F2E9;
+  color: #241C18;
+  border-top: 1px solid rgba(181, 138, 80, 0.45);
 }
 
 .footerWrap {
-  position: relative;
-  z-index: 2;
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 48px clamp(20px, 4vw, 64px) 28px;
+  padding: 56px clamp(20px, 4vw, 64px) 28px;
 }
 
 .footerTopGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: minmax(220px, 1.35fr) 1fr 1fr minmax(220px, 1.25fr);
+  gap: 36px 40px;
   padding-bottom: 36px;
-  border-bottom: 1px solid rgba(48, 42, 41, 0.12);
-}
-
-@media (max-width: 1024px) {
-  .footerTopGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .footerTopGrid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+  border-bottom: 1px solid rgba(181, 138, 80, 0.4);
 }
 
 .brandColumn {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  padding-right: 12px;
 }
 
 .stateEmblemRow {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .karnatakaSeal {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
-  filter: none;
 }
 
-.ksicLogoWhite {
-  height: 40px;
+.ksicLogo {
+  height: 42px;
   width: auto;
   object-fit: contain;
-  filter: none;
 }
 
 .brandLegalName {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 400;
-  line-height: 1.25;
-  color: #302a29;
-  letter-spacing: -0.01em;
+  margin: 4px 0 0;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #1C1614;
 }
 
-.brandKannadaTitle {
-  font-family: var(--font-kannada);
-  font-size: 0.95rem;
-  color: #7a161d;
-  margin-top: 4px;
-}
-
-.brandDescription {
-  font-size: 0.88rem;
-  line-height: 1.7;
-  color: #3c2c2a !important;
-  max-width: 400px;
+.brandNote {
+  margin: 0;
+  max-width: 18rem;
+  font-family: var(--font-dm), "DM Sans", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: #8A7B6C;
 }
 
 .navColumnTitle {
-  font-size: 0.72rem;
+  margin: 0 0 16px;
+  font-family: var(--font-dm), "DM Sans", sans-serif;
+  font-size: 0.66rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #7a161d;
-  margin-bottom: 24px;
+  color: #89151E;
 }
 
 .navColumnList {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
 }
 
-.navColumnItem a {
-  font-size: 0.88rem;
-  color: #302a29;
-  transition: color 200ms ease, transform 200ms ease;
-  display: inline-block;
+.navColumnList a,
+.footerSecondaryLinks a,
+.contactInfoGroup a {
+  color: #3C342E;
+  text-decoration: none;
+  font-family: var(--font-dm), "DM Sans", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.4;
 }
 
-.navColumnItem a:hover {
-  color: #7a161d;
-  transform: translateX(4px);
+.navColumnList a:hover,
+.footerSecondaryLinks a:hover,
+.contactInfoGroup a:hover {
+  color: #89151E;
+}
+
+.navColumnList a:focus-visible,
+.footerSecondaryLinks a:focus-visible,
+.contactInfoGroup a:focus-visible {
+  outline: 2px solid #89151E;
+  outline-offset: 3px;
 }
 
 .contactInfoGroup {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 0.88rem;
-  line-height: 1.65;
+  gap: 8px;
+  margin: 0;
+  font-style: normal;
 }
 
 .contactInfoGroup p {
-  color: #3c2c2a !important;
-  font-size: 0.88rem;
-  line-height: 1.65;
   margin: 0;
-}
-
-.contactInfoGroup a {
-  color: #302a29;
-  text-decoration: none;
-  transition: color 180ms ease;
-  display: inline;
-}
-
-.contactInfoGroup a:hover {
-  color: #7a161d;
-  text-decoration: underline;
+  font-family: var(--font-dm), "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #3C342E;
 }
 
 .contactHighlight {
-  color: #7a161d;
+  color: #89151E;
   font-weight: 600;
 }
 
 .contactCin {
-  color: #6b5a52 !important;
-  font-size: 0.78rem !important;
-  letter-spacing: 0.05em;
-  margin-top: 4px !important;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8A7B6C;
 }
 
 .footerBottomRow {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-top: 36px;
+  justify-content: space-between;
+  gap: 18px 28px;
+  padding-top: 22px;
   flex-wrap: wrap;
-  gap: 20px;
-  font-size: 0.78rem;
-  color: #302a29;
+}
+
+.footerBottomRow p {
+  margin: 0;
+  font-family: var(--font-dm), "DM Sans", sans-serif;
+  font-size: 0.75rem;
+  color: #6E645C;
 }
 
 .footerSecondaryLinks {
   display: flex;
-  gap: 24px;
   flex-wrap: wrap;
+  gap: 8px 18px;
 }
 
 .footerSecondaryLinks a {
-  color: #302a29;
-  transition: color 150ms ease;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #6E645C;
 }
 
-.footerSecondaryLinks a:hover {
-  color: #7a161d;
+@media (max-width: 980px) {
+  .footerTopGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brandColumn {
+    grid-column: 1 / -1;
+  }
 }
 
-.institutionalWatermark {
-  position: absolute;
-  right: -5%;
-  bottom: -15%;
-  width: 500px;
-  height: 500px;
-  opacity: 0.02;
-  pointer-events: none;
-  object-fit: contain;
-  z-index: 1;
+@media (max-width: 640px) {
+  .footerWrap {
+    padding-top: 40px;
+  }
+
+  .footerTopGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footerBottomRow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

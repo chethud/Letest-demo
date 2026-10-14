@@ -35,10 +35,6 @@ export default function InstitutionPage() {
             CORPORATION LIMITED
           </h1>
 
-          <div style={{ fontFamily: "var(--font-kannada)", fontSize: "1.5rem", color: "var(--color-burgundy)", marginBottom: "24px" }}>
-            {INSTITUTIONAL_OVERVIEW.kannadaName}
-          </div>
-
           <p className="subheadline" style={{ maxWidth: "800px" }}>
             Established in 1980 under the Department of Sericulture, Government of Karnataka, to safeguard the royal legacy of the Mysore Silk Weaving Factory and advance sericulture welfare across the state.
           </p>

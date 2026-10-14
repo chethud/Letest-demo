@@ -28,12 +28,12 @@ const HUBS: Hub[] = [
     role: "Primary Weaving & Processing Campus (Estd 1912)",
     location: "Mananthody Road, Ashokapuram, Mysuru 570008",
     description:
-      "The historic manufacturing campus founded in 1912 by Maharaja Nalvadi Krishnaraja Wadiyar. Operating 138 specialized Swiss-built power looms, pure gold zari warping, and continuous master jacquard weaving with over 114 years of living royal heritage.",
+      "The weaving factory associated with 1912 and Maharaja Nalvadi Krishnaraja Wadiyar. Weaving here is described on dobby and jacquard looms. Loom counts are not shown.",
     keyStats: [
-      { label: "FOUNDED", value: "1912 (114 Years Heritage)" },
-      { label: "LOOMS", value: "138 Swiss Power Looms" },
-      { label: "ZARI METALLURGY", value: "Certified 24K Pure Gold & 65% Silver" },
-      { label: "WEAVES", value: "Crepe de Chine, Georgette, Centenary Zari" },
+      { label: "FACTORY", value: "Established 1912" },
+      { label: "CORPORATION", value: "KSIC, 1980" },
+      { label: "ZARI, AS SPECIFIED", value: "65% silver · 0.65% gold" },
+      { label: "LOOMS DESCRIBED", value: "Dobby, jacquard, and e-jacquard in the note" },
     ],
     cx: 982.3,
     cy: 2086.7,
@@ -47,12 +47,12 @@ const HUBS: Hub[] = [
     role: "Cocoon Reeling & Raw Silk Division",
     location: "Banks of River Cauvery & Kapila Confluence, Mysuru Dist.",
     description:
-      "Procures raw mulberry cocoons from certified sericulture farmers across the Cauvery belt. Continuous filament silk reeling (26–28 denier) utilizes the naturally soft, mineral-balanced water of the Cauvery basin for chemical-free sericin extraction.",
+      "Cocoons from Ramanagara are brought to this raw silk unit, soaked and boiled, and reeled. The KSIC note says cocoons are purchased from the market. This is not a map of every current supplier.",
     keyStats: [
-      { label: "DIVISION", value: "Primary Cocoon Reeling & Filature" },
-      { label: "WATER SOURCE", value: "Cauvery-Kapila Basin (Naturally Soft)" },
-      { label: "YARN GRADE", value: "100% Pure Mulberry Silk (26–28 Denier)" },
-      { label: "SUPPLY", value: "Direct raw silk feed to Mysuru Looms" },
+      { label: "ROLE", value: "Raw silk / reeling" },
+      { label: "COCOONS", value: "Ramanagara, as described" },
+      { label: "WARP YARN", value: "26/28-denier untwisted, as specified" },
+      { label: "NEXT STEP", value: "Yarn sent to the Mysore weaving factory" },
     ],
     cx: 1048.0,
     cy: 2110.0,
@@ -61,17 +61,17 @@ const HUBS: Hub[] = [
   },
   {
     id: "channapatna",
-    name: "Channapatna · Spun Silk Mills",
-    kannadaName: "ಚನ್ನಪಟ್ಟಣ ಸ್ಪನ್ ಸಿಲ್ಕ್ ಮಿಲ್ಸ್",
-    role: "Spun Silk Infrastructure (Estd 1936)",
+    name: "Channapatna · Silk Weaving Unit",
+    kannadaName: "ಚನ್ನಪಟ್ಟಣ ರೇಷ್ಮೆ ನೇಯ್ಗೆ ಘಟಕ",
+    role: "Silk weaving unit named in the KSIC note",
     location: "Spun Silk Mills Premises, BM Road, Channapatna 562160",
     description:
-      "Specialized infrastructure unit converting natural silk noils and combing fibers into high-count spun silk yarn. Manufactures durable silk stoles, neckties, blended fabrics, and hosts an active highway showroom.",
+      "The KSIC note names a silk weaving unit at Channapatna. Earlier records trace silk rearing here to Tippu Sultan in the eighteenth century.",
     keyStats: [
-      { label: "FOUNDED", value: "1936 (Pioneering Spun Silk Unit)" },
-      { label: "PROCESS", value: "Conversion of silk noils into spun yarn" },
-      { label: "PRODUCTS", value: "Pure Silk Ties, Stoles & Blended Weaves" },
-      { label: "FACILITY", value: "Active Mill & Highway Showcase Store" },
+      { label: "IN THE NOTE", value: "Silk weaving unit" },
+      { label: "EARLIER RECORD", value: "18th-century rearing" },
+      { label: "NOT CLAIMED", value: "A complete current supplier map" },
+      { label: "COUNTS", value: "Machine numbers are not published" },
     ],
     cx: 1195.0,
     cy: 1920.0,
@@ -85,12 +85,12 @@ const HUBS: Hub[] = [
     role: "Apex Governance & Quality Assurance",
     location: "3rd & 4th Floor, Public Utility Building, M.G. Road 560001",
     description:
-      "Central executive offices of KSIC Ltd. Oversees GI-11 legal stewardship, statewide retail distribution, laboratory testing for 24-carat gold zari purity, and the historic Jubilee showroom on M.G. Road.",
+      "KSIC’s corporate offices. The note records GI registration number GIR-11 and does not settle a conflict with a 2017 reference in another supplied account.",
     keyStats: [
-      { label: "ROLE", value: "Corporate Headquarters & Governance" },
-      { label: "GI REGISTRY", value: "GI-11 Sole Registered Proprietor" },
-      { label: "NETWORK", value: "18+ Official Showrooms across India" },
-      { label: "QUALITY", value: "Zari Metallurgical Assay & Laser Codes" },
+      { label: "ROLE", value: "Corporate offices" },
+      { label: "GI NUMBER", value: "GIR-11 in the KSIC note" },
+      { label: "DATE", value: "2005 and 2017 both appear in the sources" },
+      { label: "SERIAL CHECK", value: "Not offered on this website" },
     ],
     cx: 1290.2,
     cy: 1853.1,
@@ -148,8 +148,7 @@ export const KarnatakaMapSection: React.FC = () => {
                   >
                     <div className={styles.hubHeader}>
                       <div>
-                        <span className={styles.hubName}>{lang === "kn" ? hub.kannadaName : hub.name}</span>
-                        <div className={styles.hubKannada}>{hub.kannadaName}</div>
+                        <span className={styles.hubName}>{hub.name}</span>
                       </div>
                       <span className={styles.hubRole}>{hub.role}</span>
                     </div>

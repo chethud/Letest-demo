@@ -1,584 +1,345 @@
-/* =========================================================================
-   TECHNICAL MONOGRAPH — FROM COCOON TO SILK
-   Luxury Editorial Redesign
-   ========================================================================= */
-
 .craftSection {
-  background-color: #F8F3EB;
-  padding: 28px 0 32px;
-  border-top: 1px solid rgba(181, 138, 75, 0.28);
-  border-bottom: 1px solid rgba(181, 138, 75, 0.28);
-  position: relative;
-  overflow: hidden;
-  color: #191512;
+  --mono-ivory: #f8f4ec;
+  --mono-ink: #201b18;
+  --mono-muted: #82776a;
+  --mono-burgundy: #8b1823;
+  --mono-gold: #b58a4a;
+  --mono-line: #e8dcc9;
+  background: var(--mono-ivory);
+  color: var(--mono-ink);
+  padding: 36px 0 40px;
   scroll-margin-top: 80px;
 }
 
 .container {
-  max-width: 1360px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 4.5vw, 56px);
-  position: relative;
-  z-index: 2;
+  padding: 0 clamp(20px, 4vw, 48px);
 }
-
-/* =========================================================================
-   01. COMPACT SECTION HEADER
-   ========================================================================= */
 
 .header {
   margin-bottom: 22px;
 }
 
-.eyebrowWrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.eyebrowDiamond {
-  color: #B58A4B;
-  font-size: 0.72rem;
-}
-
-.eyebrowLine {
-  width: 24px;
-  height: 1px;
-  background-color: #B58A4B;
-}
-
 .eyebrowText {
+  margin: 0 0 8px;
   font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #B58A4B;
+  color: var(--mono-gold);
 }
 
-/* Single-Line Heading on Desktop/Laptop */
 .headline {
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-size: clamp(2.2rem, 3.8vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  color: #191512;
   margin: 0;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-size: clamp(2.1rem, 3.4vw, 3.15rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--mono-ink);
   white-space: nowrap;
 }
 
 .burgundyWord {
-  color: #8E1722;
-  font-weight: 400;
+  color: var(--mono-burgundy);
 }
-
-/* =========================================================================
-   02. STAGE NAVIGATION BAR (HORIZONTAL ROW)
-   ========================================================================= */
 
 .stageNavBar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 22px;
-  width: 100%;
+  gap: 28px;
+  margin-bottom: 32px;
 }
 
 .stagePillsRow {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: stretch;
+  min-width: 0;
+}
+
+.stageTab {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  flex-shrink: 0;
-}
-
-.stagePillsRow::-webkit-scrollbar {
-  display: none;
-}
-
-.pillBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  background: rgba(255, 252, 247, 0.78);
-  backdrop-filter: blur(4px);
-  border: 1px solid #E7D5B9;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  margin: 0;
+  padding: 2px 12px 2px 18px;
+  border: none;
+  background: transparent;
+  color: var(--mono-muted);
   font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: #191512;
   cursor: pointer;
-  transition: all 180ms ease;
-  white-space: nowrap;
+  transition: color 220ms ease;
 }
 
-.pillStepNumber {
-  color: #B58A4B;
-  font-weight: 700;
+.stageTab:first-child {
+  padding-left: 0;
 }
 
-.pillBtn:hover {
-  background: #FFFFFF;
-  border-color: #8E1722;
-  color: #8E1722;
+.stageTab + .stageTab::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--mono-line);
 }
 
-.pillBtnActive {
-  background: #8E1722 !important;
-  border-color: #8E1722 !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 2px 10px rgba(142, 23, 34, 0.28);
+.stageNumber {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1;
 }
 
-.pillBtnActive .pillStepNumber {
-  color: rgba(255, 255, 255, 0.85);
+.stageName {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-align: left;
 }
 
-.navControlsRight {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
-  flex-shrink: 0;
+.stageTab:hover {
+  color: var(--mono-ink);
 }
 
-.cycleCounter {
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #8C7D6B;
-  white-space: nowrap;
+.stageTabActive,
+.stageTabActive:hover {
+  color: var(--mono-burgundy);
+}
+
+.stageTabActive .stageName {
+  box-shadow: inset 0 -1.5px 0 var(--mono-burgundy);
+  padding-bottom: 3px;
 }
 
 .arrowGroup {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .roundArrowBtn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #FFFCF7;
-  border: 1px solid #E7D5B9;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #191512;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--mono-line);
+  background: transparent;
+  color: var(--mono-ink);
   cursor: pointer;
-  transition: all 180ms ease;
+  transition: border-color 220ms ease, color 220ms ease, background-color 220ms ease;
 }
 
 .roundArrowBtn:hover:not(:disabled) {
-  border-color: #8E1722;
-  color: #8E1722;
+  border-color: var(--mono-burgundy);
+  color: var(--mono-burgundy);
 }
 
 .roundArrowBtn:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
 .roundArrowBtnPrimary {
-  background: #8E1722;
-  border-color: #8E1722;
-  color: #FFFFFF;
+  background: var(--mono-burgundy);
+  border-color: var(--mono-burgundy);
+  color: #fff;
 }
 
 .roundArrowBtnPrimary:hover:not(:disabled) {
-  background: #73111A;
+  background: #6f121b;
+  color: #fff;
 }
-
-/* =========================================================================
-   03. MAIN TWO-COLUMN CONTENT GRID
-   ========================================================================= */
 
 .mainContentGrid {
   display: grid;
-  grid-template-columns: 1.18fr 1fr;
-  gap: 36px;
-  align-items: start;
-}
-
-/* =========================================================================
-   LEFT COLUMN: GALLERY WITH VERTICAL THUMBNAIL STRIP & MAIN FRAME
-   ========================================================================= */
-
-.galleryColumn {
-  display: block;
-}
-
-.mainImageFrame {
-  position: relative;
-  border: 1px solid #E7D5B9;
-  border-radius: 6px;
-  padding: 6px;
-  background: rgba(255, 252, 247, 0.70);
-  box-shadow: 0 6px 24px rgba(25, 21, 18, 0.05);
-}
-
-/* Corner filigree rosettes */
-.cornerFlourish {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.cornerTl { top: 2px; left: 2px; }
-.cornerTr { top: 2px; right: 2px; }
-.cornerBl { bottom: 2px; left: 2px; }
-.cornerBr { bottom: 2px; right: 2px; }
-
-.imageInner {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  overflow: hidden;
-  background: #EEE3D2;
-}
-
-.stageMainImg {
-  object-fit: cover;
-  display: block;
-}
-
-.imageBadge {
-  position: absolute;
-  bottom: 12px;
-  left: 14px;
-  display: inline-flex;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: clamp(28px, 4vw, 56px);
   align-items: center;
-  gap: 6px;
-  background: rgba(25, 21, 18, 0.85);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(231, 213, 185, 0.35);
-  border-radius: 4px;
-  padding: 5px 12px;
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #FAF6EF;
+  animation: stageIn 260ms ease;
 }
-
-.badgeLine {
-  color: #B58A4B;
-}
-
-.zoomBtn {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(255, 252, 247, 0.92);
-  border: 1px solid #E7D5B9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #191512;
-  cursor: pointer;
-  transition: all 180ms ease;
-}
-
-.zoomBtn:hover {
-  background: #8E1722;
-  color: #FFFFFF;
-  border-color: #8E1722;
-}
-
-/* =========================================================================
-   RIGHT COLUMN: STAGE DETAILS & TECHNICAL SPECIFICATIONS
-   ========================================================================= */
 
 .infoColumn {
-  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
 }
 
-.watermarkNumber {
-  position: absolute;
-  top: -14px;
-  right: 0;
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 7.5rem;
-  font-weight: 400;
-  color: rgba(181, 138, 75, 0.11);
-  line-height: 0.8;
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
-}
-
-.stageTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.stageEyebrow {
+  margin: 0 0 12px;
   font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.20em;
-  color: #B58A4B;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 2;
-}
-
-.tagDash {
-  color: #B58A4B;
+  color: var(--mono-gold);
 }
 
 .stageTitle {
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-size: clamp(1.7rem, 2.5vw, 2.2rem);
-  font-weight: 400;
-  line-height: 1.15;
-  color: #191512;
-  margin: 0 0 10px;
-  position: relative;
-  z-index: 2;
+  margin: 0 0 14px;
+  max-width: 12em;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 3vw, 2.85rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--mono-ink);
 }
 
 .stageSummary {
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-style: italic;
-  font-size: 0.94rem;
-  line-height: 1.5;
-  color: #8E1722;
-  margin: 0 0 14px;
-  position: relative;
-  z-index: 2;
+  margin: 0 0 28px;
+  max-width: 34rem;
+  font-family: var(--font-dm), var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--mono-muted);
 }
 
-/* Three Technical Benefit Tiles */
-.benefitTilesRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 24px;
-  position: relative;
-  z-index: 2;
-}
-
-.benefitTile {
-  background: rgba(255, 252, 247, 0.85);
-  border: 1px solid #E7D5B9;
-  border-radius: 6px;
-  padding: 10px 12px;
+.highlights {
   display: flex;
-  flex-direction: column;
-}
-
-.benefitIconWrap {
-  color: #B58A4B;
-  margin-bottom: 6px;
-}
-
-.benefitTitle {
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: #191512;
-  margin-bottom: 3px;
-}
-
-.benefitSubtitle {
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.69rem;
-  line-height: 1.35;
-  color: #786C60;
-}
-
-/* Technical Specification Panel */
-.specPanel {
-  background: rgba(255, 250, 240, 0.92);
-  border-left: 2.5px solid #8E1722;
-  border-top: 1px solid rgba(231, 213, 185, 0.5);
-  border-right: 1px solid rgba(231, 213, 185, 0.5);
-  border-bottom: 1px solid rgba(231, 213, 185, 0.5);
-  border-radius: 0 4px 4px 0;
-  padding: 10px 14px;
-  margin-bottom: 22px;
-  position: relative;
-  z-index: 2;
-}
-
-.specPanelLabel {
-  display: block;
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #8E1722;
-  margin-bottom: 4px;
-}
-
-.specPanelValue {
-  display: block;
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.77rem;
-  line-height: 1.45;
-  color: #3A322C;
-}
-
-/* Bottom Actions Row */
-.bottomActionsRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
   flex-wrap: wrap;
-  margin-top: auto;
-  position: relative;
-  z-index: 2;
+  gap: 22px 28px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
 }
 
-.stageNavBtns {
+.highlight {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.prevStageBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border-radius: 9999px;
-  background: #FFFCF7;
-  border: 1px solid #E7D5B9;
+  gap: 10px;
+  color: var(--mono-gold);
   font-family: var(--font-dm), var(--font-sans);
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.12em;
+  line-height: 1.3;
   text-transform: uppercase;
-  color: #191512;
-  cursor: pointer;
-  transition: all 180ms ease;
 }
 
-.prevStageBtn:hover:not(:disabled) {
-  background: #FAF5EB;
-  border-color: #8E1722;
-  color: #8E1722;
-}
-
-.prevStageBtn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.nextStageBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 9999px;
-  background: #8E1722;
-  border: 1px solid #8E1722;
-  font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: all 180ms ease;
-  box-shadow: 0 2px 8px rgba(142, 23, 34, 0.25);
-}
-
-.nextStageBtn:hover:not(:disabled) {
-  background: #73111A;
-}
-
-.nextStageBtn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+.highlight span {
+  max-width: 8.5rem;
+  color: var(--mono-ink);
 }
 
 .exploreLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  color: var(--mono-burgundy);
   font-family: var(--font-dm), var(--font-sans);
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8E1722;
   text-decoration: none;
-  transition: all 180ms ease;
+  transition: color 220ms ease;
+}
+
+.exploreLink svg {
+  transition: transform 220ms ease;
 }
 
 .exploreLink:hover {
-  color: #5E0C15;
+  color: #6f121b;
 }
 
-.linkArrow {
-  transition: transform 180ms ease;
-}
-
-.exploreLink:hover .linkArrow {
+.exploreLink:hover svg {
   transform: translateX(3px);
 }
 
-/* =========================================================================
-   RESPONSIVENESS
-   ========================================================================= */
+.galleryColumn {
+  min-width: 0;
+}
 
-@media (max-width: 1080px) {
+.imageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #efe6d8;
+}
+
+.stageImage {
+  object-fit: cover;
+}
+
+@keyframes stageIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 980px) {
   .headline {
     white-space: normal;
   }
 
-  .stageNavBar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+  .stagePillsRow {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
-  .navControlsRight {
-    margin-left: 0;
-    width: 100%;
-    justify-content: space-between;
+  .stagePillsRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stageTab {
+    flex: 0 0 auto;
+    min-width: max-content;
+    padding-right: 16px;
   }
 
   .mainContentGrid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 24px;
   }
 
+  .stageTitle {
+    max-width: none;
+  }
 }
 
-@media (max-width: 640px) {
-  .benefitTilesRow {
-    grid-template-columns: 1fr;
+@media (max-width: 720px) {
+  .craftSection {
+    padding: 28px 0 32px;
   }
 
-  .bottomActionsRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+  .stageNavBar {
+    align-items: center;
+  }
+
+  .imageFrame {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainContentGrid {
+    animation: none;
   }
 }

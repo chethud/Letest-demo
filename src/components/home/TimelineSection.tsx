@@ -37,7 +37,7 @@ export const TimelineSection: React.FC = () => {
           </h2>
 
           <p className={styles.subtitle}>
-            From the royal founding in 1912 by Maharaja Nalvadi Krishnaraja Wadiyar to the present day, explore over a century of unbroken textile sovereignty.
+            From eighteenth-century sericulture at Channapatna, through the 1912 weaving factory, to the corporation established in 1980.
           </p>
         </div>
 

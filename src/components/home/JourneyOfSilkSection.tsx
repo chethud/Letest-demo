@@ -34,11 +34,9 @@ export const JourneyOfSilkSection: React.FC = () => {
       {/* 02. Restrained Luxury Editorial Header */}
       <div className={styles.headerBlock}>
         <div className={styles.eyebrowWrapper}>
-          <span className={styles.eyebrowRule} />
           <span className={styles.eyebrowText}>
             {isKannada ? "ಕರಕುಶಲತೆಯ ಕಲೆ" : "THE JOURNEY OF SILK"}
           </span>
-          <span className={styles.eyebrowRuleRight} />
         </div>
 
         <h2 className={styles.sectionTitle}>
@@ -91,7 +89,6 @@ export const JourneyOfSilkSection: React.FC = () => {
                 <div className={styles.contentBlock}>
                   <div className={styles.stepNumber}>
                     <span>{stage.step}</span>
-                    <span className={styles.stepDividerLine} />
                     <span style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "#8A6F3D" }}>
                       {stageName}
                     </span>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | KSIC Mysore Silk — Government of Karnataka",
   },
   description:
-    "Official digital identity and heritage portal of Karnataka Silk Industries Corporation Limited (KSIC). Established in 1912 by Maharaja Nalvadi Krishnaraja Wadiyar. The sole registered proprietor of authentic GI-11 Mysore Silk with pure gold zari.",
+    "Karnataka Silk Industries Corporation Limited (KSIC). The weaving factory dates from 1912 under Maharaja Nalvadi Krishnaraja Wadiyar. KSIC was incorporated in 1980. Mysore Silk is recorded as GIR-11; the sources give both November 2005 and 2017.",
   keywords: [
     "KSIC",
     "Karnataka Silk Industries Corporation",

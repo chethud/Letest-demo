@@ -58,11 +58,23 @@ export const ScrollAnimator: React.FC = () => {
       threshold: 0.08,
     });
 
+    const revealSelector =
+      ".reveal-on-scroll, .reveal-up, .reveal-fade, .reveal-scale, .reveal-stagger, .reveal-rule, .reveal-left, .reveal-right";
+
+    const revealIfInView = (el: Element) => {
+      const rect = el.getBoundingClientRect();
+      const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+      if (rect.height === 0 && rect.width === 0) return;
+      if (rect.bottom > 0 && rect.top < viewHeight) {
+        el.classList.add("revealed");
+      }
+    };
+
     const scanAndObserve = () => {
-      const elements = document.querySelectorAll(
-        ".reveal-on-scroll, .reveal-up, .reveal-fade, .reveal-scale, .reveal-stagger, .reveal-rule, .reveal-left, .reveal-right"
-      );
+      const elements = document.querySelectorAll(revealSelector);
       elements.forEach((el) => {
+        if (el.classList.contains("revealed")) return;
+        revealIfInView(el);
         if (!el.classList.contains("revealed")) {
           observer.observe(el);
         }
@@ -72,6 +84,8 @@ export const ScrollAnimator: React.FC = () => {
     // Scan initially and after small delay for hydration
     scanAndObserve();
     const timeout = setTimeout(scanAndObserve, 250);
+    window.addEventListener("scroll", scanAndObserve, { passive: true });
+    window.addEventListener("resize", scanAndObserve);
 
     // Watch for DOM changes (e.g., category filtering on /collection)
     const mutationObserver = new MutationObserver(() => {
@@ -85,6 +99,8 @@ export const ScrollAnimator: React.FC = () => {
 
     return () => {
       clearTimeout(timeout);
+      window.removeEventListener("scroll", scanAndObserve);
+      window.removeEventListener("resize", scanAndObserve);
       observer.disconnect();
       mutationObserver.disconnect();
     };

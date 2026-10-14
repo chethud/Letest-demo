@@ -1,204 +1,110 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Calendar, Award, Building, History } from "lucide-react";
-import { HERITAGE_MILESTONES, HERITAGE_NARRATIVE } from "@/data/heritage";
+import { HeritageChronology } from "./HeritageChronology";
+import { HeritageScroll } from "./HeritageScroll";
 import styles from "./Heritage.module.css";
 
 export const metadata = {
   title: "Our Heritage · Since 1912 | KSIC",
-  description: "The royal history of the Mysore Silk Weaving Factory founded in 1912 by Maharaja Nalvadi Krishnaraja Wadiyar. Over a century of unbroken textile stewardship.",
+  description: "The documented history of Mysore Silk: eighteenth-century sericulture, the 1912 weaving factory, and KSIC from 1980.",
 };
 
 export default function HeritagePage() {
   return (
-    <div className={styles.heritagePage}>
-      {/* Editorial Header */}
-      <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-secondary)", borderBottom: "var(--border-rule)" }}>
-        <div className="container-institutional reveal-up">
-          <span className="editorial-label">ARCHIVAL MONOGRAPH</span>
-          <h1 className="display-hero" style={{ marginTop: "12px", marginBottom: "24px" }}>
-            A ROYAL LEGACY
-            <br />
-            WOVEN IN MYSURU.
-          </h1>
-          <p className="subheadline" style={{ maxWidth: "780px" }}>
-            Established in 1912 by Maharaja Sri Nalvadi Krishnaraja Wadiyar, the Mysore Silk Weaving Factory stands as one of India&apos;s oldest operating textile monuments.
-          </p>
-        </div>
-      </section>
+    <div className={styles.page}>
+      <HeritageScroll>
+        <section className={`${styles.panel} ${styles.hero}`} aria-label="Archival monograph">
+          <div className={styles.inner}>
+            <div className={styles.heroGrid}>
+              <div className={styles.heroCopy}>
+                <p className={styles.eyebrow}>Archival Monograph</p>
+                <h1 className={styles.heroTitle}>
+                  A royal legacy
+                  <br />
+                  woven in <span>Mysuru.</span>
+                </h1>
+                <p className={styles.heroLead}>
+                  In 1912, under Maharaja Sri Nalvadi Krishnaraja Wadiyar, the Mysore Silk Weaving Factory was established to produce premium silk fabrics for the royal family and the armed forces.
+                </p>
+              </div>
+              <div className={styles.heroMedia}>
+                <Image
+                  src="/assets/heritage/mysore-palace-heritage.jpg"
+                  alt="Mysore Palace, the royal seat associated with the founding of Mysore Silk"
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 100vw, 46vw"
+                  className={styles.coverImage}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
-      {/* Narrative Section 1: The Royal Inception */}
-      <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}>
-        <div className="container-institutional">
-          <div className={styles.narrativeGrid}>
-            <div className="reveal-left">
-              <span className="editorial-label">1912 · ROYAL COURT PATRONAGE</span>
-              <h2 className="display-section" style={{ marginBottom: "24px" }}>
-                THE VISION OF SRI NALVADI KRISHNARAJA WADIYAR
-              </h2>
-              <p style={{ marginBottom: "18px" }}>
-                During the enlightened reign of Sri Nalvadi Krishnaraja Wadiyar (1902–1940), the Kingdom of Mysore emerged as the most progressive model state in British India. Recognizing the natural sericulture bounty of the Cauvery basin, the Maharaja envisioned an industrial weaving unit to supply ceremonial silk regalia for the royal court and ornamental ceremonial uniforms for the state armed forces.
-              </p>
-              <p style={{ marginBottom: "24px" }}>
-                In 1912, ten Swiss power looms along with specialized preparatory machinery were imported directly from Switzerland. This pioneering setup became the first modern mechanical silk weaving mill in the Indian subcontinent.
-              </p>
+        <section className={`${styles.panel} ${styles.narrative}`} aria-label="Royal court patronage, 1912">
+          <div className={styles.inner}>
+            <div className={styles.split}>
+              <div>
+                <p className={styles.eyebrow}>1912 · Royal Court Patronage</p>
+                <h2 className={styles.sectionTitle}>The vision of Sri Nalvadi Krishnaraja Wadiyar</h2>
+                <p className={styles.body}>
+                  The 1912 factory wove premium silk for the royal family and the armed forces. Silk rearing in the region is older, traced to Tippu Sultan&apos;s unit at Channapatna in the eighteenth century.
+                </p>
+                <p className={styles.body}>
+                  The Maharaja took an interest in Swiss silk, and weaving linked with the Mysore Palace drew on European practice.
+                </p>
+              </div>
+              <div className={styles.portrait}>
+                <Image
+                  src="/assets/heritage/nalvadi-krishnaraja-wadiyar.jpg"
+                  alt="Sri Nalvadi Krishnaraja Wadiyar, Maharaja of Mysore"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 42vw"
+                  className={styles.coverImage}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </HeritageScroll>
 
-              <div style={{ padding: "20px", backgroundColor: "var(--color-bg-subtle)", borderLeft: "3px solid var(--color-burgundy)", marginBottom: "32px" }}>
-                <p style={{ fontStyle: "italic", fontFamily: "var(--font-serif)", fontSize: "1.1rem", color: "var(--color-text-primary)", margin: 0 }}>
-                  &ldquo;The silk produced in Mysore reflects the traditional splendor of our realm through its rich yet delicate motifs. The name Mysore Silk is a befitting tribute to its ancestry.&rdquo;
+      <section className={styles.narrativeAlt} aria-label="Industrial expansion, 1932">
+        <div className={styles.inner}>
+          <div className={`${styles.split} ${styles.splitReverse}`}>
+            <div className={styles.landscape}>
+              <Image
+                src="/assets/heritage/ksic-1932-jacquard.jpg"
+                alt="Historical photograph of the Mysore Silk Weaving Factory, used as an illustration and not as proof of a loom count"
+                fill
+                sizes="(max-width: 900px) 100vw, 46vw"
+                className={styles.coverImage}
+              />
+            </div>
+            <div>
+              <p className={styles.eyebrow}>1930 · Factory expansion</p>
+              <h2 className={styles.sectionTitle}>From the royal factory to KSIC</h2>
+              <p className={styles.body}>
+                The KSIC note says factory operations were expanded from 1930, and that commercial production was brought into operation after 1932. Those statements are left in that order.
+              </p>
+              <p className={styles.body}>
+                In 1980 the corporation was established under the Companies Act. The note associates that transition with modernisation supported by the World Bank, and records that the Mysore Silk Weaving Factory and the other listed silk units were transferred to KSIC in the same year. Between 1982 and 1986 it records imported reeling and weaving machinery associated with Korea and Japan.
+              </p>
+              <div className={styles.statRow}>
+                <p>
+                  <strong>1912</strong>
+                  <span>Weaving factory</span>
+                </p>
+                <p>
+                  <strong>1980</strong>
+                  <span>KSIC incorporated</span>
                 </p>
               </div>
             </div>
-
-            <div className={`reveal-scale ${styles.mediaFrame}`}>
-              <Image
-                src="/assets/heritage/nalvadi-krishnaraja-wadiyar.jpg"
-                alt="Sri Nalvadi Krishnaraja Wadiyar Maharaja of Mysore"
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-                style={{ objectFit: "cover", objectPosition: "center 20%" }}
-              />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Narrative Section 2: Swiss Engineering on Mananthody Road */}
-      <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-paper)", borderBottom: "var(--border-rule)" }}>
-        <div className="container-institutional">
-          <div className={styles.narrativeGridReverse}>
-            <div className={`reveal-scale ${styles.mediaFrameWide}`}>
-              <Image
-                src="/assets/heritage/ksic-1932-jacquard.jpg"
-                alt="Swiss Jacquard power looms installed during 1932 industrial expansion at KSIC Silk Weaving Factory"
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-
-            <div className="reveal-right">
-              <span className="editorial-label">1932 · INDUSTRIAL EXPANSION</span>
-              <h2 className="display-section" style={{ marginBottom: "24px" }}>
-                138 SWISS LOOMS & MODERN EXPANSION
-              </h2>
-              <p style={{ marginBottom: "18px" }}>
-                Guided by Dewan Sir M. Visvesvaraya&apos;s celebrated motto &ldquo;Industrialise or Perish&rdquo;, the government expanded the factory premises in 1932. The capacity grew from the initial 10 looms to 138 specialized Swiss looms, alongside pirn winders, dobby attachments, and Jacquard heads.
-              </p>
-              <p style={{ marginBottom: "28px" }}>
-                Following India&apos;s Independence in 1947, the Mysore State Sericulture Department took direct administrative charge. In 1980, the Government of Karnataka incorporated Karnataka Silk Industries Corporation Limited (KSIC) as an autonomous state undertaking to safeguard the craftsmanship and commercial viability of the historic factory.
-              </p>
-
-              <div style={{ display: "flex", gap: "24px" }}>
-                <div>
-                  <div style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", color: "var(--color-burgundy)" }}>138</div>
-                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.15em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>Calibrated Looms</div>
-                </div>
-                <div style={{ borderLeft: "1px solid rgba(23, 21, 19, 0.15)", paddingLeft: "24px" }}>
-                  <div style={{ fontFamily: "var(--font-serif)", fontSize: "2.4rem", color: "var(--color-gold)" }}>100+</div>
-                  <div style={{ fontSize: "0.75rem", letterSpacing: "0.15em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>Years of Weaving</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Complete Historical Chronology — Century of Stewardship */}
-      <section className={styles.timelineSection} id="timeline">
-        <div className="container-institutional">
-          <div className={`reveal-up ${styles.timelineHeader}`}>
-            <div className={styles.eyebrowWrapper}>
-              <span className={styles.eyebrowRule} />
-              <span className={styles.eyebrowText}>CENTURY OF STEWARDSHIP</span>
-              <span className={styles.eyebrowRuleRight} />
-            </div>
-            <h2 className={styles.sectionTitle}>THE CHRONOLOGY OF MYSORE SILK</h2>
-            <p className={styles.sectionSubtitle}>
-              Six defining epochs of unbroken royal stewardship and sovereign textile art, from 1912 to the present day.
-            </p>
-          </div>
-
-          <div className={`reveal-stagger ${styles.milestonesStack}`}>
-            {HERITAGE_MILESTONES.map((m, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
-                <article key={m.year} className={styles.milestoneCard}>
-                  {/* Archival Year Watermark */}
-                  <div className={styles.cardWatermarkYear} aria-hidden="true">
-                    {m.year}
-                  </div>
-
-                  <div className={isEven ? styles.cardGrid : styles.cardGridReverse}>
-                    {/* Media Column */}
-                    <div className={styles.cardMediaCol}>
-                      <div className={styles.cardMediaFrame}>
-                        {m.image && (
-                          <Image
-                            src={m.image}
-                            alt={`${m.year} — ${m.title}`}
-                            fill
-                            sizes="(max-width: 960px) 100vw, 50vw"
-                            className={styles.cardImage}
-                          />
-                        )}
-                        <div className={styles.cardSealBadge}>
-                          <Award size={12} />
-                          <span>ARCHIVAL RECORD · {m.year}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content Column */}
-                    <div className={styles.cardContentCol}>
-                      <div className={styles.epochKicker}>
-                        <History size={13} style={{ color: "#B79A65" }} />
-                        <span>{m.epoch}</span>
-                      </div>
-
-                      <div className={styles.cardYearHeading}>{m.year}</div>
-
-                      <h3 className={styles.cardTitle}>{m.title}</h3>
-
-                      <p className={styles.cardDescription}>{m.description}</p>
-
-                      <div className={styles.significanceBox}>
-                        <div className={styles.significanceText}>
-                          <strong>INSTITUTIONAL SIGNIFICANCE: </strong>
-                          {m.significance}
-                        </div>
-                      </div>
-
-                      <div className={styles.metaRow}>
-                        {m.statNumber && (
-                          <div className={styles.statItem}>
-                            <span className={styles.statNumber}>{m.statNumber}</span>
-                            <span className={styles.statLabel}>{m.statLabel}</span>
-                          </div>
-                        )}
-
-                        {m.provenance && (
-                          <div className={styles.provenanceText}>
-                            Provenance: {m.provenance}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-
-          <div className={`reveal-up ${styles.ctaRow}`}>
-            <Link href="/craft" className={styles.curvedCtaBtn}>
-              <span>EXPLORE SILK CRAFTSMANSHIP</span>
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeritageChronology />
     </div>
   );
 }
