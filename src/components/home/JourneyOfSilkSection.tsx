@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, X, Sparkles } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import styles from "./JourneyOfSilkSection.module.css";
 import { JOURNEY_STAGES, JourneyStage } from "@/data/journeyOfSilk";
 import { useLanguage } from "@/context/LanguageContext";
@@ -58,7 +58,6 @@ export const JourneyOfSilkSection: React.FC = () => {
           {JOURNEY_STAGES.map((stage, idx) => {
             const headline = isKannada ? stage.headlineKn : stage.headline;
             const description = isKannada ? stage.descriptionKn : stage.description;
-            const badge = isKannada ? stage.detailBadgeKn : stage.detailBadge;
             const stageName = isKannada ? stage.nameKn : stage.name;
 
             return (
@@ -86,10 +85,6 @@ export const JourneyOfSilkSection: React.FC = () => {
                     className={styles.stageImage}
                   />
                   <div className={styles.imageOverlayGlow} aria-hidden="true" />
-                  <div className={styles.badgeChip}>
-                    <Sparkles size={11} style={{ display: "inline-block", marginRight: "4px", verticalAlign: "middle", color: "#B79A65" }} />
-                    {badge}
-                  </div>
                 </div>
 
                 {/* Editorial Content Below Image */}

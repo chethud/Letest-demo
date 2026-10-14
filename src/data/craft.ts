@@ -81,7 +81,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     step: "07",
     name: "FINISHED SILK",
     kannadaName: "ಸಿದ್ಧ ರೇಷ್ಮೆ",
-    title: "Laser Authentication & Unique Pallu Code",
+    title: "Unique Pallu Code",
     summary: "Every authentic saree receives an embroidered code and GI-11 hologram.",
     details: "Each completed length undergoes stringent physical inspection for weight, thread count, and zari purity. Upon clearing examination, a discrete unique serial identification number is embroidered directly into the pallu seam alongside the KSIC optical hologram and GI-11 certification mark.",
     technicalSpec: "GI-11 Certified \u00b7 Unique embroidered serial code \u00b7 100% Mulberry Guarantee",

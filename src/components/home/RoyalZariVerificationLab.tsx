@@ -13,7 +13,9 @@ import {
   FileCheck,
   Check,
   ArrowRight,
-  CheckCircle2,
+  Sun,
+  Shield,
+  Leaf,
 } from "lucide-react";
 import styles from "./RoyalZariVerificationLab.module.css";
 import { useLanguage } from "@/context/LanguageContext";
@@ -32,6 +34,45 @@ interface VerificationResult {
   certificationStatus: "VERIFIED_AUTHENTIC" | "INVALID";
 }
 
+const OFFICIAL_BATCHES: Record<string, Omit<VerificationResult, "certificationStatus">> = {
+  "KSIC-MYS-1912-ROYAL": {
+    serial: "KSIC-MYS-1912-ROYAL",
+    sareeTitle: "Royal Durbar Heritage Crepe Saree",
+    sareeTitleKn: "ರಾಜ ದರ್ಬಾರ್ ಪಾರಂಪರಿಕ ಕ್ರೇಪ್ ಸೀರೆ",
+    weaveDate: "Manufactured at Mysuru Heritage Weaving Mill",
+    loomId: "Swiss Precision Loom #04 · Loomed under Master Weaver Oversight",
+    giTag: "GI Certificate No. 11 (Government of India)",
+    goldContent: "0.65% Certified 24-Karat Pure Gold",
+    silverContent: "65.0% Hallmarked Fine Silver",
+    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
+    hologramCode: "OPT-GANDABERUNDA-849102",
+  },
+  "KSIC-ZARI-2024-GOLDA": {
+    serial: "KSIC-ZARI-2024-GOLDA",
+    sareeTitle: "Kasuti Border Pure Gold Zari Saree",
+    sareeTitleKn: "ಕಸೂತಿ ಅಂಚಿನ ಶುದ್ಧ ಚಿನ್ನದ ಜರಿ ಸೀರೆ",
+    weaveDate: "Certified Batch: Mysuru Central Weaving Mill (Est. 1912)",
+    loomId: "Authenticated Loom Track #KSIC-1912 · Verified Electronic Jacquard",
+    giTag: "GI Certificate No. 11 (Government of India)",
+    goldContent: "0.65% Certified 24-Karat Pure Gold",
+    silverContent: "65.0% Hallmarked Fine Silver",
+    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
+    hologramCode: "OPT-GANDABERUNDA-202441",
+  },
+  "KSIC-AMBART-9984-GI11": {
+    serial: "KSIC-AMBART-9984-GI11",
+    sareeTitle: "Golden Ambari Ceremonial Bridal Saree",
+    sareeTitleKn: "ಚಿನ್ನದ ಅಂಬಾರಿ ಕಲ್ಯಾಣ ಮಹೋತ್ಸವ ಸೀರೆ",
+    weaveDate: "Certified Batch: Mysuru Central Weaving Mill (Est. 1912)",
+    loomId: "Authenticated Loom Track #KSIC-1912 · Verified Electronic Jacquard",
+    giTag: "GI Certificate No. 11 (Government of India)",
+    goldContent: "0.65% Certified 24-Karat Pure Gold",
+    silverContent: "65.0% Hallmarked Fine Silver",
+    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
+    hologramCode: "OPT-GANDABERUNDA-998411",
+  },
+};
+
 const SAMPLE_CODES = [
   { code: "KSIC-MYS-1912-ROYAL", label: "Royal Durbar Crepe Saree" },
   { code: "KSIC-ZARI-2024-GOLDA", label: "Kasuti Border Pure Zari" },
@@ -46,61 +87,25 @@ export const RoyalZariVerificationLab: React.FC = () => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [activeTab, setActiveTab] = useState<"validator" | "hologram">("validator");
   const [result, setResult] = useState<VerificationResult | null>({
-    serial: "KSIC-MYS-1912-ROYAL",
-    sareeTitle: "Royal Durbar Heritage Crepe Saree",
-    sareeTitleKn: "ರಾಜ ದರ್ಬಾರ್ ಪಾರಂಪರಿಕ ಕ್ರೇಪ್ ಸೀರೆ",
-    weaveDate: "Manufactured at Mysuru Heritage Weaving Mill",
-    loomId: "Swiss Precision Loom #04 · Loomed under Master Weaver Oversight",
-    giTag: "GI Certificate No. 11 (Government of India)",
-    goldContent: "0.65% Certified 24-Karat Pure Gold",
-    silverContent: "65.0% Hallmarked Fine Silver",
-    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
-    hologramCode: "OPT-GANDABERUNDA-849102",
+    ...OFFICIAL_BATCHES["KSIC-MYS-1912-ROYAL"],
     certificationStatus: "VERIFIED_AUTHENTIC",
   });
 
   const handleVerify = (codeToTest?: string) => {
-    const code = (codeToTest !== undefined ? codeToTest : inputCode).trim();
+    const code = (codeToTest !== undefined ? codeToTest : inputCode).trim().toUpperCase();
     setIsVerifying(true);
 
     setTimeout(() => {
       setIsVerifying(false);
-      const upper = code.toUpperCase();
-      if (
-        upper.includes("KSIC") ||
-        upper.includes("ROYAL") ||
-        upper.includes("GOLDA") ||
-        upper.includes("AMBART") ||
-        upper.includes("AMBARI")
-      ) {
+      const official = OFFICIAL_BATCHES[code];
+      if (official) {
         setResult({
-          serial: upper.length > 0 ? upper : "KSIC-MYS-1912-ROYAL",
-          sareeTitle:
-            upper.includes("AMBART") || upper.includes("AMBARI")
-              ? "Golden Ambari Ceremonial Bridal Saree"
-              : upper.includes("GOLDA")
-              ? "Kasuti Border Pure Gold Zari Saree"
-              : "Royal Durbar Heritage Crepe Saree",
-          sareeTitleKn:
-            upper.includes("AMBART") || upper.includes("AMBARI")
-              ? "ಚಿನ್ನದ ಅಂಬಾರಿ ಕಲ್ಯಾಣ ಮಹೋತ್ಸವ ಸೀರೆ"
-              : upper.includes("GOLDA")
-              ? "ಕಸೂತಿ ಅಂಚಿನ ಶುದ್ಧ ಚಿನ್ನದ ಜರಿ ಸೀರೆ"
-              : "ರಾಜ ದರ್ಬಾರ್ ಪಾರಂಪರಿಕ ಕ್ರೇಪ್ ಸೀರೆ",
-          weaveDate: "Certified Batch: Mysuru Central Weaving Mill (Est. 1912)",
-          loomId: "Authenticated Loom Track #KSIC-1912 · Verified Electronic Jacquard",
-          giTag: "GI Certificate No. 11 (Government of India)",
-          goldContent: "0.65% Certified 24-Karat Pure Gold",
-          silverContent: "65.0% Hallmarked Fine Silver",
-          silkPurity: "100% Natural Grade-A Mulberry Silk Core",
-          hologramCode: upper.includes("1912")
-            ? "OPT-GANDABERUNDA-849102"
-            : `OPT-GANDABERUNDA-${Math.floor(100000 + Math.random() * 900000)}`,
+          ...official,
           certificationStatus: "VERIFIED_AUTHENTIC",
         });
       } else {
         setResult({
-          serial: code,
+          serial: code || "—",
           sareeTitle: "Unrecognized Serial Number",
           sareeTitleKn: "ಅಮಾನ್ಯ ಕ್ರಮಸಂಖ್ಯೆ",
           weaveDate: "Not found in official KSIC State Registry",
@@ -427,68 +432,73 @@ export const RoyalZariVerificationLab: React.FC = () => {
           <div className={styles.hologramCard}>
             <div className={styles.hologramGrid}>
               <div className={styles.hologramVisualCol}>
-                <div className={styles.hologramFrame}>
-                  <Image
-                    src="/assets/craft/ksic-authenticity-hologram.jpg"
-                    alt="Authentic KSIC optical security hologram with Gandaberunda royal emblem"
-                    fill
-                    className={styles.hologramImg}
-                    sizes="(max-width: 900px) 100vw, 50vw"
-                  />
-                  <div className={styles.hologramShimmer} aria-hidden="true" />
-                  <div className={styles.hologramTag}>
-                    OFFICIAL SECURITY EMBOSSMENT
+                <div className={styles.sealFrame}>
+                  <span className={`${styles.sealCorner} ${styles.sealCornerTl}`} aria-hidden="true" />
+                  <span className={`${styles.sealCorner} ${styles.sealCornerTr}`} aria-hidden="true" />
+                  <span className={`${styles.sealCorner} ${styles.sealCornerBl}`} aria-hidden="true" />
+                  <span className={`${styles.sealCorner} ${styles.sealCornerBr}`} aria-hidden="true" />
+                  <div className={styles.sealPhoto}>
+                    <Image
+                      src="/assets/craft/ksic-gandaberunda-optical-seal.jpg"
+                      alt="Holographic Gandaberunda authenticity seal on crimson Mysore silk with gold zari, serial MS 2024 - A1739"
+                      width={912}
+                      height={496}
+                      className={styles.sealImage}
+                      sizes="(max-width: 960px) 92vw, 46vw"
+                    />
+                    <div className={styles.sealCaption}>
+                      <span aria-hidden="true">—</span>
+                      <span>OFFICIAL SECURITY EMBOSSEMENT</span>
+                      <span aria-hidden="true">—</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className={styles.hologramDetailsCol}>
-                <div className={styles.inputEyebrowRow}>
-                  <span className={styles.eyebrowDash}>—</span>
-                  <span className={styles.inputCardLabel}>
-                    {isKn ? "ಬಹು-ಪದರದ ಭದ್ರತಾ ತಂತ್ರಜ್ಞಾನ" : "MULTI-LAYERED COUNTERFEIT PROTECTION"}
-                  </span>
-                </div>
-
-                <h3 className={styles.hologramTitle}>
-                  {isKn
-                    ? "ದ್ವಿಮುಖ ಗಂಡಭೇರುಂಡ ಹೊಲೊಗ್ರಾಫಿಕ್ ಮುದ್ರೆ"
-                    : "The Gandaberunda Optical Micro-Seal"}
-                </h3>
-
+                <p className={styles.sealEyebrow}>Multi-layered counterfeit protection</p>
+                <h3 className={styles.hologramTitle}>The Gandaberunda Optical Micro-Seal</h3>
                 <p className={styles.hologramDesc}>
-                  {isKn
-                    ? "ಪ್ರತಿ ಕೆ.ಎಸ್.ಐ.ಸಿ ಸೀರೆಯು ಅಧಿಕೃತ ಹೊಲೊಗ್ರಾಫಿಕ್ ಸೀಲ್ ಅನ್ನು ಹೊಂದಿದ್ದು, ಇದರಲ್ಲಿ ಸೂಕ್ಷ್ಮ ಗಂಡಭೇರುಂಡ ಲಾಂಛನ ಮತ್ತು ಬೆಳಕಿಗೆ ತಕ್ಕಂತೆ ಬಣ್ಣ ಬದಲಾಗುವ ಆಪ್ಟಿಕಲ್ ಪದರಗಳನ್ನು ಅಳವಡಿಸಲಾಗಿದೆ."
-                    : "Every authentic Mysore Silk saree features a tamper-proof optical seal containing the royal twin-headed Gandaberunda emblem, a micro-etched alphanumeric serial track, and rainbow refraction layers engineered to prevent counterfeiting."}
+                  Every authentic Mysore Silk saree features a tamper-proof optical seal containing the royal twin-headed Gandaberunda emblem, a micro-etched alphanumeric serial track, and rainbow refraction layers engineered to prevent counterfeiting.
                 </p>
 
-                <div className={styles.securityChecklist}>
-                  <div className={styles.checkItem}>
-                    <CheckCircle2 size={16} className={styles.checkIcon} />
-                    <span>
-                      <strong>Rainbow Micro-Refraction:</strong> Shifts from Mysore gold to crimson when tilted under daylight.
+                <ul className={styles.securityChecklist}>
+                  <li className={styles.featureRow}>
+                    <span className={styles.featureIcon} aria-hidden="true">
+                      <Sun size={18} strokeWidth={1.5} />
                     </span>
-                  </div>
-                  <div className={styles.checkItem}>
-                    <CheckCircle2 size={16} className={styles.checkIcon} />
+                    <span className={styles.featureDivider} aria-hidden="true" />
                     <span>
-                      <strong>Embedded Pallu Serial Code:</strong> Woven directly into the gold zari border during weaving.
+                      <span className={styles.featureTitle}>Rainbow Micro-Refraction</span>
+                      <span className={styles.featureText}>Shifts from Mysore gold to crimson when tilted under daylight.</span>
                     </span>
-                  </div>
-                  <div className={styles.checkItem}>
-                    <CheckCircle2 size={16} className={styles.checkIcon} />
+                  </li>
+                  <li className={styles.featureRow}>
+                    <span className={styles.featureIcon} aria-hidden="true">
+                      <Shield size={18} strokeWidth={1.5} />
+                    </span>
+                    <span className={styles.featureDivider} aria-hidden="true" />
                     <span>
-                      <strong>Silk Mark Organization of India:</strong> 100% natural, unadulterated mulberry silk certification.
+                      <span className={styles.featureTitle}>Embedded Pallu Serial Code</span>
+                      <span className={styles.featureText}>Woven directly into the gold zari border during weaving.</span>
                     </span>
-                  </div>
-                </div>
+                  </li>
+                  <li className={styles.featureRow}>
+                    <span className={styles.featureIcon} aria-hidden="true">
+                      <Leaf size={18} strokeWidth={1.5} />
+                    </span>
+                    <span className={styles.featureDivider} aria-hidden="true" />
+                    <span>
+                      <span className={styles.featureTitle}>Silk Mark Organization of India</span>
+                      <span className={styles.featureText}>100% natural, unadulterated mulberry silk certification.</span>
+                    </span>
+                  </li>
+                </ul>
 
-                <div className={styles.hologramCtaRow}>
-                  <Link href="/craft#authenticity" className={styles.curvedHologramBtn}>
-                    <span>{isKn ? "ಸಂಪೂರ್ಣ ದೃಢೀಕರಣ ಮಾರ್ಗದರ್ಶಿ ಓದಿ" : "READ FULL AUTHENTICITY GUIDE"}</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
+                <Link href="/craft#authenticity" className={styles.curvedHologramBtn}>
+                  <span>Read full authenticity guide</span>
+                  <ArrowRight size={18} aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>

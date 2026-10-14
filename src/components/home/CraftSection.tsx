@@ -133,32 +133,8 @@ export const CraftSection: React.FC = () => {
 
         {/* ── 03. Main Two-Column Content Grid ── */}
         <div className={styles.mainContentGrid}>
-          {/* Left Column: Vertical Thumbnails Strip + Large Main Image Gallery */}
+          {/* Left Column: Main stage image */}
           <div className={styles.galleryColumn}>
-            {/* Vertical Thumbnails */}
-            <div className={styles.thumbnailsStrip} role="tablist" aria-label="Stage thumbnails">
-              {CRAFT_STAGES.map((s, idx) => {
-                const isActive = idx === activeStep;
-                return (
-                  <button
-                    key={s.step}
-                    type="button"
-                    className={`${styles.thumbnailBtn} ${isActive ? styles.thumbnailBtnActive : ""}`}
-                    onClick={() => setActiveStep(idx)}
-                    aria-label={`Select stage ${s.step}: ${s.name}`}
-                  >
-                    <Image
-                      src={s.image}
-                      alt={s.name}
-                      width={64}
-                      height={48}
-                      className={styles.thumbnailImg}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-
             {/* Main Stage Image Frame with Gold Outer Framing */}
             <div className={styles.mainImageFrame}>
               {/* Corner flourishes */}
@@ -229,9 +205,6 @@ export const CraftSection: React.FC = () => {
             {/* Supporting line in burgundy italic */}
             <p className={styles.stageSummary}>{stage.summary}</p>
 
-            {/* Full Technical Narrative */}
-            <p className={styles.stageDescription}>{stage.details}</p>
-
             {/* Three Technical Benefit Tiles in One Row */}
             <div className={styles.benefitTilesRow}>
               {stage.attributes.map((attr, i) => (
@@ -258,12 +231,6 @@ export const CraftSection: React.FC = () => {
                   <span className={styles.benefitSubtitle}>{subtexts[i]}</span>
                 </div>
               ))}
-            </div>
-
-            {/* Technical Specification Panel */}
-            <div className={styles.specPanel}>
-              <span className={styles.specPanelLabel}>TECHNICAL SPECIFICATION</span>
-              <span className={styles.specPanelValue}>{stage.technicalSpec}</span>
             </div>
 
             {/* Bottom Actions Row */}
