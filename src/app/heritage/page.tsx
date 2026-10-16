@@ -79,7 +79,7 @@ export default function HeritagePage() {
                 alt="Historical photograph of the Mysore Silk Weaving Factory, used as an illustration and not as proof of a loom count"
                 fill
                 sizes="(max-width: 900px) 100vw, 46vw"
-                className={styles.coverImage}
+                className={`${styles.coverImage} ${styles.factoryPhoto}`}
               />
             </div>
             <div>

@@ -2,13 +2,15 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  background: #0a0806;
+  background: #fffafa;
   color: #f7f2e9;
   overflow: hidden;
   isolation: isolate;
+  padding-left: 1.25rem;
 }
 
 .atmosphere {
+  display: none;
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -129,6 +131,7 @@
     height: 540px;
     min-height: 540px;
     align-items: stretch;
+    padding-left: clamp(1.75rem, 3vw, 2.75rem);
   }
 
   .image,

@@ -35,9 +35,8 @@ const NAV_ITEMS: NavItem[] = [
     label: "The World of KSIC",
     href: "/institution",
     children: [
-      { label: "Our Heritage", href: "/heritage" },
-      { label: "The Factory", href: "/#factory" },
-      { label: "The Archive", href: "/heritage" },
+      { label: "Our Heritage", href: "/our-heritage" },
+      { label: "The Archive", href: "/the-archive" },
     ],
   },
   {
@@ -145,7 +144,9 @@ export const Header: React.FC = () => {
     return pathname === path || pathname.startsWith(`${path}/`);
   };
 
-  const activeId = NAV_ITEMS.find((item) => isActive(item.href))?.id;
+  const activeId =
+    NAV_ITEMS.find((item) => isActive(item.href))?.id ??
+    NAV_ITEMS.find((item) => item.children?.some((child) => pathOf(child.href) === pathname))?.id;
 
   return (
     <>
@@ -153,15 +154,26 @@ export const Header: React.FC = () => {
         <div className={`${styles.utilityBar} ${utilityHidden ? styles.utilityBarHidden : ""}`}>
           <div className={styles.utilityInner}>
             <p className={styles.utilityHeritage}>
+              <svg className={styles.utilityIcon} viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3.5 20.5h17M5.5 20.5v-8M18.5 20.5v-8M10 20.5v-5h4v5M3.5 12.5 12 5l8.5 7.5z" />
+                <path d="M12 5V2.8" />
+              </svg>
               <span>Government of Karnataka Initiative</span>
-              <span className={styles.utilityDiamond} aria-hidden="true" />
+              <span className={styles.utilityDot} aria-hidden="true">·</span>
+              <svg className={`${styles.utilityIcon} ${styles.utilityCrown}`} viewBox="0 0 40 24" aria-hidden="true">
+                <path d="M5 19 7.5 7.5l6.5 5.5L20 3.5l6 9.5 6.5-5.5L35 19z" />
+                <rect x="5" y="20" width="30" height="2.4" rx="1" />
+                <circle cx="7.5" cy="6" r="1.6" />
+                <circle cx="20" cy="2.2" r="1.6" />
+                <circle cx="32.5" cy="6" r="1.6" />
+              </svg>
               <span>A Heritage Since 1912</span>
             </p>
             <nav className={styles.utilityLinks} aria-label="Helpful links">
               <div className={styles.storeLocator}>
                 <button
                   type="button"
-                  className={styles.storeLocatorButton}
+                  className={`${styles.storeLocatorButton} ${styles.utilityLink}`}
                   aria-expanded={storesOpen}
                   aria-controls="store-locator-panel"
                   onClick={() => setStoresOpen((open) => !open)}
@@ -194,8 +206,8 @@ export const Header: React.FC = () => {
                   </div>
                 )}
               </div>
-              <Link href="/contact">Track Order</Link>
-              <Link href="/contact">Help</Link>
+              <Link href="/contact" className={styles.utilityLink}>Track Order</Link>
+              <Link href="/contact" className={styles.utilityLink}>Help</Link>
             </nav>
           </div>
         </div>

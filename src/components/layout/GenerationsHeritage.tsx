@@ -8,7 +8,7 @@ export const GenerationsHeritage: React.FC = () => {
       <div className={styles.atmosphere} aria-hidden="true" />
       <figure className={styles.image}>
         <img
-          src="/assets/heritage/generations.jpg"
+          src="/assets/heritage/three-generation-portrait.png"
           alt="Three generations of women in Mysore silk"
           className={styles.photo}
         />

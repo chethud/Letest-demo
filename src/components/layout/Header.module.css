@@ -11,17 +11,17 @@
 
 .utilityBar {
   height: 34px;
-  background: #FBE9ED;
-  color: #8d7368;
-  border-bottom: 1px solid rgba(141, 115, 104, 0.12);
-  transition: height 220ms ease, opacity 180ms ease, border-color 180ms ease;
+  background: #fdf1f3;
+  color: #776166;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 12px;
+  transition: height 220ms ease, opacity 180ms ease;
 }
 
 .utilityBarHidden {
   height: 0;
   overflow: hidden;
   opacity: 0;
-  border-bottom-color: transparent;
   pointer-events: none;
 }
 
@@ -29,45 +29,78 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: min(1240px, 92vw);
   height: 100%;
-  padding: 0 clamp(18px, 2.4vw, 36px);
+  margin: 0 auto;
+  padding: 9px 0;
+  box-sizing: border-box;
 }
 
 .utilityHeritage {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin: 0;
-  font-family: "DM Sans", var(--font-sans);
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
-.utilityDiamond {
-  width: 5px;
-  height: 5px;
-  background: #c4a27a;
-  transform: rotate(45deg);
+.utilityIcon {
+  width: 1.15em;
+  height: 1.15em;
   flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.utilityCrown {
+  width: 1.45em;
+  fill: currentColor;
+  stroke: none;
+}
+
+.utilityDot {
+  margin: 0 2px;
 }
 
 .utilityLinks {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 24px;
 }
 
-.utilityLinks a {
-  color: #7d675c;
-  font-family: "DM Sans", var(--font-sans);
-  font-size: 12.5px;
-  font-weight: 500;
+.utilityLink {
+  position: relative;
+  color: #776166;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
   text-decoration: none;
 }
 
-.utilityLinks a:hover {
-  color: #7a161d;
+.utilityLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.utilityLink:hover {
+  color: #7a1530;
+}
+
+.utilityLink:hover::after {
+  transform: scaleX(1);
 }
 
 .storeLocator {
@@ -78,19 +111,13 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #7d675c;
-  font-family: "DM Sans", var(--font-sans) !important;
-  font-size: 12.5px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.01em !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
   line-height: 1.2;
   text-transform: none !important;
   cursor: pointer;
-}
-
-.storeLocatorButton:hover,
-.storeLocatorButton[aria-expanded="true"] {
-  color: #8e1b2b;
 }
 
 .storeLocatorButton:focus-visible {
@@ -456,8 +483,9 @@
     height: 0;
   }
 
-  .utilityHeritage span:first-child,
-  .utilityDiamond {
+  .utilityHeritage span:first-of-type,
+  .utilityDot,
+  .utilityHeritage .utilityIcon:first-child {
     display: none;
   }
 

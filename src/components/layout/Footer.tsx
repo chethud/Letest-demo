@@ -6,11 +6,14 @@ import Image from "next/image";
 import styles from "./Footer.module.css";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
 
-const PAGE_LINKS = [
+const EXPLORE_LINKS = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/heritage" },
   { label: "How It's Made", href: "/craft" },
   { label: "Shop", href: "/collection" },
+];
+
+const HOUSE_LINKS = [
   { label: "About KSIC", href: "/institution" },
   { label: "Our Stores", href: "/stores" },
   { label: "Contact Us", href: "/contact" },
@@ -22,21 +25,23 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footerContainer} aria-label="Official Footer">
       <div className={styles.footerWrap}>
+        <p className={styles.kicker}>Government of Karnataka · A heritage since 1912</p>
+
         <div className={styles.footerTopGrid}>
           <div className={styles.brandColumn}>
             <div className={styles.stateEmblemRow}>
               <Image
                 src="/assets/brand/karnataka-seal.svg"
                 alt="Emblem of the Government of Karnataka"
-                width={52}
-                height={52}
+                width={56}
+                height={56}
                 className={styles.karnatakaSeal}
               />
               <Image
                 src="/assets/brand/ksic-logo.png"
                 alt="KSIC Mysore Silk"
-                width={148}
-                height={42}
+                width={156}
+                height={44}
                 className={styles.ksicLogo}
               />
             </div>
@@ -45,19 +50,13 @@ export const Footer: React.FC = () => {
               <br />
               Corporation Limited
             </p>
-            <p className={styles.brandNote}>Government of Karnataka · Factory 1912 · KSIC 1980</p>
+            <p className={styles.brandNote}>Factory 1912 · KSIC 1980</p>
           </div>
 
-          <nav className={styles.pageNav} aria-label="Pages">
+          <nav className={styles.linkGroup} aria-label="Explore">
+            <p className={styles.navColumnTitle}>Explore</p>
             <ul className={styles.navColumnList}>
-              {PAGE_LINKS.slice(0, 4).map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-            <ul className={styles.navColumnList}>
-              {PAGE_LINKS.slice(4).map((item) => (
+              {EXPLORE_LINKS.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>
@@ -65,28 +64,40 @@ export const Footer: React.FC = () => {
             </ul>
           </nav>
 
-          <address className={styles.contactInfoGroup}>
+          <nav className={styles.linkGroup} aria-label="The House">
+            <p className={styles.navColumnTitle}>The House</p>
+            <ul className={styles.navColumnList}>
+              {HOUSE_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <address className={styles.officeCard}>
             <p className={styles.navColumnTitle}>Corporate Office</p>
-            <p>
-              3rd & 4th Floor, Public Utility Building, M.G. Road, Mayo Hall,
-              Bengaluru — 560 001, Karnataka, India
+            <p className={styles.officeAddress}>
+              3rd & 4th Floor, Public Utility Building,
+              <br />
+              M.G. Road, Mayo Hall,
+              <br />
+              Bengaluru — 560 001, Karnataka
             </p>
-            <p>
-              <span className={styles.contactHighlight}>Phone:</span>{" "}
+            <p className={styles.officeLine}>
               <a href="tel:+918025586402">+91 80 25586402</a>
-              {" / "}
+              <span aria-hidden="true"> · </span>
               <a href="tel:+918025586550">25586550</a>
             </p>
-            <p>
-              <span className={styles.contactHighlight}>Email:</span>{" "}
+            <p className={styles.officeLine}>
               <a href="mailto:info@ksicsilk.com">info@ksicsilk.com</a>
             </p>
-            <p className={styles.contactCin}>CIN: {INSTITUTIONAL_OVERVIEW.corporateId}</p>
           </address>
         </div>
 
         <div className={styles.footerBottomRow}>
-          <p>© {year} Karnataka Silk Industries Corporation Limited. All rights reserved.</p>
+          <p>© {year} Karnataka Silk Industries Corporation Limited</p>
+          <p className={styles.contactCin}>CIN {INSTITUTIONAL_OVERVIEW.corporateId}</p>
         </div>
       </div>
     </footer>

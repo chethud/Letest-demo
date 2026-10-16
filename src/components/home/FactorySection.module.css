@@ -82,14 +82,35 @@
 
 .palaceSketch {
   margin-top: auto;
-  padding-top: 28px;
-  color: rgba(23, 19, 15, 0.28);
+  padding-top: 16px;
+  color: rgba(122, 21, 48, 0.28);
 }
 
 .palaceSketch svg {
   display: block;
-  width: min(100%, 280px);
+  width: min(100%, 320px);
   height: auto;
+}
+
+.watermarkPalace {
+  opacity: 0.55;
+}
+
+.watermarkSeal {
+  opacity: 0.9;
+}
+
+.watermarkWord {
+  font-family: "DM Sans", sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+
+.watermarkYear {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
 }
 
 @media (max-width: 900px) {
