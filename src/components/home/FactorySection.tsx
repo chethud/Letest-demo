@@ -14,7 +14,7 @@ export const FactorySection: React.FC = () => {
       <div className={styles.film}>
         <video
           className={styles.video}
-          src="/films/mysore-silk-story.mp4"
+          src="/films/mysore-silk-story.mp4?v=2"
           autoPlay
           muted
           loop

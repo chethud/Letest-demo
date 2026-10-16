@@ -2,20 +2,14 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   MapPin,
   ShieldCheck,
-  Scan,
   Search,
   RefreshCw,
   Lock,
   FileCheck,
   Check,
-  ArrowRight,
-  Sun,
-  Shield,
-  Leaf,
 } from "lucide-react";
 import styles from "./RoyalZariVerificationLab.module.css";
 import { useLanguage } from "@/context/LanguageContext";
@@ -85,7 +79,6 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({ id = "auth
 
   const [inputCode, setInputCode] = useState("KSIC-MYS-1912-ROYAL");
   const [isVerifying, setIsVerifying] = useState(false);
-  const [activeTab, setActiveTab] = useState<"validator" | "hologram">("validator");
   const [result, setResult] = useState<VerificationResult | null>({
     ...OFFICIAL_BATCHES["KSIC-MYS-1912-ROYAL"],
     certificationStatus: "VERIFIED_AUTHENTIC",
@@ -158,38 +151,7 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({ id = "auth
           </p>
         </div>
 
-        {/* Authentication Controls (Tabs) */}
-        <div className={styles.authControls} role="tablist">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "validator"}
-            className={`${styles.tabPill} ${
-              activeTab === "validator" ? styles.tabPillActive : styles.tabPillInactive
-            }`}
-            onClick={() => setActiveTab("validator")}
-          >
-            <ShieldCheck size={16} />
-            <span>{isKn ? "ಕ್ರಮಸಂಖ್ಯೆ ಪರಿಶೀಲಕ" : "SERIAL AUTHENTICATOR"}</span>
-          </button>
-
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeTab === "hologram"}
-            className={`${styles.tabPill} ${
-              activeTab === "hologram" ? styles.tabPillActive : styles.tabPillInactive
-            }`}
-            onClick={() => setActiveTab("hologram")}
-          >
-            <Scan size={16} />
-            <span>{isKn ? "ದೃಗ್ವಿಜ್ಞಾನ ಭದ್ರತಾ ಮುದ್ರೆ" : "OPTICAL SECURITY SEAL"}</span>
-          </button>
-        </div>
-
-        {/* TAB 1: Serial Authenticator Form & Certificate */}
-        {activeTab === "validator" && (
-          <div className={styles.verificationDeck}>
+        <div className={styles.verificationDeck}>
             {/* Left Card: Input & Security Features */}
             <div className={styles.inputCard}>
               <div className={styles.inputEyebrowRow}>
@@ -425,84 +387,6 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({ id = "auth
               )}
             </div>
           </div>
-        )}
-
-        {/* TAB 2: Optical Security Hologram Seal */}
-        {activeTab === "hologram" && (
-          <div className={styles.hologramCard}>
-            <div className={styles.hologramGrid}>
-              <div className={styles.hologramVisualCol}>
-                <div className={styles.sealFrame}>
-                  <span className={`${styles.sealCorner} ${styles.sealCornerTl}`} aria-hidden="true" />
-                  <span className={`${styles.sealCorner} ${styles.sealCornerTr}`} aria-hidden="true" />
-                  <span className={`${styles.sealCorner} ${styles.sealCornerBl}`} aria-hidden="true" />
-                  <span className={`${styles.sealCorner} ${styles.sealCornerBr}`} aria-hidden="true" />
-                  <div className={styles.sealPhoto}>
-                    <Image
-                      src="/assets/craft/ksic-gandaberunda-optical-seal.jpg"
-                      alt="Holographic Gandaberunda authenticity seal on crimson Mysore silk with gold zari, serial MS 2024 - A1739"
-                      width={912}
-                      height={496}
-                      className={styles.sealImage}
-                      sizes="(max-width: 960px) 92vw, 46vw"
-                    />
-                    <div className={styles.sealCaption}>
-                      <span aria-hidden="true">—</span>
-                      <span>OFFICIAL SECURITY EMBOSSEMENT</span>
-                      <span aria-hidden="true">—</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.hologramDetailsCol}>
-                <p className={styles.sealEyebrow}>Multi-layered counterfeit protection</p>
-                <h3 className={styles.hologramTitle}>The Gandaberunda Optical Micro-Seal</h3>
-                <p className={styles.hologramDesc}>
-                  Every authentic Mysore Silk saree features a tamper-proof optical seal containing the royal twin-headed Gandaberunda emblem, a micro-etched alphanumeric serial track, and rainbow refraction layers engineered to prevent counterfeiting.
-                </p>
-
-                <ul className={styles.securityChecklist}>
-                  <li className={styles.featureRow}>
-                    <span className={styles.featureIcon} aria-hidden="true">
-                      <Sun size={18} strokeWidth={1.5} />
-                    </span>
-                    <span className={styles.featureDivider} aria-hidden="true" />
-                    <span>
-                      <span className={styles.featureTitle}>Rainbow Micro-Refraction</span>
-                      <span className={styles.featureText}>Shifts from Mysore gold to crimson when tilted under daylight.</span>
-                    </span>
-                  </li>
-                  <li className={styles.featureRow}>
-                    <span className={styles.featureIcon} aria-hidden="true">
-                      <Shield size={18} strokeWidth={1.5} />
-                    </span>
-                    <span className={styles.featureDivider} aria-hidden="true" />
-                    <span>
-                      <span className={styles.featureTitle}>Embedded Pallu Serial Code</span>
-                      <span className={styles.featureText}>Woven directly into the gold zari border during weaving.</span>
-                    </span>
-                  </li>
-                  <li className={styles.featureRow}>
-                    <span className={styles.featureIcon} aria-hidden="true">
-                      <Leaf size={18} strokeWidth={1.5} />
-                    </span>
-                    <span className={styles.featureDivider} aria-hidden="true" />
-                    <span>
-                      <span className={styles.featureTitle}>Silk Mark Organization of India</span>
-                      <span className={styles.featureText}>100% natural, unadulterated mulberry silk certification.</span>
-                    </span>
-                  </li>
-                </ul>
-
-                <Link href="/authenticity" className={styles.curvedHologramBtn}>
-                  <span>Read full authenticity guide</span>
-                  <ArrowRight size={18} aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

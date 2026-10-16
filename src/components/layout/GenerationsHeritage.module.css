@@ -2,34 +2,27 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  background: #fffafa;
-  color: #f7f2e9;
+  margin: 0.7rem;
+  background: #faf6ef;
+  color: #3a2e24;
   overflow: hidden;
-  isolation: isolate;
-  padding-left: 1.25rem;
+  border: 1px solid #e6d7be;
 }
 
 .atmosphere {
   display: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(55% 70% at 72% 45%, rgba(80, 48, 28, 0.35), transparent 62%),
-    radial-gradient(40% 50% at 20% 80%, rgba(20, 12, 8, 0.5), transparent 55%),
-    linear-gradient(90deg, #050403, #0c0907 48%, #080605);
 }
 
 .image,
 .panel {
   position: relative;
-  z-index: 1;
-  min-height: 420px;
+  min-width: 0;
 }
 
 .image {
   overflow: hidden;
+  min-height: min(72vw, 420px);
+  border-bottom: 1px solid #e6d7be;
 }
 
 .photo {
@@ -38,113 +31,121 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.photo {
-  object-position: center 20%;
-  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.heritage:hover .photo {
-  transform: scale(1.03);
+  object-position: center 42%;
 }
 
 .panel {
-  display: grid;
+  display: flex;
   align-items: center;
-  overflow: visible;
-  background: #fff5f6;
+  background: #faf6ef url("/assets/heritage/heritage-floral-panel.jpg") right bottom / cover no-repeat;
 }
 
 .copy {
   position: relative;
-  z-index: 3;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 34rem;
-  padding: clamp(3.25rem, 7vw, 5.5rem) clamp(1.25rem, 4vw, 4.5rem);
+  width: 100%;
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3.25rem);
 }
 
 .eyebrow {
-  margin: 0 0 1.15rem;
-  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.32em;
+  margin: 0 0 1.35rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #c4a35a;
+  width: fit-content;
+  min-width: 7.5rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.32em !important;
+  line-height: 1.4 !important;
   text-transform: uppercase;
-  color: #8e1b2b;
+  color: #3a2e24;
 }
 
 .title {
   margin: 0;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-weight: 500;
-  font-size: clamp(2.35rem, 5.2vw, 3.85rem);
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-  color: #292522;
+  max-width: 11ch;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-weight: 500 !important;
+  font-size: clamp(2.4rem, 4.6vw, 3.65rem) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.02em !important;
+  color: #3a2e24;
 }
 
 .lead {
-  margin: 1.5rem 0 2rem;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
-  font-size: clamp(1.12rem, 2vw, 1.4rem);
-  line-height: 1.55;
-  color: #6d5a56;
+  margin: 1.65rem 0 2.15rem;
+  max-width: 22rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0 !important;
+  color: #3a2e24;
 }
 
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.45rem;
   width: fit-content;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid rgba(142, 27, 43, 0.45);
-  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #c4a35a;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.18em !important;
   text-transform: uppercase;
-  color: #8e1b2b;
+  color: #3a2e24;
   text-decoration: none;
-  transition:
-    color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: gap 0.35s ease, color 0.35s ease;
 }
 
 .cta:hover {
-  color: #7a1530;
-  border-bottom-color: #7a1530;
-  gap: 0.75rem;
+  gap: 0.7rem;
+  color: #3a2e24;
 }
 
 .cta:focus-visible {
-  outline: 2px solid #b79a68;
+  outline: 2px solid #c4a35a;
   outline-offset: 4px;
 }
 
 @media (min-width: 900px) {
   .heritage {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
-    height: 540px;
-    min-height: 540px;
+    grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 1fr);
+    min-height: 560px;
     align-items: stretch;
-    padding-left: clamp(1.75rem, 3vw, 2.75rem);
   }
 
-  .image,
-  .panel {
-    min-height: 100%;
+  .image {
+    min-height: 560px;
+    border-bottom: 0;
+    border-right: 1px solid #e6d7be;
+  }
+
+  .photo {
+    object-position: center 38%;
   }
 
   .copy {
-    max-width: none;
-    padding: 2.5rem 1.75rem;
+    padding: clamp(2.75rem, 4vw, 4.25rem) clamp(2rem, 3.2vw, 3.5rem);
   }
 
   .title {
-    font-size: clamp(1.85rem, 2.4vw, 2.55rem) !important;
+    font-size: clamp(2.15rem, 2.8vw, 3.15rem) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .image {
+    min-height: 82vw;
+  }
+
+  .photo {
+    object-position: center 36%;
   }
 }

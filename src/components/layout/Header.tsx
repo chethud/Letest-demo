@@ -149,7 +149,7 @@ export const Header: React.FC = () => {
             <p className={styles.utilityHeritage}>
               <span className={styles.utilityFact}>
                 <Landmark size={13} strokeWidth={1.5} aria-hidden="true" />
-                <span>Government of Karnataka Initiative</span>
+                <span>Government of Karnataka Undertaking</span>
               </span>
               <span className={styles.utilitySep} aria-hidden="true" />
               <span className={styles.utilityFact}>
