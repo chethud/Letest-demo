@@ -5,6 +5,7 @@
   background: #fbe9ed;
   color: #17130f;
   scroll-margin-top: 80px;
+  padding-left: clamp(1.75rem, 3vw, 2.75rem);
 }
 
 .film {

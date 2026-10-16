@@ -72,9 +72,6 @@ export const CollectionSection: React.FC = () => {
             <h2 className={styles.headline}>
               The Repertoire of <span className={styles.headlineAccent}>Mysore Silk.</span>
             </h2>
-            <p className={styles.subtitle}>
-              Four silhouettes in pure mulberry silk. Zari is specified as 65% pure silver and 0.65% gold.
-            </p>
           </div>
           <Link href="/collection" className={styles.archiveBtn}>
             <span>Shop</span>

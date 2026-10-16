@@ -4,10 +4,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
+import { Castle, Heart, Landmark, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import styles from "./Header.module.css";
 import { KSIC_PRODUCTS } from "@/data/collections";
-import { SHOWROOMS_DATA } from "@/data/showrooms";
 
 type NavLink = { label: string; href: string };
 
@@ -70,7 +69,6 @@ export const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [utilityHidden, setUtilityHidden] = useState(false);
-  const [storesOpen, setStoresOpen] = useState(false);
 
   useEffect(() => {
     setOpenMenu(null);
@@ -78,7 +76,6 @@ export const Header: React.FC = () => {
     setSearchOpen(false);
     setSearchQuery("");
     setIsMobileMenuOpen(false);
-    setStoresOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -90,9 +87,7 @@ export const Header: React.FC = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      const hidden = window.scrollY > 8;
-      setUtilityHidden(hidden);
-      if (hidden) setStoresOpen(false);
+      setUtilityHidden(window.scrollY > 8);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -106,7 +101,6 @@ export const Header: React.FC = () => {
         setPinnedMenu(null);
         setSearchOpen(false);
         setIsMobileMenuOpen(false);
-        setStoresOpen(false);
       }
     };
     const onPointerDown = (event: MouseEvent) => {
@@ -114,7 +108,6 @@ export const Header: React.FC = () => {
         setOpenMenu(null);
         setPinnedMenu(null);
         setSearchOpen(false);
-        setStoresOpen(false);
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -154,58 +147,20 @@ export const Header: React.FC = () => {
         <div className={`${styles.utilityBar} ${utilityHidden ? styles.utilityBarHidden : ""}`}>
           <div className={styles.utilityInner}>
             <p className={styles.utilityHeritage}>
-              <svg className={styles.utilityIcon} viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3.5 20.5h17M5.5 20.5v-8M18.5 20.5v-8M10 20.5v-5h4v5M3.5 12.5 12 5l8.5 7.5z" />
-                <path d="M12 5V2.8" />
-              </svg>
-              <span>Government of Karnataka Initiative</span>
-              <span className={styles.utilityDot} aria-hidden="true">·</span>
-              <svg className={`${styles.utilityIcon} ${styles.utilityCrown}`} viewBox="0 0 40 24" aria-hidden="true">
-                <path d="M5 19 7.5 7.5l6.5 5.5L20 3.5l6 9.5 6.5-5.5L35 19z" />
-                <rect x="5" y="20" width="30" height="2.4" rx="1" />
-                <circle cx="7.5" cy="6" r="1.6" />
-                <circle cx="20" cy="2.2" r="1.6" />
-                <circle cx="32.5" cy="6" r="1.6" />
-              </svg>
-              <span>A Heritage Since 1912</span>
+              <span className={styles.utilityFact}>
+                <Landmark size={13} strokeWidth={1.5} aria-hidden="true" />
+                <span>Government of Karnataka Initiative</span>
+              </span>
+              <span className={styles.utilitySep} aria-hidden="true" />
+              <span className={styles.utilityFact}>
+                <Castle size={13} strokeWidth={1.5} aria-hidden="true" />
+                <span>A Heritage Since 1912</span>
+              </span>
             </p>
             <nav className={styles.utilityLinks} aria-label="Helpful links">
-              <div className={styles.storeLocator}>
-                <button
-                  type="button"
-                  className={`${styles.storeLocatorButton} ${styles.utilityLink}`}
-                  aria-expanded={storesOpen}
-                  aria-controls="store-locator-panel"
-                  onClick={() => setStoresOpen((open) => !open)}
-                >
-                  Store Locator
-                </button>
-                {storesOpen && (
-                  <div id="store-locator-panel" className={styles.storePanel} role="region" aria-label="All KSIC stores">
-                    <p className={styles.storePanelTitle}>All stores · {SHOWROOMS_DATA.length}</p>
-                    <ul className={styles.storeList}>
-                      {SHOWROOMS_DATA.map((store) => (
-                        <li key={store.id}>
-                          <a
-                            className={styles.storeLink}
-                            href={`https://maps.google.com/?q=${encodeURIComponent(`${store.name} KSIC ${store.city}`)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <span>{store.name}</span>
-                            <small>
-                              {store.city} · {store.address}
-                            </small>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                    <Link href="/stores" className={styles.storeDirectoryLink} onClick={() => setStoresOpen(false)}>
-                      Open the full directory
-                    </Link>
-                  </div>
-                )}
-              </div>
+              <Link href="/stores" className={styles.utilityLink}>
+                Store Locator
+              </Link>
               <Link href="/contact" className={styles.utilityLink}>Track Order</Link>
               <Link href="/contact" className={styles.utilityLink}>Help</Link>
             </nav>
