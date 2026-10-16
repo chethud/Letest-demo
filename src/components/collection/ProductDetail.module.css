@@ -393,13 +393,21 @@
 .bookPill {
   gap: 8px;
   border: 0;
-  background: #c9b4ae;
-  color: #3d2422;
+  background: #c4aea8;
+  color: #3f2c2a;
   cursor: not-allowed;
 }
 
 .bookPill:disabled {
   opacity: 1;
+  background: #c4aea8;
+  color: #3f2c2a;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  cursor: not-allowed;
 }
 
 .bookPill:not(:disabled) {

@@ -296,7 +296,7 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
 
       <button type="button" className={styles.bookPill} disabled={!bookingActive} aria-disabled={!bookingActive}>
         {!bookingActive && <Lock size={14} aria-hidden />}
-        <span>{bookingActive ? "Continue" : "Booking unavailable"}</span>
+        <span>{bookingActive ? "Continue" : "Booking temporarily unavailable"}</span>
       </button>
 
       <button type="button" className={styles.enquirePill} onClick={() => setEnquiryOpen(true)}>
