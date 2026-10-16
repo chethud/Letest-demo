@@ -17,19 +17,19 @@ export const Hero: React.FC = () => {
       style={{ position: "relative", overflow: "hidden" }}
       aria-label="Official Karnataka Mysore Silk Heritage"
     >
-      {/* Full-bleed still: rose pink silk saree in a sunlit temple */}
+      {/* Full-bleed still: ivory silk saree with a red and gold zari border */}
       <div className={styles.heroBackground} style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
         <Image
-          src="/assets/heritage/rose-pink-silk-temple.png"
-          alt="Rose pink Mysore silk saree with a gold zari border, displayed in a sunlit temple setting"
+          src="/assets/heritage/hero-saree.png"
+          alt="Ivory Mysore silk saree with a deep red and gold zari border, draped on stone in warm light"
           fill
           priority
           sizes="(max-width: 900px) 1px, 100vw"
           className={styles.heroBackgroundImageDesktop}
         />
         <Image
-          src="/assets/heritage/rose-pink-silk-temple.png"
-          alt="Rose pink Mysore silk saree with a gold zari border, displayed in a sunlit temple setting"
+          src="/assets/heritage/hero-saree.png"
+          alt="Ivory Mysore silk saree with a deep red and gold zari border, draped on stone in warm light"
           fill
           priority
           sizes="(max-width: 900px) 100vw, 1px"
@@ -39,6 +39,16 @@ export const Hero: React.FC = () => {
         <div className={styles.heroTextBackdropScrim} aria-hidden="true" />
         {/* Soft bottom transition into parchment section */}
         <div className={styles.bottomTransitionFade} aria-hidden="true" />
+      </div>
+
+      <div className={styles.gandaMark}>
+        <Image
+          src="/assets/brand/ganda-berunda.png"
+          alt="Ganda Berunda, the two-headed royal bird of Mysore"
+          width={1024}
+          height={1024}
+          className={styles.gandaEmblem}
+        />
       </div>
 
       {/* 3. Main Hero Editorial Content Overlay */}

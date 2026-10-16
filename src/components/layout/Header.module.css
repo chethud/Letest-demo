@@ -5,8 +5,8 @@
   right: 0;
   z-index: 100;
   width: 100%;
-  background: #FAF6EF;
-  border-bottom: 1px solid #E8D4B5;
+  background: transparent;
+  border-bottom: 0;
 }
 
 .utilityBar {
@@ -190,8 +190,14 @@
   align-items: center;
   height: 84px;
   padding: 0 clamp(24px, 2.6vw, 40px);
-  background: #FAF6EF;
+  background: transparent;
   gap: 20px;
+  transition: background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.navMainSolid {
+  background: #FFFFFF;
+  box-shadow: 0 1px 0 rgba(58, 46, 36, 0.1);
 }
 
 .brandLink {
