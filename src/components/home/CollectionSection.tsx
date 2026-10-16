@@ -77,7 +77,7 @@ export const CollectionSection: React.FC = () => {
             </p>
           </div>
           <Link href="/collection" className={styles.archiveBtn}>
-            <span>View Complete Archive</span>
+            <span>Shop</span>
             <ArrowRight size={15} className={styles.archiveArrow} aria-hidden="true" />
           </Link>
         </div>

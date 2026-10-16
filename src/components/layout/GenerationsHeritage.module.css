@@ -1,0 +1,147 @@
+.heritage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #0a0806;
+  color: #f7f2e9;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 70% at 72% 45%, rgba(80, 48, 28, 0.35), transparent 62%),
+    radial-gradient(40% 50% at 20% 80%, rgba(20, 12, 8, 0.5), transparent 55%),
+    linear-gradient(90deg, #050403, #0c0907 48%, #080605);
+}
+
+.image,
+.panel {
+  position: relative;
+  z-index: 1;
+  min-height: 420px;
+}
+
+.image {
+  overflow: hidden;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo {
+  object-position: center 20%;
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.heritage:hover .photo {
+  transform: scale(1.03);
+}
+
+.panel {
+  display: grid;
+  align-items: center;
+  overflow: visible;
+  background: #fff5f6;
+}
+
+.copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 34rem;
+  padding: clamp(3.25rem, 7vw, 5.5rem) clamp(1.25rem, 4vw, 4.5rem);
+}
+
+.eyebrow {
+  margin: 0 0 1.15rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #8e1b2b;
+}
+
+.title {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(2.35rem, 5.2vw, 3.85rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: #292522;
+}
+
+.lead {
+  margin: 1.5rem 0 2rem;
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: clamp(1.12rem, 2vw, 1.4rem);
+  line-height: 1.55;
+  color: #6d5a56;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(142, 27, 43, 0.45);
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8e1b2b;
+  text-decoration: none;
+  transition:
+    color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta:hover {
+  color: #7a1530;
+  border-bottom-color: #7a1530;
+  gap: 0.75rem;
+}
+
+.cta:focus-visible {
+  outline: 2px solid #b79a68;
+  outline-offset: 4px;
+}
+
+@media (min-width: 900px) {
+  .heritage {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    height: 540px;
+    min-height: 540px;
+    align-items: stretch;
+  }
+
+  .image,
+  .panel {
+    min-height: 100%;
+  }
+
+  .copy {
+    max-width: none;
+    padding: 2.5rem 1.75rem;
+  }
+
+  .title {
+    font-size: clamp(1.85rem, 2.4vw, 2.55rem) !important;
+  }
+}

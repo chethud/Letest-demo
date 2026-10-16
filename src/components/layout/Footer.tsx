@@ -10,7 +10,7 @@ const PAGE_LINKS = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/heritage" },
   { label: "How It's Made", href: "/craft" },
-  { label: "Collection", href: "/collection" },
+  { label: "Shop", href: "/collection" },
   { label: "About KSIC", href: "/institution" },
   { label: "Our Stores", href: "/stores" },
   { label: "Contact Us", href: "/contact" },

@@ -190,11 +190,11 @@ export const HeritageSection: React.FC = () => {
 
             {/* Calls to Action */}
             <div className={styles.ctaRow}>
-              <Link href="/heritage" className={styles.primaryCtaBtn}>
+              <Link href="#patronage" className={styles.primaryCtaBtn}>
                 <span>EXPLORE OUR HISTORY</span>
                 <ArrowRight size={15} className={styles.ctaArrow} aria-hidden="true" />
               </Link>
-              <Link href="/heritage#timeline" className={styles.secondaryCtaBtn}>
+              <Link href="#timeline" className={styles.secondaryCtaBtn}>
                 <span>VIEW 100+ YEAR TIMELINE</span>
                 <ArrowRight size={14} className={styles.ctaArrow} aria-hidden="true" />
               </Link>

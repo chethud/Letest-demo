@@ -1,11 +1,11 @@
 .catalogueWrapper {
   width: 100%;
-  background: #F7F2E9;
+  background: #FFFAFA;
   color: #241C18;
 }
 
 .headerSection {
-  padding: 108px 0 8px;
+  padding: calc(var(--site-header-offset) + 16px) 0 8px;
 }
 
 .masthead {
@@ -32,19 +32,19 @@
   border: 1px solid rgba(137, 21, 30, 0.28);
   border-radius: 999px;
   background: rgba(255, 252, 247, 0.92);
-  color: #89151E;
+  color: #7A1530;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   cursor: pointer;
 }
 
 .backButton:hover {
-  background: #89151E;
-  border-color: #89151E;
+  background: #7A1530;
+  border-color: #7A1530;
   color: #fff;
 }
 
 .backButton:focus-visible {
-  outline: 2px solid #89151E;
+  outline: 2px solid #7A1530;
   outline-offset: 3px;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .pageTitle span {
-  color: #89151E;
+  color: #7A1530;
 }
 
 .mastheadAside {
@@ -108,8 +108,8 @@
 }
 
 .filterPill:hover {
-  border-color: #89151E;
-  color: #89151E;
+  border-color: #7A1530;
+  color: #7A1530;
 }
 
 .filterPill:focus-visible,
@@ -117,15 +117,15 @@
 .featureMedia:focus-visible,
 .editorial:focus-visible,
 .navBtn:focus-visible {
-  outline: 2px solid #790f1c;
+  outline: 2px solid #7A1530;
   outline-offset: 3px;
 }
 
 .filterPillActive,
 .filterPillActive:hover {
-  background: #790f1c;
-  border-color: #790f1c;
-  color: #f7f1e7;
+  background: #7A1530;
+  border-color: #7A1530;
+  color: #FFFAFA;
 }
 
 .filterCount {
@@ -152,9 +152,9 @@
   position: relative;
   display: block;
   min-height: 348px;
-  color: #f7f1e7;
+  color: #FFFAFA;
   text-decoration: none;
-  background: #efe6da;
+  background: #fbe9ed;
   overflow: hidden;
 }
 
@@ -193,7 +193,7 @@
   padding: 6px 10px;
   border-radius: 4px;
   background: rgba(18, 12, 10, 0.72);
-  color: #f7f1e7;
+  color: #FFFAFA;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.58rem;
   font-weight: 500;
@@ -220,7 +220,7 @@
   padding: 4px 4px 4px 16px;
   border-radius: 999px;
   background: #5c1218;
-  color: #f7f1e7;
+  color: #FFFAFA;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.66rem;
   font-weight: 600;
@@ -230,7 +230,7 @@
 }
 
 .featureMedia:hover .viewArticle {
-  background: #790f1c;
+  background: #7A1530;
 }
 
 .viewArrow,
@@ -247,7 +247,7 @@
 
 .viewArrow {
   background: rgba(247, 241, 231, 0.16);
-  color: #f7f1e7;
+  color: #FFFAFA;
 }
 
 .featureMedia:hover .viewArrow {
@@ -286,7 +286,7 @@
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
-  color: #f7f1e7;
+  color: #FFFAFA;
 }
 
 .featureCount span {
@@ -303,7 +303,7 @@
   padding: 0;
   border: 1px solid rgba(232, 212, 179, 0.7);
   background: transparent;
-  color: #f7f1e7;
+  color: #FFFAFA;
   cursor: pointer;
 }
 
@@ -312,8 +312,8 @@
 }
 
 .navBtnFilled {
-  background: #f7f1e7;
-  border-color: #f7f1e7;
+  background: #FFFAFA;
+  border-color: #FFFAFA;
   color: #4b1014;
 }
 
@@ -361,9 +361,9 @@
   display: block;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 1px solid #e8dccb;
+  border: 1px solid #f2dbe0;
   border-radius: 12px;
-  background: #efe6da;
+  background: #fbe9ed;
 }
 
 .editorialBody {
@@ -402,9 +402,9 @@
 
 .editorial:hover .editorialArrow,
 .productCard:hover .arrow {
-  background: #790f1c;
-  border-color: #790f1c;
-  color: #f7f1e7;
+  background: #7A1530;
+  border-color: #7A1530;
+  color: #FFFAFA;
 }
 
 .editorialFoot {
@@ -430,9 +430,9 @@
   display: block;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid #e8dccb;
+  border: 1px solid #f2dbe0;
   border-radius: 12px;
-  background: #efe6da;
+  background: #fbe9ed;
   box-shadow: 0 10px 24px rgba(48, 28, 16, 0.04);
 }
 
@@ -490,7 +490,7 @@
 
 @media (max-width: 800px) {
   .headerSection {
-    padding-top: 88px;
+    padding-top: calc(var(--site-header-offset) + 12px);
   }
 
   .masthead {

@@ -102,7 +102,7 @@ export const CraftSection: React.FC = () => {
               })}
             </ul>
 
-            <Link href="/craft" className={styles.exploreLink}>
+            <Link href="#stages" className={styles.exploreLink}>
               <span>Explore technical monograph</span>
               <ArrowRight size={15} aria-hidden="true" />
             </Link>

@@ -1,12 +1,12 @@
 .page {
-  padding-top: 90px;
-  background: #f7f2e9;
+  padding-top: var(--site-header-offset);
+  background: #FFFAFA;
   color: #19130f;
 }
 
 .hero {
   background: #19130f;
-  color: #f7f2e9;
+  color: #FFFAFA;
 }
 
 .heroInner {
@@ -37,7 +37,7 @@
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.03em;
-  color: #f7f2e9;
+  color: #FFFAFA;
 }
 
 .heroTitle span {
@@ -124,7 +124,7 @@ a.channel:focus-visible,
   padding: clamp(28px, 4vw, 48px);
   border: 1px solid #bd9658;
   border-radius: 28px;
-  background: #fbf8f2;
+  background: #FFFAFA;
 }
 
 .heading {
@@ -180,7 +180,7 @@ a.channel:focus-visible,
   padding: 14px 16px;
   border: 1px solid #e4d8c6;
   border-radius: 999px;
-  background: #fffdf9;
+  background: #FFFAFA;
   color: #19130f;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.95rem;
@@ -341,7 +341,7 @@ a.channel:focus-visible,
 
 @media (max-width: 700px) {
   .page {
-    padding-top: 68px;
+    padding-top: var(--site-header-offset);
   }
 
   .heroInner {

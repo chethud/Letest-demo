@@ -1,19 +1,17 @@
 import React from "react";
 import { Hero } from "@/components/home/Hero";
-import { JourneyOfSilkSection } from "@/components/home/JourneyOfSilkSection";
-import { TimelineSection } from "@/components/home/TimelineSection";
+import { HeritageStrip } from "@/components/home/HeritageStrip";
 import { FactorySection } from "@/components/home/FactorySection";
 import { CollectionSection } from "@/components/home/CollectionSection";
 import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
+import { GenerationsHeritage } from "@/components/layout/GenerationsHeritage";
 
 export default function HomePage() {
   return (
     <>
       {/* 01 HERO */}
       <Hero />
-
-      {/* 02 THE JOURNEY OF SILK */}
-      <JourneyOfSilkSection />
+      <HeritageStrip />
 
       {/* 03 COLLECTION */}
       <CollectionSection />
@@ -24,8 +22,7 @@ export default function HomePage() {
       {/* 05 ROYAL ZARI AUTHENTICITY & GI TAG VERIFICATION LAB */}
       <RoyalZariVerificationLab />
 
-      {/* 06 TIMELINE */}
-      <TimelineSection />
+      <GenerationsHeritage />
     </>
   );
 }

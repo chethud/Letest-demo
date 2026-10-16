@@ -1,170 +1,344 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ShieldCheck, Menu, X, ArrowRight } from "lucide-react";
+import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import styles from "./Header.module.css";
-import { useLanguage } from "@/context/LanguageContext";
+import { KSIC_PRODUCTS } from "@/data/collections";
+import { SHOWROOMS_DATA } from "@/data/showrooms";
+
+type NavLink = { label: string; href: string };
+
+type NavItem = {
+  id: string;
+  label: string;
+  href: string;
+  children?: NavLink[];
+};
+
+const NAV_ITEMS: NavItem[] = [
+  { id: "home", label: "Home", href: "/" },
+  {
+    id: "mysore-silk",
+    label: "Mysore Silk",
+    href: "/heritage",
+    children: [
+      { label: "The Story", href: "/heritage" },
+      { label: "The Craft", href: "/craft" },
+      { label: "Authenticity", href: "/authenticity" },
+    ],
+  },
+  {
+    id: "world",
+    label: "The World of KSIC",
+    href: "/institution",
+    children: [
+      { label: "Our Heritage", href: "/heritage" },
+      { label: "The Factory", href: "/#factory" },
+      { label: "The Archive", href: "/heritage" },
+    ],
+  },
+  {
+    id: "journal",
+    label: "Journal",
+    href: "/heritage",
+    children: [
+      { label: "Stories", href: "/heritage" },
+      { label: "Culture", href: "/heritage#timeline" },
+      { label: "Styling", href: "/collection" },
+    ],
+  },
+  {
+    id: "shop",
+    label: "Shop",
+    href: "/collection",
+    children: [
+      { label: "New Arrivals", href: "/new-arrivals" },
+      { label: "Collections", href: "/collection" },
+      { label: "Bestsellers", href: "/bestsellers" },
+    ],
+  },
+];
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const [isInHero, setIsInHero] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [pinnedMenu, setPinnedMenu] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t } = useLanguage();
+  const [utilityHidden, setUtilityHidden] = useState(false);
+  const [storesOpen, setStoresOpen] = useState(false);
 
-  // Close mobile drawer on route change
   useEffect(() => {
+    setOpenMenu(null);
+    setPinnedMenu(null);
+    setSearchOpen(false);
+    setSearchQuery("");
     setIsMobileMenuOpen(false);
+    setStoresOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
-  // Close on Escape key
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isMobileMenuOpen) {
+    const onScroll = () => {
+      const hidden = window.scrollY > 8;
+      setUtilityHidden(hidden);
+      if (hidden) setStoresOpen(false);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenMenu(null);
+        setPinnedMenu(null);
+        setSearchOpen(false);
         setIsMobileMenuOpen(false);
+        setStoresOpen(false);
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isMobileMenuOpen]);
-
-  useEffect(() => {
-    if (!isHome) {
-      setIsInHero(false);
-      return;
-    }
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const heroEl = document.getElementById("hero-section");
-      if (heroEl) {
-        const rect = heroEl.getBoundingClientRect();
-        // As long as the hero section bottom is > 90px from top, we are inside hero
-        setIsInHero(rect.bottom > 90);
-      } else {
-        setIsInHero(scrollY < window.innerHeight - 90);
+    const onPointerDown = (event: MouseEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpenMenu(null);
+        setPinnedMenu(null);
+        setSearchOpen(false);
+        setStoresOpen(false);
       }
     };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
+    window.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onPointerDown);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onPointerDown);
     };
-  }, [isHome]);
+  }, []);
 
-  const navLeft = [
-    { label: t.navHeritage, href: "/heritage" },
-    { label: t.navCraft, href: "/craft" },
-    { label: t.navCollection, href: "/collection" },
-  ];
+  const searchResults = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return KSIC_PRODUCTS.slice(0, 5);
+    return KSIC_PRODUCTS.filter((product) =>
+      [product.name, product.articleNumber, product.category, product.collection]
+        .join(" ")
+        .toLowerCase()
+        .includes(query)
+    ).slice(0, 6);
+  }, [searchQuery]);
 
-  const navRight = [
-    { label: t.navInstitution, href: "/institution" },
-    { label: t.navStores, href: "/stores" },
-    { label: t.navContact, href: "/contact" },
-  ];
+  const pathOf = (href: string) => href.split("?")[0].split("#")[0];
 
-  const allNavItems = [...navLeft, ...navRight];
+  const isActive = (href: string) => {
+    const path = pathOf(href);
+    if (path === "/") return pathname === "/";
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
 
-  const isNavActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
-
-  // Dynamic header state:
-  // - In hero section at top: transparent
-  // - In hero section while scrolling: subtle frosted glass
-  // - Outside hero section or on inner pages: solid institutional parchment
-  const headerStateClass = isHome && isInHero
-    ? styles.headerTransparentScrolling
-    : styles.headerScrolled;
+  const activeId = NAV_ITEMS.find((item) => isActive(item.href))?.id;
 
   return (
     <>
-      <header className={`${styles.headerContainer} ${headerStateClass}`}>
-        {/* Primary Navigation Bar with Centered Royal Brand Logo */}
-        <nav className={styles.navMain} aria-label="Main Navigation">
-          {/* Desktop Left Navigation Group */}
-          <ul className={`${styles.navLinksList} ${styles.navGroupLeft}`}>
-            {navLeft.map((item) => {
-              const isActive = isNavActive(item.href);
-              return (
-                <li key={item.href} className={styles.navLinkItem}>
-                  <Link
-                    href={item.href}
-                    className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
-                  >
-                    <span>{item.label}</span>
-                    {isActive && <span className={styles.activeDot} />}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+      <header ref={headerRef} className={styles.headerContainer}>
+        <div className={`${styles.utilityBar} ${utilityHidden ? styles.utilityBarHidden : ""}`}>
+          <div className={styles.utilityInner}>
+            <p className={styles.utilityHeritage}>
+              <span>Government of Karnataka Initiative</span>
+              <span className={styles.utilityDiamond} aria-hidden="true" />
+              <span>A Heritage Since 1912</span>
+            </p>
+            <nav className={styles.utilityLinks} aria-label="Helpful links">
+              <div className={styles.storeLocator}>
+                <button
+                  type="button"
+                  className={styles.storeLocatorButton}
+                  aria-expanded={storesOpen}
+                  aria-controls="store-locator-panel"
+                  onClick={() => setStoresOpen((open) => !open)}
+                >
+                  Store Locator
+                </button>
+                {storesOpen && (
+                  <div id="store-locator-panel" className={styles.storePanel} role="region" aria-label="All KSIC stores">
+                    <p className={styles.storePanelTitle}>All stores · {SHOWROOMS_DATA.length}</p>
+                    <ul className={styles.storeList}>
+                      {SHOWROOMS_DATA.map((store) => (
+                        <li key={store.id}>
+                          <a
+                            className={styles.storeLink}
+                            href={`https://maps.google.com/?q=${encodeURIComponent(`${store.name} KSIC ${store.city}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <span>{store.name}</span>
+                            <small>
+                              {store.city} · {store.address}
+                            </small>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href="/stores" className={styles.storeDirectoryLink} onClick={() => setStoresOpen(false)}>
+                      Open the full directory
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <Link href="/contact">Track Order</Link>
+              <Link href="/contact">Help</Link>
+            </nav>
+          </div>
+        </div>
 
-          {/* Center Brand Identity: Official KSIC Mysore Silk Seal */}
-          <Link href="/" className={styles.brandGroupCenter} aria-label="KSIC Mysore Silk Home">
+        <nav className={styles.navMain} aria-label="Main Navigation">
+          <Link href="/" className={styles.brandLink} aria-label="KSIC Mysore Silk Home">
             <Image
               src="/assets/brand/ksic-logo.png"
-              alt="KSIC Mysore Silk Seal Estd 1912"
-              width={175}
-              height={48}
+              alt="KSIC Mysore Silk"
+              width={210}
+              height={64}
               priority
-              className={styles.brandLogoImg}
+              className={styles.brandLogo}
             />
           </Link>
 
-          {/* Desktop Right Navigation Group */}
-          <ul className={`${styles.navLinksList} ${styles.navGroupRight}`}>
-            {navRight.map((item) => {
-              const isActive = isNavActive(item.href);
+          <ul className={styles.navList}>
+            {NAV_ITEMS.map((item) => {
+              const active = item.id === activeId;
+              const menuOpen = openMenu === item.id;
               return (
-                <li key={item.href} className={styles.navLinkItem}>
-                  <Link
-                    href={item.href}
-                    className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
-                  >
-                    <span>{item.label}</span>
-                    {isActive && <span className={styles.activeDot} />}
-                  </Link>
+                <li
+                  key={item.id}
+                  className={styles.navItem}
+                  onMouseEnter={() => {
+                    if (item.children && !pinnedMenu) setOpenMenu(item.id);
+                  }}
+                  onMouseLeave={() => {
+                    if (item.children && pinnedMenu !== item.id) setOpenMenu(null);
+                  }}
+                >
+                  {item.children ? (
+                    <>
+                      <button
+                        type="button"
+                        className={`${styles.navTrigger} ${active ? styles.navActive : ""}`}
+                        aria-expanded={menuOpen}
+                        aria-haspopup="true"
+                        onClick={() => {
+                          if (pinnedMenu === item.id) {
+                            setPinnedMenu(null);
+                            setOpenMenu(null);
+                            return;
+                          }
+                          setPinnedMenu(item.id);
+                          setOpenMenu(item.id);
+                        }}
+                      >
+                        {item.label}
+                      </button>
+                      <div className={`${styles.dropdown} ${menuOpen ? styles.dropdownOpen : ""}`}>
+                        <div className={styles.dropdownPanel}>
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href + child.label}
+                              href={child.href}
+                              className={styles.dropdownLink}
+                              onClick={() => {
+                                setOpenMenu(null);
+                                setPinnedMenu(null);
+                              }}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <Link href={item.href} className={`${styles.navPlain} ${active ? styles.navActive : ""}`}>
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               );
             })}
           </ul>
 
-          {/* Mobile Right: Hamburger Toggle Button */}
+          <div className={styles.iconRow}>
+            <button
+              type="button"
+              className={styles.iconButton}
+              aria-label="Search the collection"
+              aria-expanded={searchOpen}
+              onClick={() => {
+                setSearchOpen((open) => !open);
+                setOpenMenu(null);
+              }}
+            >
+              <Search size={19} strokeWidth={1.5} />
+            </button>
+            <Link href="/contact" className={`${styles.iconButton} ${styles.iconDesktop}`} aria-label="Account">
+              <User size={19} strokeWidth={1.5} />
+            </Link>
+            <Link href="/collection?category=heritage-bridal-series" className={`${styles.iconButton} ${styles.iconDesktop}`} aria-label="Wishlist">
+              <Heart size={19} strokeWidth={1.5} />
+            </Link>
+            <Link href="/stores" className={`${styles.iconButton} ${styles.bagButton}`} aria-label="Shopping bag">
+              <ShoppingBag size={19} strokeWidth={1.5} />
+              <span className={styles.cartBadge}>0</span>
+            </Link>
+
+            {searchOpen && (
+              <div className={styles.searchPanel}>
+                <input
+                  className={styles.searchInput}
+                  type="search"
+                  value={searchQuery}
+                  placeholder="Search sarees"
+                  autoFocus
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  aria-label="Search sarees"
+                />
+                <ul className={styles.searchList}>
+                  {searchResults.length === 0 ? (
+                    <li className={styles.searchEmpty}>No matching articles</li>
+                  ) : (
+                    searchResults.map((product) => (
+                      <li key={product.id}>
+                        <Link href={`/collection/${product.slug}`} className={styles.searchResult}>
+                          <span>{product.name}</span>
+                          <small>{product.category}</small>
+                        </Link>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
+
           <button
             type="button"
             className={styles.mobileHamburgerBtn}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
             aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? (
-              <X size={23} className={styles.hamburgerIcon} />
-            ) : (
-              <Menu size={23} className={styles.hamburgerIcon} />
-            )}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
       </header>
 
-      {/* 3. Mobile Navigation Drawer & Backdrop */}
       <div
         className={`${styles.mobileDrawerBackdrop} ${isMobileMenuOpen ? styles.mobileDrawerBackdropOpen : ""}`}
         onClick={() => setIsMobileMenuOpen(false)}
@@ -177,66 +351,53 @@ export const Header: React.FC = () => {
         aria-modal="true"
         aria-label="Mobile Navigation Menu"
       >
-        {/* Drawer Header */}
         <div className={styles.drawerHeader}>
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className={styles.drawerBrandLink}>
+          <Link href="/" className={styles.drawerBrandLink} onClick={() => setIsMobileMenuOpen(false)}>
             <Image
               src="/assets/brand/ksic-logo.png"
               alt="KSIC Mysore Silk"
-              width={135}
-              height={38}
-              className={styles.drawerLogoImg}
+              width={132}
+              height={40}
+              className={styles.drawerLogo}
             />
           </Link>
-          <button
-            type="button"
-            className={styles.drawerCloseBtn}
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-label="Close menu"
-          >
-            <X size={20} />
+          <button type="button" className={styles.drawerCloseBtn} onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
+            <X size={18} />
           </button>
         </div>
 
-        {/* Govt Credential Strip */}
-        <div className={styles.drawerCredentialStrip}>
-          <ShieldCheck size={13} style={{ flexShrink: 0 }} />
-          <span>Govt. of Karnataka · Factory 1912 · KSIC 1980 · GIR-11</span>
-        </div>
-
-        {/* Navigation Links */}
         <nav className={styles.drawerNav}>
-          <ul className={styles.drawerList}>
-            {allNavItems.map((item, index) => {
-              const isActive = isNavActive(item.href);
-              const numStr = `0${index + 1}`;
-              return (
-                <li key={item.href} className={styles.drawerItem}>
-                  <Link
-                    href={item.href}
-                    className={`${styles.drawerLink} ${isActive ? styles.drawerLinkActive : ""}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <span className={styles.drawerItemNum}>{numStr}</span>
-                    <span className={styles.drawerItemLabel}>{item.label}</span>
-                    <ArrowRight size={15} className={styles.drawerItemArrow} />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          {NAV_ITEMS.map((item) => (
+            <div key={item.id} className={styles.drawerGroup}>
+              <Link
+                href={item.href}
+                className={`${styles.drawerLink} ${isActive(item.href) ? styles.drawerLinkActive : ""}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+              {item.children && (
+                <div className={styles.drawerChildren}>
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href + child.label}
+                      href={child.href}
+                      className={styles.drawerChildLink}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </nav>
 
-        {/* Drawer Footer with Language Selection & Royal Heritage Note */}
         <div className={styles.drawerFooter}>
-          <div className={styles.drawerHeritageNote}>
-            <p className={styles.drawerHeritageTitle}>
-              Karnataka Silk Industries Corporation
-            </p>
-            <p className={styles.drawerHeritageSub}>
-              Pure silk &bull; 65% silver, 0.65% gold zari &bull; Mysuru
-            </p>
-          </div>
+          <Link href="/stores" onClick={() => setIsMobileMenuOpen(false)}>Store Locator</Link>
+          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Track Order</Link>
+          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Help</Link>
         </div>
       </aside>
     </>

@@ -27,7 +27,7 @@ export default function CraftPage() {
       </section>
 
       {/* 7 Stages Deep Dive */}
-      <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}>
+      <section id="stages" className="section-spacing" style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}>
         <div className="container-institutional">
           <div className={styles.stagesList}>
             {CRAFT_STAGES.map((stage, idx) => {
@@ -134,7 +134,7 @@ export default function CraftPage() {
       </section>
 
       {/* Official Silk Identification & Burning Test */}
-      <section className="section-spacing" id="authenticity" style={{ backgroundColor: "var(--color-bg-primary)" }}>
+      <section className="section-spacing" id="care" style={{ backgroundColor: "var(--color-bg-primary)" }}>
         <div className="container-institutional">
           <div className={styles.burningGrid}>
             <div className="reveal-left">

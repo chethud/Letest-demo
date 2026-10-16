@@ -1,27 +1,27 @@
 .footerContainer {
-  background: #F7F2E9;
-  color: #241C18;
+  background: #FBE9ED;
+  color: #2E1D1A;
   border-top: 1px solid rgba(181, 138, 80, 0.45);
 }
 
 .footerWrap {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 56px clamp(20px, 4vw, 64px) 28px;
+  padding: 28px clamp(20px, 4vw, 64px) 16px;
 }
 
 .footerTopGrid {
   display: grid;
   grid-template-columns: minmax(220px, 1.1fr) minmax(280px, 1fr) minmax(240px, 1.1fr);
-  gap: 36px 40px;
-  padding-bottom: 36px;
+  gap: 20px 40px;
+  padding-bottom: 16px;
   border-bottom: 1px solid rgba(181, 138, 80, 0.4);
 }
 
 .brandColumn {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   padding-right: 12px;
 }
 
@@ -65,19 +65,19 @@
 }
 
 .navColumnTitle {
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #89151E;
+  color: #7A1530;
 }
 
 .pageNav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 28px;
+  gap: 6px 28px;
   align-items: start;
 }
 
@@ -85,7 +85,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   margin: 0;
   padding: 0;
 }
@@ -103,20 +103,20 @@
 .navColumnList a:hover,
 .footerSecondaryLinks a:hover,
 .contactInfoGroup a:hover {
-  color: #89151E;
+  color: #7A1530;
 }
 
 .navColumnList a:focus-visible,
 .footerSecondaryLinks a:focus-visible,
 .contactInfoGroup a:focus-visible {
-  outline: 2px solid #89151E;
+  outline: 2px solid #7A1530;
   outline-offset: 3px;
 }
 
 .contactInfoGroup {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin: 0;
   font-style: normal;
 }
@@ -125,12 +125,12 @@
   margin: 0;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.9rem;
-  line-height: 1.55;
+  line-height: 1.4;
   color: #3C342E;
 }
 
 .contactHighlight {
-  color: #89151E;
+  color: #7A1530;
   font-weight: 600;
 }
 
@@ -147,7 +147,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 18px 28px;
-  padding-top: 22px;
+  padding-top: 12px;
   flex-wrap: wrap;
 }
 
@@ -178,7 +178,7 @@
 
 @media (max-width: 640px) {
   .footerWrap {
-    padding-top: 40px;
+    padding-top: 24px;
   }
 
   .footerTopGrid {

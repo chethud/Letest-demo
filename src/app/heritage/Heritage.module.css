@@ -1,21 +1,21 @@
 .page {
-  --heritage-offset: 90px;
+  --heritage-offset: var(--site-header-offset);
   padding-top: var(--heritage-offset);
-  background: #F8F4EC;
+  background: #FFFAFA;
   color: #201A17;
 }
 
 .track {
-  --heritage-offset: 90px;
+  --heritage-offset: var(--site-header-offset);
   position: relative;
-  height: 220vh;
+  height: auto;
 }
 
 .sticky {
   position: relative;
-  height: calc(100svh - var(--heritage-offset));
+  height: auto;
   overflow: hidden;
-  background: #F8F4EC;
+  background: #FFFAFA;
 }
 
 .stickyFixed {
@@ -36,23 +36,66 @@
 .slides {
   display: flex;
   width: 200%;
-  height: 100%;
+  height: auto;
+  align-items: stretch;
   will-change: transform;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .panel {
   flex: 0 0 50%;
-  height: 100%;
+  height: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
-  padding: 24px 0 64px;
+  padding: 28px 0 8px;
 }
 
-.panel .inner,
+.panel .inner {
+  height: auto;
+}
+
 .panel .heroGrid,
 .panel .split {
-  height: 100%;
+  height: auto;
+  align-items: stretch;
+}
+
+.panel .heroMedia,
+.panel .portrait {
+  height: auto;
+  align-self: stretch;
+  aspect-ratio: auto;
+  min-height: 0;
+}
+
+.dots {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid #7A1530;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dotActive {
+  background: #7A1530;
+}
+
+.dot:focus-visible {
+  outline: 2px solid #7A1530;
+  outline-offset: 3px;
 }
 
 .scrollCue {
@@ -82,7 +125,7 @@
 .scrollFill {
   position: absolute;
   inset: 0;
-  background: #8A1420;
+  background: #7A1530;
   transform-origin: left center;
 }
 
@@ -117,7 +160,7 @@
 
 .hero {
   padding: 28px 0 56px;
-  background: #F8F4EC;
+  background: #FFFAFA;
 }
 
 .heroGrid,
@@ -150,7 +193,7 @@
 .heroTitle span,
 .sectionTitle span,
 .timelineHeader .sectionTitle span {
-  color: #8A1420;
+  color: #7A1530;
 }
 
 .heroLead,
@@ -175,7 +218,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 3px;
-  background: #F2EADF;
+  background: #FBE9ED;
 }
 
 .heroMedia {
@@ -189,6 +232,10 @@
   object-fit: cover;
 }
 
+.portraitImage {
+  object-position: center top;
+}
+
 .narrative,
 .narrativeAlt,
 .timeline {
@@ -196,17 +243,17 @@
 }
 
 .narrative {
-  background: #F2EADF;
+  background: #FBE9ED;
 }
 
 .panel.hero,
 .panel.narrative {
-  padding: 24px 0 72px;
+  padding: 28px 0 8px;
 }
 
 .narrativeAlt,
 .timeline {
-  background: #F8F4EC;
+  background: #FFFAFA;
 }
 
 .sectionTitle {
@@ -228,7 +275,7 @@
 .quote {
   margin: 28px 0 0;
   padding: 4px 0 4px 18px;
-  border-left: 2px solid #8A1420;
+  border-left: 2px solid #7A1530;
   font-size: 1.2rem;
   line-height: 1.45;
   color: #201A17;
@@ -245,7 +292,7 @@
 .narrative .portrait {
   aspect-ratio: auto;
   min-height: 0;
-  height: 100%;
+  height: auto;
 }
 
 .landscape {
@@ -276,7 +323,7 @@
   font-size: 2.4rem;
   font-weight: 500;
   line-height: 1;
-  color: #8A1420;
+  color: #7A1530;
 }
 
 .statRow span,
@@ -336,14 +383,14 @@
 
 .yearTab:hover,
 .yearTabActive {
-  background: #8A1420;
-  border-color: #8A1420;
+  background: #7A1530;
+  border-color: #7A1530;
   color: #FFFFFF;
 }
 
 .yearTab:focus-visible,
 .cta:focus-visible {
-  outline: 2px solid #8A1420;
+  outline: 2px solid #7A1530;
   outline-offset: 3px;
 }
 
@@ -383,7 +430,7 @@
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
   font-size: clamp(2.4rem, 4vw, 3.4rem);
   line-height: 0.9;
-  color: #8A1420;
+  color: #7A1530;
 }
 
 .epochTitle {
@@ -406,7 +453,7 @@
 .epochSignificance {
   margin: 0;
   padding-left: 16px;
-  border-left: 2px solid #8A1420;
+  border-left: 2px solid #7A1530;
   font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
   font-style: italic;
   font-size: 1.08rem;
@@ -423,7 +470,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #8A1420;
+  color: #7A1530;
 }
 
 .epochMeta {
@@ -457,7 +504,7 @@
   gap: 10px;
   padding: 13px 22px;
   border-radius: 999px;
-  background: #8A1420;
+  background: #7A1530;
   color: #FFFFFF;
   text-decoration: none;
   font-family: var(--font-dm), "DM Sans", sans-serif;
@@ -475,11 +522,11 @@
 @media (max-width: 900px) {
   .page,
   .track {
-    --heritage-offset: 68px;
+    --heritage-offset: var(--site-header-offset);
   }
 
   .page {
-    padding-top: 68px;
+    padding-top: var(--site-header-offset);
   }
 
   .track {
@@ -513,7 +560,8 @@
     height: auto;
   }
 
-  .scrollCue {
+  .scrollCue,
+  .dots {
     display: none;
   }
 
@@ -572,7 +620,8 @@
     height: auto;
   }
 
-  .scrollCue {
+  .scrollCue,
+  .dots {
     display: none;
   }
 

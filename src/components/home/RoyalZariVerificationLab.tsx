@@ -79,7 +79,7 @@ const SAMPLE_CODES = [
   { code: "KSIC-AMBART-9984-GI11", label: "Golden Ambari Masterpiece" },
 ];
 
-export const RoyalZariVerificationLab: React.FC = () => {
+export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({ id = "authenticity-lab" }) => {
   const { lang } = useLanguage();
   const isKn = lang === "kn";
 
@@ -123,7 +123,7 @@ export const RoyalZariVerificationLab: React.FC = () => {
 
   return (
     <section
-      id="authenticity-lab"
+      id={id}
       className={styles.verificationSection}
       aria-label="Mysore Silk Royal Zari Authenticity & GI Tag Verification Lab"
     >
@@ -495,7 +495,7 @@ export const RoyalZariVerificationLab: React.FC = () => {
                   </li>
                 </ul>
 
-                <Link href="/craft#authenticity" className={styles.curvedHologramBtn}>
+                <Link href="/authenticity" className={styles.curvedHologramBtn}>
                   <span>Read full authenticity guide</span>
                   <ArrowRight size={18} aria-hidden="true" />
                 </Link>

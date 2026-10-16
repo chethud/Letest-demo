@@ -17,19 +17,19 @@ export const Hero: React.FC = () => {
       style={{ position: "relative", overflow: "hidden" }}
       aria-label="Official Karnataka Mysore Silk Heritage"
     >
-      {/* Full-bleed still life: rose silk, jasmine, and a lotus diya */}
+      {/* Full-bleed still: rose pink silk saree in a sunlit temple */}
       <div className={styles.heroBackground} style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
         <Image
-          src="/assets/heritage/rose-silk-saree-jasmine.png"
-          alt="Rose Mysore silk saree with a gold zari border, jasmine blossoms, and a lotus diya in warm ivory light"
+          src="/assets/heritage/rose-pink-silk-temple.png"
+          alt="Rose pink Mysore silk saree with a gold zari border, displayed in a sunlit temple setting"
           fill
           priority
           sizes="(max-width: 900px) 1px, 100vw"
           className={styles.heroBackgroundImageDesktop}
         />
         <Image
-          src="/assets/heritage/rose-silk-saree-jasmine.png"
-          alt="Rose Mysore silk saree with a gold zari border, jasmine blossoms, and a lotus diya in warm ivory light"
+          src="/assets/heritage/rose-pink-silk-temple.png"
+          alt="Rose pink Mysore silk saree with a gold zari border, displayed in a sunlit temple setting"
           fill
           priority
           sizes="(max-width: 900px) 100vw, 1px"
@@ -55,8 +55,6 @@ export const Hero: React.FC = () => {
             <span className={styles.titleLine}>{t.heroPoetic1}</span>
           </h1>
 
-          <p className={styles.supportLine}>{t.heroPoetic2}</p>
-
           <div className={styles.actionContainer}>
             <Link href="/collection" className={styles.exploreLink}>
               <span className={styles.exploreText}>{t.heroExploreBtn}</span>
@@ -71,7 +69,6 @@ export const Hero: React.FC = () => {
             <span>{t.heroTitleMain}</span>
             <span>{t.heroPoetic1}</span>
           </h1>
-          <p className={styles.mobileSupport}>{t.heroPoetic2}</p>
           <Link href="/collection" className={styles.mobileCta}>
             <span>{t.heroExploreBtn}</span>
             <ArrowRight size={14} className={styles.mobileCtaArrow} />

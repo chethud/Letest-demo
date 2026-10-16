@@ -60,7 +60,7 @@ export default function InstitutionPage() {
               <div className={styles.corporateMetaGrid}>
                 <div>
                   <div style={{ fontSize: "0.72rem", letterSpacing: "0.15em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>Corporate Identification</div>
-                  <div style={{ fontFamily: "monospace", fontSize: "0.95rem", color: "var(--color-text-primary)", marginTop: "4px" }}>{INSTITUTIONAL_OVERVIEW.corporateId}</div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "0.95rem", color: "var(--color-text-primary)", marginTop: "4px" }}>{INSTITUTIONAL_OVERVIEW.corporateId}</div>
                 </div>
                 <div>
                   <div style={{ fontSize: "0.72rem", letterSpacing: "0.15em", color: "var(--color-text-muted)", textTransform: "uppercase" }}>Incorporation Year</div>

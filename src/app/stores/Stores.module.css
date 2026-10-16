@@ -1,10 +1,10 @@
 .storesPage {
-  padding-top: 90px;
+  padding-top: var(--site-header-offset);
 }
 
 @media (max-width: 768px) {
   .storesPage {
-    padding-top: 68px;
+    padding-top: var(--site-header-offset);
   }
 }
 
@@ -67,7 +67,7 @@
   padding: 28px 24px 24px;
   border: 1px solid #bd9658;
   border-radius: 28px;
-  background: #fbf8f2;
+  background: #FFFAFA;
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 

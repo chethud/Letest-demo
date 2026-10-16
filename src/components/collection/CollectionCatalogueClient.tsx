@@ -22,7 +22,17 @@ function pad(value: number) {
   return String(value).padStart(2, "0");
 }
 
-export default function CollectionCatalogueClient() {
+type CatalogueProps = {
+  products?: KSICProduct[];
+  title?: string;
+  titleAccent?: string;
+};
+
+export default function CollectionCatalogueClient({
+  products = KSIC_PRODUCTS,
+  title = "The House of",
+  titleAccent = "KSIC.",
+}: CatalogueProps = {}) {
   const { t } = useLanguage();
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -40,17 +50,17 @@ export default function CollectionCatalogueClient() {
   }, [selectedCategory]);
 
   const filteredProducts = useMemo(
-    () => KSIC_PRODUCTS.filter((prod) => matchesCategory(prod, selectedCategory)),
-    [selectedCategory]
+    () => products.filter((prod) => matchesCategory(prod, selectedCategory)),
+    [products, selectedCategory]
   );
 
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: KSIC_PRODUCTS.length };
+    const counts: Record<string, number> = { all: products.length };
     COLLECTION_CATEGORIES.forEach((cat) => {
-      counts[cat.id] = KSIC_PRODUCTS.filter((prod) => matchesCategory(prod, cat.id)).length;
+      counts[cat.id] = products.filter((prod) => matchesCategory(prod, cat.id)).length;
     });
     return counts;
-  }, []);
+  }, [products]);
 
   const safeIndex = filteredProducts.length
     ? Math.min(featuredIndex, filteredProducts.length - 1)
@@ -83,7 +93,7 @@ export default function CollectionCatalogueClient() {
               <span>Back</span>
             </button>
             <h1 className={styles.pageTitle}>
-              The House of <span>KSIC.</span>
+              {title} <span>{titleAccent}</span>
             </h1>
           </div>
           <div className={styles.mastheadAside}>
@@ -146,7 +156,6 @@ export default function CollectionCatalogueClient() {
                 />
                 <span className={styles.featureScrim} aria-hidden />
                 <span className={styles.featureOverlay}>
-                  <span className={styles.articleBadge}>{featured.articleNumber}</span>
                   <h2 className={styles.featureTitle}>{featured.name}</h2>
                   <span className={styles.viewArticle}>
                     View article

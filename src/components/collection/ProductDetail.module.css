@@ -2,13 +2,13 @@
   --pdp-burgundy: #8b111c;
   --pdp-gold: #b58a45;
   --pdp-ink: #161311;
-  --pdp-ivory: #f7f1e6;
-  padding-top: 92px;
+  --pdp-ivory: #ffffff;
+  padding-top: var(--site-header-offset);
   color: var(--pdp-ink);
   background-color: var(--pdp-ivory);
   background-image:
     radial-gradient(ellipse 70% 42% at 100% 0%, rgba(181, 138, 69, 0.08), transparent 58%),
-    linear-gradient(165deg, rgba(255, 252, 247, 0.55), rgba(247, 241, 230, 0) 42%);
+    linear-gradient(165deg, rgba(255, 255, 255, 0.7), rgba(251, 233, 237, 0) 42%);
 }
 
 .layout {
@@ -62,7 +62,7 @@
   aspect-ratio: 5 / 4.15;
   border-radius: 18px;
   overflow: hidden;
-  background: #efe6d8;
+  background: #fbe9ed;
   box-shadow: 0 16px 40px rgba(48, 28, 16, 0.08);
 }
 
@@ -172,7 +172,7 @@
   padding: 0;
   border: 1.5px solid transparent;
   border-radius: 10px;
-  background: #efe6d8;
+  background: #fbe9ed;
   overflow: hidden;
   cursor: pointer;
 }
@@ -359,7 +359,7 @@
   gap: 12px;
   margin-top: 6px;
   border: 1px solid rgba(139, 17, 28, 0.16);
-  background: #f8ece8;
+  background: #FBE9ED;
   color: var(--pdp-burgundy);
   cursor: pointer;
 }
@@ -370,7 +370,7 @@
 }
 
 .statusPill:hover {
-  background: #f4e2dc;
+  background: #FBE9ED;
 }
 
 .chevronOpen {
@@ -412,13 +412,13 @@
   position: relative;
   justify-content: center;
   border: 1px solid var(--pdp-burgundy);
-  background: #fffdf9;
+  background: #FFFAFA;
   color: var(--pdp-burgundy);
   cursor: pointer;
 }
 
 .enquirePill:hover {
-  background: #fbf3ee;
+  background: #FFFAFA;
 }
 
 .enquireArrow {
@@ -515,7 +515,7 @@
   max-height: min(90vh, 760px);
   overflow: auto;
   padding: 24px;
-  background: #faf7f2;
+  background: #FFFAFA;
   border: 1px solid rgba(181, 138, 69, 0.4);
   border-radius: 20px;
 }
@@ -688,7 +688,7 @@
   aspect-ratio: 4 / 5;
   margin-bottom: 12px;
   border-radius: 14px;
-  background: #efe6d8;
+  background: #fbe9ed;
   overflow: hidden;
 }
 
@@ -725,7 +725,7 @@
 
 @media (max-width: 900px) {
   .page {
-    padding-top: 72px;
+    padding-top: var(--site-header-offset);
   }
 
   .layout {

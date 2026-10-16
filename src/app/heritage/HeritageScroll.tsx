@@ -1,69 +1,62 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Heritage.module.css";
 
+const SLIDE_MS = 5000;
+
 export function HeritageScroll({ children }: { children: React.ReactNode }) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
-  const [pin, setPin] = useState<"before" | "fixed" | "after">("before");
+  const slides = React.Children.toArray(children);
+  const count = Math.max(slides.length, 1);
+  const [index, setIndex] = useState(0);
+  const [auto, setAuto] = useState(true);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const narrow = window.matchMedia("(max-width: 900px)");
 
-    const measure = () => {
-      const pinned = !reduced.matches && !narrow.matches;
-      if (!pinned) {
-        setPin("before");
-        setProgress(0);
-        return;
-      }
-      const offset = parseFloat(getComputedStyle(track).getPropertyValue("--heritage-offset")) || 90;
-      const rect = track.getBoundingClientRect();
-      const travel = track.offsetHeight - (window.innerHeight - offset);
-      const passed = offset - rect.top;
-      const next = travel <= 0 ? 0 : Math.min(1, Math.max(0, passed / travel));
-      setProgress(next);
-      if (rect.top > offset) setPin("before");
-      else if (rect.bottom <= window.innerHeight) setPin("after");
-      else setPin("fixed");
-    };
-
-    measure();
-    window.addEventListener("scroll", measure, { passive: true });
-    window.addEventListener("resize", measure);
-    reduced.addEventListener("change", measure);
-    narrow.addEventListener("change", measure);
+    const sync = () => setAuto(!reduced.matches && !narrow.matches);
+    sync();
+    reduced.addEventListener("change", sync);
+    narrow.addEventListener("change", sync);
     return () => {
-      window.removeEventListener("scroll", measure);
-      window.removeEventListener("resize", measure);
-      reduced.removeEventListener("change", measure);
-      narrow.removeEventListener("change", measure);
+      reduced.removeEventListener("change", sync);
+      narrow.removeEventListener("change", sync);
     };
   }, []);
 
+  useEffect(() => {
+    if (!auto || count < 2) return;
+    const timer = window.setInterval(() => {
+      setIndex((value) => (value + 1) % count);
+    }, SLIDE_MS);
+    return () => window.clearInterval(timer);
+  }, [auto, count, index]);
+
   return (
-    <div className={styles.track} ref={trackRef}>
-      <div
-        className={`${styles.sticky} ${pin === "fixed" ? styles.stickyFixed : ""} ${pin === "after" ? styles.stickyAfter : ""}`}
-      >
+    <div className={styles.track}>
+      <div className={styles.sticky}>
         <div
           className={styles.slides}
-          style={pin === "before" && progress === 0 ? undefined : { transform: `translate3d(${-progress * 50}%, 0, 0)` }}
+          style={auto ? { transform: `translate3d(${(-index * 100) / count}%, 0, 0)` } : undefined}
         >
-          {children}
+          {slides}
         </div>
-        <div className={styles.scrollCue} aria-hidden="true">
-          <span>Scroll</span>
-          <span className={styles.scrollTrack}>
-            <span className={styles.scrollFill} style={{ transform: `scaleX(${progress})` }} />
-          </span>
-          <span>{progress < 0.5 ? "01" : "02"}</span>
-        </div>
+        {auto && count > 1 && (
+          <div className={styles.dots} role="tablist" aria-label="Heritage panels">
+            {slides.map((_, dotIndex) => (
+              <button
+                key={dotIndex}
+                type="button"
+                role="tab"
+                aria-selected={dotIndex === index}
+                aria-label={dotIndex === 0 ? "Archival monograph" : "Royal court patronage"}
+                className={`${styles.dot} ${dotIndex === index ? styles.dotActive : ""}`}
+                onClick={() => setIndex(dotIndex)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

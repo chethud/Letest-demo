@@ -84,7 +84,7 @@ export const AuthenticitySection: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: "32px" }}>
-                  <Link href="/craft#authenticity" className="action-editorial action-editorial-burgundy">
+                  <Link href="/authenticity" className="action-editorial action-editorial-burgundy">
                     <span>{t.authBtn}</span>
                     <ArrowRight size={15} />
                   </Link>

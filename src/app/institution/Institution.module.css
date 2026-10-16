@@ -1,10 +1,10 @@
 .institutionPage {
-  padding-top: 90px;
+  padding-top: var(--site-header-offset);
 }
 
 @media (max-width: 768px) {
   .institutionPage {
-    padding-top: 68px;
+    padding-top: var(--site-header-offset);
   }
 }
 

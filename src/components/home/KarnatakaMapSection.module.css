@@ -58,13 +58,13 @@
 
 .hubItem:hover {
   border-color: var(--color-burgundy);
-  background-color: #FAF4EB;
+  background-color: #FFFAFA;
 }
 
 .hubItemActive {
   border-color: var(--color-burgundy);
   border-left: 5px solid var(--color-burgundy);
-  background-color: #F8EFE4;
+  background-color: #FBE9ED;
   box-shadow: 0 4px 16px rgba(122, 22, 29, 0.06);
 }
 
@@ -150,7 +150,7 @@
 /* Map Frame */
 .mapFrame {
   position: relative;
-  background-color: #F3EBDD;
+  background-color: #FBE9ED;
   border: 1px solid rgba(23, 21, 19, 0.15);
   padding: clamp(20px, 3.5vw, 32px);
   display: flex;
@@ -241,14 +241,14 @@
 /* Hub Pins & Ripples */
 .markerRippleOuter {
   fill: rgba(122, 22, 29, 0.12);
-  stroke: #7A161D;
+  stroke: #7A1530;
   stroke-width: 2;
   animation: ripplePulse 2.8s infinite ease-out;
 }
 
 .markerRippleInner {
   fill: rgba(122, 22, 29, 0.22);
-  stroke: #7A161D;
+  stroke: #7A1530;
   stroke-width: 2.5;
 }
 
@@ -270,7 +270,7 @@
 }
 
 .markerDotActive {
-  fill: #7A161D;
+  fill: #7A1530;
 }
 
 .markerDotInactive {
@@ -278,7 +278,7 @@
 }
 
 .hubMarkerGroup:hover .markerDot {
-  fill: #7A161D;
+  fill: #7A1530;
   transform: scale(1.1);
 }
 
@@ -290,7 +290,7 @@
 }
 
 .mapPinLabelActive {
-  fill: #7A161D;
+  fill: #7A1530;
   font-weight: 700;
 }
 

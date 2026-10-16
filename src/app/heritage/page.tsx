@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { HeritageChronology } from "./HeritageChronology";
+import { HeritageSection } from "@/components/home/HeritageSection";
+import { TimelineSection } from "@/components/home/TimelineSection";
 import { HeritageScroll } from "./HeritageScroll";
 import styles from "./Heritage.module.css";
 
@@ -12,6 +13,7 @@ export const metadata = {
 export default function HeritagePage() {
   return (
     <div className={styles.page}>
+      <HeritageSection />
       <HeritageScroll>
         <section className={`${styles.panel} ${styles.hero}`} aria-label="Archival monograph">
           <div className={styles.inner}>
@@ -41,7 +43,7 @@ export default function HeritagePage() {
           </div>
         </section>
 
-        <section className={`${styles.panel} ${styles.narrative}`} aria-label="Royal court patronage, 1912">
+        <section id="patronage" className={`${styles.panel} ${styles.narrative}`} aria-label="Royal court patronage, 1912">
           <div className={styles.inner}>
             <div className={styles.split}>
               <div>
@@ -60,7 +62,7 @@ export default function HeritagePage() {
                   alt="Sri Nalvadi Krishnaraja Wadiyar, Maharaja of Mysore"
                   fill
                   sizes="(max-width: 900px) 100vw, 42vw"
-                  className={styles.coverImage}
+                  className={`${styles.coverImage} ${styles.portraitImage}`}
                 />
               </div>
             </div>
@@ -104,7 +106,7 @@ export default function HeritagePage() {
         </div>
       </section>
 
-      <HeritageChronology />
+      <TimelineSection />
     </div>
   );
 }

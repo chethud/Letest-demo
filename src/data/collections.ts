@@ -347,3 +347,6 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
     featured: true,
   },
 ];
+
+export const NEW_ARRIVALS = KSIC_PRODUCTS.filter((product) => product.status === "in_production");
+export const BESTSELLERS = KSIC_PRODUCTS.filter((product) => product.featured);
