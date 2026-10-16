@@ -38,11 +38,13 @@
 .panel {
   display: grid;
   align-items: center;
-  background-color: #FAF6EF;
-  background-image: url("/assets/heritage/generations-panel-floral.jpg");
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(100deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.55) 48%, rgba(255, 255, 255, 0.22) 100%),
+    url("/assets/heritage/generations-panel-floral.jpg");
   background-repeat: no-repeat;
-  background-position: right bottom;
-  background-size: cover;
+  background-position: center, right bottom;
+  background-size: cover, cover;
   border-top: 0.5px solid rgba(196, 163, 90, 0.45);
 }
 
