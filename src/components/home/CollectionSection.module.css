@@ -1,5 +1,5 @@
 .collectionSection {
-  background: #FFFAFA;
+  background: #FAF6EF;
   padding: 52px 0 64px;
   scroll-margin-top: 100px;
 }
@@ -34,14 +34,14 @@
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #B68A4A;
+  color: #7A6232;
 }
 
 .eyebrow::before {
   content: "";
   width: 6px;
   height: 6px;
-  background: #B68A4A;
+  background: #C4A35A;
   transform: rotate(45deg);
   flex-shrink: 0;
 }
@@ -54,12 +54,12 @@
   line-height: 1.05;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #201A17;
+  color: #3A2E24;
   white-space: nowrap;
 }
 
 .headlineAccent {
-  color: #7A1530;
+  color: #3A2E24;
 }
 
 .archiveBtn {
@@ -70,7 +70,7 @@
   margin-bottom: 6px;
   padding: 13px 22px;
   border-radius: 999px;
-  background: #7A1530;
+  background: #3A2E24;
   color: #FFFFFF;
   text-decoration: none;
   font-family: var(--font-dm), "DM Sans", sans-serif;
@@ -82,11 +82,11 @@
 }
 
 .archiveBtn:hover {
-  background: #6E1019;
+  background: #2A211A;
 }
 
 .archiveBtn:focus-visible {
-  outline: 2px solid #7A1530;
+  outline: 2px solid #3A2E24;
   outline-offset: 3px;
 }
 
@@ -111,13 +111,13 @@
   display: block;
   overflow: hidden;
   border-radius: 3px;
-  background: #FBE9ED;
+  background: #EADCC8;
   text-decoration: none;
   min-height: 0;
 }
 
 .tile:focus-visible {
-  outline: 2px solid #7A1530;
+  outline: 2px solid #3A2E24;
   outline-offset: 3px;
 }
 

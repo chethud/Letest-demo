@@ -3,7 +3,7 @@
    ========================================================================= */
 
 .verificationSection {
-  background-color: #FBE9ED;
+  background-color: #EADCC8;
   padding: 32px 0 36px;
   position: relative;
   overflow: hidden;
@@ -30,7 +30,7 @@
   align-items: center;
   gap: 7px;
   background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(134, 23, 34, 0.32);
+  border: 1px solid rgba(58, 46, 36, 0.32);
   backdrop-filter: blur(6px);
   border-radius: 9999px;
   padding: 5px 15px;
@@ -38,14 +38,14 @@
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: #861722;
+  color: #3A2E24;
   text-transform: uppercase;
   margin-bottom: 14px;
-  box-shadow: 0 2px 8px rgba(134, 23, 34, 0.05);
+  box-shadow: 0 2px 8px rgba(58, 46, 36, 0.05);
 }
 
 .eyebrowIcon {
-  color: #861722;
+  color: #3A2E24;
 }
 
 .mainHeading {
@@ -53,13 +53,13 @@
   font-size: clamp(2.2rem, 3.8vw, 3.3rem);
   font-weight: 400;
   line-height: 1.15;
-  color: #241A17;
+  color: #3A2E24;
   margin: 0 0 14px;
   letter-spacing: -0.01em;
 }
 
 .burgundyWord {
-  color: #861722;
+  color: #3A2E24;
   font-weight: 400;
 }
 
@@ -68,7 +68,7 @@
   font-size: clamp(0.90rem, 1.15vw, 1.02rem);
   font-weight: 400;
   line-height: 1.62;
-  color: #4A3E37;
+  color: #51473F;
   max-width: 740px;
   margin: 0 auto;
 }
@@ -98,24 +98,24 @@
 }
 
 .tabPillActive {
-  background: #861722;
+  background: #3A2E24;
   color: #FFFFFF;
-  border: 1px solid #861722;
-  box-shadow: 0 4px 14px rgba(134, 23, 34, 0.28);
+  border: 1px solid #3A2E24;
+  box-shadow: 0 4px 14px rgba(58, 46, 36, 0.28);
 }
 
 .tabPillInactive {
   background: rgba(250, 246, 239, 0.85);
   backdrop-filter: blur(4px);
-  color: #352B24;
-  border: 1px solid #E6D3B4;
-  box-shadow: 0 2px 6px rgba(36, 26, 23, 0.03);
+  color: #3A2E24;
+  border: 1px solid #E8D4B5;
+  box-shadow: 0 2px 6px rgba(58, 46, 36, 0.03);
 }
 
 .tabPillInactive:hover {
   background: #FFFFFF;
-  border-color: #861722;
-  color: #861722;
+  border-color: #3A2E24;
+  color: #3A2E24;
 }
 
 /* Main Dual Deck */
@@ -131,12 +131,12 @@
    ========================================================================= */
 
 .inputCard {
-  background: rgba(253, 251, 247, 0.94);
+  background: rgba(250, 246, 239, 0.94);
   backdrop-filter: blur(8px);
-  border: 1px solid #E6D3B4;
+  border: 1px solid #E8D4B5;
   border-radius: 10px;
   padding: 24px 26px;
-  box-shadow: 0 6px 24px rgba(36, 26, 23, 0.05);
+  box-shadow: 0 6px 24px rgba(58, 46, 36, 0.05);
   display: flex;
   flex-direction: column;
 }
@@ -153,7 +153,7 @@
   font-size: 0.67rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #8C7862;
+  color: #51473F;
   text-transform: uppercase;
 }
 
@@ -166,21 +166,21 @@
 .serialInput {
   flex: 1;
   padding: 11px 14px;
-  background: #FFFAFA;
-  border: 1px solid #E3D5C1;
+  background: #FAF6EF;
+  border: 1px solid #E8D4B5;
   border-radius: 5px;
   font-family: var(--font-dm), monospace;
   font-size: 0.86rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: #241A17;
+  color: #3A2E24;
   outline: none;
   transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
 .serialInput:focus {
-  border-color: #861722;
-  box-shadow: 0 0 0 3px rgba(134, 23, 34, 0.10);
+  border-color: #3A2E24;
+  box-shadow: 0 0 0 3px rgba(58, 46, 36, 0.10);
   background: #FFFFFF;
 }
 
@@ -189,7 +189,7 @@
   align-items: center;
   gap: 7px;
   padding: 0 20px;
-  background: #861722;
+  background: #3A2E24;
   color: #FFFFFF;
   border: none;
   border-radius: 5px;
@@ -204,7 +204,7 @@
 }
 
 .verifyCtaBtn:hover {
-  background: #6D111A;
+  background: #2A211A;
   transform: translateY(-1px);
 }
 
@@ -228,7 +228,7 @@
 
 .testBatchesLabel {
   font-size: 0.74rem;
-  color: #6E6157;
+  color: #51473F;
   margin-bottom: 8px;
   display: block;
 }
@@ -242,26 +242,26 @@
 .batchChip {
   padding: 5px 11px;
   border-radius: 9999px;
-  background: #FFFAFA;
-  border: 1px solid #E2D3BE;
+  background: #FAF6EF;
+  border: 1px solid #E8D4B5;
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
   font-size: 0.65rem;
   font-weight: 600;
-  color: #42362E;
+  color: #51473F;
   cursor: pointer;
   transition: all 180ms ease;
 }
 
 .batchChip:hover {
-  background: #861722;
+  background: #3A2E24;
   color: #FFFFFF;
-  border-color: #861722;
+  border-color: #3A2E24;
 }
 
 .batchChipActive {
-  background: rgba(134, 23, 34, 0.10);
-  border-color: #861722;
-  color: #861722;
+  background: rgba(58, 46, 36, 0.10);
+  border-color: #3A2E24;
+  color: #3A2E24;
 }
 
 /* Diamond Divider */
@@ -275,11 +275,11 @@
 .dividerLine {
   flex: 1;
   height: 1px;
-  background: #E8D8C0;
+  background: #E8D4B5;
 }
 
 .diamondIcon {
-  color: #B58A45;
+  color: #7A6232;
   font-size: 0.72rem;
 }
 
@@ -301,12 +301,12 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #E0CFA8;
-  background: #FFFAFA;
+  border: 1px solid #E8D4B5;
+  background: #FAF6EF;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #B58A45;
+  color: #7A6232;
   flex-shrink: 0;
 }
 
@@ -321,7 +321,7 @@
   font-weight: 600 !important;
   line-height: 1.3 !important;
   letter-spacing: 0 !important;
-  color: #241A17;
+  color: #3A2E24;
   margin: 0 0 2px;
 }
 
@@ -331,7 +331,7 @@
   font-weight: 400 !important;
   line-height: 1.4 !important;
   letter-spacing: 0 !important;
-  color: #766C63;
+  color: #51473F;
   margin: 0;
 }
 
@@ -340,7 +340,7 @@
    ========================================================================= */
 
 .certificateCard {
-  background-color: #FFFAFA;
+  background-color: #FAF6EF;
   background-image: url('/assets/heritage/royal-certificate-parchment-bg.jpg');
   background-size: 100% 100%;
   background-position: center;
@@ -348,7 +348,7 @@
   border-radius: 10px;
   padding: 24px 28px 20px;
   position: relative;
-  box-shadow: 0 8px 30px rgba(36, 26, 23, 0.08);
+  box-shadow: 0 8px 30px rgba(58, 46, 36, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -372,7 +372,7 @@
 }
 
 .emblemWrapper {
-  filter: drop-shadow(0 6px 14px rgba(181, 138, 69, 0.28));
+  filter: drop-shadow(0 6px 14px rgba(196, 163, 90, 0.28));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -409,14 +409,14 @@
   font-size: 0.70rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #861722;
+  color: #3A2E24;
   text-transform: uppercase;
   margin-bottom: 2px;
 }
 
 .certEnterpriseSub {
   font-size: 0.69rem;
-  color: #5A5048;
+  color: #51473F;
 }
 
 .verifiedStatusBadge {
@@ -440,9 +440,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(245, 237, 224, 0.85);
+  background: rgba(232, 212, 181, 0.85);
   backdrop-filter: blur(2px);
-  border: 1px solid #E6D8C3;
+  border: 1px solid #E8D4B5;
   border-radius: 4px;
   padding: 8px 14px;
   margin-bottom: 12px;
@@ -453,7 +453,7 @@
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #786655;
+  color: #51473F;
   text-transform: uppercase;
 }
 
@@ -462,7 +462,7 @@
   font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #241A17;
+  color: #3A2E24;
 }
 
 .specsTable {
@@ -481,24 +481,24 @@
 }
 
 .specLabel {
-  color: #766C63;
+  color: #51473F;
   font-weight: 400;
 }
 
 .specVal {
-  color: #241A17;
+  color: #3A2E24;
   font-weight: 500;
 }
 
 .specValZariBurgundy {
-  color: #861722;
+  color: #3A2E24;
   font-weight: 700;
 }
 
 .specValMono {
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
   font-size: 0.74rem;
-  color: #241A17;
+  color: #3A2E24;
   font-weight: 600;
 }
 
@@ -512,11 +512,11 @@
 .certDividerLine {
   flex: 1;
   height: 1px;
-  background: #E8D8C0;
+  background: #E8D4B5;
 }
 
 .certDiamondFlourish {
-  color: #B58A45;
+  color: #7A6232;
   font-size: 0.66rem;
 }
 
@@ -529,7 +529,7 @@
 }
 
 .guaranteeDiamond {
-  color: #B58A45;
+  color: #7A6232;
   font-size: 0.62rem;
 }
 
@@ -538,7 +538,7 @@
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: #9A793D;
+  color: #7A6232;
   text-transform: uppercase;
 }
 
@@ -558,8 +558,8 @@
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: rgba(134, 23, 34, 0.08);
-  border: 1px solid rgba(134, 23, 34, 0.25);
+  background: rgba(58, 46, 36, 0.08);
+  border: 1px solid rgba(58, 46, 36, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -567,21 +567,21 @@
 }
 
 .invalidShieldIcon {
-  color: #861722;
+  color: #3A2E24;
 }
 
 .invalidTitle {
   font-family: var(--font-serif), Georgia, serif;
   font-size: 1.18rem;
   font-weight: 500;
-  color: #241A17;
+  color: #3A2E24;
   margin: 0 0 8px;
 }
 
 .invalidDesc {
   font-size: 0.82rem;
   line-height: 1.55;
-  color: #766C63;
+  color: #51473F;
   max-width: 440px;
   margin: 0 0 18px;
 }
@@ -594,7 +594,7 @@
 .resetCodeBtn {
   padding: 8px 18px;
   border-radius: 9999px;
-  background: #861722;
+  background: #3A2E24;
   color: #FFFFFF;
   border: none;
   font-family: var(--font-dm), var(--font-sans);
@@ -606,7 +606,7 @@
 }
 
 .resetCodeBtn:hover {
-  background: #6D111A;
+  background: #2A211A;
 }
 
 /* =========================================================================
@@ -614,11 +614,11 @@
    ========================================================================= */
 
 .hologramCard {
-  --seal-ivory: #ffffff;
-  --seal-charcoal: #1c1917;
-  --seal-muted: #5c534c;
-  --seal-burgundy: #861522;
-  --seal-gold: #b88a46;
+  --seal-ivory: #FFFFFF;
+  --seal-charcoal: #3A2E24;
+  --seal-muted: #51473F;
+  --seal-burgundy: #3A2E24;
+  --seal-gold: #C4A35A;
   position: relative;
   background: var(--seal-ivory);
   border: none;
@@ -662,7 +662,7 @@
   content: "";
   position: absolute;
   inset: 4px;
-  border: 1px solid rgba(184, 138, 70, 0.72);
+  border: 1px solid rgba(196, 163, 90, 0.72);
   border-radius: 4px;
   pointer-events: none;
 }
@@ -701,8 +701,8 @@
   gap: 10px;
   min-height: 36px;
   padding: 8px 12px;
-  background: #1a1210;
-  color: #f6efe4;
+  background: #3A2E24;
+  color: #FAF6EF;
   font-family: var(--font-dm), var(--font-sans);
   font-size: 0.68rem;
   font-weight: 500;
@@ -812,9 +812,9 @@
   min-height: 66px;
   padding: 0 32px;
   background: var(--seal-burgundy);
-  color: #ffffff;
+  color: #FFFFFF;
   border-radius: 999px;
-  box-shadow: 0 8px 18px rgba(134, 21, 34, 0.18);
+  box-shadow: 0 8px 18px rgba(58, 46, 36, 0.18);
   font-family: var(--font-dm), var(--font-sans);
   font-size: 0.92rem;
   font-weight: 700;
@@ -826,7 +826,7 @@
 }
 
 .curvedHologramBtn:hover {
-  background: #6d111a;
+  background: #2A211A;
   transform: translateX(3px);
 }
 

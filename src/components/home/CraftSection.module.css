@@ -1,10 +1,10 @@
 .craftSection {
-  --mono-ivory: #ffffff;
-  --mono-ink: #201b18;
-  --mono-muted: #82776a;
-  --mono-burgundy: #8b1823;
-  --mono-gold: #b58a4a;
-  --mono-line: #f2dbe0;
+  --mono-ivory: #FFFFFF;
+  --mono-ink: #3A2E24;
+  --mono-muted: #51473F;
+  --mono-burgundy: #3A2E24;
+  --mono-gold: #C4A35A;
+  --mono-line: #E8D4B5;
   background: var(--mono-ivory);
   color: var(--mono-ink);
   padding: 36px 0 40px;
@@ -158,12 +158,12 @@
 .roundArrowBtnPrimary {
   background: var(--mono-burgundy);
   border-color: var(--mono-burgundy);
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .roundArrowBtnPrimary:hover:not(:disabled) {
-  background: #6f121b;
-  color: #fff;
+  background: #2A211A;
+  color: #FFFFFF;
 }
 
 .mainContentGrid {
@@ -258,7 +258,7 @@
 }
 
 .exploreLink:hover {
-  color: #6f121b;
+  color: #2A211A;
 }
 
 .exploreLink:hover svg {
@@ -275,7 +275,7 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 2px;
-  background: #fbe9ed;
+  background: #EADCC8;
 }
 
 .stageImage {

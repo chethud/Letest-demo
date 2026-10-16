@@ -89,7 +89,7 @@ export const JourneyOfSilkSection: React.FC = () => {
                 <div className={styles.contentBlock}>
                   <div className={styles.stepNumber}>
                     <span>{stage.step}</span>
-                    <span style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "#8A6F3D" }}>
+                    <span style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.14em", color: "#7A6232" }}>
                       {stageName}
                     </span>
                   </div>

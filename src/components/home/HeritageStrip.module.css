@@ -1,9 +1,9 @@
 .strip {
   position: relative;
-  background: #fffafa;
-  border-top: 1px solid #f2dbe0;
-  border-bottom: 1px solid #f2dbe0;
-  color: #2e1d1a;
+  background: #FAF6EF;
+  border-top: 1px solid #E8D4B5;
+  border-bottom: 1px solid #E8D4B5;
+  color: #3A2E24;
 }
 
 .wrap {
@@ -26,15 +26,15 @@
 }
 
 .item + .item {
-  border-left: 1px solid #f2dbe0;
+  border-left: 1px solid #E8D4B5;
 }
 
 .badge {
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: #fbe9ed;
-  color: #b0843f;
+  background: #EADCC8;
+  color: #7A6232;
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -42,8 +42,8 @@
 }
 
 .item:hover .badge {
-  background: #7a1530;
-  color: #ffffff;
+  background: #3A2E24;
+  color: #FFFFFF;
   transform: rotate(-8deg);
 }
 

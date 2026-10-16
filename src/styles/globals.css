@@ -1,37 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Kannada:wght@400;600&display=swap');
 
 :root {
-  /* Rose petal theme: white blush and light pink */
-  --color-bg-primary: #FFFAFA;
-  --color-bg-secondary: #FBE9ED;
-  --color-bg-paper: #FFFFFF;
-  --color-bg-subtle: #FDF1F3;
-  --color-bg-dark: #2E1D1A;
-  --color-bg-dark-surface: #4A2A32;
-  
-  /* Rose-brown editorial text */
-  --color-text-primary: #2E1D1A;
-  --color-text-secondary: #4A3330;
-  --color-text-muted: #776166;
-  --color-text-light: #FFFFFF;
-  --color-text-light-muted: #FBE9ED;
-  
-  /* Brand accents from the rose petal site */
-  --color-burgundy: #7A1530;
-  --color-burgundy-dark: #5C1024;
-  --color-burgundy-soft: rgba(122, 21, 48, 0.08);
-  
-  --color-gold: #B0843F;
-  --color-gold-muted: #8C6830;
-  --color-gold-bright: #D4B072;
-  --color-gold-subtle: rgba(176, 132, 63, 0.14);
-  --color-gold-line: rgba(176, 132, 63, 0.35);
-  
+  /* Earth & Gold luxury palette */
+  --color-deep-brown: #3A2E24;
+  --color-warm-beige: #EADCC8;
+  --color-ivory: #FAF6EF;
+  --color-zari-gold: #C4A35A;
+  --color-silk-champagne: #E8D4B5;
+  --color-soft-charcoal: #51473F;
+  --color-white: #FFFFFF;
+  /* Zari darkened so gold text stays readable on ivory */
+  --color-gold-ink: #7A6232;
+  --color-brown-hover: #2A211A;
+
+  --color-bg-primary: var(--color-ivory);
+  --color-bg-secondary: var(--color-warm-beige);
+  --color-bg-paper: var(--color-white);
+  --color-bg-subtle: var(--color-silk-champagne);
+  --color-bg-dark: var(--color-deep-brown);
+  --color-bg-dark-surface: var(--color-soft-charcoal);
+
+  --color-text-primary: var(--color-deep-brown);
+  --color-text-secondary: var(--color-soft-charcoal);
+  --color-text-muted: #6B5E54;
+  --color-text-light: var(--color-white);
+  --color-text-light-muted: var(--color-silk-champagne);
+
+  /* Existing accent tokens now resolve to the earth palette */
+  --color-burgundy: var(--color-deep-brown);
+  --color-burgundy-dark: var(--color-brown-hover);
+  --color-burgundy-soft: rgba(58, 46, 36, 0.08);
+
+  --color-gold: var(--color-zari-gold);
+  --color-gold-muted: var(--color-gold-ink);
+  --color-gold-bright: var(--color-silk-champagne);
+  --color-gold-subtle: rgba(196, 163, 90, 0.16);
+  --color-gold-line: rgba(196, 163, 90, 0.45);
+
   /* 1px Editorial Rules & Borders */
-  --border-rule: 1px solid rgba(20, 16, 13, 0.14);
-  --border-rule-strong: 1px solid rgba(20, 16, 13, 0.26);
-  --border-rule-light: 1px solid rgba(247, 243, 236, 0.16);
-  --border-rule-gold: 1px solid rgba(125, 93, 37, 0.35);
+  --border-rule: 1px solid rgba(58, 46, 36, 0.14);
+  --border-rule-strong: 1px solid rgba(58, 46, 36, 0.26);
+  --border-rule-light: 1px solid rgba(232, 212, 181, 0.55);
+  --border-rule-gold: 1px solid rgba(196, 163, 90, 0.55);
 
   /* One typeface site-wide: Playfair Display, matching the heritage title. */
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -177,10 +187,10 @@ button {
 }
 
 .editorial-label-light {
-  color: #F5CE7E;
-  background-color: rgba(18, 14, 11, 0.88);
+  color: var(--color-silk-champagne);
+  background-color: rgba(58, 46, 36, 0.88);
   padding: 6px 18px;
-  border: 1px solid rgba(245, 206, 126, 0.55);
+  border: 1px solid rgba(196, 163, 90, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   letter-spacing: 0.22em;
@@ -250,13 +260,13 @@ button {
 /* Thin Editorial Rules */
 .rule-separator {
   height: 1px;
-  background-color: rgba(23, 21, 19, 0.12);
+  background-color: rgba(196, 163, 90, 0.45);
   width: 100%;
   border: none;
 }
 
 .rule-separator-light {
-  background-color: rgba(247, 243, 236, 0.14);
+  background-color: rgba(232, 212, 181, 0.7);
 }
 
 /* Editorial Button / Action */
@@ -453,7 +463,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(20, 16, 13, 0.08);
+  box-shadow: 0 16px 36px rgba(58, 46, 36, 0.08);
 }
 
 /* Shared type roles. Module styles cannot change these four sizes. */

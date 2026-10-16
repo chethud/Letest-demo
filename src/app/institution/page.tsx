@@ -80,7 +80,7 @@ export default function InstitutionPage() {
               <p style={{ fontSize: "0.95rem", color: "var(--color-text-secondary)", lineHeight: 1.6, marginBottom: "20px" }}>
                 {INSTITUTIONAL_OVERVIEW.headOffice.street}, {INSTITUTIONAL_OVERVIEW.headOffice.city} — {INSTITUTIONAL_OVERVIEW.headOffice.pincode}, Karnataka
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "0.88rem", borderTop: "1px solid rgba(23, 21, 19, 0.1)", paddingTop: "16px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "0.88rem", borderTop: "1px solid rgba(58, 46, 36, 0.1)", paddingTop: "16px" }}>
                 <div><strong>Telephone:</strong> {INSTITUTIONAL_OVERVIEW.headOffice.phone1} / {INSTITUTIONAL_OVERVIEW.headOffice.phone2}</div>
                 <div><strong>Official Email:</strong> {INSTITUTIONAL_OVERVIEW.headOffice.email}</div>
                 <div><strong>Administrative Dept:</strong> Department of Sericulture, Govt of Karnataka</div>
@@ -103,7 +103,7 @@ export default function InstitutionPage() {
 
           <div className={`reveal-stagger ${styles.divisionsGrid}`}>
             {INSTITUTIONAL_OVERVIEW.keyUnits.map((u) => (
-              <div key={u.unit} className="hover-lift" style={{ padding: "32px", backgroundColor: "var(--color-bg-paper)", border: "1px solid rgba(23, 21, 19, 0.12)" }}>
+              <div key={u.unit} className="hover-lift" style={{ padding: "32px", backgroundColor: "var(--color-bg-paper)", border: "1px solid rgba(58, 46, 36, 0.12)" }}>
                 <span style={{ fontSize: "0.72rem", letterSpacing: "0.16em", color: "var(--color-gold)", textTransform: "uppercase", fontWeight: 600 }}>
                   OPERATING UNIT
                 </span>
@@ -139,13 +139,13 @@ export default function InstitutionPage() {
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "32px" }}>
-                <div style={{ padding: "16px", border: "1px solid rgba(23, 21, 19, 0.12)", backgroundColor: "var(--color-bg-paper)" }}>
+                <div style={{ padding: "16px", border: "1px solid rgba(58, 46, 36, 0.12)", backgroundColor: "var(--color-bg-paper)" }}>
                   <div style={{ fontSize: "0.72rem", color: "var(--color-burgundy)", fontWeight: 600, letterSpacing: "0.14em" }}>PUBLIC INFORMATION OFFICER (PIO)</div>
                   <div style={{ fontWeight: 600, color: "var(--color-text-primary)", marginTop: "4px" }}>General Manager (Administration)</div>
                   <div style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>KSIC Head Office, Public Utility Building, M.G. Road, Bengaluru 560001</div>
                 </div>
 
-                <div style={{ padding: "16px", border: "1px solid rgba(23, 21, 19, 0.12)", backgroundColor: "var(--color-bg-paper)" }}>
+                <div style={{ padding: "16px", border: "1px solid rgba(58, 46, 36, 0.12)", backgroundColor: "var(--color-bg-paper)" }}>
                   <div style={{ fontSize: "0.72rem", color: "var(--color-burgundy)", fontWeight: 600, letterSpacing: "0.14em" }}>APPELLATE AUTHORITY</div>
                   <div style={{ fontWeight: 600, color: "var(--color-text-primary)", marginTop: "4px" }}>Managing Director, KSIC Ltd</div>
                   <div style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>Public Utility Building, M.G. Road, Bengaluru 560001</div>
@@ -175,7 +175,7 @@ export default function InstitutionPage() {
                 KSIC commits to providing genuine Mysore Silk sarees woven solely from natural mulberry silk and authenticated zari. Customers are entitled to full provenance disclosure, replacement in case of manufacturing defect, and courteous service across all government outlets.
               </p>
 
-              <div id="tenders" style={{ borderTop: "1px solid rgba(23, 21, 19, 0.12)", paddingTop: "20px" }}>
+              <div id="tenders" style={{ borderTop: "1px solid rgba(58, 46, 36, 0.12)", paddingTop: "20px" }}>
                 <div style={{ fontSize: "0.75rem", letterSpacing: "0.16em", color: "var(--color-burgundy)", textTransform: "uppercase", fontWeight: 600, marginBottom: "8px" }}>
                   TENDERS & NOTIFICATIONS
                 </div>

@@ -1,7 +1,7 @@
 .catalogueWrapper {
   width: 100%;
-  background: #FFFAFA;
-  color: #241C18;
+  background: #FAF6EF;
+  color: #3A2E24;
 }
 
 .headerSection {
@@ -29,22 +29,22 @@
   flex-shrink: 0;
   height: 34px;
   padding: 0 12px 0 10px;
-  border: 1px solid rgba(137, 21, 30, 0.28);
+  border: 1px solid rgba(58, 46, 36, 0.28);
   border-radius: 999px;
-  background: rgba(255, 252, 247, 0.92);
-  color: #7A1530;
+  background: rgba(250, 246, 239, 0.92);
+  color: #3A2E24;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   cursor: pointer;
 }
 
 .backButton:hover {
-  background: #7A1530;
-  border-color: #7A1530;
-  color: #fff;
+  background: #3A2E24;
+  border-color: #3A2E24;
+  color: #FFFFFF;
 }
 
 .backButton:focus-visible {
-  outline: 2px solid #7A1530;
+  outline: 2px solid #3A2E24;
   outline-offset: 3px;
 }
 
@@ -56,11 +56,11 @@
   line-height: 0.92;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-  color: #1C1614;
+  color: #3A2E24;
 }
 
 .pageTitle span {
-  color: #7A1530;
+  color: #3A2E24;
 }
 
 .mastheadAside {
@@ -75,7 +75,7 @@
   width: 108px;
   height: 64px;
   flex-shrink: 0;
-  color: rgba(181, 138, 80, 0.85);
+  color: rgba(122, 98, 50, 0.85);
 }
 
 .filterBar {
@@ -94,10 +94,10 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  border: 1px solid #c69a58;
+  border: 1px solid #C4A35A;
   border-radius: 999px;
   background: transparent;
-  color: #4E433B;
+  color: #51473F;
   cursor: pointer;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.66rem;
@@ -108,8 +108,8 @@
 }
 
 .filterPill:hover {
-  border-color: #7A1530;
-  color: #7A1530;
+  border-color: #3A2E24;
+  color: #3A2E24;
 }
 
 .filterPill:focus-visible,
@@ -117,15 +117,15 @@
 .featureMedia:focus-visible,
 .editorial:focus-visible,
 .navBtn:focus-visible {
-  outline: 2px solid #7A1530;
+  outline: 2px solid #3A2E24;
   outline-offset: 3px;
 }
 
 .filterPillActive,
 .filterPillActive:hover {
-  background: #7A1530;
-  border-color: #7A1530;
-  color: #FFFAFA;
+  background: #3A2E24;
+  border-color: #3A2E24;
+  color: #FAF6EF;
 }
 
 .filterCount {
@@ -143,18 +143,18 @@
   min-height: 348px;
   margin-bottom: 22px;
   overflow: hidden;
-  border: 1px solid #c69a58;
+  border: 1px solid #C4A35A;
   border-radius: 14px;
-  background: #4b1014;
+  background: #3A2E24;
 }
 
 .featureMedia {
   position: relative;
   display: block;
   min-height: 348px;
-  color: #FFFAFA;
+  color: #FAF6EF;
   text-decoration: none;
-  background: #fbe9ed;
+  background: #EADCC8;
   overflow: hidden;
 }
 
@@ -193,7 +193,7 @@
   padding: 6px 10px;
   border-radius: 4px;
   background: rgba(18, 12, 10, 0.72);
-  color: #FFFAFA;
+  color: #FAF6EF;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.58rem;
   font-weight: 500;
@@ -208,7 +208,7 @@
   font-size: clamp(2rem, 3vw, 2.85rem);
   font-weight: 500;
   line-height: 1.02;
-  color: #f8f3ea;
+  color: #FAF6EF;
 }
 
 .viewArticle {
@@ -219,8 +219,8 @@
   margin-top: 4px;
   padding: 4px 4px 4px 16px;
   border-radius: 999px;
-  background: #5c1218;
-  color: #FFFAFA;
+  background: #2A211A;
+  color: #FAF6EF;
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.66rem;
   font-weight: 600;
@@ -230,7 +230,7 @@
 }
 
 .featureMedia:hover .viewArticle {
-  background: #7A1530;
+  background: #3A2E24;
 }
 
 .viewArrow,
@@ -246,8 +246,8 @@
 }
 
 .viewArrow {
-  background: rgba(247, 241, 231, 0.16);
-  color: #FFFAFA;
+  background: rgba(250, 246, 239, 0.16);
+  color: #FAF6EF;
 }
 
 .featureMedia:hover .viewArrow {
@@ -262,16 +262,16 @@
   gap: 18px;
   padding: 28px 18px 26px;
   text-align: center;
-  color: #f3e6d4;
+  color: #E8D4B5;
   background:
-    radial-gradient(circle at 50% 18%, rgba(198, 154, 88, 0.16), transparent 42%),
-    #5a1218;
+    radial-gradient(circle at 50% 18%, rgba(196, 163, 90, 0.16), transparent 42%),
+    #2A211A;
 }
 
 .panelOrnament {
   width: 54px;
   height: 40px;
-  color: #e8d4b3;
+  color: #E8D4B5;
 }
 
 .featureNav {
@@ -286,40 +286,40 @@
   font-family: var(--font-dm), "DM Sans", sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
-  color: #FFFAFA;
+  color: #FAF6EF;
 }
 
 .featureCount span {
-  color: rgba(247, 241, 231, 0.55);
+  color: rgba(250, 246, 239, 0.55);
 }
 
 .navRule {
   width: 28px;
   height: 1px;
-  background: rgba(232, 212, 179, 0.55);
+  background: rgba(232, 212, 181, 0.55);
 }
 
 .navBtn {
   padding: 0;
-  border: 1px solid rgba(232, 212, 179, 0.7);
+  border: 1px solid rgba(232, 212, 181, 0.7);
   background: transparent;
-  color: #FFFAFA;
+  color: #FAF6EF;
   cursor: pointer;
 }
 
 .navBtn:hover:not(:disabled) {
-  background: rgba(247, 241, 231, 0.12);
+  background: rgba(250, 246, 239, 0.12);
 }
 
 .navBtnFilled {
-  background: #FFFAFA;
-  border-color: #FFFAFA;
-  color: #4b1014;
+  background: #FAF6EF;
+  border-color: #FAF6EF;
+  color: #3A2E24;
 }
 
 .navBtnFilled:hover:not(:disabled) {
-  background: #fff;
-  color: #4b1014;
+  background: #FFFFFF;
+  color: #3A2E24;
 }
 
 .navBtn:disabled {
@@ -335,7 +335,7 @@
   letter-spacing: 0.16em;
   line-height: 1.55;
   text-transform: uppercase;
-  color: #f3e6d4;
+  color: #E8D4B5;
 }
 
 .productGrid {
@@ -361,9 +361,9 @@
   display: block;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 1px solid #f2dbe0;
+  border: 1px solid #E8D4B5;
   border-radius: 12px;
-  background: #fbe9ed;
+  background: #EADCC8;
 }
 
 .editorialBody {
@@ -382,7 +382,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #766a5d;
+  color: #51473F;
 }
 
 .editorialTitle {
@@ -390,21 +390,21 @@
   font-size: clamp(1.55rem, 2vw, 2rem);
   font-weight: 500;
   line-height: 1.08;
-  color: #191512;
+  color: #3A2E24;
 }
 
 .editorialArrow,
 .arrow {
-  border: 1px solid #c69a58;
+  border: 1px solid #C4A35A;
   background: transparent;
-  color: #6e5430;
+  color: #7A6232;
 }
 
 .editorial:hover .editorialArrow,
 .productCard:hover .arrow {
-  background: #7A1530;
-  border-color: #7A1530;
-  color: #FFFAFA;
+  background: #3A2E24;
+  border-color: #3A2E24;
+  color: #FAF6EF;
 }
 
 .editorialFoot {
@@ -413,7 +413,7 @@
   font-size: 0.56rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #a89888;
+  color: #51473F;
 }
 
 .productCard {
@@ -430,10 +430,10 @@
   display: block;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid #f2dbe0;
+  border: 1px solid #E8D4B5;
   border-radius: 12px;
-  background: #fbe9ed;
-  box-shadow: 0 10px 24px rgba(48, 28, 16, 0.04);
+  background: #EADCC8;
+  box-shadow: 0 10px 24px rgba(58, 46, 36, 0.04);
 }
 
 .productCard .articleBadge {
@@ -467,14 +467,14 @@
   font-size: 1.18rem;
   font-weight: 500;
   line-height: 1.2;
-  color: #191512;
+  color: #3A2E24;
 }
 
 .emptyState {
   margin: 12px 0 0;
   font-family: var(--font-serif), Georgia, serif;
   font-style: italic;
-  color: #766a5d;
+  color: #51473F;
 }
 
 @media (max-width: 1100px) {
