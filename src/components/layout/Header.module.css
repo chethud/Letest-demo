@@ -57,8 +57,8 @@
 }
 
 .utilityFact svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
   color: #3A2E24;
 }
@@ -290,7 +290,7 @@
   left: 0;
   z-index: 30;
   display: none;
-  padding-top: 10px;
+  padding-top: 0;
 }
 
 .dropdownOpen {
@@ -302,8 +302,10 @@
   flex-direction: column;
   min-width: 196px;
   padding: 10px 0;
-  border: 1px solid #E8D4B5;
-  background: #FAF6EF;
+  border: 1px solid rgba(58, 46, 36, 0.1);
+  border-top: 0;
+  background: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(58, 46, 36, 0.08);
 }
 
 .dropdownLink {
