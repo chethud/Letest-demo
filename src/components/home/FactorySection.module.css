@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(280px, 3fr);
   min-height: 540px;
-  background: #EADCC8;
-  color: #3A2E24;
+  background: #fbe9ed;
+  color: #17130f;
   scroll-margin-top: 80px;
   padding-left: clamp(1.75rem, 3vw, 2.75rem);
 }
@@ -13,8 +13,8 @@
   display: block;
   min-height: 540px;
   overflow: hidden;
-  background: #3A2E24;
-  color: #FAF6EF;
+  background: #120e0c;
+  color: #f7f2e9;
 }
 
 .video {
@@ -41,7 +41,7 @@
   letter-spacing: 0.3em !important;
   line-height: 1.6 !important;
   text-transform: uppercase !important;
-  color: #7A6232 !important;
+  color: #b79a68 !important;
 }
 
 .display {
@@ -52,7 +52,7 @@
   line-height: 1.06 !important;
   letter-spacing: -0.015em !important;
   text-transform: none !important;
-  color: #3A2E24 !important;
+  color: #17130f !important;
 }
 
 .body {
@@ -63,7 +63,7 @@
   font-weight: 300 !important;
   line-height: 1.9 !important;
   letter-spacing: 0 !important;
-  color: #51473F !important;
+  color: rgba(23, 19, 15, 0.62) !important;
 }
 
 .craftLink {
@@ -73,18 +73,18 @@
   font-weight: 300;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #51473F;
+  color: rgba(23, 19, 15, 0.62);
   text-decoration: none;
 }
 
 .craftLink:hover {
-  color: #3A2E24;
+  color: #7a1530;
 }
 
 .palaceSketch {
   margin-top: auto;
   padding-top: 16px;
-  color: rgba(58, 46, 36, 0.28);
+  color: rgba(122, 21, 48, 0.28);
 }
 
 .palaceSketch svg {

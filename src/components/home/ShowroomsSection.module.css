@@ -45,7 +45,7 @@
 .cityTabBtn {
   padding: 10px 20px;
   background-color: transparent;
-  border: 1px solid rgba(58, 46, 36, 0.15);
+  border: 1px solid rgba(23, 21, 19, 0.15);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -86,7 +86,7 @@
 
 .storeCard {
   background-color: var(--color-bg-paper);
-  border: 1px solid rgba(58, 46, 36, 0.12);
+  border: 1px solid rgba(23, 21, 19, 0.12);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -97,7 +97,7 @@
 
 .storeCard:hover {
   border-color: var(--color-burgundy);
-  box-shadow: 0 12px 30px rgba(58, 46, 36, 0.05);
+  box-shadow: 0 12px 30px rgba(23, 21, 19, 0.05);
 }
 
 .storeType {
@@ -126,7 +126,7 @@
 }
 
 .storeMetaGroup {
-  border-top: 1px solid rgba(58, 46, 36, 0.08);
+  border-top: 1px solid rgba(23, 21, 19, 0.08);
   padding-top: 16px;
   display: flex;
   flex-direction: column;

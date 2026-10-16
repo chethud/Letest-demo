@@ -4,12 +4,12 @@
    ========================================================================== */
 
 .heritageSection {
-  background-color: #FAF6EF;
+  background-color: #FFFAFA;
   background-image: 
     radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.9) 0%, transparent 55%),
-    radial-gradient(circle at 88% 82%, rgba(232, 212, 181, 0.5) 0%, transparent 60%);
-  border-top: 1px solid rgba(196, 163, 90, 0.22);
-  border-bottom: 1px solid rgba(196, 163, 90, 0.22);
+    radial-gradient(circle at 88% 82%, rgba(243, 233, 220, 0.5) 0%, transparent 60%);
+  border-top: 1px solid rgba(183, 154, 101, 0.22);
+  border-bottom: 1px solid rgba(183, 154, 101, 0.22);
   padding: clamp(72px, 8vw, 116px) 0;
   position: relative;
   overflow: hidden;
@@ -56,11 +56,11 @@
 .archivalFrame {
   position: relative;
   background: #FFFFFF;
-  border: 1px solid rgba(196, 163, 90, 0.4);
+  border: 1px solid rgba(183, 154, 101, 0.4);
   padding: clamp(14px, 1.5vw, 20px) clamp(14px, 1.5vw, 20px) 14px;
   border-radius: 4px;
   box-shadow: 
-    0 24px 60px -10px rgba(58, 46, 36, 0.12),
+    0 24px 60px -10px rgba(45, 30, 20, 0.12),
     0 4px 18px rgba(0, 0, 0, 0.04),
     0 0 0 1px rgba(255, 255, 255, 0.9) inset;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
@@ -69,9 +69,9 @@
 .archivalFrame:hover {
   transform: translateY(-3px);
   box-shadow: 
-    0 30px 72px -12px rgba(58, 46, 36, 0.16),
+    0 30px 72px -12px rgba(45, 30, 20, 0.16),
     0 6px 22px rgba(0, 0, 0, 0.06);
-  border-color: rgba(196, 163, 90, 0.6);
+  border-color: rgba(183, 154, 101, 0.6);
 }
 
 .archivalImageWrap {
@@ -80,9 +80,9 @@
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 2px;
-  border: 1px solid rgba(196, 163, 90, 0.35);
-  background-color: #3A2E24;
-  box-shadow: 0 0 0 1px rgba(196, 163, 90, 0.15) inset;
+  border: 1px solid rgba(183, 154, 101, 0.35);
+  background-color: #1A1412;
+  box-shadow: 0 0 0 1px rgba(183, 154, 101, 0.15) inset;
 }
 
 .archivalImage {
@@ -106,14 +106,14 @@
   gap: 7px;
   background-color: rgba(18, 14, 12, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(196, 163, 90, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.6);
   padding: 5px 13px;
   border-radius: 9999px;
   font-family: var(--font-dm, 'DM Sans', sans-serif);
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #E8D4B5;
+  color: #E2BC5C;
   font-weight: 600;
   z-index: 2;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
@@ -122,7 +122,7 @@
 .badgeCrownIcon {
   width: 13px;
   height: 13px;
-  color: #E8D4B5;
+  color: #E2BC5C;
   flex-shrink: 0;
 }
 
@@ -130,7 +130,7 @@
 .archivalCaption {
   margin-top: 14px;
   padding-top: 12px;
-  border-top: 1px solid rgba(196, 163, 90, 0.24);
+  border-top: 1px solid rgba(183, 154, 101, 0.24);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -139,26 +139,26 @@
   font-size: clamp(0.6rem, 0.75vw, 0.7rem);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #51473F;
+  color: #5D5045;
 }
 
 .captionFounder {
   font-weight: 500;
-  color: #51473F;
+  color: #5D5045;
   white-space: nowrap;
 }
 
 .captionDivider {
   flex: 1;
   height: 1px;
-  background: rgba(196, 163, 90, 0.28);
+  background: rgba(183, 154, 101, 0.28);
   margin: 0 4px;
   min-width: 8px;
 }
 
 .captionOrigin {
   font-weight: 600;
-  color: #3A2E24;
+  color: #7A1530;
   letter-spacing: 0.14em;
   white-space: nowrap;
 }
@@ -186,7 +186,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #7A6232;
+  color: #B79A65;
 }
 
 /* Year Display Row */
@@ -203,7 +203,7 @@
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.02em;
-  color: #3A2E24;
+  color: #7A1530;
 }
 
 .yearSubtitle {
@@ -212,7 +212,7 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #7A6232;
+  color: #8C7049;
 }
 
 /* Main Editorial Heading */
@@ -222,7 +222,7 @@
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.01em;
-  color: #3A2E24;
+  color: #1A1412;
   margin: 0 0 18px 0;
 }
 
@@ -231,23 +231,23 @@
   font-family: var(--font-dm, 'DM Sans', sans-serif);
   font-size: clamp(0.95rem, 1.05vw, 1.02rem);
   line-height: 1.74;
-  color: #51473F;
+  color: #443B34;
   margin: 0 0 24px 0;
   max-width: 630px;
 }
 
 /* Historical Quotation Panel */
 .quotePanel {
-  background-color: #FAF6EF;
-  border-left: 3px solid #3A2E24;
-  border-top: 1px solid rgba(196, 163, 90, 0.24);
-  border-right: 1px solid rgba(196, 163, 90, 0.24);
-  border-bottom: 1px solid rgba(196, 163, 90, 0.24);
+  background-color: #FFFAFA;
+  border-left: 3px solid #7A1530;
+  border-top: 1px solid rgba(183, 154, 101, 0.24);
+  border-right: 1px solid rgba(183, 154, 101, 0.24);
+  border-bottom: 1px solid rgba(183, 154, 101, 0.24);
   border-radius: 0 4px 4px 0;
   padding: 18px 24px;
   margin-bottom: 28px;
   max-width: 650px;
-  box-shadow: 0 4px 16px rgba(58, 46, 36, 0.03);
+  box-shadow: 0 4px 16px rgba(45, 30, 20, 0.03);
 }
 
 .quoteText {
@@ -255,7 +255,7 @@
   font-style: italic;
   font-size: clamp(0.96rem, 1.05vw, 1.04rem);
   line-height: 1.64;
-  color: #3A2E24;
+  color: #231C18;
   margin: 0;
 }
 
@@ -268,7 +268,7 @@
   gap: 0;
   margin-bottom: 32px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(196, 163, 90, 0.22);
+  border-bottom: 1px solid rgba(183, 154, 101, 0.22);
   max-width: 660px;
 }
 
@@ -295,7 +295,7 @@
 .statIcon {
   width: 22px;
   height: 22px;
-  color: #7A6232;
+  color: #B79A65;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -311,7 +311,7 @@
   font-family: var(--font-display, 'Playfair Display', serif);
   font-size: clamp(1.5rem, 2vw, 2.1rem);
   font-weight: 500;
-  color: #3A2E24;
+  color: #7A1530;
   line-height: 1;
   letter-spacing: -0.01em;
 }
@@ -322,7 +322,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #3A2E24;
+  color: #1A1412;
   line-height: 1.35;
   margin-bottom: 4px;
 }
@@ -333,14 +333,14 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #51473F;
+  color: #7C7065;
   line-height: 1.45;
 }
 
 .statDivider {
   width: 1px;
   height: 56px;
-  background: rgba(196, 163, 90, 0.32);
+  background: rgba(183, 154, 101, 0.32);
   align-self: center;
   flex-shrink: 0;
 }
@@ -359,26 +359,26 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: #3A2E24;
-  color: #FAF6EF;
+  background-color: #7A1530;
+  color: #FFF9F2;
   padding: 14px 30px;
   border-radius: 9999px;
-  border: 1px solid rgba(196, 163, 90, 0.45);
+  border: 1px solid rgba(212, 175, 55, 0.45);
   font-family: var(--font-dm, 'DM Sans', sans-serif);
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgba(58, 46, 36, 0.24);
+  box-shadow: 0 8px 24px rgba(122, 22, 29, 0.24);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .primaryCtaBtn:hover {
-  background-color: #2A211A;
-  border-color: #C4A35A;
+  background-color: #5D1016;
+  border-color: #D4AF37;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(58, 46, 36, 0.34);
+  box-shadow: 0 12px 28px rgba(122, 22, 29, 0.34);
   color: #FFFFFF;
 }
 
@@ -387,10 +387,10 @@
   align-items: center;
   gap: 10px;
   background-color: rgba(255, 255, 255, 0.5);
-  color: #3A2E24;
+  color: #1A1412;
   padding: 13px 26px;
   border-radius: 9999px;
-  border: 1px solid rgba(196, 163, 90, 0.5);
+  border: 1px solid rgba(183, 154, 101, 0.5);
   font-family: var(--font-dm, 'DM Sans', sans-serif);
   font-size: 0.74rem;
   font-weight: 600;
@@ -402,10 +402,10 @@
 
 .secondaryCtaBtn:hover {
   background-color: #FFFFFF;
-  border-color: #3A2E24;
-  color: #3A2E24;
+  border-color: #7A1530;
+  color: #7A1530;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(196, 163, 90, 0.15);
+  box-shadow: 0 6px 18px rgba(183, 154, 101, 0.15);
 }
 
 .ctaArrow {

@@ -167,10 +167,7 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        <nav
-          className={`${styles.navMain} ${utilityHidden ? styles.navMainSolid : ""}`}
-          aria-label="Main Navigation"
-        >
+        <nav className={styles.navMain} aria-label="Main Navigation">
           <Link href="/" className={styles.brandLink} aria-label="KSIC Mysore Silk Home">
             <Image
               src="/assets/brand/ksic-logo.png"

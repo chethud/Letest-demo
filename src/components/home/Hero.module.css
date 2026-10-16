@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  background-color: #FAF6EF;
+  background-color: #FFFAFA;
   box-sizing: border-box;
 }
 
@@ -49,8 +49,8 @@
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(250, 246, 239, 0.42) 0%,
-    rgba(250, 246, 239, 0.16) 28%,
+    rgba(248, 245, 239, 0.42) 0%,
+    rgba(248, 245, 239, 0.16) 28%,
     transparent 48%
   );
   pointer-events: none;
@@ -81,7 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: drop-shadow(0 1px 3px rgba(196, 163, 90, 0.2));
+  filter: drop-shadow(0 1px 3px rgba(135, 105, 59, 0.2));
 }
 
 .filigreeConnector {
@@ -96,14 +96,14 @@
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: #C4A35A;
+  background-color: #A88B58;
   opacity: 0.85;
 }
 
 .filigreeDottedLine {
   width: 1px;
   height: 28px;
-  border-left: 1px dashed #C4A35A;
+  border-left: 1px dashed #A88B58;
   opacity: 0.65;
   margin: 10px 0 0;
 }
@@ -127,13 +127,13 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: none;
-  color: #3A2E24;
+  color: #302A29;
   line-height: 1.2;
 }
 
 .scrollExploreArrow {
   font-size: 0.85rem;
-  color: #7A6232;
+  color: #B79A65;
   line-height: 1;
 }
 
@@ -148,7 +148,7 @@
 .needleLine {
   width: 1.5px;
   height: 22px;
-  background-color: #C4A35A;
+  background-color: #8C6F3D;
   opacity: 0.9;
 }
 
@@ -156,7 +156,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #C4A35A;
+  background-color: #8C6F3D;
 }
 
 /* 4. Main Hero Editorial Content Overlay */
@@ -199,13 +199,13 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #3A2E24;
+  color: #302A29;
 }
 
 .kickerUnderline {
   width: 36px;
   height: 2px;
-  background-color: #3A2E24;
+  background-color: #7A1530;
   margin: 4px 0 3px;
 }
 
@@ -214,7 +214,7 @@
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #3A2E24;
+  color: #6E1A24;
 }
 
 /* Stately High-Fashion Display Headline: MYSORE SILK */
@@ -224,7 +224,7 @@
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.015em;
-  color: #3A2E24;
+  color: #302A29;
   display: flex;
   flex-direction: column;
   margin: 0 0 18px 0;
@@ -240,7 +240,7 @@
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.01em;
-  color: #3A2E24;
+  color: #302A29;
 }
 
 .titleLine {
@@ -253,7 +253,7 @@
   font-size: clamp(22px, 2.3vw, 29px);
   font-weight: 500;
   line-height: 1.5;
-  color: #3A2E24;
+  color: #120E0C;
   margin-bottom: 36px;
 }
 
@@ -273,9 +273,9 @@
   justify-content: center;
   gap: 11px;
   text-decoration: none;
-  background: #3A2E24;
+  background: #7A1530;
   color: #FFFFFF;
-  border: 1.5px solid rgba(196, 163, 90, 0.55);
+  border: 1.5px solid rgba(183, 154, 101, 0.55);
   border-radius: 9999px;
   padding: 13px 30px;
   font-family: var(--font-dm), var(--font-sans);
@@ -284,7 +284,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   white-space: nowrap;
-  box-shadow: 0 4px 18px rgba(58, 46, 36, 0.28), 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 18px rgba(122, 22, 29, 0.28), 0 2px 4px rgba(0, 0, 0, 0.08);
   transition: background-color 240ms ease, border-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
   cursor: pointer;
 }
@@ -296,16 +296,16 @@
 
 .exploreArrow {
   transition: transform 240ms ease;
-  color: #E8D4B5;
+  color: #F5CE7E;
   flex-shrink: 0;
 }
 
 .exploreLink:hover {
-  background: #2A211A;
-  border-color: #C4A35A;
+  background: #5E0F15;
+  border-color: #D4AF37;
   color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(58, 46, 36, 0.38), 0 2px 8px rgba(196, 163, 90, 0.22);
+  box-shadow: 0 8px 24px rgba(122, 22, 29, 0.38), 0 2px 8px rgba(212, 175, 55, 0.22);
 }
 
 .exploreLink:hover .exploreArrow {
@@ -315,7 +315,7 @@
 
 .exploreLink:active {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(58, 46, 36, 0.25);
+  box-shadow: 0 2px 8px rgba(122, 22, 29, 0.25);
 }
 
 .trustBadgesRow {
@@ -339,9 +339,9 @@
   gap: 5px;
   height: 20px;
   padding: 0 8px;
-  border: 1px solid rgba(196, 163, 90, 0.55);
-  background: rgba(250, 246, 239, 0.72);
-  color: #3A2E24;
+  border: 1px solid rgba(138, 111, 61, 0.55);
+  background: rgba(255, 252, 247, 0.72);
+  color: #2A221C;
   font-family: var(--font-sans);
   font-size: 9px;
   font-weight: 700;
@@ -364,31 +364,13 @@
   justify-content: center;
   width: 14px;
   height: 14px;
-  border: 1px solid #3A2E24;
+  border: 1px solid #7A1530;
   border-radius: 50%;
-  color: #3A2E24;
+  color: #7A1530;
   font-size: 7px;
   letter-spacing: 0;
   line-height: 1;
   flex-shrink: 0;
-}
-
-.gandaMark {
-  position: absolute;
-  z-index: 4;
-  top: calc(var(--site-header-offset) + 4px);
-  right: clamp(18px, 2.2vw, 36px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 132px;
-  text-align: center;
-  pointer-events: none;
-}
-
-.gandaEmblem {
-  width: 92px;
-  height: auto;
 }
 
 .mobileCampaign,
@@ -425,10 +407,6 @@
     display: block;
     object-fit: cover;
     object-position: center center;
-  }
-
-  .gandaMark {
-    display: none;
   }
 
   .heroSection {
@@ -471,7 +449,7 @@
     font-weight: 500;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: #7A6232;
+    color: #7A5A32;
   }
 
   .mobileHeadline {
@@ -483,7 +461,7 @@
     font-size: clamp(2.15rem, 9.4vw, 2.85rem);
     line-height: 0.98;
     letter-spacing: -0.02em;
-    color: #3A2E24;
+    color: #302A29;
     text-transform: none;
   }
 
@@ -494,7 +472,7 @@
     font-size: 0.95rem;
     font-weight: 400;
     line-height: 1.55;
-    color: #3A2E24;
+    color: #3C2C2A;
   }
 
   .mobileCta {
@@ -507,8 +485,8 @@
     min-height: 44px;
     padding: 12px 24px;
     border-radius: 9999px;
-    background: #3A2E24;
-    border: 1.5px solid rgba(196, 163, 90, 0.55);
+    background: #7A1530;
+    border: 1.5px solid rgba(183, 154, 101, 0.55);
     color: #FFFFFF;
     text-decoration: none;
     font-family: var(--font-dm), var(--font-sans);
@@ -517,24 +495,24 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(58, 46, 36, 0.32), 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(122, 22, 29, 0.32), 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
     cursor: pointer;
   }
 
   .mobileCtaArrow {
-    color: #E8D4B5;
+    color: #F5CE7E;
     transition: transform 200ms ease;
     flex-shrink: 0;
   }
 
   .mobileCta:hover,
   .mobileCta:focus-visible {
-    background: #2A211A;
-    border-color: #C4A35A;
+    background: #5E0F15;
+    border-color: #D4AF37;
     color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(58, 46, 36, 0.42);
+    box-shadow: 0 6px 20px rgba(122, 22, 29, 0.42);
   }
 
   .mobileCta:hover .mobileCtaArrow,
@@ -544,7 +522,7 @@
 
   .mobileCta:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(58, 46, 36, 0.25);
+    box-shadow: 0 2px 8px rgba(122, 22, 29, 0.25);
   }
 
   .mobileScroll {
@@ -563,14 +541,14 @@
   .mobileScrollLine {
     width: 1px;
     height: 28px;
-    background: #C4A35A;
+    background: #A68445;
   }
 
   .mobileScrollDot {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: #C4A35A;
+    background: #A68445;
   }
 
   .mobileScrollLabel {
@@ -579,12 +557,12 @@
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: #7A6232;
+    color: #8A6A38;
   }
 
   .bottomTransitionFade {
     height: 28px;
-    background: linear-gradient(180deg, transparent 0%, rgba(250, 246, 239, 0.2) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(247, 243, 236, 0.2) 100%);
   }
 }
 

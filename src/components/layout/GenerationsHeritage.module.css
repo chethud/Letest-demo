@@ -2,12 +2,11 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  background: #FAF6EF;
-  color: #3A2E24;
+  margin: 0.7rem;
+  background: #faf6ef;
+  color: #3a2e24;
   overflow: hidden;
-  border: 0.5px solid rgba(196, 163, 90, 0.45);
-  scroll-margin-top: calc(var(--site-header-offset) + 12px);
-  padding: 0.7rem;
+  border: 1px solid #e6d7be;
 }
 
 .atmosphere {
@@ -17,35 +16,28 @@
 .image,
 .panel {
   position: relative;
-  z-index: 1;
   min-width: 0;
 }
 
 .image {
-  margin: 0;
   overflow: hidden;
+  min-height: min(72vw, 420px);
+  border-bottom: 1px solid #e6d7be;
 }
 
 .photo {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1371 / 1148;
+  height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 42%;
 }
 
 .panel {
-  display: grid;
+  display: flex;
   align-items: center;
-  background-color: #ffffff;
-  background-image:
-    linear-gradient(100deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.55) 48%, rgba(255, 255, 255, 0.22) 100%),
-    url("/assets/heritage/generations-panel-floral.jpg");
-  background-repeat: no-repeat;
-  background-position: center, right bottom;
-  background-size: cover, cover;
-  border-top: 0.5px solid rgba(196, 163, 90, 0.45);
+  background: #faf6ef url("/assets/heritage/heritage-floral-panel.jpg") right bottom / cover no-repeat;
 }
 
 .copy {
@@ -54,49 +46,45 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 28rem;
-  padding: clamp(2.5rem, 6vw, 3.5rem) clamp(1.5rem, 5vw, 2.25rem);
+  width: 100%;
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3.25rem);
 }
 
 .eyebrow {
   margin: 0 0 1.35rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #c4a35a;
+  width: fit-content;
+  min-width: 7.5rem;
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
   font-size: 0.68rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.28em !important;
+  letter-spacing: 0.32em !important;
   line-height: 1.4 !important;
   text-transform: uppercase;
-  color: #3A2E24;
-}
-
-.eyebrow::after {
-  content: "";
-  display: block;
-  width: 2.75rem;
-  height: 1px;
-  margin-top: 0.85rem;
-  background: #C4A35A;
+  color: #3a2e24;
 }
 
 .title {
   margin: 0;
+  max-width: 11ch;
   font-family: "Playfair Display", Georgia, serif !important;
   font-weight: 500 !important;
-  font-size: clamp(2rem, 7vw, 2.65rem) !important;
-  line-height: 1.16 !important;
+  font-size: clamp(2.4rem, 4.6vw, 3.65rem) !important;
+  line-height: 1.14 !important;
   letter-spacing: -0.02em !important;
-  color: #3A2E24;
+  color: #3a2e24;
 }
 
 .lead {
-  margin: 1.35rem 0 1.85rem;
+  margin: 1.65rem 0 2.15rem;
   max-width: 22rem;
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
-  font-size: 0.98rem !important;
+  font-size: 1rem !important;
   font-weight: 400 !important;
-  line-height: 1.75 !important;
-  letter-spacing: 0.01em !important;
-  color: #3A2E24;
+  line-height: 1.7 !important;
+  letter-spacing: 0 !important;
+  color: #3a2e24;
 }
 
 a.cta {
@@ -109,53 +97,61 @@ a.cta {
   padding: 13px 22px;
   border: 0;
   border-radius: 999px;
-  background: #3A2E24;
-  font-family: var(--font-dm), "DM Sans", sans-serif !important;
-  font-size: 0.68rem !important;
+  background: #7a1530;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif !important;
+  font-size: 0.72rem !important;
   font-weight: 500 !important;
   letter-spacing: 0.16em !important;
   line-height: 1 !important;
   text-transform: uppercase;
-  color: #FFFFFF !important;
+  color: #fffafa !important;
   text-decoration: none;
   transition: background-color 0.35s ease, gap 0.35s ease;
 }
 
 a.cta:hover {
   gap: 0.7rem;
-  background: #2A211A;
-  color: #FFFFFF !important;
+  background: #641026;
+  color: #fffafa !important;
 }
 
 a.cta:focus-visible {
-  outline: 2px solid #3A2E24;
+  outline: 2px solid #7a1530;
   outline-offset: 3px;
 }
 
 @media (min-width: 900px) {
   .heritage {
-    grid-template-columns: minmax(0, 63%) minmax(0, 37%);
+    grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 1fr);
+    min-height: 560px;
     align-items: stretch;
-    padding: 0.85rem;
   }
 
-  .panel {
-    border-top: 0;
-    border-left: 0.5px solid rgba(196, 163, 90, 0.45);
+  .image {
+    min-height: 560px;
+    border-bottom: 0;
+    border-right: 1px solid #e6d7be;
+  }
+
+  .photo {
+    object-position: center 38%;
   }
 
   .copy {
-    max-width: 34rem;
-    padding: clamp(2.75rem, 4vw, 4.75rem) clamp(2rem, 3.4vw, 3.75rem);
+    padding: clamp(2.75rem, 4vw, 4.25rem) clamp(2rem, 3.2vw, 3.5rem);
   }
 
   .title {
-    font-size: clamp(2.15rem, 2.7vw, 3.35rem) !important;
+    font-size: clamp(2.15rem, 2.8vw, 3.15rem) !important;
   }
 }
 
-@media (max-width: 899px) {
+@media (max-width: 640px) {
+  .image {
+    min-height: 82vw;
+  }
+
   .photo {
-    object-position: center center;
+    object-position: center 36%;
   }
 }

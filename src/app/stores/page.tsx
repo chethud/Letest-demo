@@ -50,7 +50,7 @@ export default function StoresPage() {
                     padding: "10px 20px",
                     background: selectedCity === city ? "var(--color-burgundy)" : "transparent",
                     color: selectedCity === city ? "#FFFFFF" : "var(--color-text-secondary)",
-                    border: "1px solid " + (selectedCity === city ? "var(--color-burgundy)" : "rgba(58, 46, 36, 0.15)"),
+                    border: "1px solid " + (selectedCity === city ? "var(--color-burgundy)" : "rgba(23, 21, 19, 0.15)"),
                     fontSize: "0.78rem",
                     fontWeight: 600,
                     letterSpacing: "0.14em",

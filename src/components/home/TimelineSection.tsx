@@ -69,20 +69,20 @@ export const TimelineSection: React.FC = () => {
         <article className={styles.editorialCard} aria-live="polite">
           {/* Subtle gold corner filigree flourishes */}
           <svg className={`${styles.cornerFlourish} ${styles.cornerTl}`} viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M1 15 V4 C1 2.34 2.34 1 4 1 H15" stroke="#C4A35A" strokeWidth="1.2" fill="none" />
-            <circle cx="4" cy="4" r="1.5" fill="#7A6232" />
+            <path d="M1 15 V4 C1 2.34 2.34 1 4 1 H15" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="4" cy="4" r="1.5" fill="#C5A059" />
           </svg>
           <svg className={`${styles.cornerFlourish} ${styles.cornerTr}`} viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M15 15 V4 C15 2.34 13.66 1 12 1 H1" stroke="#C4A35A" strokeWidth="1.2" fill="none" />
-            <circle cx="12" cy="4" r="1.5" fill="#7A6232" />
+            <path d="M15 15 V4 C15 2.34 13.66 1 12 1 H1" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="12" cy="4" r="1.5" fill="#C5A059" />
           </svg>
           <svg className={`${styles.cornerFlourish} ${styles.cornerBl}`} viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M1 1 V12 C1 13.66 2.34 15 4 15 H15" stroke="#C4A35A" strokeWidth="1.2" fill="none" />
-            <circle cx="4" cy="12" r="1.5" fill="#7A6232" />
+            <path d="M1 1 V12 C1 13.66 2.34 15 4 15 H15" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="4" cy="12" r="1.5" fill="#C5A059" />
           </svg>
           <svg className={`${styles.cornerFlourish} ${styles.cornerBr}`} viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M15 1 V12 C15 13.66 13.66 15 12 15 H1" stroke="#C4A35A" strokeWidth="1.2" fill="none" />
-            <circle cx="12" cy="12" r="1.5" fill="#7A6232" />
+            <path d="M15 1 V12 C15 13.66 13.66 15 12 15 H1" stroke="#C5A059" strokeWidth="1.2" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill="#C5A059" />
           </svg>
 
           {/* Left Column: Historical Information */}
@@ -120,7 +120,7 @@ export const TimelineSection: React.FC = () => {
                       height="24"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#3A2E24"
+                      stroke="#861B26"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -163,7 +163,7 @@ export const TimelineSection: React.FC = () => {
                 height="12"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#3A2E24"
+                stroke="#861B26"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
