@@ -109,6 +109,120 @@ a.channel:focus-visible,
   outline-offset: 3px;
 }
 
+.locator {
+  padding: clamp(36px, 5vw, 56px) 0;
+  background: #fffafa;
+  border-bottom: 1px solid #f2dbe0;
+}
+
+.locatorTitle {
+  margin: 0 0 18px;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  color: #2e1d1a !important;
+}
+
+.locatorForm {
+  max-width: 640px;
+}
+
+.locatorLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.locatorField {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  border: 1px solid #e8c4cc;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #7a1530;
+}
+
+.locatorField input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2e1d1a !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.locatorField input:focus {
+  outline: none;
+}
+
+.locatorField:focus-within {
+  outline: 2px solid #7a1530;
+  outline-offset: 3px;
+}
+
+.locatorEmpty {
+  margin: 18px 0 0;
+  color: #4a3330 !important;
+  font-size: 1rem !important;
+}
+
+.locatorResults {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.locatorResults a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid #f2dbe0;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #2e1d1a;
+  text-decoration: none;
+}
+
+.locatorResults a:hover {
+  border-color: #7a1530;
+  color: #7a1530;
+}
+
+.locatorResults strong {
+  display: block;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.locatorResults small {
+  display: block;
+  margin-top: 4px;
+  color: #4a3330;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 .body {
   padding: clamp(56px, 8vw, 104px) 0 clamp(72px, 9vw, 120px);
 }

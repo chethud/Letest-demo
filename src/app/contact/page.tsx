@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Building2, Clock, Factory, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Building2, Clock, Factory, Mail, MapPin, Phone, Search } from "lucide-react";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
+import { SHOWROOMS_DATA } from "@/data/showrooms";
 import styles from "./Contact.module.css";
 
 const ENQUIRY_TYPES = [
@@ -18,6 +19,7 @@ const REGIONS = ["Bengaluru", "Mysuru", "Channapatna", "Davanagere", "Hyderabad"
 
 export default function ContactPage() {
   const office = INSTITUTIONAL_OVERVIEW.headOffice;
+  const [storeQuery, setStoreQuery] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,6 +28,16 @@ export default function ContactPage() {
     preferredCity: REGIONS[0],
     message: "",
   });
+
+  const storeSearch = storeQuery.trim().toLowerCase();
+  const matchingStores = storeSearch
+    ? SHOWROOMS_DATA.filter((store) =>
+        [store.name, store.city, store.address, store.pincode, store.type]
+          .join(" ")
+          .toLowerCase()
+          .includes(storeSearch)
+      )
+    : [];
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -87,6 +99,54 @@ export default function ContactPage() {
               </div>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section className={styles.locator} aria-label="Store locator">
+        <div className="container-institutional">
+          <p className={styles.eyebrow}>Store locator</p>
+          <h2 className={styles.locatorTitle}>Find a showroom.</h2>
+          <form className={styles.locatorForm} role="search" onSubmit={(event) => event.preventDefault()}>
+            <label className={styles.locatorLabel} htmlFor="store-search">
+              Search by city, area, or pincode
+            </label>
+            <div className={styles.locatorField}>
+              <Search size={18} strokeWidth={1.5} aria-hidden />
+              <input
+                id="store-search"
+                type="search"
+                value={storeQuery}
+                placeholder="Bengaluru, M.G. Road, 560001"
+                onChange={(event) => setStoreQuery(event.target.value)}
+              />
+            </div>
+          </form>
+
+          {storeSearch && matchingStores.length === 0 && (
+            <p className={styles.locatorEmpty}>No showrooms match that search.</p>
+          )}
+
+          {matchingStores.length > 0 && (
+            <ul className={styles.locatorResults}>
+              {matchingStores.map((store) => (
+                <li key={store.id}>
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(`${store.name} KSIC ${store.city}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>
+                      <strong>{store.name}</strong>
+                      <small>
+                        {store.city} · {store.address} · {store.pincode}
+                      </small>
+                    </span>
+                    <ArrowRight size={16} aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
 
