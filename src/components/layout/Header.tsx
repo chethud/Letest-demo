@@ -58,6 +58,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Bestsellers", href: "/bestsellers" },
     ],
   },
+  { id: "contact", label: "Contact Us", href: "/contact" },
 ];
 
 export const Header: React.FC = () => {
