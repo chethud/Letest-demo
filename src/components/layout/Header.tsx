@@ -24,8 +24,8 @@ const NAV_ITEMS: NavItem[] = [
     label: "Mysore Silk",
     href: "/craft",
     children: [
-      { label: "The Story", href: "/heritage" },
-      { label: "The Craft", href: "/craft" },
+      { label: "Our Story", href: "/heritage" },
+      { label: "How It Is Made", href: "/craft" },
       { label: "Authenticity", href: "/authenticity" },
     ],
   },

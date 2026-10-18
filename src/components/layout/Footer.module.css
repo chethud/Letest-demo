@@ -146,22 +146,18 @@
 .officeLine,
 .officeCard a {
   margin: 0;
-  font-family: var(--font-display), "Playfair Display", Georgia, serif !important;
+  font-family: "Times New Roman", Times, serif !important;
+  font-style: normal !important;
   font-size: 1rem !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
+  text-transform: none !important;
   color: var(--color-text-secondary) !important;
 }
 
 .officeLine {
   margin-top: 12px;
-}
-
-.officeLine a[href^="tel:"] {
-  font-family: "Times New Roman", Times, serif !important;
-  font-style: normal !important;
-  font-weight: 400 !important;
 }
 
 .footerBottomRow {

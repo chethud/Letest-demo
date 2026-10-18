@@ -15,7 +15,7 @@ const EXPLORE_LINKS = [
 
 const HOUSE_LINKS = [
   { label: "About KSIC", href: "/institution" },
-  { label: "Our Stores", href: "/stores" },
+  { label: "Store Locator", href: "/stores" },
   { label: "Contact Us", href: "/contact" },
 ];
 

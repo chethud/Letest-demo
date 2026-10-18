@@ -6,9 +6,7 @@
   position: relative;
   overflow: hidden;
   border-bottom: var(--border-rule);
-  background:
-    linear-gradient(90deg, rgba(248, 244, 236, 0.94) 0%, rgba(248, 244, 236, 0.82) 42%, rgba(248, 244, 236, 0.45) 100%),
-    url("/assets/craft/craft-hero-bg.jpg") center / cover no-repeat;
+  background: #fffafa;
 }
 
 @media (max-width: 768px) {

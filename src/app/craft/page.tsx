@@ -16,13 +16,9 @@ export default function CraftPage() {
       {/* Header */}
       <section className={`section-spacing ${styles.hero}`}>
         <div className="container-institutional reveal-up">
-          <span className="editorial-label">TECHNICAL MONOGRAPH</span>
-          <h1 className="display-hero" style={{ marginTop: "12px", marginBottom: "24px" }}>
+          <h1 className="display-hero" style={{ marginTop: "0", marginBottom: "0" }}>
             FROM COCOON TO SILK.
           </h1>
-          <p className="subheadline" style={{ maxWidth: "800px" }}>
-            Cocoons from Ramanagara, raw silk at T. Narasipura, then weaving, washing, dyeing, and finishing in Mysore, as the supplied accounts describe them.
-          </p>
         </div>
       </section>
 
