@@ -311,7 +311,8 @@
 }
 
 .dropdownLink:hover {
-  color: #8e1b2b;
+  background: #7A1530;
+  color: #FFFFFF;
 }
 
 .iconRow {

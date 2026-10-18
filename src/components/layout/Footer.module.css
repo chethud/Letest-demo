@@ -67,13 +67,16 @@
 
 .brandLegalName {
   margin: 8px 0 0;
-  max-width: 16rem;
   font-family: var(--font-display), "Playfair Display", Georgia, serif !important;
   font-size: clamp(1.45rem, 2vw, 1.85rem) !important;
   font-weight: 500 !important;
   line-height: 1.15 !important;
   letter-spacing: -0.02em !important;
   color: #2e1d1a !important;
+}
+
+.brandLegalLead {
+  white-space: nowrap;
 }
 
 .brandNote {
@@ -107,8 +110,7 @@
   padding: 0;
 }
 
-.navColumnList a,
-.officeCard a {
+.navColumnList a {
   color: #2e1d1a;
   text-decoration: none;
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
@@ -116,9 +118,14 @@
   line-height: 1.35;
 }
 
+.officeCard a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
 .navColumnList a:hover,
 .officeCard a:hover {
-  color: #7a1530;
+  color: #7a1530 !important;
 }
 
 .navColumnList a:focus-visible,
@@ -136,17 +143,25 @@
 }
 
 .officeAddress,
-.officeLine {
+.officeLine,
+.officeCard a {
   margin: 0;
   font-family: var(--font-display), "Playfair Display", Georgia, serif !important;
-  font-size: 0.98rem !important;
+  font-size: 1rem !important;
   font-weight: 400 !important;
-  line-height: 1.65 !important;
-  color: #2e1d1a !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0 !important;
+  color: var(--color-text-secondary) !important;
 }
 
 .officeLine {
   margin-top: 12px;
+}
+
+.officeLine a[href^="tel:"] {
+  font-family: "Times New Roman", Times, serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
 }
 
 .footerBottomRow {

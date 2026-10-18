@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
               />
             </div>
             <p className={styles.brandLegalName}>
-              Karnataka Silk Industries
+              <span className={styles.brandLegalLead}>Karnataka Silk Industries</span>
               <br />
               Corporation Limited
             </p>

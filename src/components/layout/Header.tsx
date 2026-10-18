@@ -22,7 +22,7 @@ const NAV_ITEMS: NavItem[] = [
   {
     id: "mysore-silk",
     label: "Mysore Silk",
-    href: "/heritage",
+    href: "/craft",
     children: [
       { label: "The Story", href: "/heritage" },
       { label: "The Craft", href: "/craft" },
@@ -32,7 +32,7 @@ const NAV_ITEMS: NavItem[] = [
   {
     id: "world",
     label: "The World of KSIC",
-    href: "/institution",
+    href: "/our-heritage",
     children: [
       { label: "Our Heritage", href: "/our-heritage" },
       { label: "The Archive", href: "/the-archive" },
@@ -41,7 +41,7 @@ const NAV_ITEMS: NavItem[] = [
   {
     id: "journal",
     label: "Journal",
-    href: "/heritage",
+    href: "/journal",
     children: [
       { label: "Stories", href: "/heritage" },
       { label: "Culture", href: "/heritage#timeline" },
@@ -196,23 +196,38 @@ export const Header: React.FC = () => {
                 >
                   {item.children ? (
                     <>
-                      <button
-                        type="button"
-                        className={`${styles.navTrigger} ${active ? styles.navActive : ""}`}
-                        aria-expanded={menuOpen}
-                        aria-haspopup="true"
-                        onClick={() => {
-                          if (pinnedMenu === item.id) {
+                      {item.id === "mysore-silk" || item.id === "world" || item.id === "journal" ? (
+                        <Link
+                          href={item.href}
+                          className={`${styles.navTrigger} ${active ? styles.navActive : ""}`}
+                          aria-expanded={menuOpen}
+                          aria-haspopup="true"
+                          onClick={() => {
                             setPinnedMenu(null);
                             setOpenMenu(null);
-                            return;
-                          }
-                          setPinnedMenu(item.id);
-                          setOpenMenu(item.id);
-                        }}
-                      >
-                        {item.label}
-                      </button>
+                          }}
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          className={`${styles.navTrigger} ${active ? styles.navActive : ""}`}
+                          aria-expanded={menuOpen}
+                          aria-haspopup="true"
+                          onClick={() => {
+                            if (pinnedMenu === item.id) {
+                              setPinnedMenu(null);
+                              setOpenMenu(null);
+                              return;
+                            }
+                            setPinnedMenu(item.id);
+                            setOpenMenu(item.id);
+                          }}
+                        >
+                          {item.label}
+                        </button>
+                      )}
                       <div className={`${styles.dropdown} ${menuOpen ? styles.dropdownOpen : ""}`}>
                         <div className={styles.dropdownPanel}>
                           {item.children.map((child) => (

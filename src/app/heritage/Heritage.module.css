@@ -641,3 +641,21 @@
     transform: none;
   }
 }
+
+.hero .eyebrow,
+.hero .heroTitle,
+.hero .heroTitle span,
+.hero .heroLead,
+:global(#patronage) .eyebrow,
+:global(#patronage) .sectionTitle,
+:global(#patronage) .sectionTitle span,
+:global(#patronage) .body {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  line-height: 1.7 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #443B34 !important;
+}
