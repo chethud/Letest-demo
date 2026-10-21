@@ -22,25 +22,72 @@
   height: 100%;
 }
 
+.heroSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  pointer-events: none;
+}
+
+.heroSlideActive {
+  opacity: 1;
+  z-index: 1;
+}
+
 .heroBackgroundImageDesktop {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
   filter: brightness(1) contrast(1.02);
-  animation: heroBgSettle 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform;
 }
 
 .heroBackgroundImageMobile {
   display: none;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
   filter: brightness(1) contrast(1.02);
-  animation: heroBgSettle 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: transform;
+}
+
+.heroImageCenter {
+  object-position: center center;
+}
+
+.heroImageRight {
+  object-position: right center;
+}
+
+.heroDots {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(20px, 3.5vw, 36px);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(-50%);
+}
+
+.heroDot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 1px solid rgba(255, 250, 250, 0.85);
+  border-radius: 50%;
+  background: rgba(255, 250, 250, 0.35);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.heroDotActive {
+  background: #fffafa;
+  transform: scale(1.15);
+}
+
+.heroDot:focus-visible {
+  outline: 2px solid #7a1530;
+  outline-offset: 3px;
 }
 
 /* Ambient luminous scrim behind left editorial text for pristine legibility */
@@ -406,7 +453,10 @@
   .heroBackgroundImageMobile {
     display: block;
     object-fit: cover;
-    object-position: center center;
+  }
+
+  .heroImageRight {
+    object-position: 78% center;
   }
 
   .heroSection {

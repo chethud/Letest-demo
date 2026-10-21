@@ -200,13 +200,13 @@ export const SHAREHOLDERS: Shareholder[] = [
     holding: "One Share",
   },
   {
-    name: "Governor, Govt. of Karnataka",
-    role: "Principal Shareholder",
+    name: "Governor of Karnataka",
+    role: "Govt. of Karnataka.",
     addressLines: [],
     holding: "3,60,041 Equity Shares",
   },
   {
-    name: "Smt. Zehera Naseem, IAS",
+    name: "Sri Nishchith. V.D",
     role: "Shareholder of KSIC and Managing Director, KSIC",
     addressLines: [
       "III Floor, Public Utility Building",

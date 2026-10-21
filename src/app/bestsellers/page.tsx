@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionCatalogueClient from "@/components/collection/CollectionCatalogueClient";
+import CollectionShop from "@/components/collection/CollectionShop";
 import { BESTSELLERS } from "@/data/collections";
 
 export const metadata = {
@@ -9,10 +9,14 @@ export const metadata = {
 
 export default function BestsellersPage() {
   return (
-    <CollectionCatalogueClient
+    <CollectionShop
       products={BESTSELLERS}
       title="Best"
       titleAccent="Sellers."
+      breadcrumbLabel="Bestsellers"
+      description="Explore our most loved Mysore Silk sarees — signature weaves favoured by generations for ceremony, festivity, and everyday elegance."
+      heroImage="/assets/heritage/hero-new-arrivals.png"
+      heroAlt="Crimson Mysore silk with gold zari"
     />
   );
 }

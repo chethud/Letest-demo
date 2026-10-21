@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionCatalogueClient from "@/components/collection/CollectionCatalogueClient";
+import NewArrivalsShop from "@/components/collection/NewArrivalsShop";
 import { NEW_ARRIVALS } from "@/data/collections";
 
 export const metadata = {
@@ -8,11 +8,5 @@ export const metadata = {
 };
 
 export default function NewArrivalsPage() {
-  return (
-    <CollectionCatalogueClient
-      products={NEW_ARRIVALS}
-      title="New"
-      titleAccent="Arrivals."
-    />
-  );
+  return <NewArrivalsShop products={NEW_ARRIVALS} />;
 }
