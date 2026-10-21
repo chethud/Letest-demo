@@ -145,7 +145,7 @@ export const Header: React.FC = () => {
                 >
                   {item.children ? (
                     <>
-                      {item.id === "mysore-silk" || item.id === "about" ? (
+                      {item.id === "mysore-silk" || item.id === "world" || item.id === "about" ? (
                         <Link
                           href={item.href}
                           className={`${styles.navTrigger} ${active ? styles.navActive : ""}`}

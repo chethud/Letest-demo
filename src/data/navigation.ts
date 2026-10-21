@@ -22,8 +22,6 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "Board of Directors", href: "/bod" },
       { label: "Shareholders", href: "/shareholders" },
-      { label: "Our Heritage", href: "/our-heritage" },
-      { label: "The Archive", href: "/the-archive" },
     ],
   },
   {
@@ -34,6 +32,15 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Our Story", href: "/heritage" },
       { label: "How It Is Made", href: "/craft" },
       { label: "Authenticity", href: "/authenticity" },
+    ],
+  },
+  {
+    id: "world",
+    label: "The World of KSIC",
+    href: "/our-heritage",
+    children: [
+      { label: "Our Heritage", href: "/our-heritage" },
+      { label: "The Archive", href: "/the-archive" },
     ],
   },
   {
