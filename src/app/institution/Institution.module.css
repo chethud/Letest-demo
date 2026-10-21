@@ -48,12 +48,81 @@
   border: 1px solid rgba(23, 21, 19, 0.15);
 }
 
+.boardIntro {
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.boardNote {
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.boardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.boardCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  padding: 24px 22px;
+  background-color: var(--color-bg-paper);
+  border: 1px solid rgba(23, 21, 19, 0.12);
+}
+
+.boardIndex {
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--color-gold);
+  line-height: 1.4;
+  padding-top: 4px;
+}
+
+.boardName {
+  margin: 0 0 6px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+.boardRole {
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-burgundy);
+  font-weight: 500;
+}
+
+.boardAddress {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  font-style: normal;
+}
+
 @media (max-width: 900px) {
   .mandateGrid,
   .divisionsGrid,
-  .rtiGrid {
+  .rtiGrid,
+  .boardGrid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .boardGrid {
+    gap: 16px;
   }
 
   .corporateMetaGrid {

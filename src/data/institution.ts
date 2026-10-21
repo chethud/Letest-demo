@@ -59,3 +59,75 @@ export const INSTITUTIONAL_OVERVIEW = {
   ],
   mandate: "To protect and advance the centuries-old art of Mysore Silk weaving, provide guaranteed remunerative demand for Karnataka's sericulture farmers, maintain uncompromising zero-adulteration standards in pure silk and precious zari, and represent the dignity of Karnataka craftsmanship globally.",
 };
+
+/** Placeholder board listing for the About Us page — replace with verified official records when available. */
+export const BOARD_OF_DIRECTORS = [
+  {
+    name: "Smt. Kaneez Fatima, M.L.A",
+    role: "Chairman, KSIC",
+    addressLines: [
+      "III Floor, Public Utility Building",
+      "M.G. Road",
+      "Bengaluru 560 001",
+    ],
+  },
+  {
+    name: "Smt. Zehera Naseem, IAS",
+    role: "Managing Director, KSIC",
+    addressLines: [
+      "III Floor, Public Utility Building",
+      "M.G. Road",
+      "Bengaluru 560 001",
+    ],
+  },
+  {
+    name: "Dr. Shamla Iqbal, IAS",
+    role: "Director, KSIC and Secretary to Govt., Horticulture Department",
+    addressLines: [
+      "M.S. Building",
+      "Dr. B.R. Ambedkar Veedhi",
+      "Bengaluru 560 001",
+    ],
+  },
+  {
+    name: "Sri Rajesh Gowda, IAS",
+    role: "Director, KSIC and Commissioner for Sericulture Development & Director of Sericulture",
+    addressLines: [
+      "M.S. Building",
+      "Dr. B.R. Ambedkar Veedhi",
+      "Bengaluru 560 001",
+    ],
+  },
+  {
+    name: "Sri Mohammed Ikramulla Shariff, IAS",
+    role: "Director, KSIC and Deputy Secretary to Govt. (Budget & Resources), Finance Department",
+    addressLines: ["Vidhana Soudha", "Bengaluru 560 001"],
+  },
+  {
+    name: "Sri Chandrashekar N., IAS",
+    role: "Director, KSIC and Managing Director, Karnataka Silk Marketing Board",
+    addressLines: [
+      "Mysugar Building",
+      "J.C. Road",
+      "Bengaluru 560 002",
+    ],
+  },
+  {
+    name: "Sri Jyothi K., IAS",
+    role: "Director, KSIC and Commissioner for Textiles & Director for Handlooms & Textiles",
+    addressLines: [
+      "1st and 2nd Floor, Vanavikas",
+      "18th Cross, Malleshwaram",
+      "Bengaluru 560 003",
+    ],
+  },
+  {
+    name: "Sri P. Shivakumar, IFS",
+    role: "Director, KSIC and Member Secretary, Central Silk Board",
+    addressLines: [
+      "CSB Complex",
+      "BTM Layout, Madiwala",
+      "Bengaluru 560 068",
+    ],
+  },
+];
