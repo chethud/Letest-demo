@@ -78,6 +78,7 @@
   --container-editorial-width: 900px;
 
   --site-header-offset: 118px;
+  --heritage-strip-height: 78px;
 
   /* Transitions */
   --ease-editorial: cubic-bezier(0.25, 1, 0.5, 1);

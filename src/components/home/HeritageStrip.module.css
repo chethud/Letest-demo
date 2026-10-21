@@ -1,5 +1,6 @@
 .strip {
   position: relative;
+  min-height: var(--heritage-strip-height, 78px);
   background: #fffafa;
   border-top: 1px solid #f2dbe0;
   border-bottom: 1px solid #f2dbe0;
@@ -17,12 +18,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  padding: 24px 10px;
+  gap: 12px;
+  padding: 16px 10px;
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .item + .item {
@@ -30,8 +31,8 @@
 }
 
 .badge {
-  width: 54px;
-  height: 54px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: #fbe9ed;
   color: #b0843f;
@@ -48,8 +49,8 @@
 }
 
 .icon {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.2;
