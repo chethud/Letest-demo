@@ -54,7 +54,7 @@ export const InstitutionSection: React.FC = () => {
           </p>
 
           <div style={{ display: "flex", justifyContent: "center", gap: "16px", marginBottom: "48px", flexWrap: "wrap" }}>
-            <Link href="/institution" className="action-editorial action-editorial-burgundy">
+            <Link href="/bod" className="action-editorial action-editorial-burgundy">
               <span>{lang === "kn" ? "ಆಡಳಿತ ಮಂಡಳಿ & ನೀತಿ" : "BOARD & GOVERNANCE"}</span>
               <ArrowRight size={15} />
             </Link>

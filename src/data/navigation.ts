@@ -15,7 +15,16 @@ export const JOURNAL_LINKS: NavLink[] = [
 
 export const NAV_ITEMS: NavItem[] = [
   { id: "home", label: "Home", href: "/" },
-  { id: "about", label: "About Us", href: "/institution" },
+  {
+    id: "about",
+    label: "About Us",
+    href: "/institution",
+    children: [
+      { label: "Info", href: "/institution" },
+      { label: "Board of Directors", href: "/bod" },
+      { label: "Shareholders", href: "/shareholders" },
+    ],
+  },
   {
     id: "mysore-silk",
     label: "Mysore Silk",

@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/craft",
     "/collection",
     "/institution",
+    "/bod",
+    "/shareholders",
     "/stores",
     "/contact",
   ].map((route) => ({

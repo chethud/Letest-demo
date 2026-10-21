@@ -15,8 +15,8 @@ export function DirectorAvatar({ name, imageSrc }: DirectorAvatarProps) {
         <Image
           src={imageSrc}
           alt={name}
-          width={150}
-          height={150}
+          width={120}
+          height={120}
           className={styles.photo}
         />
       ) : (

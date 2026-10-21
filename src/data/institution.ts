@@ -68,10 +68,10 @@ export type BoardDirector = {
   imageSrc?: string;
 };
 
-/** Placeholder board listing for the About Us page — replace with verified official records when available. */
+/** Official board listing for the About Us page. */
 export const BOARD_OF_DIRECTORS: BoardDirector[] = [
   {
-    name: "Smt. Kaneez Fatima, M.L.A",
+    name: "Smt. Kaneez Fatima, M.L.A.",
     role: "Chairman, KSIC",
     addressLines: [
       "III Floor, Public Utility Building",
@@ -80,7 +80,16 @@ export const BOARD_OF_DIRECTORS: BoardDirector[] = [
     ],
   },
   {
-    name: "Smt. Zehera Naseem, IAS",
+    name: "Sri Gangadhar S",
+    role: "Vice Chairman, KSIC",
+    addressLines: [
+      "III Floor, Public Utility Building",
+      "M.G. Road",
+      "Bengaluru 560 001",
+    ],
+  },
+  {
+    name: "Sri Nishchith. V.D",
     role: "Managing Director, KSIC",
     addressLines: [
       "III Floor, Public Utility Building",
@@ -89,7 +98,7 @@ export const BOARD_OF_DIRECTORS: BoardDirector[] = [
     ],
   },
   {
-    name: "Dr. Shamla Iqbal, IAS",
+    name: "Sri. Girish, R., IAS",
     role: "Director, KSIC and Secretary to Govt., Horticulture Department",
     addressLines: [
       "M.S. Building",
@@ -98,7 +107,7 @@ export const BOARD_OF_DIRECTORS: BoardDirector[] = [
     ],
   },
   {
-    name: "Sri Rajesh Gowda, IAS",
+    name: "Sri Lingaraja. S. S., IFS",
     role: "Director, KSIC and Commissioner for Sericulture Development & Director of Sericulture",
     addressLines: [
       "M.S. Building",
@@ -107,26 +116,18 @@ export const BOARD_OF_DIRECTORS: BoardDirector[] = [
     ],
   },
   {
-    name: "Sri Mohammed Ikramulla Shariff, IAS",
+    name: "Sri D. Gopal Krishna. B., IAS",
     role: "Director, KSIC and Deputy Secretary to Govt. (Budget & Resources), Finance Department",
     addressLines: ["Vidhana Soudha", "Bengaluru 560 001"],
   },
   {
-    name: "Sri Chandrashekar N., IAS",
-    role: "Director, KSIC and Managing Director, Karnataka Silk Marketing Board",
-    addressLines: [
-      "Mysugar Building",
-      "J.C. Road",
-      "Bengaluru 560 002",
-    ],
-  },
-  {
-    name: "Sri Jyothi K., IAS",
+    name: "Sri Basavaraju. A. B., IAS",
     role: "Director, KSIC and Commissioner for Textiles & Director for Handlooms & Textiles",
     addressLines: [
-      "1st and 2nd Floor, Vanavikas",
-      "18th Cross, Malleshwaram",
-      "Bengaluru 560 003",
+      "No. 9, 4th Main Road",
+      "Opposite to I.T. Park, Industrial Estate",
+      "West of Chord Road, Rajajinagar",
+      "Bengaluru 560 010",
     ],
   },
   {
@@ -137,5 +138,97 @@ export const BOARD_OF_DIRECTORS: BoardDirector[] = [
       "BTM Layout, Madiwala",
       "Bengaluru 560 068",
     ],
+  },
+  {
+    name: "Sri Venugopal. V",
+    role: "Independent Director, KSIC",
+    addressLines: [
+      "No. 135, 4th Floor, 12th ‘B’ Main",
+      "6th Block, Rajaji Nagar",
+      "Bengaluru 560 010",
+    ],
+  },
+  {
+    name: "Sri Srivathsa",
+    role: "Independent Director, KSIC",
+    addressLines: [
+      "No. 275, 3rd ‘A’ Main, 7th Cross",
+      "AMS Layout, Vidyaranyapura",
+      "Bengaluru 560 097",
+    ],
+  },
+];
+
+export type Shareholder = {
+  name: string;
+  role: string;
+  addressLines: string[];
+  holding: string;
+};
+
+/** Official shareholding listing for KSIC. */
+export const SHAREHOLDERS: Shareholder[] = [
+  {
+    name: "Sri Girish, R., IAS",
+    role: "Shareholder of KSIC and Secretary to Govt., Horticulture Department",
+    addressLines: [
+      "M.S. Building",
+      "Dr. B.R. Ambedkar Veedhi",
+      "Bengaluru 560 001",
+    ],
+    holding: "One Share",
+  },
+  {
+    name: "Sri Basavaraju. A. B., IAS",
+    role: "Shareholder of KSIC and Commissioner for Textiles & Director for Handlooms & Textiles",
+    addressLines: [
+      "No. 9, 4th Main Road",
+      "Opposite to I.T. Park, Industrial Estate",
+      "West of Chord Road, Rajajinagar",
+      "Bengaluru 560 010",
+    ],
+    holding: "One Share",
+  },
+  {
+    name: "Smt. Shilpa Nag, C. T., IAS",
+    role: "Shareholder of KSIC and Commissioner for Sericulture & Director of Sericulture",
+    addressLines: [
+      "M.S. Building",
+      "Dr. Ambedkar Veedhi",
+      "Bengaluru 560 001",
+    ],
+    holding: "One Share",
+  },
+  {
+    name: "Governor, Govt. of Karnataka",
+    role: "Principal Shareholder",
+    addressLines: [],
+    holding: "3,60,041 Equity Shares",
+  },
+  {
+    name: "Smt. Zehera Naseem, IAS",
+    role: "Shareholder of KSIC and Managing Director, KSIC",
+    addressLines: [
+      "III Floor, Public Utility Building",
+      "M.G. Road",
+      "Bengaluru 560 001",
+    ],
+    holding: "One Share",
+  },
+  {
+    name: "Sri Gopal Krishna. B., IAS",
+    role: "Shareholder of KSIC and Deputy Secretary, Finance Department (Budget & Resources)",
+    addressLines: ["Vidhana Soudha", "Bengaluru 560 001"],
+    holding: "One Share",
+  },
+  {
+    name: "Smt. Rajeshwari N.A",
+    role: "Shareholder of KSIC and Deputy Secretary to Govt. (Silk), Horticulture Department",
+    addressLines: [
+      "Vikasa Soudha",
+      "Dr. B.R. Ambedkar Veedhi",
+      "Bengaluru 560 001",
+    ],
+    holding: "One Share",
   },
 ];

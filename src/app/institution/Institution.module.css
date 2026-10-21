@@ -2,6 +2,29 @@
   padding-top: var(--site-header-offset);
 }
 
+/* Match Board / section heading scale (not oversized global h1 + subheadline) */
+.pageTitle {
+  margin: 12px 0 16px !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-text-primary) !important;
+  text-transform: none !important;
+}
+
+.pageLead {
+  margin: 0 !important;
+  max-width: 42rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  color: var(--color-text-secondary) !important;
+}
+
 @media (max-width: 768px) {
   .institutionPage {
     padding-top: var(--site-header-offset);
@@ -21,12 +44,6 @@
   gap: 20px;
   border-top: 1px solid rgba(23, 21, 19, 0.12);
   padding-top: 24px;
-}
-
-.divisionsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
 }
 
 .rtiGrid {
@@ -50,7 +67,6 @@
 
 @media (max-width: 900px) {
   .mandateGrid,
-  .divisionsGrid,
   .rtiGrid {
     grid-template-columns: 1fr;
     gap: 32px;

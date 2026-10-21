@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
-import { BoardDirectorsSection } from "@/components/institution/BoardDirectorsSection";
 import styles from "./Institution.module.css";
 
 export const metadata = {
   title: "About Us · Governance & Corporate Stewardship | KSIC",
-  description: "Karnataka Silk Industries Corporation Limited (KSIC). Official enterprise profile, board of directors, operating manufacturing divisions, and RTI disclosures.",
+  description:
+    "Karnataka Silk Industries Corporation Limited (KSIC). Official enterprise profile, corporate stewardship, and RTI disclosures.",
 };
 
 export default function InstitutionPage() {
@@ -29,13 +29,13 @@ export default function InstitutionPage() {
             </span>
           </div>
 
-          <h1 className="display-hero" style={{ marginTop: "12px", marginBottom: "20px" }}>
+          <h1 className={styles.pageTitle}>
             KARNATAKA SILK INDUSTRIES
             <br />
             CORPORATION LIMITED
           </h1>
 
-          <p className="subheadline" style={{ maxWidth: "800px" }}>
+          <p className={styles.pageLead}>
             Established in 1980 under the Department of Sericulture, Government of Karnataka, to safeguard the royal legacy of the Mysore Silk Weaving Factory and advance sericulture welfare across the state.
           </p>
         </div>
@@ -86,43 +86,6 @@ export default function InstitutionPage() {
                 <div><strong>Administrative Dept:</strong> Department of Sericulture, Govt of Karnataka</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <BoardDirectorsSection />
-
-      {/* Operational Manufacturing Divisions */}
-      <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}>
-        <div className="container-institutional">
-          <div className="reveal-up" style={{ maxWidth: "700px", marginBottom: "56px" }}>
-            <span className="editorial-label">STATE INDUSTRIAL INFRASTRUCTURE</span>
-            <h2 className="display-section">KEY OPERATING DIVISIONS</h2>
-            <p style={{ marginTop: "12px", color: "var(--color-text-secondary)" }}>
-              Three specialized state production units across Karnataka forming an integrated ecosystem.
-            </p>
-          </div>
-
-          <div className={`reveal-stagger ${styles.divisionsGrid}`}>
-            {INSTITUTIONAL_OVERVIEW.keyUnits.map((u) => (
-              <div key={u.unit} className="hover-lift" style={{ padding: "32px", backgroundColor: "var(--color-bg-paper)", border: "1px solid rgba(23, 21, 19, 0.12)" }}>
-                <span style={{ fontSize: "0.72rem", letterSpacing: "0.16em", color: "var(--color-gold)", textTransform: "uppercase", fontWeight: 600 }}>
-                  OPERATING UNIT
-                </span>
-                <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", color: "var(--color-text-primary)", marginTop: "6px", marginBottom: "10px" }}>
-                  {u.unit}
-                </h3>
-                <div style={{ fontSize: "0.85rem", color: "var(--color-burgundy)", marginBottom: "16px", fontWeight: 500 }}>
-                  {u.location}
-                </div>
-                <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6, marginBottom: "18px" }}>
-                  {u.activity}
-                </p>
-                <div style={{ padding: "12px", backgroundColor: "var(--color-bg-subtle)", fontSize: "0.8rem", color: "var(--color-text-primary)", borderLeft: "2px solid var(--color-gold)" }}>
-                  {u.capacity}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

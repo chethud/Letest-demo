@@ -1,0 +1,209 @@
+.page {
+  padding-top: var(--site-header-offset);
+}
+
+.section {
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-secondary) 48%,
+    var(--color-bg-primary) 100%
+  );
+  color: var(--color-text-primary);
+  padding: clamp(40px, 5vw, 64px) 0 clamp(48px, 6vw, 72px);
+}
+
+.intro {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto clamp(28px, 4vw, 40px);
+  padding: 0 24px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 0 14px;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.eyebrowRule {
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--color-gold);
+  opacity: 0.7;
+}
+
+.title {
+  margin: 0 !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(2rem, 3.5vw, 2.75rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-text-primary) !important;
+  text-transform: none !important;
+}
+
+.title span {
+  color: var(--color-burgundy);
+}
+
+.lead {
+  margin: 12px auto 0 !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  width: min(960px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px 20px;
+  align-items: start;
+  padding: 18px 22px;
+  background: var(--color-bg-paper);
+  border: 1px solid rgba(122, 21, 48, 0.1);
+  box-shadow: 0 6px 18px rgba(122, 21, 48, 0.04);
+}
+
+.cardFeatured {
+  border-color: rgba(122, 21, 48, 0.22);
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-bg-subtle) 100%);
+}
+
+.index {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-gold);
+  line-height: 1.4;
+  padding-top: 2px;
+}
+
+.info {
+  min-width: 0;
+}
+
+.name {
+  margin: 0 0 4px !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  color: var(--color-text-primary) !important;
+  text-transform: none !important;
+}
+
+.role {
+  margin: 0 0 8px !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  color: var(--color-burgundy) !important;
+}
+
+.address {
+  margin: 0;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  font-style: normal;
+  line-height: 1.45 !important;
+  color: var(--color-text-muted) !important;
+}
+
+.holding {
+  margin: 0 !important;
+  align-self: center;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--color-gold) !important;
+  line-height: 1.35 !important;
+}
+
+.cardFeatured .holding {
+  color: var(--color-burgundy) !important;
+}
+
+.contact {
+  width: min(960px, calc(100% - 48px));
+  margin: clamp(28px, 4vw, 40px) auto 0;
+  padding: 20px 22px;
+  border-top: 1px solid rgba(122, 21, 48, 0.12);
+  text-align: center;
+}
+
+.contactAddress {
+  margin: 0 0 10px !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: var(--color-text-secondary) !important;
+}
+
+.contactMeta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.contactMeta a {
+  color: var(--color-burgundy);
+  text-decoration: none;
+}
+
+.contactMeta a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .list,
+  .contact {
+    width: calc(100% - 32px);
+  }
+
+  .card {
+    grid-template-columns: auto 1fr;
+    gap: 10px 14px;
+    padding: 16px;
+  }
+
+  .holding {
+    grid-column: 2;
+    justify-self: start;
+    text-align: left;
+    white-space: normal;
+  }
+}
