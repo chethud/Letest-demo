@@ -1,217 +1,248 @@
-/* Layout skeleton matching the Royal Zari Verification reference.
-   Structure only — visual polish deferred. */
-
 .section {
-  --rz-ivory: #fffcf8;
-  --rz-burgundy: #851526;
-  --rz-gold: #ad8247;
-  --rz-body: #75645a;
-  --rz-border: #e9d8c8;
-  --rz-ink: #2f241f;
-  --rz-gutter: clamp(20px, 4vw, 56px);
+  --rz-ivory: var(--color-bg-primary);
+  --rz-white: var(--color-bg-paper);
+  --rz-crimson: var(--color-burgundy);
+  --rz-maroon: var(--color-burgundy-dark);
+  --rz-gold: var(--color-gold);
+  --rz-charcoal: var(--color-text-primary);
+  --rz-muted: var(--color-text-muted);
+  --rz-gutter: clamp(20px, 4vw, 48px);
+  --rz-container: 1180px;
 
+  position: relative;
+  margin: 0.7rem;
+  padding: 0;
+  overflow: hidden;
   background: var(--rz-ivory);
-  padding: clamp(2rem, 4vw, 3.25rem) 0;
+  border: 1px solid rgba(122, 21, 48, 0.12);
+  color: var(--rz-charcoal);
   scroll-margin-top: 90px;
-  color: var(--rz-ink);
 }
 
-.container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--rz-gutter);
-  box-sizing: border-box;
-}
-
-/* ---- 1. Hero: copy left + image right ---- */
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  align-items: center;
-  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  min-height: 0;
+  overflow: hidden;
 }
 
 .heroCopy {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-width: 0;
+  padding: clamp(1.75rem, 4vw, 2.75rem) var(--rz-gutter);
+  background: var(--rz-ivory);
 }
 
 .eyebrow {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  margin: 0 0 0.85rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   line-height: 1.4;
   text-transform: uppercase;
   color: var(--rz-gold);
 }
 
 .heading {
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.85rem;
   max-width: 14ch;
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-size: clamp(2rem, 3.6vw, 2.85rem);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: var(--rz-burgundy);
+  color: var(--rz-charcoal);
 }
 
 .headingEm {
   font-style: italic;
   font-weight: 500;
+  color: var(--rz-crimson);
 }
 
 .lead {
   margin: 0 0 1.35rem;
-  max-width: 34rem;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.98rem;
+  max-width: 32rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.65;
-  color: var(--rz-body);
+  color: var(--rz-muted);
 }
 
-/* Form card placeholder */
 .form {
-  max-width: 28rem;
-  padding: 1rem 1.1rem 1.1rem;
-  border: 1px solid var(--rz-border);
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(47, 36, 31, 0.05);
-}
-
-.formHeader {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.45rem 1rem;
-  margin-bottom: 0.65rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(176, 132, 63, 0.5);
+  border-radius: 8px;
+  background: var(--rz-white);
+  box-shadow: 0 4px 14px rgba(33, 26, 25, 0.04);
+  box-sizing: border-box;
 }
 
 .formLabel {
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.68rem;
+  display: block;
+  margin: 0;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.64rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--rz-ink);
-}
-
-.helpWrap {
-  position: relative;
-}
-
-.helpTrigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--rz-burgundy);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-
-.helpTrigger:hover {
-  color: #6b1020;
-}
-
-.helpTrigger:focus-visible {
-  outline: 2px solid var(--rz-burgundy);
-  outline-offset: 3px;
-}
-
-.helpPanel {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  z-index: 5;
-  width: min(18rem, 78vw);
-  padding: 0.75rem 0.85rem;
-  border: 1px solid var(--rz-border);
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(47, 36, 31, 0.06);
-}
-
-.helpPanel p {
-  margin: 0;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: var(--rz-body);
+  color: var(--rz-charcoal);
 }
 
 .formRow {
   display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .input {
-  width: 100%;
-  height: 2.85rem;
-  padding: 0 0.9rem;
-  border: 1px solid var(--rz-border);
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  height: 2.6rem;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(176, 132, 63, 0.45);
   border-radius: 6px;
-  background: #fff;
-  font-family: var(--font-dm), ui-monospace, monospace;
-  font-size: 0.92rem;
-  color: var(--rz-ink);
+  background: var(--rz-white);
+  font-family: "DM Sans", ui-monospace, monospace;
+  font-size: 0.86rem;
+  color: var(--rz-charcoal);
+  box-sizing: border-box;
 }
 
 .input::placeholder {
-  color: #a89588;
+  color: #a39a93;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--rz-burgundy);
-  box-shadow: 0 0 0 3px rgba(133, 21, 38, 0.1);
+  border-color: var(--rz-crimson);
+  box-shadow: 0 0 0 3px rgba(122, 21, 48, 0.1);
 }
 
 .verifyBtn {
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.85rem;
-  padding: 0 1.25rem;
+  height: 2.6rem;
+  min-height: 2.6rem;
+  padding: 0 1.1rem;
   border: 0;
   border-radius: 6px;
-  background: var(--rz-burgundy);
-  color: #fff;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.88rem;
+  background: var(--rz-crimson);
+  color: #fffafa;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .verifyBtn:hover:not(:disabled) {
-  background: #6b1020;
+  background: var(--rz-maroon);
 }
 
 .verifyBtn:disabled {
-  opacity: 0.72;
-  cursor: wait;
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .verifyBtn:focus-visible {
-  outline: 2px solid var(--rz-burgundy);
+  outline: 2px solid var(--rz-crimson);
+  outline-offset: 2px;
+}
+
+.helpWrap {
+  position: relative;
+  align-self: flex-end;
+  margin: 0;
+}
+
+.helpTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--rz-crimson);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.helpTrigger:hover {
+  color: var(--rz-maroon);
+}
+
+.helpTrigger:focus-visible {
+  outline: 2px solid var(--rz-crimson);
   outline-offset: 3px;
+}
+
+.helpPanel {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  right: 0;
+  left: auto;
+  z-index: 8;
+  width: 16.5rem;
+  max-width: min(16.5rem, calc(100vw - 2rem));
+  box-sizing: border-box;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(176, 132, 63, 0.45);
+  border-radius: 8px;
+  background: var(--rz-white);
+  box-shadow: 0 10px 24px rgba(33, 26, 25, 0.08);
+  text-align: left;
+}
+
+.helpPanel p {
+  margin: 0 0 0.55rem !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  color: var(--rz-muted) !important;
+}
+
+.helpClose {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rz-crimson);
+  cursor: pointer;
 }
 
 .result {
@@ -221,13 +252,13 @@
 
 .resultBox {
   padding: 0.85rem 0.95rem;
-  border: 1px solid var(--rz-border);
+  border: 1px solid rgba(176, 132, 63, 0.4);
   border-radius: 8px;
-  background: #fff;
+  background: var(--rz-white);
 }
 
 .resultSuccess {
-  border-color: rgba(133, 21, 38, 0.22);
+  border-color: rgba(122, 21, 48, 0.28);
 }
 
 .resultStatus {
@@ -235,141 +266,96 @@
   align-items: center;
   gap: 0.35rem;
   margin: 0 0 0.45rem;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--rz-burgundy);
+  color: var(--rz-crimson);
 }
 
 .resultMiss .resultStatus {
-  color: var(--rz-body);
+  color: var(--rz-muted);
 }
 
 .resultSerial {
   margin: 0 0 0.2rem;
-  font-family: var(--font-dm), ui-monospace, monospace;
+  font-family: "DM Sans", ui-monospace, monospace;
   font-size: 0.8rem;
-  color: var(--rz-body);
+  color: var(--rz-muted);
 }
 
 .resultTitle {
   margin: 0 0 0.6rem;
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 1.3;
-  color: var(--rz-ink);
+  color: var(--rz-charcoal);
 }
 
 .resultFacts {
   margin: 0;
   padding: 0.6rem 0 0;
-  border-top: 1px solid var(--rz-border);
+  border-top: 1px solid rgba(176, 132, 63, 0.35);
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
   font-size: 0.86rem;
   line-height: 1.45;
-  color: var(--rz-body);
+  color: var(--rz-muted);
 }
 
 .resultCopy {
   margin: 0 0 0.6rem;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
   font-size: 0.9rem;
   line-height: 1.55;
-  color: var(--rz-body);
+  color: var(--rz-muted);
 }
 
 .resultLink {
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
   font-size: 0.86rem;
   font-weight: 500;
-  color: var(--rz-burgundy);
+  color: var(--rz-crimson);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* Image column + serial callout placeholder */
 .heroVisual {
   position: relative;
-  margin: 0;
-  min-width: 0;
-}
-
-.imageFrame {
-  position: relative;
-  min-height: min(62vw, 280px);
+  min-height: min(58vw, 260px);
   overflow: hidden;
-  background: #efe6dc;
-}
-
-/* Placeholder tone when image is loading / missing */
-.imageFrame::after {
-  content: "Saree image";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(47, 36, 31, 0.35);
-  pointer-events: none;
+  background: var(--color-bg-subtle);
 }
 
 .sareeImage {
-  z-index: 1;
   object-fit: cover;
-  object-position: 68% 42%;
+  object-position: 78% center;
 }
 
-.imageFrame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    var(--rz-ivory) 0%,
-    rgba(255, 252, 248, 0.7) 12%,
-    transparent 38%
-  );
-}
-
-.serialCallout {
-  display: none;
-}
-
-.serialCaption {
-  margin: 0.65rem 0 0;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.8rem;
-  line-height: 1.45;
-  color: var(--rz-body);
-}
-
-/* ---- 2. Highlights row (3-up) ---- */
 .highlights {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
-  padding: 1.2rem 0 0;
+  gap: 0.5rem;
+  width: calc(100% - (var(--rz-gutter) * 2));
+  max-width: var(--rz-container);
+  margin: 0 auto;
+  padding: 0.55rem 0 0.1rem;
   list-style: none;
-  border-top: 1px solid var(--rz-border);
+  background: transparent;
+  border-top: 1px solid rgba(176, 132, 63, 0.28);
+  box-sizing: border-box;
 }
 
 .highlight {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.55rem;
   align-items: flex-start;
 }
 
@@ -377,136 +363,153 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.15rem;
-  height: 2.15rem;
+  width: 1.7rem;
+  height: 1.7rem;
   flex-shrink: 0;
   border-radius: 999px;
-  border: 1px dashed rgba(173, 130, 71, 0.45);
-  background: rgba(173, 130, 71, 0.08);
+  background: rgba(176, 132, 63, 0.14);
   color: var(--rz-gold);
 }
 
+.highlightIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
 .highlightTitle {
-  margin: 0 0 0.25rem;
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-size: 1.05rem;
-  font-weight: 500;
-  line-height: 1.25;
-  color: var(--rz-ink);
+  margin: 0 0 0.15rem !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+  color: var(--rz-charcoal) !important;
 }
 
 .highlightText {
-  margin: 0;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: var(--rz-body);
+  margin: 0 !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.75rem !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+  color: var(--rz-muted) !important;
 }
 
-/* ---- 3. GI banner ---- */
 .giPanel {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.9rem;
+  gap: 0.5rem;
   align-items: center;
-  padding: 1.1rem 1.2rem;
-  border: 1px solid var(--rz-border);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.55);
+  width: calc(100% - (var(--rz-gutter) * 2));
+  max-width: var(--rz-container);
+  margin: 0.45rem auto 0.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(176, 132, 63, 0.4);
+  border-radius: 8px;
+  background: var(--rz-white);
+  box-sizing: border-box;
 }
 
 .giEmblem {
-  width: 3.15rem;
-  height: 3.15rem;
-  border: 1px dashed rgba(173, 130, 71, 0.4);
-  border-radius: 6px;
+  width: 2.35rem;
+  height: 3.5rem;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
 }
 
 .giEmblem img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .giEyebrow {
-  margin: 0 0 0.25rem;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.64rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  margin: 0 0 0.15rem !important;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  line-height: 1.3 !important;
   text-transform: uppercase;
-  color: var(--rz-gold);
+  color: var(--rz-gold) !important;
 }
 
 .giTitle {
-  margin: 0 0 0.3rem;
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--rz-burgundy);
+  margin: 0 0 0.15rem !important;
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
+  color: var(--rz-crimson) !important;
 }
 
 .giText {
-  margin: 0;
-  max-width: 36rem;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--rz-body);
+  margin: 0 !important;
+  max-width: 34rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  color: var(--rz-muted) !important;
 }
 
 .giLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   width: 100%;
-  min-height: 2.6rem;
-  padding: 0.55rem 0.95rem;
-  border: 1px solid var(--rz-burgundy);
+  min-height: 1.9rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--rz-crimson);
   border-radius: 6px;
-  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.82rem;
+  font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
+  font-size: 0.66rem;
   font-weight: 500;
-  color: var(--rz-burgundy);
+  color: var(--rz-crimson);
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .giLink:hover {
-  background: var(--rz-burgundy);
-  color: #fff;
+  background: var(--rz-crimson);
+  color: #fffafa;
 }
 
 .giLink:focus-visible {
-  outline: 2px solid var(--rz-burgundy);
+  outline: 2px solid var(--rz-crimson);
   outline-offset: 3px;
 }
 
-@media (min-width: 760px) {
+@media (max-width: 420px) {
   .formRow {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .input {
-    flex: 1 1 auto;
+    flex-direction: column;
   }
 
   .verifyBtn {
-    flex: 0 0 auto;
-    white-space: nowrap;
+    width: 100%;
   }
 
+  .helpWrap {
+    align-self: flex-start;
+  }
+}
+
+@media (min-width: 760px) {
   .highlights {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
+    align-items: center;
   }
 
   .highlight {
-    padding: 0 1.15rem;
+    padding: 0.15rem 0.85rem;
+    align-items: center;
   }
 
   .highlight:first-child {
@@ -518,73 +521,68 @@
   }
 
   .highlight:not(:last-child) {
-    border-right: 1px solid var(--rz-border);
+    border-right: 1px solid rgba(176, 132, 63, 0.35);
   }
 }
 
 @media (min-width: 960px) {
   .hero {
-    grid-template-columns: minmax(20rem, 0.92fr) minmax(22rem, 1.18fr);
-    gap: 1.5rem 2rem;
-    min-height: 26rem;
+    grid-template-columns: minmax(0, 48%) minmax(0, 52%);
+    min-height: clamp(420px, 48vw, 520px);
   }
 
-  .imageFrame {
-    min-height: 26rem;
+  .heroCopy {
+    padding: clamp(2rem, 3.5vw, 3rem) clamp(1.75rem, 3vw, 2.75rem)
+      clamp(1.75rem, 3vw, 2.5rem);
+    background: linear-gradient(
+      90deg,
+      var(--rz-ivory) 0%,
+      var(--rz-ivory) 78%,
+      rgba(255, 250, 250, 0.92) 90%,
+      rgba(255, 250, 250, 0) 100%
+    );
   }
 
-  .serialCallout {
+  .heroVisual {
     position: absolute;
-    right: clamp(0.75rem, 2vw, 1.5rem);
-    bottom: clamp(1.25rem, 3vw, 2.25rem);
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    max-width: 13rem;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    pointer-events: none;
   }
 
-  .serialLine {
-    flex: 0 0 2.4rem;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rz-gold));
+  .sareeImage {
+    object-position: right center;
   }
 
-  .serialNote {
-    padding: 0.4rem 0.55rem;
-    border: 1px dashed rgba(173, 130, 71, 0.55);
-    border-radius: 4px;
-    background: rgba(255, 252, 248, 0.9);
-    font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    line-height: 1.4;
-    color: var(--rz-ink);
+  .heroCopy::after {
+    content: none;
   }
 
-  .serialCaption {
-    display: none;
+  .highlights {
+    padding-top: 0.85rem;
   }
 
   .giPanel {
+    position: relative;
+    z-index: 2;
     grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 1.2rem;
-    padding: 1.1rem 1.3rem;
+    gap: 0.85rem;
+    margin-top: 0.65rem;
+    margin-bottom: 1rem;
   }
 
   .giEmblem {
-    padding-right: 1.05rem;
-    border-right: 1px solid var(--rz-border);
-    border-top: 0;
-    border-bottom: 0;
-    border-left: 0;
-    border-radius: 0;
+    padding-right: 0.75rem;
+    border-right: 1px solid rgba(176, 132, 63, 0.35);
   }
 
   .giLink {
     width: auto;
     white-space: nowrap;
+    min-height: 2.1rem;
   }
 }
 

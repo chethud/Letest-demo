@@ -1,9 +1,9 @@
 .section {
   margin: 0.7rem;
   padding: clamp(2.25rem, 4vw, 3.25rem) 0 clamp(2rem, 3.5vw, 2.75rem);
-  background: #f7f1e8;
-  border: 1px solid #e6d7be;
-  color: #3a2e24;
+  background: var(--color-bg-primary);
+  border: 1px solid rgba(122, 21, 48, 0.12);
+  color: var(--color-text-primary);
   overflow: hidden;
 }
 
@@ -15,7 +15,7 @@
 .eyebrow {
   margin: 0 0 0.7rem;
   padding-bottom: 0.65rem;
-  border-bottom: 1px solid #c4a35a;
+  border-bottom: 1px solid var(--color-gold);
   width: fit-content;
   min-width: 5.5rem;
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
@@ -23,7 +23,7 @@
   font-weight: 500;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #3a2e24;
+  color: var(--color-burgundy);
 }
 
 .title {
@@ -34,7 +34,7 @@
   font-size: clamp(1.65rem, 3vw, 2.25rem);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #3a2e24;
+  color: var(--color-text-primary);
 }
 
 .scroller {
@@ -67,7 +67,7 @@
   flex: 0 0 auto;
   width: min(78vw, 22rem);
   padding: 0 clamp(1.25rem, 3vw, 2rem);
-  border-right: 1px solid rgba(58, 46, 36, 0.12);
+  border-right: 1px solid rgba(122, 21, 48, 0.12);
 }
 
 .quote {
@@ -81,7 +81,7 @@
   font-weight: 400;
   font-style: italic;
   line-height: 1.55;
-  color: #3a2e24;
+  color: var(--color-text-secondary);
 }
 
 .meta {
@@ -97,20 +97,20 @@
   font-weight: 600;
   font-style: normal;
   letter-spacing: 0.02em;
-  color: #7a1530;
+  color: var(--color-burgundy);
 }
 
 .place {
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
   font-size: 0.78rem;
   font-weight: 400;
-  color: #6a5a4c;
+  color: var(--color-text-muted);
 }
 
 .place::before {
   content: "·";
   margin-right: 0.65rem;
-  color: #c4a35a;
+  color: var(--color-gold);
 }
 
 @keyframes scrollTestimonials {
