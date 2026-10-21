@@ -82,10 +82,22 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
       aria-label="Royal Zari Verification"
     >
       <div className={styles.hero}>
+        <div className={styles.heroVisual} aria-hidden="true">
+          <Image
+            src="/assets/heritage/authenticity-hero-ivory-crimson.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className={styles.sareeImage}
+          />
+        </div>
+
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>Royal Zari Verification</p>
           <h2 className={styles.heading}>
-            Authenticity you can <em className={styles.headingEm}>trust.</em>
+            Authenticity you can{" "}
+            <em className={styles.headingEm}>trust.</em>
           </h2>
           <p className={styles.lead}>
             Every authentic Mysore Silk saree carries a unique, micro-woven serial
@@ -93,9 +105,45 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
           </p>
 
           <form className={styles.form} onSubmit={handleVerify} noValidate>
-            <label className={styles.formLabel} htmlFor={`${id}-serial-code`}>
-              Enter your saree serial code
-            </label>
+            <div className={styles.formHeader}>
+              <label className={styles.formLabel} htmlFor={`${id}-serial-code`}>
+                Enter your saree serial code
+              </label>
+              <div className={styles.helpWrap}>
+                <button
+                  ref={helpButtonRef}
+                  type="button"
+                  className={styles.helpTrigger}
+                  aria-expanded={helpOpen}
+                  aria-controls={helpId}
+                  onClick={() => setHelpOpen((open) => !open)}
+                >
+                  Where to find the code?
+                  <HelpCircle size={14} strokeWidth={1.75} aria-hidden="true" />
+                </button>
+                {helpOpen ? (
+                  <div
+                    id={helpId}
+                    ref={helpRef}
+                    className={styles.helpPanel}
+                    role="region"
+                    aria-label="Where to find the saree code"
+                  >
+                    <p>
+                      Look for the serial number in the pallu — woven or embroidered
+                      into the decorative end of the saree.
+                    </p>
+                    <button
+                      type="button"
+                      className={styles.helpClose}
+                      onClick={() => setHelpOpen(false)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            </div>
 
             <div className={styles.formRow}>
               <input
@@ -116,41 +164,6 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
               >
                 {isVerifying ? "Checking…" : "Verify →"}
               </button>
-            </div>
-
-            <div className={styles.helpWrap}>
-              <button
-                ref={helpButtonRef}
-                type="button"
-                className={styles.helpTrigger}
-                aria-expanded={helpOpen}
-                aria-controls={helpId}
-                onClick={() => setHelpOpen((open) => !open)}
-              >
-                <HelpCircle size={13} strokeWidth={1.75} aria-hidden="true" />
-                Where to find the code?
-              </button>
-              {helpOpen ? (
-                <div
-                  id={helpId}
-                  ref={helpRef}
-                  className={styles.helpPanel}
-                  role="region"
-                  aria-label="Where to find the saree code"
-                >
-                  <p>
-                    Look for the serial number in the pallu — woven or embroidered
-                    into the decorative end of the saree.
-                  </p>
-                  <button
-                    type="button"
-                    className={styles.helpClose}
-                    onClick={() => setHelpOpen(false)}
-                  >
-                    Close
-                  </button>
-                </div>
-              ) : null}
             </div>
           </form>
 
@@ -202,86 +215,74 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
               </div>
             ) : null}
           </div>
-
-        </div>
-
-        <div className={styles.heroVisual} aria-hidden="true">
-          <Image
-            src="/assets/heritage/authenticity-hero-ivory-crimson.jpg"
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 900px) 100vw, 52vw"
-            className={styles.sareeImage}
-          />
         </div>
       </div>
 
-      <ul className={styles.highlights}>
-        <li className={styles.highlight}>
-          <span className={styles.highlightIcon} aria-hidden="true">
-            <ShieldCheck size={18} strokeWidth={1.6} />
-          </span>
-          <div>
-            <h3 className={styles.highlightTitle}>Government Registered</h3>
-            <p className={styles.highlightText}>
-              GI Tag #11
-              <br />
-              Mysore Silk
-            </p>
-          </div>
-        </li>
-        <li className={styles.highlight}>
-          <span className={styles.highlightIcon} aria-hidden="true">
-            <FlaskConical size={18} strokeWidth={1.6} />
-          </span>
-          <div>
-            <h3 className={styles.highlightTitle}>Certified Zari Composition</h3>
-            <p className={styles.highlightText}>
-              0.65% pure 24K gold, 65% pure silver
-            </p>
-          </div>
-        </li>
-        <li className={styles.highlight}>
-          <span className={styles.highlightIcon} aria-hidden="true">
-            <Hash size={18} strokeWidth={1.6} />
-          </span>
-          <div>
-            <h3 className={styles.highlightTitle}>Unique Serial Number</h3>
-            <p className={styles.highlightText}>
-              Micro-woven into every saree’s pallu
-            </p>
-          </div>
-        </li>
-      </ul>
+      <div className={styles.lower}>
+        <ul className={styles.highlights}>
+          <li className={styles.highlight}>
+            <span className={styles.highlightIcon} aria-hidden="true">
+              <ShieldCheck size={18} strokeWidth={1.6} />
+            </span>
+            <div>
+              <h3 className={styles.highlightTitle}>Government Registered</h3>
+              <p className={styles.highlightText}>
+                GI Tag #11 · Mysore Silk
+              </p>
+            </div>
+          </li>
+          <li className={styles.highlight}>
+            <span className={styles.highlightIcon} aria-hidden="true">
+              <FlaskConical size={18} strokeWidth={1.6} />
+            </span>
+            <div>
+              <h3 className={styles.highlightTitle}>Certified Zari Composition</h3>
+              <p className={styles.highlightText}>
+                0.65% pure 24K gold, 65% pure silver
+              </p>
+            </div>
+          </li>
+          <li className={styles.highlight}>
+            <span className={styles.highlightIcon} aria-hidden="true">
+              <Hash size={18} strokeWidth={1.6} />
+            </span>
+            <div>
+              <h3 className={styles.highlightTitle}>Unique Serial Number</h3>
+              <p className={styles.highlightText}>
+                Micro-woven into every saree’s pallu
+              </p>
+            </div>
+          </li>
+        </ul>
 
-      <aside className={styles.giPanel}>
-        <div className={styles.giEmblem}>
-          <Image
-            src="/assets/brand/emblem-of-india.svg"
-            alt="State Emblem of India"
-            width={40}
-            height={64}
-          />
-        </div>
-        <div className={styles.giCopy}>
-          <p className={styles.giEyebrow}>Protected Heritage</p>
-          <h3 className={styles.giTitle}>GI Tag #11 – Mysore Silk</h3>
-          <p className={styles.giText}>
-            Recognised and registered under the Government of India as a
-            Geographical Indication (GI).
-          </p>
-        </div>
-        <a
-          href={MYSORE_SILK_GI_DETAILS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.giLink}
-        >
-          View on Government of India Registers
-          <ExternalLink size={14} strokeWidth={1.75} aria-hidden="true" />
-        </a>
-      </aside>
+        <aside className={styles.giPanel}>
+          <div className={styles.giEmblem}>
+            <Image
+              src="/assets/brand/emblem-of-india.svg"
+              alt="State Emblem of India"
+              width={44}
+              height={70}
+            />
+          </div>
+          <div className={styles.giCopy}>
+            <p className={styles.giEyebrow}>Protected Heritage</p>
+            <h3 className={styles.giTitle}>GI Tag #11 – Mysore Silk</h3>
+            <p className={styles.giText}>
+              Recognised and registered under the Government of India as a
+              Geographical Indication (GI).
+            </p>
+          </div>
+          <a
+            href={MYSORE_SILK_GI_DETAILS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.giLink}
+          >
+            View on Government of India Registers
+            <ExternalLink size={14} strokeWidth={1.75} aria-hidden="true" />
+          </a>
+        </aside>
+      </div>
     </section>
   );
 };

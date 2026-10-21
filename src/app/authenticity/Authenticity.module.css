@@ -1,3 +1,5 @@
 .page {
   padding-top: var(--site-header-offset);
+  background: #faf8f4;
+  min-height: 100vh;
 }
