@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ShieldCheck, FileText, CheckCircle2, Building, Users } from "lucide-react";
-import { BOARD_OF_DIRECTORS, INSTITUTIONAL_OVERVIEW } from "@/data/institution";
+import { ArrowRight } from "lucide-react";
+import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
+import { BoardDirectorsSection } from "@/components/institution/BoardDirectorsSection";
 import styles from "./Institution.module.css";
 
 export const metadata = {
@@ -90,40 +90,7 @@ export default function InstitutionPage() {
         </div>
       </section>
 
-      {/* Board of Directors */}
-      <section className="section-spacing" id="board" style={{ backgroundColor: "var(--color-bg-secondary)", borderBottom: "var(--border-rule)" }}>
-        <div className="container-institutional">
-          <div className={`reveal-up ${styles.boardIntro}`}>
-            <span className="editorial-label">GOVERNANCE</span>
-            <h2 className="display-section">LIST OF BOARD OF DIRECTORS</h2>
-            <p className={styles.boardNote}>
-              Placeholder listing for layout and review. Replace with verified official board records before publication.
-            </p>
-          </div>
-
-          <ol className={`reveal-stagger ${styles.boardGrid}`}>
-            {BOARD_OF_DIRECTORS.map((director, index) => (
-              <li key={director.name} className={styles.boardCard}>
-                <span className={styles.boardIndex} aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className={styles.boardName}>{director.name}</h3>
-                  <p className={styles.boardRole}>{director.role}</p>
-                  <address className={styles.boardAddress}>
-                    {director.addressLines.map((line) => (
-                      <span key={line}>
-                        {line}
-                        <br />
-                      </span>
-                    ))}
-                  </address>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <BoardDirectorsSection />
 
       {/* Operational Manufacturing Divisions */}
       <section className="section-spacing" style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}>

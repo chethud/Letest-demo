@@ -37,7 +37,7 @@
 .panel {
   display: flex;
   align-items: center;
-  background: #faf6ef url("/assets/heritage/heritage-floral-panel.jpg") right bottom / cover no-repeat;
+  background: #faf6ef;
 }
 
 .copy {

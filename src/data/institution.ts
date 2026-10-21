@@ -60,8 +60,16 @@ export const INSTITUTIONAL_OVERVIEW = {
   mandate: "To protect and advance the centuries-old art of Mysore Silk weaving, provide guaranteed remunerative demand for Karnataka's sericulture farmers, maintain uncompromising zero-adulteration standards in pure silk and precious zari, and represent the dignity of Karnataka craftsmanship globally.",
 };
 
+export type BoardDirector = {
+  name: string;
+  role: string;
+  addressLines: string[];
+  /** Optional official portrait path under /public. Circular crop via DirectorAvatar. */
+  imageSrc?: string;
+};
+
 /** Placeholder board listing for the About Us page — replace with verified official records when available. */
-export const BOARD_OF_DIRECTORS = [
+export const BOARD_OF_DIRECTORS: BoardDirector[] = [
   {
     name: "Smt. Kaneez Fatima, M.L.A",
     role: "Chairman, KSIC",

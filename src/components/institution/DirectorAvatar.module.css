@@ -1,0 +1,47 @@
+.frame {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.5px solid #b0843f;
+  background: #fdf1f3;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(122, 21, 48, 0.06);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #fffafa 0%, #fbe9ed 100%);
+  color: #9a7a82;
+}
+
+.icon {
+  width: 52%;
+  height: 52%;
+}
+
+@media (max-width: 900px) {
+  .frame {
+    width: 112px;
+    height: 112px;
+  }
+}
+
+@media (max-width: 640px) {
+  .frame {
+    width: 88px;
+    height: 88px;
+  }
+}
