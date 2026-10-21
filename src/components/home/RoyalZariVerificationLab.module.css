@@ -79,6 +79,7 @@
 /* Form card placeholder */
 .form {
   max-width: 28rem;
+  margin: 1.15rem 0 0;
   padding: 1rem 1.1rem 1.1rem;
   border: 1px solid var(--rz-border);
   border-radius: 12px;
