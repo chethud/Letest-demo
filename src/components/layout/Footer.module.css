@@ -34,8 +34,8 @@
 
 .footerTopGrid {
   display: grid;
-  grid-template-columns: minmax(240px, 1.35fr) minmax(140px, 0.7fr) minmax(140px, 0.7fr) minmax(240px, 1.15fr);
-  gap: 36px 40px;
+  grid-template-columns: minmax(220px, 1.25fr) repeat(3, minmax(120px, 0.65fr)) minmax(220px, 1.1fr);
+  gap: 36px 32px;
   align-items: start;
   padding-bottom: 32px;
   border-bottom: 1px solid rgba(122, 21, 48, 0.14);

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
-import { NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
+import { JOURNAL_LINKS, NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
 
 const EXPLORE_LINKS = NAV_ITEMS.map(({ label, href }) => ({ label, href }));
 
@@ -63,6 +63,17 @@ export const Footer: React.FC = () => {
             <p className={styles.navColumnTitle}>Mysore Silk</p>
             <ul className={styles.navColumnList}>
               {MYSORE_SILK_LINKS.map((item) => (
+                <li key={`${item.label}-${item.href}`}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className={styles.linkGroup} aria-label="Journal">
+            <p className={styles.navColumnTitle}>Journal</p>
+            <ul className={styles.navColumnList}>
+              {JOURNAL_LINKS.map((item) => (
                 <li key={`${item.label}-${item.href}`}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>

@@ -7,8 +7,15 @@ export type NavItem = {
   children?: NavLink[];
 };
 
+export const JOURNAL_LINKS: NavLink[] = [
+  { label: "Stories", href: "/heritage" },
+  { label: "Culture", href: "/heritage#timeline" },
+  { label: "Styling", href: "/collection" },
+];
+
 export const NAV_ITEMS: NavItem[] = [
   { id: "home", label: "Home", href: "/" },
+  { id: "about", label: "About Us", href: "/institution" },
   {
     id: "mysore-silk",
     label: "Mysore Silk",
@@ -26,16 +33,6 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "Our Heritage", href: "/our-heritage" },
       { label: "The Archive", href: "/the-archive" },
-    ],
-  },
-  {
-    id: "journal",
-    label: "Journal",
-    href: "/journal",
-    children: [
-      { label: "Stories", href: "/heritage" },
-      { label: "Culture", href: "/heritage#timeline" },
-      { label: "Styling", href: "/collection" },
     ],
   },
   {
