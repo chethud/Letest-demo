@@ -297,7 +297,7 @@ export default function ContactPage() {
               <Link href="/stores">
                 Showroom Network <ArrowRight size={14} aria-hidden />
               </Link>
-              <Link href="/institution#rti">
+              <Link href="/about-us#rti">
                 Right to Information <ArrowRight size={14} aria-hidden />
               </Link>
             </div>

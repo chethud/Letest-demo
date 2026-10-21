@@ -58,7 +58,7 @@ export const InstitutionSection: React.FC = () => {
               <span>{lang === "kn" ? "ಆಡಳಿತ ಮಂಡಳಿ & ನೀತಿ" : "BOARD & GOVERNANCE"}</span>
               <ArrowRight size={15} />
             </Link>
-            <Link href="/institution#rti" className="action-editorial">
+            <Link href="/about-us#rti" className="action-editorial">
               <span>{lang === "kn" ? "ಮಾಹಿತಿ ಹಕ್ಕು & ಸನ್ನದು" : "RTI & CITIZEN CHARTER"}</span>
             </Link>
           </div>

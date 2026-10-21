@@ -8,9 +8,9 @@ export type NavItem = {
 };
 
 export const JOURNAL_LINKS: NavLink[] = [
-  { label: "Stories", href: "/heritage" },
-  { label: "Culture", href: "/heritage#timeline" },
-  { label: "Styling", href: "/collection" },
+  { label: "Stories", href: "/stories" },
+  { label: "Culture", href: "/culture" },
+  { label: "Styling", href: "/styling" },
 ];
 
 export const NAV_ITEMS: NavItem[] = [
@@ -18,9 +18,8 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: "about",
     label: "About Us",
-    href: "/institution",
+    href: "/about-us",
     children: [
-      { label: "Info", href: "/institution" },
       { label: "Board of Directors", href: "/bod" },
       { label: "Shareholders", href: "/shareholders" },
     ],
