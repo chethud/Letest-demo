@@ -44,7 +44,7 @@ export const FactorySection: React.FC = () => {
         <p className={styles.body}>
           {isKn
             ? "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದ ನಮ್ಮ ರೇಷ್ಮೆ ಕರಕುಶಲ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ಶಾಶ್ವತ ಸೌಂದರ್ಯದ ಆಚರಣೆ. ಪ್ರತಿ ತುಂಡೂ ಇತಿಹಾಸ, ಪರಂಪರೆ ಮತ್ತು ತಲೆಮಾರುಗಳಿಗೆ ಉಳಿಯುವ ಭರವಸೆಯನ್ನು ಹೊತ್ತಿದೆ."
-            : "Woven in Mysuru, our silk is a celebration of craftsmanship, culture and timeless beauty. Each piece carries a history, a heritage and a promise — to last for generations."}
+            : "Mysuru silk has flourished through centuries, symbolising regality, craftsmanship and exclusivity. Each piece carries a history, a heritage and a promise to last for generations."}
         </p>
         <Link href="/craft" className={styles.craftLink}>
           {isKn ? "ನಮ್ಮ ಕರಕುಶಲ ನೋಡಿ" : "Explore Our Craft"} <span aria-hidden="true">→</span>

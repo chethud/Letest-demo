@@ -7,59 +7,7 @@ import { usePathname } from "next/navigation";
 import { Castle, Heart, Landmark, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import styles from "./Header.module.css";
 import { KSIC_PRODUCTS } from "@/data/collections";
-
-type NavLink = { label: string; href: string };
-
-type NavItem = {
-  id: string;
-  label: string;
-  href: string;
-  children?: NavLink[];
-};
-
-const NAV_ITEMS: NavItem[] = [
-  { id: "home", label: "Home", href: "/" },
-  {
-    id: "mysore-silk",
-    label: "Mysore Silk",
-    href: "/craft",
-    children: [
-      { label: "Our Story", href: "/heritage" },
-      { label: "How It Is Made", href: "/craft" },
-      { label: "Authenticity", href: "/authenticity" },
-    ],
-  },
-  {
-    id: "world",
-    label: "The World of KSIC",
-    href: "/our-heritage",
-    children: [
-      { label: "Our Heritage", href: "/our-heritage" },
-      { label: "The Archive", href: "/the-archive" },
-    ],
-  },
-  {
-    id: "journal",
-    label: "Journal",
-    href: "/journal",
-    children: [
-      { label: "Stories", href: "/heritage" },
-      { label: "Culture", href: "/heritage#timeline" },
-      { label: "Styling", href: "/collection" },
-    ],
-  },
-  {
-    id: "shop",
-    label: "Shop",
-    href: "/collection",
-    children: [
-      { label: "New Arrivals", href: "/new-arrivals" },
-      { label: "Collections", href: "/collection" },
-      { label: "Bestsellers", href: "/bestsellers" },
-    ],
-  },
-  { id: "contact", label: "Contact Us", href: "/contact" },
-];
+import { NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
@@ -159,11 +107,11 @@ export const Header: React.FC = () => {
               </span>
             </p>
             <nav className={styles.utilityLinks} aria-label="Helpful links">
-              <Link href="/stores" className={styles.utilityLink}>
-                Store Locator
-              </Link>
-              <Link href="/contact" className={styles.utilityLink}>Track Order</Link>
-              <Link href="/contact" className={styles.utilityLink}>Help</Link>
+              {UTILITY_LINKS.map((link) => (
+                <Link key={link.label} href={link.href} className={styles.utilityLink}>
+                  {link.label}
+                </Link>
+              ))}
             </nav>
           </div>
         </div>
@@ -378,9 +326,11 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className={styles.drawerFooter}>
-          <Link href="/stores" onClick={() => setIsMobileMenuOpen(false)}>Store Locator</Link>
-          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Track Order</Link>
-          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Help</Link>
+          {UTILITY_LINKS.map((link) => (
+            <Link key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
         </div>
       </aside>
     </>

@@ -41,7 +41,7 @@ export default function ContactPage() {
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const subject = `KSIC inquiry — ${formData.enquiryType}`;
+    const subject = `KSIC inquiry: ${formData.enquiryType}`;
     const body = [
       `Name: ${formData.name}`,
       `Email: ${formData.email}`,
@@ -255,7 +255,7 @@ export default function ContactPage() {
                 <h3>Corporate Central Office</h3>
                 <p>Public Utility Building, Bengaluru</p>
                 <p>
-                  {office.building}, {office.street}, {office.city} — {office.pincode}
+                  {office.building}, {office.street}, {office.city}, {office.pincode}
                 </p>
                 <p className={styles.placeMeta}>
                   <a href={`tel:${office.phone1.replace(/\s/g, "")}`}>{office.phone1}</a>
@@ -273,7 +273,7 @@ export default function ContactPage() {
               <div>
                 <h3>Historic Production Facility</h3>
                 <p>Mysore Silk Weaving Factory, Mananthody Road, Mysuru</p>
-                <p>Silk Weaving Factory Premises, Mananthody Road, Mysuru — 570 008</p>
+                <p>Silk Weaving Factory Premises, Mananthody Road, Mysuru, 570 008</p>
                 <p className={styles.placeMeta}>
                   <a href="tel:08212480801">0821-2480801</a>
                   <span aria-hidden>·</span>
@@ -288,7 +288,7 @@ export default function ContactPage() {
               <div>
                 <h3>Raw Silk Reeling Campus</h3>
                 <p>T. Narasipura Silk Filature</p>
-                <p>Silk Filature Division, Cauvery Basin, T. Narasipura — 571 124</p>
+                <p>Silk Filature Division, Cauvery Basin, T. Narasipura, 571 124</p>
                 <p className={styles.placeMeta}>Cocoon procurement, reeling, and multi-end twisting</p>
               </div>
             </article>

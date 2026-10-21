@@ -78,7 +78,7 @@ export default function InstitutionPage() {
                 {INSTITUTIONAL_OVERVIEW.headOffice.building}
               </h3>
               <p style={{ fontSize: "0.95rem", color: "var(--color-text-secondary)", lineHeight: 1.6, marginBottom: "20px" }}>
-                {INSTITUTIONAL_OVERVIEW.headOffice.street}, {INSTITUTIONAL_OVERVIEW.headOffice.city} — {INSTITUTIONAL_OVERVIEW.headOffice.pincode}, Karnataka
+                {INSTITUTIONAL_OVERVIEW.headOffice.street}, {INSTITUTIONAL_OVERVIEW.headOffice.city}, {INSTITUTIONAL_OVERVIEW.headOffice.pincode}, Karnataka
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "0.88rem", borderTop: "1px solid rgba(23, 21, 19, 0.1)", paddingTop: "16px" }}>
                 <div><strong>Telephone:</strong> {INSTITUTIONAL_OVERVIEW.headOffice.phone1} / {INSTITUTIONAL_OVERVIEW.headOffice.phone2}</div>

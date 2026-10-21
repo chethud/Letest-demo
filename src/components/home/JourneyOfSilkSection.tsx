@@ -18,7 +18,7 @@ export const JourneyOfSilkSection: React.FC = () => {
     <section
       id="journey-of-silk"
       className={styles.journeySection}
-      aria-label="Mysore Silk — The Journey of Silk"
+      aria-label="Mysore Silk: The Journey of Silk"
     >
       {/* 01. Authentic Oversized Gandaberunda Watermark */}
       <div className={styles.watermarkContainer} aria-hidden="true">

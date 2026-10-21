@@ -12,7 +12,7 @@ export function HeritageChronology() {
   const current = HERITAGE_MILESTONES[activeIndex];
 
   return (
-    <section className={styles.timeline} id="timeline" aria-label="Century of Stewardship — The Chronology of Mysore Silk">
+    <section className={styles.timeline} id="timeline" aria-label="Century of Stewardship: The Chronology of Mysore Silk">
       <div className={styles.inner}>
         <header className={styles.timelineHeader}>
           <p className={styles.eyebrow}>Century of Stewardship</p>
@@ -47,7 +47,7 @@ export function HeritageChronology() {
             {current.image && (
               <Image
                 src={current.image}
-                alt={`${current.year} — ${current.title}`}
+                alt={`${current.year}: ${current.title}`}
                 fill
                 sizes="(max-width: 900px) 100vw, 48vw"
                 className={styles.epochImage}

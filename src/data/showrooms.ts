@@ -44,7 +44,7 @@ export const SHOWROOMS_DATA: ShowroomLocation[] = [
   },
   {
     id: "blr-airport",
-    name: "KSIC Kalalokha — T2 International Airport",
+    name: "KSIC Kalalokha, T2 International Airport",
     city: "Bengaluru",
     address: "Level 3, Terminal 2 (T2) Domestic Departures, Kempegowda International Airport, Devanahalli",
     pincode: "560300",

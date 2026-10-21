@@ -1,392 +1,291 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
-  MapPin,
   ShieldCheck,
-  Search,
-  RefreshCw,
-  Lock,
-  FileCheck,
+  FlaskConical,
+  Hash,
+  HelpCircle,
+  ExternalLink,
   Check,
+  AlertCircle,
 } from "lucide-react";
 import styles from "./RoyalZariVerificationLab.module.css";
-import { useLanguage } from "@/context/LanguageContext";
+import { MYSORE_SILK_GI_DETAILS_URL } from "@/data/govIpPortals";
+import {
+  verifySareeSerial,
+  type VerificationResponse,
+} from "@/lib/verifySareeSerial";
 
-interface VerificationResult {
-  serial: string;
-  sareeTitle: string;
-  sareeTitleKn: string;
-  weaveDate: string;
-  loomId: string;
-  giTag: string;
-  goldContent: string;
-  silverContent: string;
-  silkPurity: string;
-  hologramCode: string;
-  certificationStatus: "VERIFIED_AUTHENTIC" | "INVALID";
-}
+export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
+  id = "authenticity-lab",
+}) => {
+  const helpId = useId();
+  const helpRef = useRef<HTMLDivElement>(null);
+  const helpButtonRef = useRef<HTMLButtonElement>(null);
 
-const OFFICIAL_BATCHES: Record<string, Omit<VerificationResult, "certificationStatus">> = {
-  "KSIC-MYS-1912-ROYAL": {
-    serial: "KSIC-MYS-1912-ROYAL",
-    sareeTitle: "Royal Durbar Heritage Crepe Saree",
-    sareeTitleKn: "ರಾಜ ದರ್ಬಾರ್ ಪಾರಂಪರಿಕ ಕ್ರೇಪ್ ಸೀರೆ",
-    weaveDate: "Manufactured at Mysuru Heritage Weaving Mill",
-    loomId: "Swiss Precision Loom #04 · Loomed under Master Weaver Oversight",
-    giTag: "GI Certificate No. 11 (Government of India)",
-    goldContent: "0.65% Certified 24-Karat Pure Gold",
-    silverContent: "65.0% Hallmarked Fine Silver",
-    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
-    hologramCode: "OPT-GANDABERUNDA-849102",
-  },
-  "KSIC-ZARI-2024-GOLDA": {
-    serial: "KSIC-ZARI-2024-GOLDA",
-    sareeTitle: "Kasuti Border Pure Gold Zari Saree",
-    sareeTitleKn: "ಕಸೂತಿ ಅಂಚಿನ ಶುದ್ಧ ಚಿನ್ನದ ಜರಿ ಸೀರೆ",
-    weaveDate: "Certified Batch: Mysuru Central Weaving Mill (Est. 1912)",
-    loomId: "Authenticated Loom Track #KSIC-1912 · Verified Electronic Jacquard",
-    giTag: "GI Certificate No. 11 (Government of India)",
-    goldContent: "0.65% Certified 24-Karat Pure Gold",
-    silverContent: "65.0% Hallmarked Fine Silver",
-    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
-    hologramCode: "OPT-GANDABERUNDA-202441",
-  },
-  "KSIC-AMBART-9984-GI11": {
-    serial: "KSIC-AMBART-9984-GI11",
-    sareeTitle: "Golden Ambari Ceremonial Bridal Saree",
-    sareeTitleKn: "ಚಿನ್ನದ ಅಂಬಾರಿ ಕಲ್ಯಾಣ ಮಹೋತ್ಸವ ಸೀರೆ",
-    weaveDate: "Certified Batch: Mysuru Central Weaving Mill (Est. 1912)",
-    loomId: "Authenticated Loom Track #KSIC-1912 · Verified Electronic Jacquard",
-    giTag: "GI Certificate No. 11 (Government of India)",
-    goldContent: "0.65% Certified 24-Karat Pure Gold",
-    silverContent: "65.0% Hallmarked Fine Silver",
-    silkPurity: "100% Natural Grade-A Mulberry Silk Core",
-    hologramCode: "OPT-GANDABERUNDA-998411",
-  },
-};
-
-const SAMPLE_CODES = [
-  { code: "KSIC-MYS-1912-ROYAL", label: "Royal Durbar Crepe Saree" },
-  { code: "KSIC-ZARI-2024-GOLDA", label: "Kasuti Border Pure Zari" },
-  { code: "KSIC-AMBART-9984-GI11", label: "Golden Ambari Masterpiece" },
-];
-
-export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({ id = "authenticity-lab" }) => {
-  const { lang } = useLanguage();
-  const isKn = lang === "kn";
-
-  const [inputCode, setInputCode] = useState("KSIC-MYS-1912-ROYAL");
+  const [inputCode, setInputCode] = useState("");
   const [isVerifying, setIsVerifying] = useState(false);
-  const [result, setResult] = useState<VerificationResult | null>({
-    ...OFFICIAL_BATCHES["KSIC-MYS-1912-ROYAL"],
-    certificationStatus: "VERIFIED_AUTHENTIC",
-  });
+  const [helpOpen, setHelpOpen] = useState(false);
+  const [result, setResult] = useState<VerificationResponse | null>(null);
 
-  const handleVerify = (codeToTest?: string) => {
-    const code = (codeToTest !== undefined ? codeToTest : inputCode).trim().toUpperCase();
-    setIsVerifying(true);
+  useEffect(() => {
+    if (!helpOpen) return;
 
-    setTimeout(() => {
-      setIsVerifying(false);
-      const official = OFFICIAL_BATCHES[code];
-      if (official) {
-        setResult({
-          ...official,
-          certificationStatus: "VERIFIED_AUTHENTIC",
-        });
-      } else {
-        setResult({
-          serial: code || "—",
-          sareeTitle: "Unrecognized Serial Number",
-          sareeTitleKn: "ಅಮಾನ್ಯ ಕ್ರಮಸಂಖ್ಯೆ",
-          weaveDate: "Not found in official KSIC State Registry",
-          loomId: "Non-Government Registry Source",
-          giTag: "Unregistered",
-          goldContent: "Synthetic / Uncertified",
-          silverContent: "Unverified",
-          silkPurity: "May contain synthetic blends",
-          hologramCode: "NONE",
-          certificationStatus: "INVALID",
-        });
+    const onPointerDown = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (
+        helpRef.current?.contains(target) ||
+        helpButtonRef.current?.contains(target)
+      ) {
+        return;
       }
-    }, 400);
+      setHelpOpen(false);
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setHelpOpen(false);
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [helpOpen]);
+
+  const handleVerify = async (event?: React.FormEvent) => {
+    event?.preventDefault();
+    setIsVerifying(true);
+    setResult(null);
+
+    try {
+      const response = await verifySareeSerial(inputCode);
+      setResult(response);
+    } catch {
+      setResult({
+        status: "error",
+        message: "Unable to check this code right now. Please try again.",
+      });
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   return (
     <section
       id={id}
-      className={styles.verificationSection}
-      aria-label="Mysore Silk Royal Zari Authenticity & GI Tag Verification Lab"
+      className={styles.section}
+      aria-label="Royal Zari Verification"
     >
       <div className={styles.container}>
-        {/* Upper Introduction */}
-        <div className={styles.header}>
-          <div className={styles.eyebrowBadge}>
-            <MapPin size={13} className={styles.eyebrowIcon} />
-            <span>
-              {isKn
-                ? "ಭೌಗೋಳಿಕ ಮಾನ್ಯತೆ #೧೧ ಪ್ರಯೋಗಾಲಯ"
-                : "GEOGRAPHICAL INDICATION #11 LAB"}
-            </span>
-          </div>
+        <div className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Royal Zari Verification</p>
+            <h2 className={styles.heading}>
+              Authenticity
+              <br />
+              you can <em className={styles.headingEm}>trust.</em>
+            </h2>
+            <p className={styles.lead}>
+              Every authentic Mysore Silk saree carries a unique, micro-woven
+              serial number and a guaranteed Royal Zari composition.
+            </p>
 
-          <h2 className={styles.mainHeading}>
-            {isKn ? (
-              <>
-                <span className={styles.burgundyWord}>ರಾಯಲ್ ಜರಿ</span> ಪರಿಶೀಲನಾ ಪ್ರಯೋಗಾಲಯ
-              </>
-            ) : (
-              <>
-                The <span className={styles.burgundyWord}>Royal Zari</span> Verification Lab
-              </>
-            )}
-          </h2>
-
-          <p className={styles.supportingText}>
-            {isKn
-              ? "ಪ್ರತಿಯೊಂದು ಅಧಿಕೃತ ಮೈಸೂರು ರೇಷ್ಮೆ ಸೀರೆಯೂ ಶಾಶ್ವತ ಲೋಹೀಯ ಗ್ಯಾರಂಟಿ ಹೊಂದಿದೆ: ೦.೬೫% ಶುದ್ಧ ೨೪ ಕ್ಯಾರೆಟ್ ಚಿನ್ನ, ೬೫% ಶುದ್ಧ ಬೆಳ್ಳಿ ಮತ್ತು ಪಲ್ಲು ಮೇಲೆ ಮೈಕ್ರೋ-ನೇಯ್ದ ವಿಶಿಷ್ಟ ಕ್ರಮಸಂಖ್ಯೆ."
-              : "Every authentic Mysore Silk saree carries a permanent metallurgical guarantee: 0.65% pure 24K gold, 65% pure silver, and a unique serial number micro-woven into its pallu."}
-          </p>
-        </div>
-
-        <div className={styles.verificationDeck}>
-            {/* Left Card: Input & Security Features */}
-            <div className={styles.inputCard}>
-              <div className={styles.inputEyebrowRow}>
-                <span className={styles.eyebrowDash}>—</span>
-                <span className={styles.inputCardLabel}>
-                  {isKn
-                    ? "ಕಸೂತಿ ಪಲ್ಲು ಸೀರಿಯಲ್ ಕೋಡ್ ನಮೂದಿಸಿ"
-                    : "ENTER EMBROIDERED PALLU SERIAL CODE"}
-                </span>
+            <form className={styles.form} onSubmit={handleVerify} noValidate>
+              <div className={styles.formHeader}>
+                <label className={styles.formLabel} htmlFor="saree-serial-code">
+                  Enter your saree serial code
+                </label>
+                <div className={styles.helpWrap}>
+                  <button
+                    ref={helpButtonRef}
+                    type="button"
+                    className={styles.helpTrigger}
+                    aria-expanded={helpOpen}
+                    aria-controls={helpId}
+                    onClick={() => setHelpOpen((open) => !open)}
+                  >
+                    Where to find the code?
+                    <HelpCircle size={14} strokeWidth={1.75} aria-hidden="true" />
+                  </button>
+                  {helpOpen ? (
+                    <div
+                      id={helpId}
+                      ref={helpRef}
+                      className={styles.helpPanel}
+                      role="region"
+                      aria-label="Where to find the saree code"
+                    >
+                      <p>
+                        Look for the serial number in the pallu — woven or
+                        embroidered into the decorative end of the saree.
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
               </div>
 
-              {/* Input + Verify Button Group */}
-              <div className={styles.inputGroup}>
+              <div className={styles.formRow}>
                 <input
+                  id="saree-serial-code"
                   type="text"
                   value={inputCode}
-                  onChange={(e) => setInputCode(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") handleVerify();
-                  }}
-                  placeholder="KSIC-MYS-1912-ROYAL"
-                  className={styles.serialInput}
-                  aria-label="Saree Serial Number"
+                  onChange={(event) => setInputCode(event.target.value)}
+                  placeholder="e.g. KSIC-MYS-1912-ROYAL"
+                  className={styles.input}
+                  autoComplete="off"
+                  spellCheck={false}
+                  aria-describedby={result ? "verify-result" : undefined}
                 />
                 <button
-                  type="button"
-                  onClick={() => handleVerify()}
+                  type="submit"
+                  className={styles.verifyBtn}
                   disabled={isVerifying}
-                  className={styles.verifyCtaBtn}
                 >
-                  {isVerifying ? (
-                    <RefreshCw size={15} className={styles.spinIcon} />
-                  ) : (
-                    <Search size={15} />
-                  )}
-                  <span>{isKn ? "ದೃಢೀಕರಿಸಿ" : "VERIFY"}</span>
+                  {isVerifying ? "Checking…" : "Verify →"}
                 </button>
               </div>
+            </form>
 
-              {/* Test Official Registered Batches */}
-              <div className={styles.testBatchesBlock}>
-                <span className={styles.testBatchesLabel}>
-                  {isKn ? "ಪರೀಕ್ಷಾರ್ಥ ಅಧಿಕೃತ ಬ್ಯಾಚ್‌ಗಳು:" : "Test Official Registered Batches:"}
-                </span>
-                <div className={styles.chipsRow}>
-                  {SAMPLE_CODES.map((item) => (
-                    <button
-                      key={item.code}
-                      type="button"
-                      className={`${styles.batchChip} ${
-                        inputCode === item.code ? styles.batchChipActive : ""
-                      }`}
-                      onClick={() => {
-                        setInputCode(item.code);
-                        handleVerify(item.code);
-                      }}
-                    >
-                      {item.code}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Diamond Divider */}
-              <div className={styles.diamondDivider} aria-hidden="true">
-                <span className={styles.dividerLine} />
-                <span className={styles.diamondIcon}>❖</span>
-                <span className={styles.dividerLine} />
-              </div>
-
-              {/* Two Trust Feature Highlights */}
-              <div className={styles.trustFeaturesList}>
-                <div className={styles.trustFeatureItem}>
-                  <div className={styles.trustIconCircle}>
-                    <Lock size={16} strokeWidth={1.75} />
-                  </div>
-                  <div className={styles.trustText}>
-                    <h4 className={styles.trustTitle}>
-                      {isKn ? "ಮಾಲೀಕತ್ವದ ಜಿಐ ಟ್ಯಾಗ್ #೧೧" : "Proprietary GI Tag #11"}
-                    </h4>
-                    <p className={styles.trustDesc}>
-                      {isKn
-                        ? "ಭಾರತದ ಬೌದ್ಧಿಕ ಆಸ್ತಿ ಕಚೇರಿಯಿಂದ ರಕ್ಷಿಸಲ್ಪಟ್ಟಿದೆ."
-                        : "Protected by the Intellectual Property Office of India."}
-                    </p>
-                  </div>
-                </div>
-
-                <div className={styles.trustFeatureItem}>
-                  <div className={styles.trustIconCircle}>
-                    <FileCheck size={16} strokeWidth={1.75} />
-                  </div>
-                  <div className={styles.trustText}>
-                    <h4 className={styles.trustTitle}>
-                      {isKn
-                        ? "ಸರ್ಕಾರಿ ಲೋಹಶಾಸ್ತ್ರೀಯ ಖಾತರಿ"
-                        : "Govt Metallurgical Assay Guarantee"}
-                    </h4>
-                    <p className={styles.trustDesc}>
-                      {isKn
-                        ? "ಪ್ರಯೋಗಾಲಯ-ಪ್ರಮಾಣೀಕೃತ ೨೪K ಎಲೆಕ್ಟ್ರೋಪ್ಲೇಟೆಡ್ ಚಿನ್ನದ ಜರಿ."
-                        : "Laboratory-certified 24K electroplated gold zari."}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Card: Official Luxury Heritage Certificate */}
-            <div className={styles.certificateCard}>
-              {result && result.certificationStatus === "VERIFIED_AUTHENTIC" ? (
-                <div className={styles.certBody}>
-                  {/* Left Column of Certificate: Sculpted Gandaberunda Emblem */}
-                  <div className={styles.certEmblemColumn}>
-                    <div className={styles.emblemWrapper}>
-                      <Image
-                        src="/assets/brand/gandaberunda-royal-sculpted.png"
-                        alt="Authentic Sculpted Royal Gandaberunda Emblem of Mysore"
-                        width={154}
-                        height={271}
-                        className={styles.sculptedGandaberundaImg}
-                        priority
-                      />
-                    </div>
-                  </div>
-
-                  {/* Right Column of Certificate: Official Details */}
-                  <div className={styles.certDetailsColumn}>
-                    {/* Header Enterprise Bar */}
-                    <div className={styles.certEnterpriseRow}>
-                      <div className={styles.certEnterpriseInfo}>
-                        <div className={styles.certEnterpriseTitle}>
-                          {isKn
-                            ? "ಕರ್ನಾಟಕ ಸರ್ಕಾರಿ ಉದ್ಯಮ"
-                            : "GOVERNMENT OF KARNATAKA ENTERPRISE"}
-                        </div>
-                        <div className={styles.certEnterpriseSub}>
-                          Karnataka Silk Industries Corporation Limited · Mysuru
-                        </div>
-                      </div>
-
-                      <div className={styles.verifiedStatusBadge}>
-                        <Check size={13} strokeWidth={2.8} />
-                        <span>VERIFIED</span>
-                      </div>
-                    </div>
-
-                    {/* Authentic Serial Callout Bar */}
-                    <div className={styles.serialCalloutBox}>
-                      <span className={styles.serialCalloutLabel}>
-                        AUTHENTIC SERIAL NO.
-                      </span>
-                      <span className={styles.serialCalloutValue}>
-                        {result.serial}
-                      </span>
-                    </div>
-
-                    {/* 5-Row Specifications Table */}
-                    <div className={styles.specsTable}>
-                      <div className={styles.specRow}>
-                        <span className={styles.specLabel}>Product:</span>
-                        <span className={styles.specVal}>
-                          {isKn ? result.sareeTitleKn : result.sareeTitle}
-                        </span>
-                      </div>
-
-                      <div className={styles.specRow}>
-                        <span className={styles.specLabel}>Zari Metallurgy:</span>
-                        <span className={styles.specValZariBurgundy}>
-                          0.65% Certified 24-Karat Pure Gold &amp; 65.0% Hallmarked Fine Silver
-                        </span>
-                      </div>
-
-                      <div className={styles.specRow}>
-                        <span className={styles.specLabel}>Silk Fiber Core:</span>
-                        <span className={styles.specVal}>{result.silkPurity}</span>
-                      </div>
-
-                      <div className={styles.specRow}>
-                        <span className={styles.specLabel}>GI Protection:</span>
-                        <span className={styles.specVal}>{result.giTag}</span>
-                      </div>
-
-                      <div className={styles.specRow}>
-                        <span className={styles.specLabel}>Hologram Seal ID:</span>
-                        <span className={styles.specValMono}>{result.hologramCode}</span>
-                      </div>
-                    </div>
-
-                    {/* Diamond line divider */}
-                    <div className={styles.certInnerDivider} aria-hidden="true">
-                      <span className={styles.certDividerLine} />
-                      <span className={styles.certDiamondFlourish}>❖</span>
-                      <span className={styles.certDividerLine} />
-                    </div>
-
-                    {/* Footer 100-Year Guarantee */}
-                    <div className={styles.certGuaranteeFooter}>
-                      <span className={styles.guaranteeDiamond}>❖</span>
-                      <span className={styles.guaranteeText}>
-                        GUARANTEED COLOR RETENTION &amp; METALLIC LUSTER FOR 100 YEARS
-                      </span>
-                      <span className={styles.guaranteeDiamond}>❖</span>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className={styles.invalidCertificateBox}>
-                  <div className={styles.invalidIconCircle}>
-                    <ShieldCheck size={36} className={styles.invalidShieldIcon} />
-                  </div>
-                  <h3 className={styles.invalidTitle}>
-                    {isKn ? "ಅಮಾನ್ಯ ಕ್ರಮಸಂಖ್ಯೆ" : "Unverified Serial Code"}
-                  </h3>
-                  <p className={styles.invalidDesc}>
-                    {isKn
-                      ? "ಈ ಕೋಡ್ ಕೆ.ಎಸ್.ಐ.ಸಿ ಅಧಿಕೃತ ಡೇಟಾಬೇಸ್‌ನಲ್ಲಿ ನೋಂದಾಯಿಸಲ್ಪಟ್ಟಿಲ್ಲ. ದಯವಿಟ್ಟು ಸೀರೆಯ ಪಲ್ಲು ಮೇಲಿನ ಕೋಡ್ ಅನ್ನು ಮರುಪರಿಶೀಲಿಸಿ."
-                      : "This serial code is not recognized in the official Government database. Please check the serial micro-woven into your saree's pallu."}
+            <div id="verify-result" className={styles.result} aria-live="polite">
+              {result?.status === "verified" ? (
+                <div className={`${styles.resultBox} ${styles.resultSuccess}`}>
+                  <p className={styles.resultStatus}>
+                    <Check size={15} strokeWidth={2.4} aria-hidden="true" />
+                    Verified authentic
                   </p>
-                  <div className={styles.invalidSuggestionRow}>
-                    <button
-                      type="button"
-                      className={styles.resetCodeBtn}
-                      onClick={() => {
-                        setInputCode("KSIC-MYS-1912-ROYAL");
-                        handleVerify("KSIC-MYS-1912-ROYAL");
-                      }}
-                    >
-                      {isKn ? "ಪರೀಕ್ಷಾರ್ಥ ಕೋಡ್ ಲೋಡ್ ಮಾಡಿ" : "Load Official Sample: KSIC-MYS-1912-ROYAL"}
-                    </button>
-                  </div>
+                  <p className={styles.resultSerial}>{result.record.serial}</p>
+                  <p className={styles.resultTitle}>{result.record.productName}</p>
+                  <ul className={styles.resultFacts}>
+                    <li>{result.record.zariNote}</li>
+                    <li>{result.record.silkNote}</li>
+                    <li>{result.record.giTag}</li>
+                  </ul>
                 </div>
-              )}
+              ) : null}
+
+              {result?.status === "not_found" ? (
+                <div className={`${styles.resultBox} ${styles.resultMiss}`}>
+                  <p className={styles.resultStatus}>
+                    <AlertCircle size={15} strokeWidth={2.1} aria-hidden="true" />
+                    Code not matched
+                  </p>
+                  <p className={styles.resultCopy}>
+                    We could not find <strong>{result.serial}</strong> in the
+                    KSIC registry. Check the pallu marking again, or contact
+                    KSIC support for help.
+                  </p>
+                  <Link href="/contact" className={styles.resultLink}>
+                    Contact KSIC support
+                  </Link>
+                </div>
+              ) : null}
+
+              {result?.status === "error" ? (
+                <div className={`${styles.resultBox} ${styles.resultMiss}`}>
+                  <p className={styles.resultStatus}>
+                    <AlertCircle size={15} strokeWidth={2.1} aria-hidden="true" />
+                    Unable to verify
+                  </p>
+                  <p className={styles.resultCopy}>{result.message}</p>
+                </div>
+              ) : null}
             </div>
           </div>
+
+          <figure className={styles.heroVisual}>
+            <div className={styles.imageFrame}>
+              <Image
+                src="/assets/craft/royal-zari-verification-saree.jpg"
+                alt="Ivory Mysore silk saree with a burgundy gold-zari pallu showing a woven serial marking"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 58vw"
+                className={styles.sareeImage}
+              />
+              <div className={styles.serialCallout} aria-hidden="true">
+                <span className={styles.serialLine} />
+                <span className={styles.serialNote}>
+                  Serial woven into the pallu
+                </span>
+              </div>
+            </div>
+            <figcaption className={styles.serialCaption}>
+              Look for the serial number woven or embroidered into the decorative
+              pallu end of the saree.
+            </figcaption>
+          </figure>
+        </div>
+
+        <ul className={styles.highlights}>
+          <li className={styles.highlight}>
+            <span className={styles.highlightIcon} aria-hidden="true">
+              <ShieldCheck size={18} strokeWidth={1.6} />
+            </span>
+            <div>
+              <h3 className={styles.highlightTitle}>Government Registered</h3>
+              <p className={styles.highlightText}>
+                GI Tag #11
+                <br />
+                Mysore Silk
+              </p>
+            </div>
+          </li>
+          <li className={styles.highlight}>
+            <span className={styles.highlightIcon} aria-hidden="true">
+              <FlaskConical size={18} strokeWidth={1.6} />
+            </span>
+            <div>
+              <h3 className={styles.highlightTitle}>Certified Zari Composition</h3>
+              <p className={styles.highlightText}>
+                0.65% pure 24K gold, 65% pure silver
+              </p>
+            </div>
+          </li>
+          <li className={styles.highlight}>
+            <span className={styles.highlightIcon} aria-hidden="true">
+              <Hash size={18} strokeWidth={1.6} />
+            </span>
+            <div>
+              <h3 className={styles.highlightTitle}>Unique Serial Number</h3>
+              <p className={styles.highlightText}>
+                Micro-woven into every saree’s pallu
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <aside className={styles.giPanel}>
+          <div className={styles.giEmblem}>
+            <Image
+              src="/assets/brand/karnataka-seal.svg"
+              alt="Emblem of the Government of Karnataka"
+              width={56}
+              height={56}
+            />
+          </div>
+          <div className={styles.giCopy}>
+            <p className={styles.giEyebrow}>Protected Heritage</p>
+            <h3 className={styles.giTitle}>GI Tag #11 – Mysore Silk</h3>
+            <p className={styles.giText}>
+              Recognised and registered under the Government of India as a
+              Geographical Indication (GI).
+            </p>
+          </div>
+          <a
+            href={MYSORE_SILK_GI_DETAILS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.giLink}
+          >
+            View on Government of India Registers
+            <ExternalLink size={14} strokeWidth={1.75} aria-hidden="true" />
+          </a>
+        </aside>
       </div>
     </section>
   );

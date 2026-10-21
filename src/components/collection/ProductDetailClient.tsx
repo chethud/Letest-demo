@@ -62,7 +62,7 @@ function ProductGallery({ product }: { product: KSICProduct }) {
       <div className={styles.heroFrame}>
         <Image
           src={current.src}
-          alt={`${product.name} — ${current.label}`}
+          alt={`${product.name}: ${current.label}`}
           fill
           priority
           sizes="(max-width: 900px) 100vw, 56vw"
@@ -161,7 +161,7 @@ function EnquiryDialog({
       .filter(Boolean)
       .join("\n");
     return `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(
-      `KSIC enquiry — ${product.articleNumber}`
+      `KSIC enquiry: ${product.articleNumber}`
     )}&body=${encodeURIComponent(body)}`;
   }, [email, message, name, phone, product.articleNumber, product.name, quantity]);
 

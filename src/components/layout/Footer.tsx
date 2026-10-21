@@ -5,18 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
+import { NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
 
-const EXPLORE_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Our Story", href: "/heritage" },
-  { label: "How It's Made", href: "/craft" },
-  { label: "Shop", href: "/collection" },
-];
+const EXPLORE_LINKS = NAV_ITEMS.map(({ label, href }) => ({ label, href }));
 
-const HOUSE_LINKS = [
-  { label: "About KSIC", href: "/institution" },
-  { label: "Store Locator", href: "/stores" },
-  { label: "Contact Us", href: "/contact" },
+const MYSORE_SILK_LINKS = [
+  ...(NAV_ITEMS.find((item) => item.id === "mysore-silk")?.children ?? []),
+  ...UTILITY_LINKS.filter((link) => link.label === "Store Locator"),
 ];
 
 export const Footer: React.FC = () => {
@@ -57,18 +52,18 @@ export const Footer: React.FC = () => {
             <p className={styles.navColumnTitle}>Explore</p>
             <ul className={styles.navColumnList}>
               {EXPLORE_LINKS.map((item) => (
-                <li key={item.href}>
+                <li key={`${item.label}-${item.href}`}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          <nav className={styles.linkGroup} aria-label="The House">
-            <p className={styles.navColumnTitle}>The House</p>
+          <nav className={styles.linkGroup} aria-label="Mysore Silk">
+            <p className={styles.navColumnTitle}>Mysore Silk</p>
             <ul className={styles.navColumnList}>
-              {HOUSE_LINKS.map((item) => (
-                <li key={item.href}>
+              {MYSORE_SILK_LINKS.map((item) => (
+                <li key={`${item.label}-${item.href}`}>
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
@@ -82,7 +77,7 @@ export const Footer: React.FC = () => {
               <br />
               M.G. Road, Mayo Hall,
               <br />
-              Bengaluru — 560 001, Karnataka
+              Bengaluru, 560 001, Karnataka
             </p>
             <p className={styles.officeLine}>
               <a href="tel:+918025586402">+91 80 25586402</a>

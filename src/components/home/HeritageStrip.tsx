@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./HeritageStrip.module.css";
 
+const HERITAGE_YEARS = new Date().getFullYear() - 1912;
+
 const ITEMS = [
   {
     id: "heritage",
     label: (
       <>
-        100+ Years
+        {HERITAGE_YEARS} Years
         <br />
         of Heritage
       </>
@@ -26,7 +28,7 @@ const ITEMS = [
       <>
         Pure
         <br />
-        Mysore Silk
+        Mulberry Silk
       </>
     ),
     icon: (
@@ -50,9 +52,9 @@ const ITEMS = [
     id: "authentic",
     label: (
       <>
-        Authentic &amp;
+        Authentic
         <br />
-        Sustainable
+        Gold Zari
       </>
     ),
     icon: (

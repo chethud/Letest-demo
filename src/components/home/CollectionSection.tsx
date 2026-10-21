@@ -63,14 +63,14 @@ export const CollectionSection: React.FC = () => {
     <section
       className={styles.collectionSection}
       id="collection"
-      aria-label="The Repertoire of Mysore Silk — The Master Collection"
+      aria-label="Our Mysore Silk Collection: The Master Collection"
     >
       <div className={styles.inner}>
         <div className={styles.sectionHeader}>
           <div className={styles.headerCopy}>
             <p className={styles.eyebrow}>The Master Collection</p>
             <h2 className={styles.headline}>
-              The Repertoire of <span className={styles.headlineAccent}>Mysore Silk.</span>
+              Our Collection of <span className={styles.headlineAccent}>Mysore Silk.</span>
             </h2>
           </div>
           <Link href="/collection" className={styles.archiveBtn}>

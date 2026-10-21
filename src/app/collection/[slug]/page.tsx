@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!product) return { title: "Article Not Found" };
 
   return {
-    title: `${product.articleNumber} — ${product.name} | KSIC`,
+    title: `${product.articleNumber}: ${product.name} | KSIC`,
     description: product.description,
   };
 }

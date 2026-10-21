@@ -55,7 +55,7 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     headline: "Crafted to become heirloom.",
     headlineKn: "ಪೀಳಿಗೆಗಳ ಪಾರಂಪರಿಕ ಸಂಕೇತವಾಗಿ ರೂಪುಗೊಂಡ ಕಲೆ.",
     description: "The result is an exquisite Mysore Silk saree, a timeless expression of artistry and heritage.",
-    descriptionKn: "ಅಂತಿಮ ಫಲಿತಾಂಶವೇ ಅದ್ಭುತ ಮೈಸೂರು ರೇಷ್ಮೆ ಸೀರೆ—ಕಲೆಗಾರಿಕೆ ಮತ್ತು ಪರಂಪರೆಯ ಕಾಲಾತೀತ ಅಭಿವ್ಯಕ್ತಿ.",
+    descriptionKn: "ಅಂತಿಮ ಫಲಿತಾಂಶವೇ ಅದ್ಭುತ ಮೈಸೂರು ರೇಷ್ಮೆ ಸೀರೆ, ಕಲೆಗಾರಿಕೆ ಮತ್ತು ಪರಂಪರೆಯ ಕಾಲಾತೀತ ಅಭಿವ್ಯಕ್ತಿ.",
     image: "/assets/craft/journey-stage-4.jpg",
     detailBadge: "Centenary Royal Weave",
     detailBadgeKn: "ಶತಮಾನದ ರಾಜವಂಶದ ನೇಯ್ಗೆ",

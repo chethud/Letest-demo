@@ -23,7 +23,7 @@ export const TimelineSection: React.FC = () => {
     <section
       className={styles.timelineSection}
       id="timeline"
-      aria-label="Century of Stewardship — The Chronology of Mysore Silk"
+      aria-label="Century of Stewardship: The Chronology of Mysore Silk"
     >
       <div className={styles.container}>
         {/* 01. Sophisticated Section Introduction */}

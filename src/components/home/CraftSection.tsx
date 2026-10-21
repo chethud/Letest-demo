@@ -32,7 +32,7 @@ export const CraftSection: React.FC = () => {
     <section
       className={styles.craftSection}
       id="craft"
-      aria-label="Technical Monograph — From Cocoon to Silk"
+      aria-label="Technical Monograph: From Cocoon to Silk"
     >
       <div className={styles.container}>
         <header className={styles.header}>

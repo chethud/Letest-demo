@@ -2,10 +2,12 @@
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(280px, 3fr);
   min-height: 540px;
+  width: 100%;
+  margin: 0;
   background: #fbe9ed;
   color: #17130f;
   scroll-margin-top: 80px;
-  padding-left: clamp(1.75rem, 3vw, 2.75rem);
+  padding-left: 0;
 }
 
 .film {
@@ -30,7 +32,7 @@
   flex-direction: column;
   justify-content: center;
   min-height: 540px;
-  padding: 37px 28px 24px;
+  padding: 37px clamp(1.5rem, 3vw, 2.75rem) 24px;
 }
 
 .eyebrow {

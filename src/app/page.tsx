@@ -5,6 +5,7 @@ import { FactorySection } from "@/components/home/FactorySection";
 import { CollectionSection } from "@/components/home/CollectionSection";
 import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
 import { GenerationsHeritage } from "@/components/layout/GenerationsHeritage";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
       <RoyalZariVerificationLab />
 
       <GenerationsHeritage />
+      <TestimonialsSection />
     </>
   );
 }

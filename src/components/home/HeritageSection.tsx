@@ -11,7 +11,7 @@ export const HeritageSection: React.FC = () => {
     <section
       className={styles.heritageSection}
       id="heritage"
-      aria-label="Our Heritage — 1912: The Beginning of a Living Legacy"
+      aria-label="Our Heritage, 1912: The Beginning of a Living Legacy"
     >
       {/* Decorative low-opacity royal watermark on the far right */}
       <div className={styles.heritageWatermark} aria-hidden="true">

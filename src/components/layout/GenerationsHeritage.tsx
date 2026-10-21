@@ -17,14 +17,14 @@ export const GenerationsHeritage: React.FC = () => {
         <div className={styles.copy}>
           <p className={styles.eyebrow}>Heritage</p>
           <h2 className={styles.title}>
-            Three generations.
+            Trusted silk from generations.
             <br />
-            One piece of silk.
+            Made for generations.
           </h2>
           <p className={styles.lead}>
-            Some things are bought.
+            You can buy the saree.
             <br />
-            Some things are passed down.
+            The years that follow are yours alone.
           </p>
           <Link href="/heritage" className={styles.cta}>
             Our Story <span aria-hidden="true">→</span>

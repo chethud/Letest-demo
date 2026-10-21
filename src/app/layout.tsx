@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ksicsilk.karnataka.gov.in"),
   title: {
     default: "Karnataka Silk Industries Corporation Limited (KSIC) · Mysore Silk",
-    template: "%s | KSIC Mysore Silk — Government of Karnataka",
+    template: "%s | KSIC Mysore Silk, Government of Karnataka",
   },
   description:
     "Karnataka Silk Industries Corporation Limited (KSIC). The weaving factory dates from 1912 under Maharaja Nalvadi Krishnaraja Wadiyar. KSIC was incorporated in 1980. Mysore Silk is recorded as GIR-11; the sources give both November 2005 and 2017.",
