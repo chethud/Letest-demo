@@ -86,9 +86,8 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>Royal Zari Verification</p>
             <h2 className={styles.heading}>
-              Authenticity
-              <br />
-              you can <em className={styles.headingEm}>trust.</em>
+              Authenticity you can{" "}
+              <em className={styles.headingEm}>trust.</em>
             </h2>
             <p className={styles.lead}>
               Every authentic Mysore Silk saree carries a unique, micro-woven
@@ -210,7 +209,8 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
               <div className={styles.serialCallout} aria-hidden="true">
                 <span className={styles.serialLine} />
                 <span className={styles.serialNote}>
-                  Serial woven into the pallu
+                  Look for the serial number in the pallu. Woven or embroidered
+                  into the decorative end of the saree.
                 </span>
               </div>
             </div>

@@ -42,12 +42,21 @@ export const FactorySection: React.FC = () => {
           )}
         </h2>
         <p className={styles.body}>
-          {isKn
-            ? "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದ ನಮ್ಮ ರೇಷ್ಮೆ ಕರಕುಶಲ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ಶಾಶ್ವತ ಸೌಂದರ್ಯದ ಆಚರಣೆ. ಪ್ರತಿ ತುಂಡೂ ಇತಿಹಾಸ, ಪರಂಪರೆ ಮತ್ತು ತಲೆಮಾರುಗಳಿಗೆ ಉಳಿಯುವ ಭರವಸೆಯನ್ನು ಹೊತ್ತಿದೆ."
-            : "Mysuru silk has flourished through centuries, symbolising regality, craftsmanship and exclusivity. Each piece carries a history, a heritage and a promise to last for generations."}
+          {isKn ? (
+            "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದ ನಮ್ಮ ರೇಷ್ಮೆ ಕರಕುಶಲ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ಶಾಶ್ವತ ಸೌಂದರ್ಯದ ಆಚರಣೆ. ಪ್ರತಿ ತುಂಡೂ ಇತಿಹಾಸ, ಪರಂಪರೆ ಮತ್ತು ತಲೆಮಾರುಗಳಿಗೆ ಉಳಿಯುವ ಭರವಸೆಯನ್ನು ಹೊತ್ತಿದೆ."
+          ) : (
+            <>
+              Mysuru silk has flourished through centuries, symbolising{" "}
+              <strong className={styles.emphasis}>regality</strong>,{" "}
+              <strong className={styles.emphasis}>craftsmanship</strong> and{" "}
+              <strong className={styles.emphasis}>exclusivity</strong>. Each piece
+              carries a history, a heritage and a promise to last for generations.
+            </>
+          )}
         </p>
         <Link href="/craft" className={styles.craftLink}>
-          {isKn ? "ನಮ್ಮ ಕರಕುಶಲ ನೋಡಿ" : "Explore Our Craft"} <span aria-hidden="true">→</span>
+          {isKn ? "ನಮ್ಮ ಕರಕುಶಲ ನೋಡಿ" : "Explore Our Craft"}{" "}
+          <span aria-hidden="true">→</span>
         </Link>
         <div className={styles.palaceSketch} aria-hidden="true">
           <svg viewBox="0 0 340 148" fill="none" stroke="currentColor">
