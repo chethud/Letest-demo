@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Heart,
   Lock,
   Minus,
   Plus,
@@ -43,6 +44,12 @@ const CREPE_SHADES = [
   { name: "Pastel Blue", hex: "#E7F1F7" },
 ];
 
+function statusLabel(status: KSICProduct["status"]) {
+  if (status === "in_production") return "In stock · Showroom enquiry";
+  if (status === "heritage_reserve") return "Heritage reserve · Enquire";
+  return "Archived article";
+}
+
 function ProductGallery({ product }: { product: KSICProduct }) {
   const items = useMemo(() => galleryItems(product), [product]);
   const [active, setActive] = useState(0);
@@ -59,16 +66,34 @@ function ProductGallery({ product }: { product: KSICProduct }) {
 
   return (
     <div className={styles.gallery}>
+      {items.length > 1 ? (
+        <div className={styles.thumbs} role="tablist" aria-label="Product images">
+          {items.map((item, index) => (
+            <button
+              key={`${item.src}-${item.label}`}
+              type="button"
+              role="tab"
+              aria-selected={index === safeIndex}
+              aria-label={item.label}
+              className={`${styles.thumb} ${index === safeIndex ? styles.thumbActive : ""}`}
+              onClick={() => setActive(index)}
+            >
+              <Image src={item.src} alt="" fill sizes="72px" className={styles.thumbImage} />
+            </button>
+          ))}
+        </div>
+      ) : null}
+
       <div className={styles.heroFrame}>
         <Image
           src={current.src}
           alt={`${product.name}: ${current.label}`}
           fill
           priority
-          sizes="(max-width: 900px) 100vw, 56vw"
+          sizes="(max-width: 900px) 100vw, 52vw"
           className={styles.heroImage}
         />
-        {items.length > 1 && (
+        {items.length > 1 ? (
           <>
             <button
               type="button"
@@ -87,26 +112,9 @@ function ProductGallery({ product }: { product: KSICProduct }) {
               <ChevronRight size={18} />
             </button>
           </>
-        )}
+        ) : null}
+        <p className={styles.imageLabel}>{current.label}</p>
       </div>
-
-      {items.length > 1 && (
-        <div className={styles.thumbs} role="tablist" aria-label="Product images">
-          {items.map((item, index) => (
-            <button
-              key={`${item.src}-${item.label}`}
-              type="button"
-              role="tab"
-              aria-selected={index === safeIndex}
-              aria-label={item.label}
-              className={`${styles.thumb} ${index === safeIndex ? styles.thumbActive : ""}`}
-              onClick={() => setActive(index)}
-            >
-              <Image src={item.src} alt="" fill sizes="88px" className={styles.thumbImage} />
-            </button>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
@@ -128,7 +136,7 @@ function EnquiryDialog({
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(
-    `I would like to know about availability for ${product.name} (${product.articleNumber}). Quantity: ${quantity}.`
+    `I would like to know about availability for ${product.name} (${product.articleNumber}). Quantity: ${quantity}.`,
   );
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [blocked, setBlocked] = useState(false);
@@ -161,7 +169,7 @@ function EnquiryDialog({
       .filter(Boolean)
       .join("\n");
     return `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(
-      `KSIC enquiry: ${product.articleNumber}`
+      `KSIC enquiry: ${product.articleNumber}`,
     )}&body=${encodeURIComponent(body)}`;
   }, [email, message, name, phone, product.articleNumber, product.name, quantity]);
 
@@ -206,36 +214,37 @@ function EnquiryDialog({
           <label>
             Name
             <input ref={firstField} value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
-            {errors.name && <span className={styles.fieldError}>{errors.name}</span>}
+            {errors.name ? <span className={styles.fieldError}>{errors.name}</span> : null}
           </label>
           <label>
             Phone number
             <input value={phone} onChange={(e) => setPhone(e.target.value)} autoComplete="tel" inputMode="tel" />
-            {errors.phone && <span className={styles.fieldError}>{errors.phone}</span>}
+            {errors.phone ? <span className={styles.fieldError}>{errors.phone}</span> : null}
           </label>
           <label>
             Email address <span className={styles.optional}>(optional)</span>
             <input value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" inputMode="email" />
-            {errors.email && <span className={styles.fieldError}>{errors.email}</span>}
+            {errors.email ? <span className={styles.fieldError}>{errors.email}</span> : null}
           </label>
           <label>
             Enquiry message
             <textarea rows={4} value={message} onChange={(e) => setMessage(e.target.value)} />
-            {errors.message && <span className={styles.fieldError}>{errors.message}</span>}
+            {errors.message ? <span className={styles.fieldError}>{errors.message}</span> : null}
           </label>
           <button type="submit" className={styles.submitPill}>
             Submit enquiry
           </button>
         </form>
-        {blocked && (
+        {blocked ? (
           <div className={styles.blockedNote} role="status">
             <p>
-              This enquiry has not been submitted. No enquiry service is connected yet, so nothing was sent and no booking was created.
+              This enquiry has not been submitted. No enquiry service is connected yet, so nothing was sent
+              and no booking was created.
             </p>
             <p>You can draft the same message in your email app, or call {ENQUIRY_PHONE}.</p>
             <a href={mailto}>Open email draft</a>
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
@@ -247,6 +256,7 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
   const [quantity, setQuantity] = useState(1);
   const [shadeIndex, setShadeIndex] = useState(0);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [saved, setSaved] = useState(false);
   const qtyId = useId();
 
   useEffect(() => {
@@ -255,8 +265,25 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
 
   return (
     <div className={styles.purchase}>
+      <div className={styles.priceRow}>
+        <div>
+          <p className={styles.priceLabel}>Availability</p>
+          <p className={styles.priceValue}>Showroom enquiry</p>
+        </div>
+        <p
+          className={`${styles.stockBadge} ${
+            product.status === "in_production" ? styles.stockIn : styles.stockOther
+          }`}
+        >
+          {statusLabel(product.status)}
+        </p>
+      </div>
+
       <div className={styles.colourBlock}>
-        <p id="colour-label">Colour</p>
+        <div className={styles.optionHead}>
+          <p id="colour-label">Colour</p>
+          <span>{shades[shadeIndex].name}</span>
+        </div>
         <div className={styles.swatchRow} role="radiogroup" aria-labelledby="colour-label">
           {shades.map((shade, index) => (
             <button
@@ -271,11 +298,12 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
             />
           ))}
         </div>
-        <p className={styles.shadeName}>{shades[shadeIndex].name}</p>
       </div>
 
       <div className={styles.quantityBlock}>
-        <p id={qtyId}>Quantity</p>
+        <div className={styles.optionHead}>
+          <p id={qtyId}>Quantity</p>
+        </div>
         <div className={styles.stepper}>
           <button
             type="button"
@@ -288,33 +316,56 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
           <output aria-labelledby={qtyId} aria-live="polite">
             {quantity}
           </output>
-          <button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => Math.min(9, value + 1))}>
+          <button
+            type="button"
+            aria-label="Increase quantity"
+            onClick={() => setQuantity((value) => Math.min(9, value + 1))}
+          >
             <Plus size={14} />
           </button>
         </div>
       </div>
 
-      <button type="button" className={styles.bookPill} disabled={!bookingActive} aria-disabled={!bookingActive}>
-        {!bookingActive && <Lock size={14} aria-hidden />}
-        <span>{bookingActive ? "Continue" : "Booking temporarily unavailable"}</span>
-      </button>
+      <div className={styles.ctaRow}>
+        <button
+          type="button"
+          className={styles.bookPill}
+          disabled={!bookingActive}
+          aria-disabled={!bookingActive}
+        >
+          {!bookingActive ? <Lock size={14} aria-hidden /> : null}
+          <span>{bookingActive ? "Continue to book" : "Booking temporarily unavailable"}</span>
+        </button>
+        <button
+          type="button"
+          className={`${styles.wishBtn}${saved ? ` ${styles.wishBtnActive}` : ""}`}
+          aria-label={saved ? "Remove from saved" : "Save article"}
+          aria-pressed={saved}
+          onClick={() => setSaved((value) => !value)}
+        >
+          <Heart size={18} strokeWidth={1.5} fill={saved ? "currentColor" : "none"} />
+        </button>
+      </div>
 
       <button type="button" className={styles.enquirePill} onClick={() => setEnquiryOpen(true)}>
-        <span>Enquire about this saree</span>
-        <span className={styles.enquireArrow} aria-hidden>
-          <ArrowRight size={16} />
-        </span>
+        Enquire about this saree
+        <ArrowRight size={16} aria-hidden />
       </button>
 
-      {enquiryOpen && (
+      <p className={styles.secureNote}>
+        Online checkout is not offered on this site. Purchase assistance is through KSIC showrooms and
+        official enquiry.
+      </p>
+
+      {enquiryOpen ? (
         <EnquiryDialog product={product} quantity={quantity} onClose={() => setEnquiryOpen(false)} />
-      )}
+      ) : null}
     </div>
   );
 }
 
 function DetailAccordion({ product }: { product: KSICProduct }) {
-  const [openTitle, setOpenTitle] = useState<string | null>(null);
+  const [openTitle, setOpenTitle] = useState<string | null>("Product Details");
   const showrooms =
     product.showroomAvailability.length > 0
       ? `Showrooms named for this article: ${product.showroomAvailability.join(", ")}.`
@@ -365,13 +416,16 @@ function DetailAccordion({ product }: { product: KSICProduct }) {
     },
     {
       title: "Care Instructions",
-      body: <p>Care instructions for this article are not published here. Confirm them with KSIC before purchase.</p>,
+      body: (
+        <p>Care instructions for this article are not published here. Confirm them with KSIC before purchase.</p>
+      ),
     },
     {
       title: "Shipping & Returns",
       body: (
         <p>
-          Online shipping and returns are not offered from this page. {showrooms} Purchase assistance is through an enquiry, not checkout.
+          Online shipping and returns are not offered from this page. {showrooms} Purchase assistance is
+          through an enquiry, not checkout.
         </p>
       ),
     },
@@ -391,7 +445,6 @@ function DetailAccordion({ product }: { product: KSICProduct }) {
               aria-controls={panelId}
               onClick={() => setOpenTitle(open ? null : section.title)}
             >
-              <ChevronRight size={14} className={open ? styles.accLeadOpen : styles.accLead} aria-hidden />
               <span>{section.title}</span>
               <ChevronDown size={16} className={open ? styles.chevronOpen : undefined} aria-hidden />
             </button>
@@ -414,53 +467,55 @@ export default function ProductDetailClient({
 }) {
   return (
     <div className={styles.page}>
-      <div className={`container-institutional ${styles.layout}`}>
-        <div className={styles.galleryColumn}>
-          <nav className={styles.crumbs} aria-label="Breadcrumb">
-            <Link href="/collection">
-              <ChevronLeft size={14} />
-              Collection
-            </Link>
-            <span aria-hidden>/</span>
-            <span>{product.category}</span>
-            <span aria-hidden>/</span>
-            <span className={styles.crumbCurrent}>{product.articleNumber}</span>
-          </nav>
-          <ProductGallery product={product} />
-        </div>
+      <div className={styles.content}>
+        <nav className={styles.crumbs} aria-label="Breadcrumb">
+          <Link href="/collection">Shop</Link>
+          <span aria-hidden>/</span>
+          <span>{product.category}</span>
+          <span aria-hidden>/</span>
+          <span className={styles.crumbCurrent}>{product.articleNumber}</span>
+        </nav>
 
-        <div className={styles.info}>
-          <p className={styles.eyebrow}>{product.category}</p>
-          <h1>{product.name}</h1>
-          {product.kannadaName ? (
-            <p className={styles.kannada} lang="kn">
-              {product.kannadaName}
-            </p>
-          ) : null}
-          <div className={styles.ornament} aria-hidden>
-            <span />
-            <svg viewBox="0 0 24 24" width="14" height="14">
-              <path
-                d="M12 2.5c.4 3.2 1.6 5.2 4.2 6.5-2.6 1.2-3.8 3.2-4.2 6.5-.4-3.3-1.6-5.3-4.2-6.5C10.4 7.7 11.6 5.7 12 2.5Z"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-              />
-            </svg>
-            <span />
+        <div className={styles.layout}>
+          <div className={styles.galleryColumn}>
+            <ProductGallery product={product} />
           </div>
-          <PurchasePanel product={product} />
-          <DetailAccordion product={product} />
+
+          <div className={styles.info}>
+            <div className={styles.badges}>
+              {product.featured ? <span className={styles.badge}>Bestseller</span> : null}
+              <span className={styles.badgeMuted}>{product.authenticity.giTag}</span>
+            </div>
+
+            <p className={styles.eyebrow}>{product.category}</p>
+            <h1>{product.name}</h1>
+            {product.kannadaName ? (
+              <p className={styles.kannada} lang="kn">
+                {product.kannadaName}
+              </p>
+            ) : null}
+            <p className={styles.sku}>Article {product.articleNumber}</p>
+            <p className={styles.tagline}>{product.tagline}</p>
+
+            <ul className={styles.specChips}>
+              <li>{product.weaveType}</li>
+              {product.weightGrams ? <li>{product.weightGrams}g</li> : null}
+              <li>{product.primaryColor}</li>
+            </ul>
+
+            <PurchasePanel product={product} />
+            <DetailAccordion product={product} />
+          </div>
         </div>
       </div>
 
-      {related.length > 0 && (
+      {related.length > 0 ? (
         <section className={styles.related} aria-labelledby="related-heading">
-          <div className="container-institutional">
+          <div className={styles.content}>
             <div className={styles.relatedHead}>
-              <h2 id="related-heading">You may also explore</h2>
+              <h2 id="related-heading">You may also like</h2>
               <Link href="/collection">
-                View the collection
+                View all sarees
                 <ArrowRight size={14} />
               </Link>
             </div>
@@ -468,7 +523,8 @@ export default function ProductDetailClient({
               {related.map((item) => (
                 <Link key={item.id} href={`/collection/${item.slug}`} className={styles.relatedCard}>
                   <span className={styles.relatedMedia}>
-                    <Image src={item.images.hero} alt="" fill sizes="(max-width: 700px) 100vw, 25vw" />
+                    <Image src={item.images.hero} alt="" fill sizes="(max-width: 700px) 50vw, 25vw" />
+                    {item.featured ? <span className={styles.relatedTag}>Bestseller</span> : null}
                   </span>
                   <span className={styles.relatedCategory}>{item.category}</span>
                   <span className={styles.relatedName}>{item.name}</span>
@@ -478,7 +534,7 @@ export default function ProductDetailClient({
             </div>
           </div>
         </section>
-      )}
+      ) : null}
     </div>
   );
 }
