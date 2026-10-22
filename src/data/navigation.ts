@@ -16,22 +16,21 @@ export const JOURNAL_LINKS: NavLink[] = [
 
 export const ABOUT_LINKS: NavLink[] = [
   { label: "About Us", href: "/about-us" },
+  { label: "Our Heritage", href: "/our-heritage" },
   { label: "Board of Directors", href: "/bod" },
   { label: "Shareholders", href: "/shareholders" },
-  { label: "Our Heritage", href: "/our-heritage" },
   { label: "The Archive", href: "/the-archive" },
 ];
 
 export const MYSORE_SILK_LINKS: NavLink[] = [
   { label: "Our Story", href: "/heritage" },
   { label: "How It Is Made", href: "/craft" },
-  { label: "Authenticity", href: "/authenticity" },
+  { label: "Authenticity", href: "/#authenticity-lab" },
 ];
 
 export const SHOP_LINKS: NavLink[] = [
-  { label: "New Arrivals", href: "/new-arrivals" },
-  { label: "Collections", href: "/collection" },
-  { label: "Bestsellers", href: "/bestsellers" },
+  { label: "New Arrivals", href: "/collection?view=new" },
+  { label: "Bestsellers", href: "/collection?view=bestsellers" },
 ];
 
 export const NAV_ITEMS: NavItem[] = [

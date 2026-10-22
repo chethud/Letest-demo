@@ -19,6 +19,15 @@
   box-sizing: border-box;
 }
 
+/* When a page supplies its own content width class */
+.innerFlush {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .link {
   display: inline-flex;
   align-items: center;

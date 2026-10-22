@@ -7,12 +7,19 @@ type SegmentSubnavProps = {
   links: NavLink[];
   activeHref?: string;
   ariaLabel: string;
+  /** Optional override for the inner row (e.g. page-shared content width) */
+  innerClassName?: string;
 };
 
-export function SegmentSubnav({ links, activeHref, ariaLabel }: SegmentSubnavProps) {
+export function SegmentSubnav({
+  links,
+  activeHref,
+  ariaLabel,
+  innerClassName,
+}: SegmentSubnavProps) {
   return (
     <nav className={styles.subnav} aria-label={ariaLabel}>
-      <div className={styles.inner}>
+      <div className={innerClassName ? `${styles.inner} ${styles.innerFlush} ${innerClassName}` : styles.inner}>
         {links.map((item) => {
           const active = activeHref === item.href;
           return (

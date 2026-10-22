@@ -49,7 +49,7 @@ const HERO_SLIDES: HeroSlide[] = [
     lineKn: "ಮಗ್ಗದಿಂದ ಹೊಸದಾಗಿ.",
     ctaEn: "CHECK THE NEW ARRIVALS",
     ctaKn: "ಹೊಸ ಆಗಮನಗಳನ್ನು ನೋಡಿ",
-    href: "/new-arrivals",
+    href: "/collection?view=new",
     align: "right",
   },
 ];

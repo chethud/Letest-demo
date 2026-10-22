@@ -185,7 +185,7 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
       hero: "/assets/collection/ksic-temple-border-cream.jpg",
       detail: "/assets/collection/ksic-bridal-heritage.jpg",
     },
-    featured: true,
+    featured: false,
   },
   {
     id: "art-butta-emerald-green",
@@ -216,7 +216,7 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
     images: {
       hero: "/assets/collection/ksic-butta-collection-green.jpg",
     },
-    featured: true,
+    featured: false,
   },
   {
     id: "art-checks-stripes-purple",
@@ -344,7 +344,7 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
       hero: "/assets/collection/ksic-festive-folded.jpg",
       detail: "/assets/collection/ksic-gandaberunda-royal.jpg",
     },
-    featured: true,
+    featured: false,
   },
 ];
 

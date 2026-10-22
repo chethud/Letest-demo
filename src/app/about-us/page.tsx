@@ -34,51 +34,46 @@ const DISTINCTIONS = [
 export default function AboutUsPage() {
   return (
     <div className={styles.page}>
-      <AboutSubnav activeHref="/about-us" />
+      <AboutSubnav activeHref="/about-us" contentClassName={styles.content} />
 
-      <section
-        className="section-spacing"
-        style={{ backgroundColor: "var(--color-bg-secondary)", borderBottom: "var(--border-rule)" }}
-      >
-        <div className="container-institutional reveal-up">
-          <div className={styles.heroBadge}>
-            <Image
-              src="/assets/brand/karnataka-seal.svg"
-              alt="Seal of Karnataka"
-              width={48}
-              height={48}
-              style={{ objectFit: "contain" }}
-            />
-            <span className="editorial-label" style={{ margin: 0 }}>
-              GOVERNMENT OF KARNATAKA UNDERTAKING
-            </span>
+      <section className={styles.storyBand} aria-label="About KSIC">
+        <div className={`${styles.content} reveal-up`}>
+          <div className={styles.storyIntro}>
+            <div className={styles.heroBadge}>
+              <Image
+                src="/assets/brand/karnataka-seal.svg"
+                alt="Seal of Karnataka"
+                width={56}
+                height={56}
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+            <p className={styles.storyKicker}>
+              <span className={styles.kickerRule} aria-hidden="true" />
+              Government of Karnataka Undertaking
+              <span className={styles.kickerRule} aria-hidden="true" />
+            </p>
+            <h1 className={styles.pageTitle}>
+              About <span>Us</span>
+            </h1>
+            <p className={styles.pageLead}>
+              Mysore is rich for its royal heritage and grandeur, and the silk produced there reflects that
+              traditional splendour through rich yet delicate motifs. The name Mysore Silk is a befitting
+              tribute to its ancestry. Karnataka Silk Industries Corporation Limited (KSIC), the proud
+              inheritor of this royal legacy, has treasured it for over seven decades, producing 100% pure
+              silk with pure gold zari.
+            </p>
+            <div className={styles.diamondRule} aria-hidden="true">
+              <span className={styles.diamond} />
+            </div>
           </div>
 
-          <h1 className={styles.pageTitle}>
-            About <span>Us</span>
-          </h1>
-
-          <p className={styles.pageLead}>
-            Mysore is rich for its royal heritage and grandeur, and the silk produced there reflects that
-            traditional splendour through rich yet delicate motifs. The name Mysore Silk is a befitting
-            tribute to its ancestry. Karnataka Silk Industries Corporation Limited (KSIC), the proud
-            inheritor of this royal legacy, has treasured it for over seven decades, producing 100% pure
-            silk with pure gold zari.
-          </p>
-        </div>
-      </section>
-
-      <section
-        className="section-spacing"
-        style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}
-      >
-        <div className="container-institutional">
-          <div className={styles.mandateGrid}>
-            <div className="reveal-left">
-              <span className="editorial-label">OUR LEGACY</span>
-              <h2 className="display-section" style={{ marginBottom: "24px" }}>
-                PROUD INHERITOR OF A ROYAL CRAFT
-              </h2>
+          <div className={styles.legacySplit}>
+            <div className={styles.legacyTitleCol}>
+              <span className={styles.legacyLabel}>Our Legacy</span>
+              <h2 className={styles.legacyHeading}>Proud inheritor of a royal craft</h2>
+            </div>
+            <div className={styles.legacyCopy}>
               <p className={styles.bodyCopy}>
                 We manufacture quality silk products of varied designs for end-user consumption: the finest
                 designer silk sarees, shirts, kurtas, silk dhotis and men’s ties. These products are made in
@@ -90,55 +85,42 @@ export default function AboutUsPage() {
                 and supplied to meet the requirements of the royal family, with ornamental fabrics for their
                 armed forces.
               </p>
-              <p className={styles.bodyCopy}>
-                {INSTITUTIONAL_OVERVIEW.mandate}
-              </p>
             </div>
+          </div>
 
-            <div className={styles.mandateAside}>
-              <div className={`reveal-scale ${styles.addressBox}`}>
-                <div className={styles.boxKicker}>HEADQUARTERS (CENTRAL OFFICE)</div>
-                <h3 className={styles.boxTitle}>{INSTITUTIONAL_OVERVIEW.headOffice.building}</h3>
-                <p className={styles.boxBody}>
-                  {INSTITUTIONAL_OVERVIEW.headOffice.street}, {INSTITUTIONAL_OVERVIEW.headOffice.city},{" "}
-                  {INSTITUTIONAL_OVERVIEW.headOffice.pincode}, Karnataka
-                </p>
-                <div className={styles.boxMeta}>
-                  <div>
-                    <strong>Telephone:</strong> {INSTITUTIONAL_OVERVIEW.headOffice.phone1} /{" "}
-                    {INSTITUTIONAL_OVERVIEW.headOffice.phone2}
-                  </div>
-                  <div>
-                    <strong>Official Email:</strong> {INSTITUTIONAL_OVERVIEW.headOffice.email}
-                  </div>
-                  <div>
-                    <strong>Administrative Dept:</strong> Department of Sericulture, Govt of Karnataka
-                  </div>
-                </div>
-              </div>
+          <ul className={styles.storyStats}>
+            <li>
+              <span className={styles.statValue}>1912</span>
+              <span className={styles.statLabel}>Factory established</span>
+            </li>
+            <li>
+              <span className={styles.statValue}>1980</span>
+              <span className={styles.statLabel}>KSIC formed</span>
+            </li>
+            <li>
+              <span className={styles.statValue}>100%</span>
+              <span className={styles.statLabel}>Pure silk and gold zari</span>
+            </li>
+          </ul>
 
-              <div className={styles.corporateMetaGrid}>
-                <div>
-                  <div className={styles.metaLabel}>Corporate Identification</div>
-                  <div className={styles.metaValue}>{INSTITUTIONAL_OVERVIEW.corporateId}</div>
-                </div>
-                <div>
-                  <div className={styles.metaLabel}>Incorporation Year</div>
-                  <div className={styles.metaYear}>1980 (1912 Ancestry)</div>
-                </div>
-              </div>
-            </div>
+          <div className={styles.diamondRule} aria-hidden="true">
+            <span className={styles.diamond} />
+          </div>
+
+          <p className={styles.storyMission}>{INSTITUTIONAL_OVERVIEW.mandate}</p>
+
+          <div className={styles.diamondRule} aria-hidden="true">
+            <span className={styles.diamond} />
           </div>
         </div>
       </section>
 
-      <section
-        className="section-spacing"
-        style={{ backgroundColor: "var(--color-bg-primary)", borderBottom: "var(--border-rule)" }}
-      >
-        <div className="container-institutional">
+      <section className={styles.certBand}>
+        <div className={styles.content}>
           <div className={styles.sectionIntro}>
-            <h2 className="display-section">CERTIFICATION {"&"} RECOGNITION</h2>
+            <h2 className={`display-section ${styles.sectionHeading}`}>
+              CERTIFICATION {"&"} RECOGNITION
+            </h2>
             <p className={styles.sectionLead}>
               Having gained widespread recognition for authentic silk manufacturing, KSIC holds
               Geographical Indication Registration (GI-11) for Mysore Silk and multiple management-system
@@ -157,12 +139,12 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="section-spacing" id="rti" style={{ backgroundColor: "var(--color-bg-primary)" }}>
-        <div className="container-institutional">
+      <section className={styles.rtiBand} id="rti">
+        <div className={styles.content}>
           <div className={styles.rtiGrid}>
             <div className="reveal-left">
               <span className="editorial-label">PUBLIC DISCLOSURE {"&"} TRANSPARENCY</span>
-              <h2 className="display-section" style={{ marginBottom: "20px" }}>
+              <h2 className={`display-section ${styles.sectionHeading}`}>
                 RIGHT TO INFORMATION (RTI) ACT, 2005
               </h2>
               <p className={styles.bodyCopy}>

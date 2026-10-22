@@ -1,8 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Clock, Factory, Mail, MapPin, Phone, Search } from "lucide-react";
+import {
+  ArrowRight,
+  Clock,
+  Factory,
+  Mail,
+  MapPin,
+  Phone,
+  Search,
+} from "lucide-react";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
 import { SHOWROOMS_DATA } from "@/data/showrooms";
 import styles from "./Contact.module.css";
@@ -30,14 +38,17 @@ export default function ContactPage() {
   });
 
   const storeSearch = storeQuery.trim().toLowerCase();
-  const matchingStores = storeSearch
-    ? SHOWROOMS_DATA.filter((store) =>
-        [store.name, store.city, store.address, store.pincode, store.type]
-          .join(" ")
-          .toLowerCase()
-          .includes(storeSearch)
-      )
-    : [];
+  const matchingStores = useMemo(() => {
+    if (!storeSearch) {
+      return SHOWROOMS_DATA.filter((store) => store.featured).slice(0, 6);
+    }
+    return SHOWROOMS_DATA.filter((store) =>
+      [store.name, store.city, store.address, store.pincode, store.type]
+        .join(" ")
+        .toLowerCase()
+        .includes(storeSearch),
+    );
+  }, [storeSearch]);
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -56,45 +67,59 @@ export default function ContactPage() {
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero} aria-label="Institutional communication">
-        <div className={`container-institutional ${styles.heroInner}`}>
-          <div className={styles.heroCopy}>
-            <p className={styles.heroEyebrow}>Institutional communication</p>
-            <h1 className={styles.heroTitle}>
-              Write to the
-              <br />
-              <span>Corporation.</span>
-            </h1>
-            <p className={styles.heroLead}>
-              Connect with the administration, showroom network, or historic silk weaving facilities.
-            </p>
-          </div>
+      {/* 1. Intro */}
+      <section className={styles.hero} aria-label="Contact KSIC">
+        <div className={styles.content}>
+          <p className={styles.kicker}>
+            <span className={styles.kickerRule} aria-hidden="true" />
+            Institutional communication
+            <span className={styles.kickerRule} aria-hidden="true" />
+          </p>
+          <h1 className={styles.heroTitle}>
+            Contact <span>Us</span>
+          </h1>
+          <p className={styles.heroLead}>
+            Reach the Corporation for showroom assistance, factory visits, ceremonial orders, or
+            institutional correspondence. Every desk below belongs to the Government of Karnataka
+            silk enterprise.
+          </p>
+        </div>
+      </section>
 
+      {/* 2. Direct channels */}
+      <section className={styles.channelsBand} aria-label="Direct contact">
+        <div className={styles.content}>
           <ul className={styles.channels}>
             <li>
               <a className={styles.channel} href={`tel:${office.phone1.replace(/\s/g, "")}`}>
-                <Phone size={16} strokeWidth={1.25} aria-hidden />
+                <span className={styles.channelIcon}>
+                  <Phone size={18} strokeWidth={1.5} aria-hidden />
+                </span>
                 <span>
-                  <small>Bengaluru Office</small>
-                  {office.phone1}
+                  <small>Bengaluru office</small>
+                  <strong>{office.phone1}</strong>
                 </span>
               </a>
             </li>
             <li>
               <a className={styles.channel} href={`mailto:${office.email}`}>
-                <Mail size={16} strokeWidth={1.25} aria-hidden />
+                <span className={styles.channelIcon}>
+                  <Mail size={18} strokeWidth={1.5} aria-hidden />
+                </span>
                 <span>
-                  <small>Correspondence</small>
-                  {office.email}
+                  <small>Official email</small>
+                  <strong>{office.email}</strong>
                 </span>
               </a>
             </li>
             <li>
               <div className={styles.channel}>
-                <Clock size={16} strokeWidth={1.25} aria-hidden />
+                <span className={styles.channelIcon}>
+                  <Clock size={18} strokeWidth={1.5} aria-hidden />
+                </span>
                 <span>
-                  <small>Factory Visiting Desk</small>
-                  Mon-Sat, 10:30-16:00
+                  <small>Factory visiting desk</small>
+                  <strong>Mon-Sat · 10:30-16:00</strong>
                 </span>
               </div>
             </li>
@@ -102,12 +127,21 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className={styles.locator} aria-label="Store locator">
-        <div className="container-institutional">
-          <p className={styles.eyebrow}>Store locator</p>
-          <h2 className={styles.locatorTitle}>Find a showroom.</h2>
+      {/* 3. Store locator */}
+      <section className={styles.storesBand} aria-label="Showroom locator">
+        <div className={styles.content}>
+          <div className={styles.storesHead}>
+            <div>
+              <p className={styles.eyebrow}>Showroom network</p>
+              <h2 className={styles.sectionTitle}>Find a showroom</h2>
+            </div>
+            <Link href="/stores" className={styles.textLink}>
+              View full network <ArrowRight size={14} aria-hidden />
+            </Link>
+          </div>
+
           <form className={styles.locatorForm} role="search" onSubmit={(event) => event.preventDefault()}>
-            <label className={styles.locatorLabel} htmlFor="store-search">
+            <label className={styles.srOnly} htmlFor="store-search">
               Search by city, area, or pincode
             </label>
             <div className={styles.locatorField}>
@@ -116,33 +150,33 @@ export default function ContactPage() {
                 id="store-search"
                 type="search"
                 value={storeQuery}
-                placeholder="Bengaluru, M.G. Road, 560001"
+                placeholder="Search city, area, or pincode"
                 onChange={(event) => setStoreQuery(event.target.value)}
               />
             </div>
           </form>
 
-          {storeSearch && matchingStores.length === 0 && (
+          {storeSearch && matchingStores.length === 0 ? (
             <p className={styles.locatorEmpty}>No showrooms match that search.</p>
-          )}
-
-          {matchingStores.length > 0 && (
-            <ul className={styles.locatorResults}>
+          ) : (
+            <ul className={styles.storeGrid}>
               {matchingStores.map((store) => (
-                <li key={store.id}>
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(`${store.name} KSIC ${store.city}`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>
-                      <strong>{store.name}</strong>
-                      <small>
-                        {store.city} · {store.address} · {store.pincode}
-                      </small>
-                    </span>
-                    <ArrowRight size={16} aria-hidden />
-                  </a>
+                <li key={store.id} className={styles.storeCard}>
+                  <p className={styles.storeType}>{store.type}</p>
+                  <h3>{store.name}</h3>
+                  <p>
+                    {store.city} · {store.address} · {store.pincode}
+                  </p>
+                  <div className={styles.storeFooter}>
+                    <a href={`tel:${store.phone.replace(/[^+\d]/g, "")}`}>{store.phone}</a>
+                    <a
+                      href={`https://maps.google.com/?q=${encodeURIComponent(`${store.name} KSIC ${store.city}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Directions <ArrowRight size={14} aria-hidden />
+                    </a>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -150,14 +184,93 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className={styles.body}>
-        <div className={`container-institutional ${styles.layout}`}>
-          <div className={styles.formPanel}>
-            <p className={styles.eyebrow}>Official inquiry desk</p>
-            <h2 className={styles.heading}>How may we assist you?</h2>
-            <p className={styles.intro}>
-              Submit an inquiry regarding showroom availability, registered saree articles, or institutional services.
-            </p>
+      {/* 4. Headquarters & facilities */}
+      <section className={styles.officeBand} aria-label="Official locations">
+        <div className={styles.content}>
+          <div className={styles.sectionHead}>
+            <p className={styles.eyebrow}>Official locations</p>
+            <h2 className={styles.sectionTitle}>Headquarters & facilities</h2>
+          </div>
+
+          <div className={styles.officeGrid}>
+            <article className={styles.hqCard}>
+              <p className={styles.cardKicker}>Central office</p>
+              <h3 className={styles.cardTitle}>{office.building}</h3>
+              <p className={styles.cardBody}>
+                {office.street}, {office.city}, {office.pincode}, Karnataka
+              </p>
+              <dl className={styles.hqMeta}>
+                <div>
+                  <dt>Telephone</dt>
+                  <dd>
+                    <a href={`tel:${office.phone1.replace(/\s/g, "")}`}>{office.phone1}</a>
+                    {" / "}
+                    <a href={`tel:${office.phone2.replace(/\s/g, "")}`}>{office.phone2}</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd>
+                    <a href={`mailto:${office.email}`}>{office.email}</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Department</dt>
+                  <dd>Department of Sericulture, Govt of Karnataka</dd>
+                </div>
+                <div>
+                  <dt>CIN</dt>
+                  <dd>{INSTITUTIONAL_OVERVIEW.corporateId}</dd>
+                </div>
+              </dl>
+            </article>
+
+            <div className={styles.facilityStack}>
+              <article className={styles.facilityCard}>
+                <Factory size={20} strokeWidth={1.5} aria-hidden />
+                <div>
+                  <h3>Historic production facility</h3>
+                  <p>Mysore Silk Weaving Factory, Mananthody Road, Mysuru 570 008</p>
+                  <p className={styles.facilityMeta}>
+                    <a href="tel:08212480801">0821-2480801</a>
+                    <span aria-hidden>·</span>
+                    <a href="tel:08212481079">2481079</a>
+                  </p>
+                </div>
+              </article>
+              <article className={styles.facilityCard}>
+                <MapPin size={20} strokeWidth={1.5} aria-hidden />
+                <div>
+                  <h3>Raw silk reeling campus</h3>
+                  <p>Silk Filature Division, Cauvery Basin, T. Narasipura 571 124</p>
+                  <p className={styles.facilityMeta}>Cocoon procurement, reeling, and multi-end twisting</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Inquiry form */}
+      <section className={styles.formBand} aria-label="Inquiry form">
+        <div className={styles.content}>
+          <div className={styles.formLayout}>
+            <div className={styles.formIntro}>
+              <p className={styles.eyebrow}>Official inquiry desk</p>
+              <h2 className={styles.sectionTitle}>How may we assist you?</h2>
+              <p className={styles.formLead}>
+                Submit an inquiry for showroom availability, registered saree articles, factory visits, or
+                institutional services. Your message opens as an email to the Corporation.
+              </p>
+              <ul className={styles.formHints}>
+                <li>Include article numbers when asking about stock</li>
+                <li>Factory visits require weekday appointment windows</li>
+                <li>RTI matters may also use the Karnataka RTI portal</li>
+              </ul>
+              <Link href="/about-us#rti" className={styles.textLink}>
+                Right to Information <ArrowRight size={14} aria-hidden />
+              </Link>
+            </div>
 
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.field}>
@@ -236,7 +349,7 @@ export default function ContactPage() {
               </div>
 
               <button type="submit" className={styles.submit}>
-                <span>Submit Inquiry</span>
+                <span>Submit inquiry</span>
                 <ArrowRight size={16} strokeWidth={1.5} aria-hidden />
               </button>
               <p className={styles.formNote}>
@@ -244,79 +357,6 @@ export default function ContactPage() {
               </p>
             </form>
           </div>
-
-          <aside className={styles.locations} aria-label="Official locations">
-            <p className={styles.eyebrow}>Official locations</p>
-            <h2 className={styles.heading}>Find the right desk.</h2>
-
-            <div className={styles.hqCard}>
-              <div className={styles.hqKicker}>Headquarters (Central Office)</div>
-              <h3 className={styles.hqTitle}>{office.building}</h3>
-              <p className={styles.hqBody}>
-                {office.street}, {office.city}, {office.pincode}, Karnataka
-              </p>
-              <div className={styles.hqMeta}>
-                <div>
-                  <strong>Telephone:</strong>{" "}
-                  <a href={`tel:${office.phone1.replace(/\s/g, "")}`}>{office.phone1}</a>
-                  {" / "}
-                  <a href={`tel:${office.phone2.replace(/\s/g, "")}`}>{office.phone2}</a>
-                </div>
-                <div>
-                  <strong>Official Email:</strong>{" "}
-                  <a href={`mailto:${office.email}`}>{office.email}</a>
-                </div>
-                <div>
-                  <strong>Administrative Dept:</strong> Department of Sericulture, Govt of Karnataka
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.corporateMetaGrid}>
-              <div>
-                <div className={styles.metaLabel}>Corporate Identification</div>
-                <div className={styles.metaValue}>{INSTITUTIONAL_OVERVIEW.corporateId}</div>
-              </div>
-              <div>
-                <div className={styles.metaLabel}>Incorporation Year</div>
-                <div className={styles.metaValue}>1980 (1912 Ancestry)</div>
-              </div>
-            </div>
-
-            <article className={styles.place}>
-              <Factory size={18} strokeWidth={1.25} aria-hidden />
-              <div>
-                <h3>Historic Production Facility</h3>
-                <p>Mysore Silk Weaving Factory, Mananthody Road, Mysuru</p>
-                <p>Silk Weaving Factory Premises, Mananthody Road, Mysuru, 570 008</p>
-                <p className={styles.placeMeta}>
-                  <a href="tel:08212480801">0821-2480801</a>
-                  <span aria-hidden>·</span>
-                  <a href="tel:08212481079">2481079</a>
-                </p>
-                <p className={styles.placeMeta}>Visiting desk · 10:30 AM - 4:00 PM, Monday to Saturday</p>
-              </div>
-            </article>
-
-            <article className={styles.place}>
-              <MapPin size={18} strokeWidth={1.25} aria-hidden />
-              <div>
-                <h3>Raw Silk Reeling Campus</h3>
-                <p>T. Narasipura Silk Filature</p>
-                <p>Silk Filature Division, Cauvery Basin, T. Narasipura, 571 124</p>
-                <p className={styles.placeMeta}>Cocoon procurement, reeling, and multi-end twisting</p>
-              </div>
-            </article>
-
-            <div className={styles.related}>
-              <Link href="/stores">
-                Showroom Network <ArrowRight size={14} aria-hidden />
-              </Link>
-              <Link href="/about-us#rti">
-                Right to Information <ArrowRight size={14} aria-hidden />
-              </Link>
-            </div>
-          </aside>
         </div>
       </section>
     </div>
