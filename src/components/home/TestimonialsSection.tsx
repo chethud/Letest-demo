@@ -53,10 +53,9 @@ export const TestimonialsSection: React.FC = () => {
   const loop = [...TESTIMONIALS, ...TESTIMONIALS];
 
   return (
-    <section className={styles.section} id="testimonials" aria-label="Customer voices">
+    <section className={styles.section} id="testimonials" aria-label="Testimonials">
       <div className={styles.intro}>
-        <p className={styles.eyebrow}>Voices</p>
-        <h2 className={styles.title}>Worn, kept, and spoken of.</h2>
+        <p className={styles.eyebrow}>Testimonials</p>
       </div>
 
       <div className={styles.scroller} role="region" aria-label="Scrolling testimonials">

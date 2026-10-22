@@ -5,7 +5,7 @@ import styles from "@/components/journal/JournalArticle.module.css";
 export const metadata = {
   title: "Styling | KSIC Journal",
   description:
-    "Styling Mysore Silk — how to wear, drape, and care for authentic KSIC sarees and textiles.",
+    "Styling Mysore Silk: how to wear, drape, and care for authentic KSIC sarees and textiles.",
 };
 
 export default function StylingPage() {
@@ -18,7 +18,7 @@ export default function StylingPage() {
           Silk <span>Styling</span>
         </h1>
         <p className={styles.lead}>
-          Guidance on draping, pairing, and caring for authentic Mysore Silk — so the cloth looks
+          Guidance on draping, pairing, and caring for authentic Mysore Silk, so the cloth looks
           as considered as it is crafted.
         </p>
         <div className={styles.body}>

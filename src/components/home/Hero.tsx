@@ -19,7 +19,7 @@ type HeroSlide = {
   ctaEn: string;
   ctaKn: string;
   href: string;
-  /** Second slide is panoramic — pin silk to the right so text stays clear on the left. */
+  /** Second slide is panoramic - pin silk to the right so text stays clear on the left. */
   align?: "center" | "right";
 };
 
@@ -59,6 +59,7 @@ const SLIDE_INTERVAL_MS = 4000;
 export const Hero: React.FC = () => {
   const { lang } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [autoplayKey, setAutoplayKey] = useState(0);
   const slide = HERO_SLIDES[activeIndex];
   const kn = lang === "kn";
 
@@ -67,7 +68,12 @@ export const Hero: React.FC = () => {
       setActiveIndex((current) => (current + 1) % HERO_SLIDES.length);
     }, SLIDE_INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, []);
+  }, [autoplayKey]);
+
+  const goToSlide = (index: number) => {
+    setActiveIndex(index);
+    setAutoplayKey((key) => key + 1);
+  };
 
   return (
     <section
@@ -150,7 +156,7 @@ export const Hero: React.FC = () => {
             aria-selected={index === activeIndex}
             aria-label={`Show image ${index + 1}`}
             className={`${styles.heroDot} ${index === activeIndex ? styles.heroDotActive : ""}`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => goToSlide(index)}
           />
         ))}
       </div>

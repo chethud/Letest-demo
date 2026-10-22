@@ -200,8 +200,8 @@ export const SHAREHOLDERS: Shareholder[] = [
     holding: "One Share",
   },
   {
-    name: "Governor of Karnataka",
-    role: "Govt. of Karnataka.",
+    name: "His Excellency the Governor of Karnataka",
+    role: "For and on behalf of the Government of Karnataka",
     addressLines: [],
     holding: "3,60,041 Equity Shares",
   },

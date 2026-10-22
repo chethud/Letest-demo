@@ -25,6 +25,7 @@ export type CollectionShopProps = {
   heroImage: string;
   heroAlt?: string;
   readCategoryFromUrl?: boolean;
+  omitHeaderOffset?: boolean;
 };
 
 export default function CollectionShop({
@@ -36,6 +37,7 @@ export default function CollectionShop({
   heroImage,
   heroAlt = "",
   readCategoryFromUrl = false,
+  omitHeaderOffset = false,
 }: CollectionShopProps) {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState<
@@ -77,7 +79,7 @@ export default function CollectionShop({
   }, [products, selectedCategory, sortBy]);
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page}${omitHeaderOffset ? ` ${styles.pageFlush}` : ""}`}>
       <section className={styles.hero} aria-label={breadcrumbLabel}>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
@@ -160,7 +162,7 @@ export default function CollectionShop({
                 >
                   <option value="newest">Newest First</option>
                   <option value="featured">Featured First</option>
-                  <option value="color">Color A–Z</option>
+                  <option value="color">Color A-Z</option>
                   <option value="weight-asc">Weight: Light to Heavy</option>
                   <option value="weight-desc">Weight: Heavy to Light</option>
                 </select>
@@ -203,7 +205,7 @@ export default function CollectionShop({
                   <Link href={`/collection/${prod.slug}`} className={styles.name}>
                     {prod.name}
                   </Link>
-                  {/* Price reserved — no inventing values from missing product data */}
+                  {/* Price reserved - no inventing values from missing product data */}
                   <p className={styles.price}>&nbsp;</p>
                 </div>
               </li>

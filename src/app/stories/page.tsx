@@ -5,7 +5,7 @@ import styles from "@/components/journal/JournalArticle.module.css";
 export const metadata = {
   title: "Stories | KSIC Journal",
   description:
-    "Stories from the world of Mysore Silk — heritage, craft, and the people who keep the weave alive.",
+    "Stories from the world of Mysore Silk: heritage, craft, and the people who keep the weave alive.",
 };
 
 export default function StoriesPage() {
@@ -18,7 +18,7 @@ export default function StoriesPage() {
           Silk <span>Stories</span>
         </h1>
         <p className={styles.lead}>
-          Narratives from Karnataka’s silk tradition — from royal patronage to the weavers and
+          Narratives from Karnataka’s silk tradition, from royal patronage to the weavers and
           sericulture families who sustain Mysore Silk today.
         </p>
         <div className={styles.body}>
@@ -36,7 +36,7 @@ export default function StoriesPage() {
           </p>
           <h2>Continuing the narrative</h2>
           <p>
-            Through KSIC, these stories remain public heritage — preserved not as museum pieces, but
+            Through KSIC, these stories remain public heritage, preserved not as museum pieces, but
             as living textiles worn for ceremony, celebration, and everyday dignity.
           </p>
         </div>

@@ -135,12 +135,17 @@
 }
 
 .officeCard {
-  margin: 0;
+  /* Lift card + background so title shares the Journal baseline */
+  margin: -22px 0 0;
   padding: 22px 22px 20px;
   background: rgba(255, 250, 250, 0.72);
   border: 1px solid rgba(122, 21, 48, 0.1);
   border-radius: 14px;
   font-style: normal;
+}
+
+.officeCard .navColumnTitle {
+  margin-top: 0;
 }
 
 .officeAddress,

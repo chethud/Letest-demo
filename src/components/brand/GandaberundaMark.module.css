@@ -1,0 +1,68 @@
+.mark {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0;
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.toneInk {
+  opacity: 0.055;
+  mix-blend-mode: multiply;
+}
+
+.toneLight {
+  opacity: 0.1;
+  mix-blend-mode: soft-light;
+  filter: invert(1) contrast(1.05);
+}
+
+.place_end {
+  right: clamp(0.5rem, 3vw, 2.5rem);
+  bottom: clamp(0.5rem, 2vw, 1.75rem);
+}
+
+.place_start {
+  left: clamp(0.5rem, 3vw, 2.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.place_center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.size_sm {
+  width: 7.5rem;
+}
+
+.size_md {
+  width: 12.5rem;
+}
+
+.size_lg {
+  width: 20rem;
+}
+
+@media (max-width: 768px) {
+  .size_md {
+    width: 9rem;
+  }
+
+  .size_lg {
+    width: 13rem;
+  }
+
+  .toneInk {
+    opacity: 0.045;
+  }
+}

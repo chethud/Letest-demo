@@ -96,7 +96,12 @@
 }
 
 .title span {
-  color: var(--board-accent);
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit;
 }
 
 .lead {

@@ -5,9 +5,13 @@ import CollectionShop from "./CollectionShop";
 
 type NewArrivalsShopProps = {
   products: KSICProduct[];
+  omitHeaderOffset?: boolean;
 };
 
-export default function NewArrivalsShop({ products }: NewArrivalsShopProps) {
+export default function NewArrivalsShop({
+  products,
+  omitHeaderOffset = false,
+}: NewArrivalsShopProps) {
   return (
     <CollectionShop
       products={products}
@@ -17,6 +21,7 @@ export default function NewArrivalsShop({ products }: NewArrivalsShopProps) {
       description="Discover our latest collection of authentic Mysore Silk sarees, where timeless heritage meets contemporary elegance."
       heroImage="/assets/heritage/hero-new-arrivals.png"
       heroAlt="Crimson Mysore silk with gold zari for new arrivals"
+      omitHeaderOffset={omitHeaderOffset}
     />
   );
 }

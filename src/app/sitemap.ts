@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/bod",
     "/shareholders",
     "/stories",
+    "/celebrities",
     "/culture",
     "/styling",
     "/journal",

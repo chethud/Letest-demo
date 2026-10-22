@@ -1,5 +1,6 @@
 import React from "react";
 import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
+import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
 import styles from "./Authenticity.module.css";
 
 export const metadata = {
@@ -10,6 +11,7 @@ export const metadata = {
 export default function AuthenticityPage() {
   return (
     <div className={styles.page}>
+      <MysoreSilkSubnav activeHref="/authenticity" />
       <RoyalZariVerificationLab id="authenticity" />
     </div>
   );

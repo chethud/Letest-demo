@@ -18,11 +18,22 @@ type EditorialPageProps = {
   heroAlt: string;
   blocks: EditorialBlock[];
   close: string;
+  /** When a sticky About subnav already sits under the site header */
+  omitHeaderOffset?: boolean;
 };
 
-export function EditorialPage({ kicker, title, lead, heroImage, heroAlt, blocks, close }: EditorialPageProps) {
+export function EditorialPage({
+  kicker,
+  title,
+  lead,
+  heroImage,
+  heroAlt,
+  blocks,
+  close,
+  omitHeaderOffset = false,
+}: EditorialPageProps) {
   return (
-    <article className={styles.page}>
+    <article className={`${styles.page} ${omitHeaderOffset ? styles.pageFlush : ""}`}>
       <header className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>{kicker}</p>

@@ -63,7 +63,10 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-dm: 'DM Sans', 'Avenir Next', system-ui, sans-serif;
 
-  /* One scale for the whole site */
+  /* One scale for the whole site - use these; do not invent per-section sizes */
+  --type-eyebrow-size: 1.134rem;
+  --type-eyebrow-tracking: 0.2em;
+  --type-eyebrow-weight: 700;
   --type-heading-size: clamp(2rem, 4vw, 2.75rem);
   --type-subheading-size: clamp(1.25rem, 2vw, 1.5rem);
   --type-body-size: 1rem;
@@ -186,10 +189,10 @@ button {
 
 /* Institutional Editorial Labels */
 .editorial-label {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-family: var(--font-dm);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  letter-spacing: var(--type-eyebrow-tracking);
   text-transform: uppercase;
   color: var(--color-burgundy);
   display: inline-flex;
@@ -210,14 +213,14 @@ button {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
-/* Main Display Headlines */
+/* Main Display Headlines - win over h2/h3 type locks */
 .display-hero,
 .display-section {
-  font-family: var(--font-display);
-  font-size: var(--type-heading-size);
-  font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display) !important;
+  font-size: var(--type-heading-size) !important;
+  font-weight: 500 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.02em !important;
 }
 
 .display-year {
@@ -502,11 +505,25 @@ h4 * {
 }
 
 p {
-  font-family: var(--font-display) !important;
+  font-family: var(--font-dm) !important;
   font-size: var(--type-body-size) !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
+}
+
+/* Eyebrows / labels - one look everywhere (wins over p body rules) */
+.editorial-label,
+p[class*="eyebrow"],
+p[class*="Eyebrow"],
+p[class*="kicker"],
+[class*="eyebrow"] {
+  font-family: var(--font-dm) !important;
+  font-size: var(--type-eyebrow-size) !important;
+  font-weight: var(--type-eyebrow-weight) !important;
+  letter-spacing: var(--type-eyebrow-tracking) !important;
+  line-height: 1.4 !important;
+  text-transform: uppercase !important;
 }
 
 .subheadline,
@@ -514,7 +531,7 @@ p {
 [class*="supportLine"],
 [class*="sectionSubtitle"],
 [class*="stageSummary"] {
-  font-family: var(--font-display) !important;
+  font-family: var(--font-dm) !important;
   font-size: var(--type-subheading-size) !important;
   font-weight: 500 !important;
   line-height: 1.35 !important;

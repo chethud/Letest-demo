@@ -57,7 +57,7 @@ export const HERITAGE_MILESTONES: HeritageMilestone[] = [
     provenanceKn: "ಮಾನಂದವಾಡಿ ರಸ್ತೆ ರಾಜ ನೇಯ್ಗೆ ಕೇಂದ್ರ, ಮೈಸೂರು",
   },
   {
-    year: "1930–32",
+    year: "1930-32",
     epoch: "FACTORY EXPANSION",
     title: "Expansion, then commercial production",
     kannadaTitle: "ವಿದ್ಯುತ್ ನೇಯ್ಗೆ ವಿಸ್ತರಣೆ ಮತ್ತು ಸ್ವಿಸ್ ಜಾಕ್ವಾರ್ಡ್",

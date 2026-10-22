@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, X } from "lucide-react";
+import { GandaberundaArt } from "@/components/brand/GandaberundaArt";
 import styles from "./JourneyOfSilkSection.module.css";
 import { JOURNEY_STAGES, JourneyStage } from "@/data/journeyOfSilk";
 import { useLanguage } from "@/context/LanguageContext";
@@ -20,14 +21,13 @@ export const JourneyOfSilkSection: React.FC = () => {
       className={styles.journeySection}
       aria-label="Mysore Silk: The Journey of Silk"
     >
-      {/* 01. Authentic Oversized Gandaberunda Watermark */}
       <div className={styles.watermarkContainer} aria-hidden="true">
-        <Image
-          src="/assets/brand/gandaberunda-gold-transparent.png"
-          alt="Royal Gandaberunda Watermark"
-          fill
+        <GandaberundaArt
+          variant="dotted"
+          role="inline"
+          size="xl"
+          placement="static"
           className={styles.watermarkImage}
-          priority={false}
         />
       </div>
 

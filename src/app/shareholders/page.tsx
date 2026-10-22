@@ -1,5 +1,6 @@
 import React from "react";
-import { INSTITUTIONAL_OVERVIEW, SHAREHOLDERS } from "@/data/institution";
+import { AboutSubnav } from "@/components/about/AboutSubnav";
+import { SHAREHOLDERS } from "@/data/institution";
 import styles from "./Shareholders.module.css";
 
 export const metadata = {
@@ -9,68 +10,106 @@ export const metadata = {
 };
 
 export default function ShareholdersPage() {
-  const hq = INSTITUTIONAL_OVERVIEW.headOffice;
   const principal = SHAREHOLDERS.find((s) => s.holding.includes("Equity"));
   const nominees = SHAREHOLDERS.filter((s) => !s.holding.includes("Equity"));
 
   return (
     <div className={styles.page}>
-      <section className={styles.section} aria-label="Shareholders">
-        <div className={styles.decorLeft} aria-hidden="true" />
-        <div className={styles.decorRight} aria-hidden="true" />
+      <AboutSubnav activeHref="/shareholders" />
 
-        <header className={styles.intro}>
-          <p className={styles.eyebrow}>
-            <span className={styles.eyebrowRule} aria-hidden="true" />
-            <span>Ownership {"&"} Stewardship</span>
-            <span className={styles.eyebrowRule} aria-hidden="true" />
-          </p>
-          <h1 className={styles.title}>
-            Share<span>holders</span>
+      <section
+        className={`section-spacing ${styles.hero}`}
+        aria-labelledby="shareholders-heading"
+      >
+        <div className="container-institutional">
+          <span className="editorial-label">Ownership {"&"} Stewardship</span>
+          <h1 id="shareholders-heading" className={styles.title}>
+            Shareholders
           </h1>
           <p className={styles.lead}>
             Official shareholding of Karnataka Silk Industries Corporation Limited, a Government of
             Karnataka undertaking under the Department of Sericulture.
           </p>
-        </header>
+        </div>
+      </section>
 
-        {principal ? (
-          <article className={styles.principal}>
-            <p className={styles.principalLabel}>Principal Shareholder</p>
-            <h2 className={styles.principalName}>{principal.name}</h2>
-            <p className={styles.principalRole}>{principal.role}</p>
-            <p className={styles.principalHolding}>{principal.holding}</p>
-          </article>
-        ) : null}
+      <section className={`section-spacing ${styles.overview}`} aria-label="Ownership overview">
+        <div className="container-institutional">
+          <div className={styles.overviewGrid}>
+            <div className={styles.overviewItem}>
+              <p className={styles.overviewLabel}>Principal equity</p>
+              <p className={styles.overviewValue}>
+                {principal?.holding ?? "Government of Karnataka"}
+              </p>
+              <p className={styles.overviewNote}>
+                Held by His Excellency the Governor, for the State
+              </p>
+            </div>
+            <div className={styles.overviewItem}>
+              <p className={styles.overviewLabel}>Nominee officers</p>
+              <p className={styles.overviewValue}>{nominees.length}</p>
+              <p className={styles.overviewNote}>One equity share each, in official capacity</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className={styles.nominees}>
-          <div className={styles.nomineesHead}>
-            <p className={styles.nomineesEyebrow}>
-              <span className={styles.eyebrowRule} aria-hidden="true" />
-              <span>Held in Official Capacity</span>
-              <span className={styles.eyebrowRule} aria-hidden="true" />
-            </p>
-            <h2 className={styles.nomineesTitle}>Nominee Shareholders</h2>
-            <p className={styles.nomineesLead}>
+      {principal ? (
+        <section
+          className={`section-spacing ${styles.principalSection}`}
+          aria-labelledby="principal-heading"
+        >
+          <div className="container-institutional">
+            <div className={styles.principalGrid}>
+              <div className={styles.principalCopy}>
+                <span className="editorial-label">Principal Shareholder</span>
+                <h2 id="principal-heading" className="display-section">
+                  {principal.name}
+                </h2>
+                <p className={styles.principalRole}>{principal.role}</p>
+              </div>
+              <aside className={styles.principalAside}>
+                <p className={styles.asideLabel}>Equity holding</p>
+                <p className={styles.asideValue}>{principal.holding}</p>
+                <p className={styles.asideNote}>
+                  Equity is held in the name of His Excellency the Governor of Karnataka, for and
+                  on behalf of the Government of Karnataka.
+                </p>
+              </aside>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <section
+        className={`section-spacing ${styles.nomineesSection}`}
+        aria-labelledby="nominees-heading"
+      >
+        <div className="container-institutional">
+          <div className={styles.sectionIntro}>
+            <span className="editorial-label">Held in Official Capacity</span>
+            <h2 id="nominees-heading" className="display-section">
+              Nominee Shareholders
+            </h2>
+            <p className={styles.sectionLead}>
               Six officers hold one equity share each as nominees of the Government of Karnataka.
             </p>
           </div>
 
-          <ol className={styles.grid}>
+          <ol className={styles.nomineeGrid}>
             {nominees.map((shareholder, index) => (
-              <li key={shareholder.name} className={styles.card}>
-                <span className={styles.index} aria-hidden="true">
+              <li key={shareholder.name} className={styles.nomineeCard}>
+                <span className={styles.nomineeIndex} aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className={styles.rail} aria-hidden="true" />
-                <div className={styles.info}>
-                  <div className={styles.nameRow}>
-                    <h3 className={styles.name}>{shareholder.name}</h3>
-                    <span className={styles.holding}>{shareholder.holding}</span>
+                <div className={styles.nomineeBody}>
+                  <div className={styles.nomineeTop}>
+                    <h3 className={styles.nomineeName}>{shareholder.name}</h3>
+                    <span className={styles.nomineeHolding}>{shareholder.holding}</span>
                   </div>
-                  <p className={styles.role}>{shareholder.role}</p>
+                  <p className={styles.nomineeRole}>{shareholder.role}</p>
                   {shareholder.addressLines.length > 0 ? (
-                    <address className={styles.address}>
+                    <address className={styles.nomineeAddress}>
                       {shareholder.addressLines.join(", ")}
                     </address>
                   ) : null}
@@ -79,28 +118,6 @@ export default function ShareholdersPage() {
             ))}
           </ol>
         </div>
-
-        <aside className={styles.contact} aria-label="Registered office contact">
-          <p className={styles.contactLabel}>Registered Office</p>
-          <p className={styles.contactAddress}>
-            {hq.building}, {hq.street}, {hq.city} {hq.pincode}
-          </p>
-          <div className={styles.contactMeta}>
-            <a href={`mailto:${hq.email}`}>{hq.email}</a>
-            <span aria-hidden="true">·</span>
-            <span>{hq.phone1}</span>
-            <span aria-hidden="true">·</span>
-            <span>{hq.phone2}</span>
-            <span aria-hidden="true">·</span>
-            <span>Fax {hq.phone2}</span>
-          </div>
-        </aside>
-
-        <footer className={styles.footerMark}>
-          <span className={styles.footerRule} aria-hidden="true" />
-          <p>Karnataka Silk Industries Corporation Limited</p>
-          <span className={styles.footerRule} aria-hidden="true" />
-        </footer>
       </section>
     </div>
   );

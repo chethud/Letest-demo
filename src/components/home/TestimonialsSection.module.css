@@ -1,4 +1,5 @@
 .section {
+  position: relative;
   margin: 0.7rem;
   padding: clamp(2.25rem, 4vw, 3.25rem) 0 clamp(2rem, 3.5vw, 2.75rem);
   background: var(--color-bg-primary);

@@ -13,7 +13,11 @@
   padding-top: var(--site-header-offset);
 }
 
-/* —— Hero: compact, edge-to-edge image integration —— */
+.pageFlush {
+  padding-top: 0;
+}
+
+/* -- Hero: compact, edge-to-edge image integration -- */
 .hero {
   background: var(--na-ivory);
   border-bottom: 1px solid rgba(33, 26, 25, 0.06);
@@ -114,7 +118,7 @@
   object-position: right center;
 }
 
-/* —— Filters: single row, scroll on small screens —— */
+/* -- Filters: single row, scroll on small screens -- */
 .filtersRow {
   background: var(--na-ivory);
   border-bottom: 1px solid rgba(33, 26, 25, 0.06);
@@ -177,7 +181,7 @@
   outline-offset: 2px;
 }
 
-/* —— Shop body —— */
+/* -- Shop body -- */
 .gridSection {
   width: min(var(--na-container), calc(100% - 48px));
   margin: 0 auto;

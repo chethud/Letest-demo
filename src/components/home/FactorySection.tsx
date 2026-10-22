@@ -37,7 +37,7 @@ export const FactorySection: React.FC = () => {
             <>
               More than a saree.
               <br />
-              A living tradition.
+              <span className={styles.displayLine}>A living tradition.</span>
             </>
           )}
         </h2>

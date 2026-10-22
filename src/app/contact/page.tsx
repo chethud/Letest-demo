@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Building2, Clock, Factory, Mail, MapPin, Phone, Search } from "lucide-react";
+import { ArrowRight, Clock, Factory, Mail, MapPin, Phone, Search } from "lucide-react";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
 import { SHOWROOMS_DATA } from "@/data/showrooms";
 import styles from "./Contact.module.css";
@@ -94,7 +94,7 @@ export default function ContactPage() {
                 <Clock size={16} strokeWidth={1.25} aria-hidden />
                 <span>
                   <small>Factory Visiting Desk</small>
-                  Mon–Sat, 10:30–16:00
+                  Mon-Sat, 10:30-16:00
                 </span>
               </div>
             </li>
@@ -249,24 +249,39 @@ export default function ContactPage() {
             <p className={styles.eyebrow}>Official locations</p>
             <h2 className={styles.heading}>Find the right desk.</h2>
 
-            <article className={styles.place}>
-              <Building2 size={18} strokeWidth={1.25} aria-hidden />
-              <div>
-                <h3>Corporate Central Office</h3>
-                <p>Public Utility Building, Bengaluru</p>
-                <p>
-                  {office.building}, {office.street}, {office.city}, {office.pincode}
-                </p>
-                <p className={styles.placeMeta}>
+            <div className={styles.hqCard}>
+              <div className={styles.hqKicker}>Headquarters (Central Office)</div>
+              <h3 className={styles.hqTitle}>{office.building}</h3>
+              <p className={styles.hqBody}>
+                {office.street}, {office.city}, {office.pincode}, Karnataka
+              </p>
+              <div className={styles.hqMeta}>
+                <div>
+                  <strong>Telephone:</strong>{" "}
                   <a href={`tel:${office.phone1.replace(/\s/g, "")}`}>{office.phone1}</a>
-                  <span aria-hidden>·</span>
+                  {" / "}
                   <a href={`tel:${office.phone2.replace(/\s/g, "")}`}>{office.phone2}</a>
-                </p>
-                <a className={styles.placeMail} href={`mailto:${office.email}`}>
-                  {office.email}
-                </a>
+                </div>
+                <div>
+                  <strong>Official Email:</strong>{" "}
+                  <a href={`mailto:${office.email}`}>{office.email}</a>
+                </div>
+                <div>
+                  <strong>Administrative Dept:</strong> Department of Sericulture, Govt of Karnataka
+                </div>
               </div>
-            </article>
+            </div>
+
+            <div className={styles.corporateMetaGrid}>
+              <div>
+                <div className={styles.metaLabel}>Corporate Identification</div>
+                <div className={styles.metaValue}>{INSTITUTIONAL_OVERVIEW.corporateId}</div>
+              </div>
+              <div>
+                <div className={styles.metaLabel}>Incorporation Year</div>
+                <div className={styles.metaValue}>1980 (1912 Ancestry)</div>
+              </div>
+            </div>
 
             <article className={styles.place}>
               <Factory size={18} strokeWidth={1.25} aria-hidden />
@@ -279,7 +294,7 @@ export default function ContactPage() {
                   <span aria-hidden>·</span>
                   <a href="tel:08212481079">2481079</a>
                 </p>
-                <p className={styles.placeMeta}>Visiting desk · 10:30 AM – 4:00 PM, Monday to Saturday</p>
+                <p className={styles.placeMeta}>Visiting desk · 10:30 AM - 4:00 PM, Monday to Saturday</p>
               </div>
             </article>
 

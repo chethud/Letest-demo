@@ -68,10 +68,7 @@ export const CollectionSection: React.FC = () => {
       <div className={styles.inner}>
         <div className={styles.sectionHeader}>
           <div className={styles.headerCopy}>
-            <p className={styles.eyebrow}>The Master Collection</p>
-            <h2 className={styles.headline}>
-              Our Collection of <span className={styles.headlineAccent}>Mysore Silk.</span>
-            </h2>
+            <p className={styles.sectionKicker}>The Master Collection</p>
           </div>
           <Link href="/collection" className={styles.archiveBtn}>
             <span>Shop</span>

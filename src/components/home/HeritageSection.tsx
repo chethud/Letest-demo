@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { GandaberundaArt } from "@/components/brand/GandaberundaArt";
 import styles from "./HeritageSection.module.css";
 
 export const HeritageSection: React.FC = () => {
@@ -13,15 +14,13 @@ export const HeritageSection: React.FC = () => {
       id="heritage"
       aria-label="Our Heritage, 1912: The Beginning of a Living Legacy"
     >
-      {/* Decorative low-opacity royal watermark on the far right */}
       <div className={styles.heritageWatermark} aria-hidden="true">
-        <Image
-          src="/assets/brand/gandaberunda-crest-royal.svg"
-          alt=""
-          width={420}
-          height={420}
+        <GandaberundaArt
+          variant="outline"
+          role="inline"
+          size="xl"
+          placement="static"
           className={styles.watermarkImg}
-          priority={false}
         />
       </div>
 

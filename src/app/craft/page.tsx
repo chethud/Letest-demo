@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Flame, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
+import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
 import { CRAFT_STAGES } from "@/data/craft";
 import styles from "./Craft.module.css";
 
@@ -13,6 +14,7 @@ export const metadata = {
 export default function CraftPage() {
   return (
     <div className={styles.craftPage}>
+      <MysoreSilkSubnav activeHref="/craft" />
       {/* Header */}
       <section className={`section-spacing ${styles.hero}`}>
         <div className="container-institutional reveal-up">

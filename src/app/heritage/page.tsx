@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { HeritageSection } from "@/components/home/HeritageSection";
 import { TimelineSection } from "@/components/home/TimelineSection";
+import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
 import { HeritageScroll } from "./HeritageScroll";
 import styles from "./Heritage.module.css";
 
@@ -13,6 +14,7 @@ export const metadata = {
 export default function HeritagePage() {
   return (
     <div className={styles.page}>
+      <MysoreSilkSubnav activeHref="/heritage" />
       <HeritageSection />
       <HeritageScroll>
         <section className={`${styles.panel} ${styles.hero}`} aria-label="Archival monograph">

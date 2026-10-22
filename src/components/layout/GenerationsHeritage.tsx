@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
+import { GandaberundaArt } from "@/components/brand/GandaberundaArt";
+import { MangoBorderRail } from "./MysoreBorderMotifs";
 import styles from "./GenerationsHeritage.module.css";
 
 export const GenerationsHeritage: React.FC = () => {
@@ -20,6 +22,14 @@ export const GenerationsHeritage: React.FC = () => {
           />
         </figure>
         <div className={styles.panel}>
+          <MangoBorderRail className={styles.borderTop} count={5} />
+          <GandaberundaArt
+            variant="outline"
+            role="watermark"
+            size="lg"
+            placement="center"
+            className={styles.panelMark}
+          />
           <div className={styles.copy}>
             <p className={styles.eyebrow}>Heritage</p>
             <h2 className={styles.title}>Silk for generations</h2>
@@ -32,6 +42,7 @@ export const GenerationsHeritage: React.FC = () => {
               Our Story <span aria-hidden="true">→</span>
             </Link>
           </div>
+          <MangoBorderRail className={styles.borderBottom} count={5} />
         </div>
       </div>
     </section>

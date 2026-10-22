@@ -84,19 +84,27 @@ export const Footer: React.FC = () => {
           <address className={styles.officeCard}>
             <p className={styles.navColumnTitle}>Corporate Office</p>
             <p className={styles.officeAddress}>
-              3rd & 4th Floor, Public Utility Building,
+              {INSTITUTIONAL_OVERVIEW.headOffice.building},
               <br />
-              M.G. Road, Mayo Hall,
+              {INSTITUTIONAL_OVERVIEW.headOffice.street},
               <br />
-              Bengaluru, 560 001, Karnataka
+              {INSTITUTIONAL_OVERVIEW.headOffice.city},{" "}
+              {INSTITUTIONAL_OVERVIEW.headOffice.pincode},{" "}
+              {INSTITUTIONAL_OVERVIEW.headOffice.state}
             </p>
             <p className={styles.officeLine}>
-              <a href="tel:+918025586402">+91 80 25586402</a>
+              <a href={`tel:${INSTITUTIONAL_OVERVIEW.headOffice.phone1.replace(/\s/g, "")}`}>
+                {INSTITUTIONAL_OVERVIEW.headOffice.phone1}
+              </a>
               <span aria-hidden="true"> · </span>
-              <a href="tel:+918025586550">25586550</a>
+              <a href={`tel:${INSTITUTIONAL_OVERVIEW.headOffice.phone2.replace(/\s/g, "")}`}>
+                {INSTITUTIONAL_OVERVIEW.headOffice.phone2}
+              </a>
             </p>
             <p className={styles.officeLine}>
-              <a href="mailto:info@ksicsilk.com">info@ksicsilk.com</a>
+              <a href={`mailto:${INSTITUTIONAL_OVERVIEW.headOffice.email}`}>
+                {INSTITUTIONAL_OVERVIEW.headOffice.email}
+              </a>
             </p>
           </address>
         </div>
