@@ -76,13 +76,6 @@
   color: var(--board-gold);
 }
 
-.eyebrowRule {
-  display: block;
-  width: 36px;
-  height: 1px;
-  background: var(--board-gold);
-  opacity: 0.7;
-}
 
 .title {
   margin: 0;
@@ -113,6 +106,9 @@
   line-height: 1.6 !important;
   letter-spacing: 0 !important;
   color: var(--board-muted) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .timeline {
@@ -199,13 +195,6 @@
   text-align: center;
 }
 
-.footerRule {
-  display: block;
-  flex: 1;
-  max-width: 120px;
-  height: 1px;
-  background: var(--color-gold-line);
-}
 
 /* Tablet: two / three columns */
 @media (max-width: 1100px) {
@@ -238,10 +227,6 @@
     gap: 10px;
     letter-spacing: 0.18em;
     font-size: 0.62rem;
-  }
-
-  .eyebrowRule {
-    width: 20px;
   }
 
   .lead {
@@ -277,10 +262,6 @@
   .footerMark {
     flex-wrap: wrap;
     gap: 10px;
-  }
-
-  .footerRule {
-    max-width: 48px;
   }
 
   .footerMark p {

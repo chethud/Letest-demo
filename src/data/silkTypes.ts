@@ -1,5 +1,5 @@
 /**
- * Historical notes on mulberry silk varieties — names, colour, and background only.
+ * Historical notes on mulberry silk varieties: names, colour, and background only.
  * Do not claim which lines KSIC currently combines on the loom unless supplied later.
  */
 
@@ -22,7 +22,7 @@ export const SILK_VARIETIES: SilkVariety[] = [
     colour: "Yellow",
     summary: "The older, traditional line of Karnataka sericulture.",
     details:
-      "Multivoltine silk is the classic regional line — historically the traditional way of rearing. Its natural colour is yellow.",
+      "Multivoltine silk is the classic regional line, historically the traditional way of rearing. Its natural colour is yellow.",
   },
   {
     id: "bivoltine",
@@ -36,4 +36,4 @@ export const SILK_VARIETIES: SilkVariety[] = [
 ];
 
 export const SILK_VARIETY_INTRO =
-  "Two names recur in the history of Karnataka mulberry silk — multivoltine and bivoltine — each with its own background and natural colour.";
+  "Two names recur in the history of Karnataka mulberry silk, multivoltine and bivoltine, each with its own background and natural colour.";

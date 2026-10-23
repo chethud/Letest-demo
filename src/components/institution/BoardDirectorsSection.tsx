@@ -10,11 +10,7 @@ export function BoardDirectorsSection() {
       <div className={styles.decorRight} aria-hidden="true" />
 
       <header className={styles.intro}>
-        <p className={styles.eyebrow}>
-          <span className={styles.eyebrowRule} aria-hidden="true" />
-          <span>A Legacy of Silk {"&"} Leadership</span>
-          <span className={styles.eyebrowRule} aria-hidden="true" />
-        </p>
+        <p className={styles.eyebrow}>A Legacy of Silk {"&"} Leadership</p>
         <h2 className={styles.title}>
           Board of <span>Directors</span>
         </h2>
@@ -45,9 +41,7 @@ export function BoardDirectorsSection() {
       </div>
 
       <footer className={styles.footerMark}>
-        <span className={styles.footerRule} aria-hidden="true" />
         <p>Karnataka Silk Industries Corporation Limited</p>
-        <span className={styles.footerRule} aria-hidden="true" />
       </footer>
     </section>
   );

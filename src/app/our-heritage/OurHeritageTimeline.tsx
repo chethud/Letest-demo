@@ -29,7 +29,7 @@ const MILESTONES = [
     year: "WWII era",
     epoch: "Wartime silk",
     title: "Parachute silk for the war",
-    body: "In its early days the Mysuru works also produced parachute silk for the Second World War — an industrial role beyond court and ceremonial cloth.",
+    body: "In its early days the Mysuru works also produced parachute silk for the Second World War, an industrial role beyond court and ceremonial cloth.",
     image: "/assets/heritage/ksic-1932-jacquard.jpg",
     alt: "Historical view of the Mysuru silk weaving works",
   },

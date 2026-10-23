@@ -20,11 +20,7 @@ export default function HeritagePage() {
 
       <section className={styles.storyChapter} aria-labelledby="archival-heading">
         <div className={styles.storyChapterInner}>
-          <p className={styles.chapterKicker}>
-            <span className={styles.kickerRule} aria-hidden="true" />
-            Archival Monograph
-            <span className={styles.kickerRule} aria-hidden="true" />
-          </p>
+          <p className={styles.chapterKicker}>Archival Monograph</p>
 
           <div className={styles.folioGrid}>
             <header className={styles.folioLead}>
@@ -34,7 +30,7 @@ export default function HeritagePage() {
                 woven in <span>Mysuru.</span>
               </h1>
               <p className={styles.archivalLead}>
-                Mysore Silk is older than the corporation that now stewards it — a textile tradition
+                Mysore Silk is older than the corporation that now stewards it: a textile tradition
                 rooted in Karnataka sericulture, palace patronage, and the looms of Mysuru.
               </p>
             </header>
@@ -45,33 +41,22 @@ export default function HeritagePage() {
 
               <ol className={styles.originTimeline}>
                 <li className={styles.originStep}>
-                  <div className={styles.originMarker} aria-hidden="true">
-                    <span className={styles.originDot} />
-                    <span className={styles.originStem} />
-                  </div>
-                  <div className={styles.originCopy}>
-                    <p className={styles.originsYear}>18th c.</p>
-                    <h3 className={styles.originsEraTitle}>Channapatna rearing</h3>
-                    <p className={styles.originsBody}>
-                      Silk rearing in the region reaches back to Tipu Sultan’s unit at Channapatna and
-                      the introduction of multivoltine silkworm rearing — long before the Mysuru weaving
-                      works of 1912.
-                    </p>
-                  </div>
+                  <p className={styles.originsYear}>18th c.</p>
+                  <h3 className={styles.originsEraTitle}>Channapatna rearing</h3>
+                  <p className={styles.originsBody}>
+                    Silk rearing in the region reaches back to Tipu Sultan’s unit at Channapatna and
+                    the introduction of multivoltine silkworm rearing, long before the Mysuru weaving
+                    works of 1912.
+                  </p>
                 </li>
                 <li className={styles.originStep}>
-                  <div className={styles.originMarker} aria-hidden="true">
-                    <span className={styles.originDot} />
-                  </div>
-                  <div className={styles.originCopy}>
-                    <p className={styles.originsYear}>1912</p>
-                    <h3 className={styles.originsEraTitle}>Palace patronage</h3>
-                    <p className={styles.originsBody}>
-                      Under Sri Nalwadi Krishnaraja Wadiyar, palace-linked weaving drew on Swiss silk
-                      and European practice, shaping the motifs and finish still associated with Mysore
-                      Silk.
-                    </p>
-                  </div>
+                  <p className={styles.originsYear}>1912</p>
+                  <h3 className={styles.originsEraTitle}>Palace patronage</h3>
+                  <p className={styles.originsBody}>
+                    Under Sri Nalwadi Krishnaraja Wadiyar, palace-linked weaving drew on Swiss silk
+                    and European practice, shaping the motifs and finish still associated with Mysore
+                    Silk.
+                  </p>
                 </li>
               </ol>
             </div>

@@ -7,7 +7,7 @@ export const KSIC_SCALE =
   "KSIC is among India’s largest silk producers.";
 
 export const KSIC_IN_HOUSE =
-  "From start to finish, the full process is done in house — nothing is outsourced.";
+  "From start to finish, the full process is done in house; nothing is outsourced.";
 
 export const KSIC_ZERO_WASTE =
   "Nothing from the silk goes to waste. Material left after cutting and finishing becomes by-products such as silk carpets and related goods.";
@@ -15,7 +15,7 @@ export const KSIC_ZERO_WASTE =
 export const KSIC_WARTIME_PARACHUTE =
   "In its early days the Mysuru works also produced parachute silk for the Second World War.";
 
-export const KSIC_INTEGRATED_WORKS = `${KSIC_SCALE} ${KSIC_IN_HOUSE} KSIC commands the gamut of silk production — from reeling cocoons to weaving pure silk fabric of various shades and designs — under one roof.`;
+export const KSIC_INTEGRATED_WORKS = `${KSIC_SCALE} ${KSIC_IN_HOUSE} KSIC commands the gamut of silk production, from reeling cocoons to weaving pure silk fabric of various shades and designs, under one roof.`;
 
 /** Cocoon belts named for KSIC sourcing, then reeled at T. Narasipura. */
 export const KSIC_COCOON_BELTS = [

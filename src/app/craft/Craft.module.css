@@ -189,6 +189,9 @@
   line-height: 1.75;
   color: var(--color-text-secondary);
   margin-bottom: 24px;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .stageSpecBox {
@@ -387,6 +390,9 @@
   font-size: var(--type-body-size);
   line-height: 1.7;
   color: var(--color-text-secondary);
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .varietiesPractice {

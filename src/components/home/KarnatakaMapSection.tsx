@@ -171,7 +171,7 @@ export const KarnatakaMapSection: React.FC = () => {
             </div>
 
             <div style={{ marginTop: "36px" }}>
-              <Link href="/stores" className="action-editorial action-editorial-burgundy">
+              <Link href="/contact#store-locator" className="action-editorial action-editorial-burgundy">
                 <span>{lang === "kn" ? "ಸಂಪೂರ್ಣ ಮಳಿಗೆ ಮಾಹಿತಿ & ನಕ್ಷೆ" : "VIEW COMPLETE STORE DIRECTORY & MAP"}</span>
                 <ArrowRight size={15} />
               </Link>

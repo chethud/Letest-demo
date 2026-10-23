@@ -37,6 +37,9 @@
   font-weight: 400 !important;
   line-height: 1.7 !important;
   color: var(--color-text-secondary) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .heroMedia {
@@ -148,6 +151,9 @@
   font-weight: 400 !important;
   line-height: 1.7 !important;
   color: var(--color-text-secondary) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .pillars {
@@ -171,6 +177,9 @@
   font-weight: 400 !important;
   line-height: 1.7 !important;
   color: var(--color-text-secondary) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .inlineLink {
@@ -245,6 +254,9 @@
   font-weight: 400 !important;
   line-height: 1.65 !important;
   color: var(--color-text-secondary) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .timeline {
@@ -448,6 +460,9 @@
   font-weight: 400 !important;
   line-height: 1.7 !important;
   color: var(--color-text-secondary) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .epochNav {

@@ -41,7 +41,7 @@ const PILLARS = [
   {
     eyebrow: "Integrated works",
     title: "Cocoon to cloth, under one roof",
-    body: "KSIC is among India’s largest silk producers, and commands the entire gamut of silk production — from reeling cocoons to weaving pure silk fabric of various shades and designs — all under one roof. From start to finish, nothing is outsourced.",
+    body: "KSIC is among India’s largest silk producers, and commands the entire gamut of silk production, from reeling cocoons to weaving pure silk fabric of various shades and designs, all under one roof. From start to finish, nothing is outsourced.",
     image: "/assets/factory/ksic-factory-heritage-cinematic.jpg",
     alt: "KSIC silk production works",
   },

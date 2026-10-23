@@ -58,6 +58,9 @@
   margin: 22px 0 0;
   color: #5c4a46;
   font-size: 1.05rem;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .media {
@@ -92,6 +95,9 @@
   margin: 16px 0 0;
   color: #5c4a46;
   font-size: 1rem;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .close {

@@ -41,7 +41,7 @@
   border: 0;
 }
 
-/* ---- 1–2. Black strip: hero + channels ---- */
+/* ---- 1-2. Black strip: hero + channels ---- */
 .hero {
   padding: clamp(2.75rem, 6vw, 4rem) 0 clamp(1.75rem, 3vw, 2.25rem);
   background: #19130f;
@@ -62,12 +62,6 @@
   color: #c69a5b !important;
 }
 
-.kickerRule {
-  display: block;
-  width: 36px;
-  height: 1px;
-  background: rgba(198, 154, 91, 0.7);
-}
 
 .heroTitle {
   margin: 0 0 16px !important;
@@ -355,16 +349,7 @@ a.channel:hover strong {
 }
 
 .storesHead {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 12px 24px;
   margin-bottom: 1.5rem;
-}
-
-.storesHead .textLink {
-  margin-top: 0;
 }
 
 .locatorForm {
@@ -659,10 +644,6 @@ a.channel:focus-visible,
 
   .storeGrid {
     grid-template-columns: 1fr;
-  }
-
-  .kickerRule {
-    width: 20px;
   }
 
   .storesHead {

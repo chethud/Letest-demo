@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/culture",
     "/styling",
     "/journal",
-    "/stores",
     "/contact",
   ].map((route) => ({
     url: `${baseUrl}${route}`,

@@ -58,7 +58,8 @@ export const MYSORE_SILK_UNIQUE_PILLARS: UniquePillar[] = [
     id: "unique-code",
     number: "04",
     title: "Unique Code",
-    short: "Every authentic saree carries a unique identification code and hologram.",
+    short:
+      "Every authentic saree\ncarries a unique\nidentification code\nand hologram.",
     detail:
       "Each KSIC zari saree is marked with a unique code number and hologram so its authenticity can be verified.",
     image: "/assets/craft/unique-04-unique-code.jpg",

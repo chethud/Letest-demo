@@ -56,7 +56,14 @@ export const MysoreSilkUniqueSection: React.FC = () => {
                 </div>
                 <p className={styles.pillarNumber}>{pillar.number}</p>
                 <h3 className={styles.pillarTitle}>{pillar.title}</h3>
-                <p className={styles.pillarText}>{pillar.short}</p>
+                <p className={styles.pillarText}>
+                  {pillar.short.split("\n").map((line, index) => (
+                    <React.Fragment key={`${pillar.id}-${index}`}>
+                      {index > 0 ? <br /> : null}
+                      {line}
+                    </React.Fragment>
+                  ))}
+                </p>
                 {isUniqueCode ? (
                   <a
                     href="#saree-serial-form"

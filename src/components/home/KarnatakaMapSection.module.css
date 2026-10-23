@@ -36,6 +36,9 @@
   line-height: 1.75;
   color: var(--color-text-secondary);
   margin-bottom: 32px;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .hubsList {
@@ -105,6 +108,8 @@
   font-size: 0.88rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+  text-align: start !important;
+  hyphens: manual;
 }
 
 /* Key Stats Badges Grid */

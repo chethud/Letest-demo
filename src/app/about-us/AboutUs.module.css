@@ -74,12 +74,6 @@
   color: var(--color-burgundy) !important;
 }
 
-.kickerRule {
-  display: block;
-  width: 36px;
-  height: 1px;
-  background: rgba(176, 132, 63, 0.7);
-}
 
 .pageTitle {
   margin: 0 0 18px !important;
@@ -119,7 +113,9 @@
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
   color: var(--color-text-secondary) !important;
-  text-align: left;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 @media (max-width: 800px) {
@@ -127,33 +123,6 @@
     grid-template-columns: 1fr;
     gap: 1.15rem;
   }
-}
-
-.diamondRule {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 2rem 0;
-  gap: 0;
-}
-
-.diamondRule::before,
-.diamondRule::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgba(176, 132, 63, 0.35);
-}
-
-.diamond {
-  width: 8px;
-  height: 8px;
-  margin: 0 14px;
-  border: 1px solid rgba(176, 132, 63, 0.85);
-  background: transparent;
-  transform: rotate(45deg);
-  flex: 0 0 auto;
 }
 
 .legacySplit {
@@ -183,13 +152,6 @@
   color: var(--color-burgundy);
 }
 
-.legacyLabel::after {
-  content: "";
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: rgba(176, 132, 63, 0.7);
-}
 
 .legacyHeading {
   margin: 0 !important;
@@ -218,6 +180,9 @@
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
   color: var(--color-text-secondary) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .inlineLink {
@@ -288,10 +253,6 @@
   color: var(--color-text-secondary) !important;
 }
 
-.storyBand .diamondRule {
-  margin: 1.5rem 0;
-}
-
 @media (max-width: 800px) {
   .legacySplit {
     grid-template-columns: 1fr;
@@ -312,10 +273,6 @@
   .storyStats {
     margin-top: 1.25rem;
     padding-top: 1rem;
-  }
-
-  .kickerRule {
-    width: 20px;
   }
 }
 
@@ -530,13 +487,6 @@
   color: var(--color-gold);
 }
 
-.uniqueEyebrowRule {
-  display: inline-block;
-  width: 28px;
-  height: 1px;
-  background: var(--color-gold);
-}
-
 .uniqueHeading {
   margin: 0 0 16px;
   font-family: var(--font-display);
@@ -637,6 +587,8 @@
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
   color: var(--color-text-secondary) !important;
+  text-align: start !important;
+  hyphens: manual;
 }
 
 .rtiCards {

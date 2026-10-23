@@ -63,7 +63,6 @@ export const HeritageSection: React.FC = () => {
                 <span className={styles.captionFounder}>
                   ROYAL FOUNDER · NALVADI KRISHNARAJA WADIYAR
                 </span>
-                <span className={styles.captionDivider} aria-hidden="true" />
                 <span className={styles.captionOrigin}>
                   MYSURU · 1912
                 </span>

@@ -240,25 +240,6 @@
   font-weight: 700;
 }
 
-/* Divider */
-.cardDivider {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 18px;
-}
-
-.dividerLine {
-  flex: 1;
-  height: 1px;
-  background: #E8D8C0;
-}
-
-.dividerDiamond {
-  color: #B99555;
-  font-size: 0.68rem;
-}
-
 /* Bottom Meta Row */
 .metaRow {
   display: flex;

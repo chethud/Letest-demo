@@ -49,11 +49,7 @@ export default function AboutUsPage() {
                 style={{ objectFit: "contain" }}
               />
             </div>
-            <p className={styles.storyKicker}>
-              <span className={styles.kickerRule} aria-hidden="true" />
-              Government of Karnataka Undertaking
-              <span className={styles.kickerRule} aria-hidden="true" />
-            </p>
+            <p className={styles.storyKicker}>Government of Karnataka Undertaking</p>
             <h1 className={styles.pageTitle}>
               About <span>Us</span>
             </h1>
@@ -69,9 +65,6 @@ export default function AboutUsPage() {
                 GI-tagged Mysore Silk for the state: certified pure zari, transparent provenance, and a living
                 link between Karnataka’s sericulture farmers and the looms of Mysuru.
               </p>
-            </div>
-            <div className={styles.diamondRule} aria-hidden="true">
-              <span className={styles.diamond} />
             </div>
           </div>
 
@@ -94,7 +87,7 @@ export default function AboutUsPage() {
               <p className={styles.bodyCopy}>
                 Among India’s largest silk producers, KSIC manufactures quality silk products of varied
                 designs for end-user consumption: the finest designer silk sarees, shirts, kurtas, silk
-                dhotis and men’s ties — made in our factories in Mysuru district, Karnataka, with the full
+                dhotis and men’s ties, made in our factories in Mysuru district, Karnataka, with the full
                 process kept in house.
               </p>
               <p className={styles.bodyCopy}>
@@ -106,10 +99,6 @@ export default function AboutUsPage() {
               </p>
               <p className={styles.storyMission}>{INSTITUTIONAL_OVERVIEW.mandate}</p>
             </div>
-          </div>
-
-          <div className={styles.diamondRule} aria-hidden="true">
-            <span className={styles.diamond} />
           </div>
 
           <div className={styles.certBlock} id="certification">

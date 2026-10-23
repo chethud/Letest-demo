@@ -84,6 +84,9 @@
   font-weight: 400 !important;
   line-height: 1.55 !important;
   color: var(--na-muted) !important;
+  text-align: justify !important;
+  text-wrap: pretty;
+  hyphens: auto;
 }
 
 .shopHeaderVisual {

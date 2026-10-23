@@ -10,7 +10,7 @@ export interface CraftStage {
   attributes: string[];
 }
 
-/** Compact name + image only — subprocesses after re-reeling (no long copy). */
+/** Compact name + image only: subprocesses after re-reeling (no long copy). */
 export type CraftProcessStill = {
   name: string;
   image: string;
@@ -30,7 +30,7 @@ export const YARN_PREP_STILLS: CraftProcessStill[] = [
   },
 ];
 
-/** Compact name + image only — wind through warp / wift prep. */
+/** Compact name + image only: wind through warp / wift prep. */
 export const YARN_LINE_STILLS: CraftProcessStill[] = [
   {
     name: "Wind",
@@ -87,7 +87,7 @@ export const CRAFT_STAGES: CraftStage[] = [
     title: "Soak, wind, double, twist, and warp",
     summary: "After soak and dry: wind onto small rolls, double, then twist for wift or leave untwisted for warp.",
     details:
-      "Soaked and dried silk is wound onto small rolls, then doubled. Twisted yarn is taken onto a cone for wift — the breadth of the saree. Untwisted yarn goes to warping on large cylindrical rods, carrying silk up to about 900 metres in length for the warp — the length of the saree. Both warp and wift are used on the weaving machines.",
+      "Soaked and dried silk is wound onto small rolls, then doubled. Twisted yarn is taken onto a cone for wift, the breadth of the saree. Untwisted yarn goes to warping on large cylindrical rods, carrying silk up to about 900 metres in length for the warp, the length of the saree. Both warp and wift are used on the weaving machines.",
     technicalSpec:
       "Wind · Double · Twist\nTwisted · cone · wift (breadth)\nUntwisted · warp beam · up to ~900 m (length)",
     image: "/assets/craft/03-yarn-twisting.jpg",

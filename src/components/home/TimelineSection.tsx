@@ -103,13 +103,6 @@ export const TimelineSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Subtle Divider with Gold Diamond */}
-            <div className={styles.cardDivider} aria-hidden="true">
-              <span className={styles.dividerLine} />
-              <span className={styles.dividerDiamond}>❖</span>
-              <span className={styles.dividerLine} />
-            </div>
-
             {/* Archival Stats & Provenance */}
             <div className={styles.metaRow}>
               {current.statNumber && (

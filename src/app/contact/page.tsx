@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -37,6 +37,20 @@ export default function ContactPage() {
     message: "",
   });
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const goToStores =
+      params.get("section") === "store-locator" ||
+      window.location.hash === "#store-locator";
+    if (!goToStores) return;
+    const target = document.getElementById("store-locator");
+    if (!target) return;
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("store-search")?.focus({ preventScroll: true });
+    });
+  }, []);
+
   const storeSearch = storeQuery.trim().toLowerCase();
   const matchingStores = useMemo(() => {
     if (!storeSearch) {
@@ -70,11 +84,7 @@ export default function ContactPage() {
       {/* 1. Intro */}
       <section className={styles.hero} aria-label="Contact KSIC">
         <div className={styles.content}>
-          <p className={styles.kicker}>
-            <span className={styles.kickerRule} aria-hidden="true" />
-            Institutional communication
-            <span className={styles.kickerRule} aria-hidden="true" />
-          </p>
+          <p className={styles.kicker}>Institutional communication</p>
           <h1 className={styles.heroTitle}>
             Contact <span>Us</span>
           </h1>
@@ -128,16 +138,19 @@ export default function ContactPage() {
       </section>
 
       {/* 3. Store locator */}
-      <section className={styles.storesBand} aria-label="Showroom locator">
+      <section
+        id="store-locator"
+        className={styles.storesBand}
+        aria-labelledby="store-locator-heading"
+      >
         <div className={styles.content}>
           <div className={styles.storesHead}>
             <div>
               <p className={styles.eyebrow}>Showroom network</p>
-              <h2 className={styles.sectionTitle}>Find a showroom</h2>
+              <h2 id="store-locator-heading" className={styles.sectionTitle}>
+                Find a showroom
+              </h2>
             </div>
-            <Link href="/stores" className={styles.textLink}>
-              View full network <ArrowRight size={14} aria-hidden />
-            </Link>
           </div>
 
           <form className={styles.locatorForm} role="search" onSubmit={(event) => event.preventDefault()}>

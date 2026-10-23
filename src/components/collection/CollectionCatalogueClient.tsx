@@ -172,7 +172,6 @@ export default function CollectionCatalogueClient({
                     {pad(safeIndex + 1)}
                     <span> / {pad(filteredProducts.length)}</span>
                   </span>
-                  <span className={styles.navRule} aria-hidden />
                   <button
                     type="button"
                     className={styles.navBtn}

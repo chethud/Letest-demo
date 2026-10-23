@@ -44,7 +44,7 @@ export const ShowroomsSection: React.FC = () => {
             </p>
           </div>
           <div>
-            <Link href="/stores" className="action-editorial action-editorial-burgundy">
+            <Link href="/contact#store-locator" className="action-editorial action-editorial-burgundy">
               <span>
                 {lang === "kn"
                   ? `ಎಲ್ಲಾ ರಾಜ್ಯ ಮಳಿಗೆಗಳು (${SHOWROOMS_DATA.length})`

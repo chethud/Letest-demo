@@ -224,7 +224,7 @@ export const Header: React.FC = () => {
             <Link href="/collection?category=heritage-bridal-series" className={`${styles.iconButton} ${styles.iconDesktop}`} aria-label="Wishlist">
               <Heart size={19} strokeWidth={1.5} />
             </Link>
-            <Link href="/stores" className={`${styles.iconButton} ${styles.bagButton}`} aria-label="Shopping bag">
+            <Link href="/contact#store-locator" className={`${styles.iconButton} ${styles.bagButton}`} aria-label="Store locator">
               <ShoppingBag size={19} strokeWidth={1.5} />
               <span className={styles.cartBadge}>0</span>
             </Link>

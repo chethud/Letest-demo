@@ -57,7 +57,7 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const UTILITY_LINKS: NavLink[] = [
-  { label: "Store Locator", href: "/stores" },
+  { label: "Store Locator", href: "/contact#store-locator" },
   { label: "Track Order", href: "/contact" },
   { label: "Help", href: "/contact" },
 ];

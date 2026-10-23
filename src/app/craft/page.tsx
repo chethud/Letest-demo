@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
-import { QualityCareSections } from "@/components/authenticity/QualityCareSections";
 import { CRAFT_STAGES, YARN_LINE_STILLS, YARN_PREP_STILLS } from "@/data/craft";
 import { SILK_VARIETIES, SILK_VARIETY_INTRO } from "@/data/silkTypes";
 import { KSIC_IN_HOUSE, KSIC_ZERO_WASTE } from "@/data/ksicPractice";
@@ -219,8 +218,6 @@ export default function CraftPage() {
           </div>
         </div>
       </section>
-
-      <QualityCareSections idPrefix="craft-" />
     </div>
   );
 }
