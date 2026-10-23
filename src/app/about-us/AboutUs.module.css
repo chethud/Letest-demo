@@ -27,20 +27,19 @@
   padding: clamp(2.75rem, 6vw, 4.5rem) 0;
 }
 
-.certBand,
 .rtiBand {
   background: var(--color-bg-primary);
-  border-bottom: var(--border-rule);
+  border-bottom: 0;
   padding-top: var(--section-padding-y);
   padding-bottom: var(--section-padding-y);
 }
 
-.rtiBand {
-  border-bottom: 0;
+.certBlock {
+  width: 100%;
+  padding: 0.25rem 0 0.5rem;
 }
 
 @media (max-width: 768px) {
-  .certBand,
   .rtiBand {
     padding-top: var(--section-padding-y-sm);
     padding-bottom: var(--section-padding-y-sm);
@@ -102,15 +101,32 @@
   color: var(--color-burgundy);
 }
 
+.leadSplit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  width: 100%;
+  margin-top: 0.35rem;
+  text-align: left;
+}
+
 .pageLead {
-  margin: 0 auto !important;
-  max-width: 40rem;
+  margin: 0 !important;
+  max-width: none;
   font-family: var(--font-dm) !important;
   font-size: var(--type-body-size) !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
   color: var(--color-text-secondary) !important;
+  text-align: left;
+}
+
+@media (max-width: 800px) {
+  .leadSplit {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
 }
 
 .diamondRule {
@@ -204,6 +220,17 @@
   color: var(--color-text-secondary) !important;
 }
 
+.inlineLink {
+  color: var(--color-burgundy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.inlineLink:hover {
+  color: var(--color-burgundy-dark, #5c1026);
+}
+
 .legacyCopy .bodyCopy:last-child {
   margin-bottom: 0 !important;
 }
@@ -211,31 +238,30 @@
 .storyStats {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
-  margin: 0.5rem 0 0;
-  padding: 1.35rem 0;
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 0 0;
   border-top: 1px solid rgba(176, 132, 63, 0.28);
-  border-bottom: 1px solid rgba(176, 132, 63, 0.28);
 }
 
 .storyStats li {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0.35rem 1rem;
-  text-align: center;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0 1rem 0 0;
+  text-align: left;
 }
 
 .storyStats li + li {
+  padding: 0 0 0 1rem;
   border-left: 1px solid rgba(176, 132, 63, 0.28);
 }
 
 .statValue {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
   font-weight: 500;
   line-height: 1;
   color: var(--color-burgundy);
@@ -251,15 +277,19 @@
 }
 
 .storyMission {
-  margin: 0 auto !important;
-  max-width: 40rem;
-  text-align: center;
+  margin: 0 !important;
+  max-width: none;
+  text-align: left;
   font-family: var(--font-dm) !important;
   font-size: var(--type-body-size) !important;
   font-weight: 400 !important;
-  line-height: 1.75 !important;
+  line-height: 1.7 !important;
   letter-spacing: 0 !important;
   color: var(--color-text-secondary) !important;
+}
+
+.storyBand .diamondRule {
+  margin: 1.5rem 0;
 }
 
 @media (max-width: 800px) {
@@ -280,16 +310,8 @@
   }
 
   .storyStats {
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 0.5rem 0;
-  }
-
-  .storyStats li + li {
-    border-left: 0;
-    border-top: 1px solid rgba(176, 132, 63, 0.28);
+    margin-top: 1.25rem;
     padding-top: 1rem;
-    margin-top: 0.35rem;
   }
 
   .kickerRule {
@@ -610,7 +632,7 @@
 .distinctionDetail {
   margin: 0 !important;
   font-family: var(--font-dm) !important;
-  font-size: 1.125rem !important;
+  font-size: var(--type-body-size) !important;
   font-weight: 400 !important;
   line-height: 1.7 !important;
   letter-spacing: 0 !important;

@@ -2,23 +2,6 @@
   padding-top: var(--site-header-offset);
 }
 
-.importantBand {
-  background-color: var(--color-burgundy-dark, #5c1026);
-  border-bottom: var(--border-rule);
-  padding: 18px 0;
-}
-
-.importantLine {
-  margin: 0 !important;
-  max-width: 52rem;
-  font-family: var(--font-display) !important;
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem) !important;
-  font-weight: 500 !important;
-  line-height: 1.4 !important;
-  letter-spacing: -0.015em !important;
-  color: #fffafa !important;
-}
-
 .hero {
   background-color: var(--color-bg-secondary);
   border-bottom: var(--border-rule);
@@ -188,6 +171,17 @@
   font-weight: 400 !important;
   line-height: 1.7 !important;
   color: var(--color-text-secondary) !important;
+}
+
+.inlineLink {
+  color: var(--color-burgundy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.inlineLink:hover {
+  color: var(--color-burgundy-dark, #5c1026);
 }
 
 .pillarGrid {

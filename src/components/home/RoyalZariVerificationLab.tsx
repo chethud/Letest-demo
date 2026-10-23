@@ -142,7 +142,11 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
               <label className={styles.formLabel} htmlFor={`${id}-serial-code`}>
                 Enter your saree serial code
               </label>
-              <div className={styles.helpWrap}>
+              <div
+                className={styles.helpWrap}
+                onMouseEnter={() => setHelpOpen(true)}
+                onMouseLeave={() => setHelpOpen(false)}
+              >
                 <button
                   ref={helpButtonRef}
                   type="button"
@@ -150,6 +154,7 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
                   aria-expanded={helpOpen}
                   aria-controls={helpId}
                   onClick={() => setHelpOpen((open) => !open)}
+                  onFocus={() => setHelpOpen(true)}
                 >
                   Where to find the code?
                   <HelpCircle size={14} strokeWidth={1.75} aria-hidden="true" />
@@ -162,6 +167,15 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
                     role="region"
                     aria-label="Where to find the saree code"
                   >
+                    <div className={styles.helpFigure}>
+                      <Image
+                        src="/assets/craft/unique-04-unique-code.jpg"
+                        alt="Unique identification code on an authentic KSIC Mysore Silk pallu"
+                        fill
+                        sizes="220px"
+                        className={styles.helpImage}
+                      />
+                    </div>
                     <p>
                       Look for the serial number in the pallu, woven or embroidered
                       into the decorative end of the saree.

@@ -1,14 +1,15 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { HeritageSection } from "@/components/home/HeritageSection";
 import { TimelineSection } from "@/components/home/TimelineSection";
 import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
-import { HeritageScroll } from "./HeritageScroll";
 import styles from "./Heritage.module.css";
 
 export const metadata = {
-  title: "Our Heritage · Since 1912 | KSIC",
-  description: "The documented history of Mysore Silk: eighteenth-century sericulture, the 1912 weaving factory, and KSIC from 1980.",
+  title: "Our Story · Mysore Silk | KSIC",
+  description:
+    "The cultural story of Mysore Silk: Tippu-era sericulture, royal patronage in Mysuru, and a living textile tradition.",
 };
 
 export default function HeritagePage() {
@@ -16,61 +17,67 @@ export default function HeritagePage() {
     <div className={styles.page}>
       <MysoreSilkSubnav activeHref="/heritage" />
       <HeritageSection />
-      <HeritageScroll>
-        <section className={`${styles.panel} ${styles.hero}`} aria-label="Archival monograph">
-          <div className={styles.inner}>
-            <div className={styles.heroGrid}>
-              <div className={styles.heroCopy}>
-                <p className={styles.eyebrow}>Archival Monograph</p>
-                <h1 className={styles.heroTitle}>
-                  A royal legacy
-                  <br />
-                  woven in <span>Mysuru.</span>
-                </h1>
-                <p className={styles.heroLead}>
-                  In 1912, under Maharaja Sri Nalvadi Krishnaraja Wadiyar, the Mysore Silk Weaving Factory was established to produce premium silk fabrics for the royal family and the armed forces.
-                </p>
-              </div>
-              <div className={styles.heroMedia}>
-                <Image
-                  src="/assets/heritage/mysore-palace-heritage.jpg"
-                  alt="Mysore Palace, the royal seat associated with the founding of Mysore Silk"
-                  fill
-                  priority
-                  sizes="(max-width: 900px) 100vw, 46vw"
-                  className={styles.coverImage}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <section id="patronage" className={`${styles.panel} ${styles.narrative}`} aria-label="Royal court patronage, 1912">
-          <div className={styles.inner}>
-            <div className={styles.split}>
-              <div>
-                <p className={styles.eyebrow}>1912 · Royal Court Patronage</p>
-                <h2 className={styles.sectionTitle}>The vision of Sri Nalvadi Krishnaraja Wadiyar</h2>
-                <p className={styles.body}>
-                  The 1912 factory wove premium silk for the royal family and the armed forces. Silk rearing in the region is older, traced to Tippu Sultan&apos;s unit at Channapatna in the eighteenth century.
-                </p>
-                <p className={styles.body}>
-                  The Maharaja took an interest in Swiss silk, and weaving linked with the Mysore Palace drew on European practice.
-                </p>
-              </div>
-              <div className={styles.portrait}>
-                <Image
-                  src="/assets/heritage/nalvadi-krishnaraja-wadiyar.jpg"
-                  alt="Sri Nalvadi Krishnaraja Wadiyar, Maharaja of Mysore"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 42vw"
-                  className={`${styles.coverImage} ${styles.portraitImage}`}
-                />
-              </div>
+      <section className={styles.storyChapter} aria-labelledby="archival-heading">
+        <div className={styles.storyChapterInner}>
+          <p className={styles.chapterKicker}>
+            <span className={styles.kickerRule} aria-hidden="true" />
+            Archival Monograph
+            <span className={styles.kickerRule} aria-hidden="true" />
+          </p>
+
+          <div className={styles.folioGrid}>
+            <header className={styles.folioLead}>
+              <h1 id="archival-heading" className={styles.archivalTitle}>
+                A royal legacy
+                <br />
+                woven in <span>Mysuru.</span>
+              </h1>
+              <p className={styles.archivalLead}>
+                Mysore Silk is older than the corporation that now stewards it — a textile tradition
+                rooted in Karnataka sericulture, palace patronage, and the looms of Mysuru.
+              </p>
+            </header>
+
+            <div id="patronage" className={styles.folioOrigins}>
+              <p className={styles.originsEyebrow}>Origins · Before the corporation</p>
+              <h2 className={styles.originsTitle}>Two roots of a living textile</h2>
+
+              <ol className={styles.originTimeline}>
+                <li className={styles.originStep}>
+                  <div className={styles.originMarker} aria-hidden="true">
+                    <span className={styles.originDot} />
+                    <span className={styles.originStem} />
+                  </div>
+                  <div className={styles.originCopy}>
+                    <p className={styles.originsYear}>18th c.</p>
+                    <h3 className={styles.originsEraTitle}>Channapatna rearing</h3>
+                    <p className={styles.originsBody}>
+                      Silk rearing in the region reaches back to Tipu Sultan’s unit at Channapatna and
+                      the introduction of multivoltine silkworm rearing — long before the Mysuru weaving
+                      works of 1912.
+                    </p>
+                  </div>
+                </li>
+                <li className={styles.originStep}>
+                  <div className={styles.originMarker} aria-hidden="true">
+                    <span className={styles.originDot} />
+                  </div>
+                  <div className={styles.originCopy}>
+                    <p className={styles.originsYear}>1912</p>
+                    <h3 className={styles.originsEraTitle}>Palace patronage</h3>
+                    <p className={styles.originsBody}>
+                      Under Sri Nalwadi Krishnaraja Wadiyar, palace-linked weaving drew on Swiss silk
+                      and European practice, shaping the motifs and finish still associated with Mysore
+                      Silk.
+                    </p>
+                  </div>
+                </li>
+              </ol>
             </div>
           </div>
-        </section>
-      </HeritageScroll>
+        </div>
+      </section>
 
       <section className={styles.narrativeAlt} aria-label="Industrial expansion, 1932">
         <div className={styles.inner}>
@@ -85,13 +92,21 @@ export default function HeritagePage() {
               />
             </div>
             <div>
-              <p className={styles.eyebrow}>1930 · Factory expansion</p>
-              <h2 className={styles.sectionTitle}>From the royal factory to KSIC</h2>
+              <p className={styles.eyebrow}>1930 · Industrial expansion</p>
+              <h2 className={styles.sectionTitle}>Looms, commercial weave, modern machinery</h2>
               <p className={styles.body}>
-                The KSIC note says factory operations were expanded from 1930, and that commercial production was brought into operation after 1932. Those statements are left in that order.
+                Factory operations expanded from 1930; commercial production followed after 1932. Swiss
+                looms and preparatory machines made the Mysuru unit the first of its kind in India -
+                the industrial spine behind the textile’s courtly reputation.
               </p>
               <p className={styles.body}>
-                In 1980 the corporation was established under the Companies Act. The note associates that transition with modernisation supported by the World Bank, and records that the Mysore Silk Weaving Factory and the other listed silk units were transferred to KSIC in the same year. Between 1982 and 1986 it records imported reeling and weaving machinery associated with Korea and Japan.
+                Between 1982 and 1986 the works received imported reeling and weaving machinery
+                associated with Korea and Japan. How those works passed into KSIC’s custody is told in
+                the{" "}
+                <Link href="/our-heritage" className={styles.inlineLink}>
+                  brief history of KSIC
+                </Link>
+                .
               </p>
               <div className={styles.statRow}>
                 <p>
@@ -99,8 +114,8 @@ export default function HeritagePage() {
                   <span>Weaving factory</span>
                 </p>
                 <p>
-                  <strong>1980</strong>
-                  <span>KSIC incorporated</span>
+                  <strong>1932</strong>
+                  <span>Commercial production</span>
                 </p>
               </div>
             </div>

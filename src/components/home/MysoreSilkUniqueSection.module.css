@@ -23,27 +23,6 @@
   max-width: 28rem;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 18px;
-  font-family: var(--font-dm) !important;
-  font-size: var(--type-eyebrow-size) !important;
-  font-weight: var(--type-eyebrow-weight) !important;
-  letter-spacing: var(--type-eyebrow-tracking) !important;
-  line-height: 1.4 !important;
-  text-transform: uppercase !important;
-  color: var(--color-burgundy) !important;
-}
-
-.eyebrowRule {
-  display: inline-block;
-  width: 36px;
-  height: 1px;
-  background: var(--color-burgundy);
-}
-
 .title {
   margin: 0 0 18px;
   font-family: var(--font-display);
@@ -178,17 +157,18 @@
 .pillarTitle {
   margin: 0 0 8px;
   font-family: var(--font-display);
-  font-size: var(--type-subheading-size);
+  font-size: var(--type-heading-size);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--color-text-primary);
 }
 
 .pillarText {
   margin: 0;
   font-family: var(--font-dm);
-  font-size: 0.9375rem;
-  line-height: 1.55;
+  font-size: var(--type-body-size);
+  line-height: 1.7;
   color: var(--color-text-secondary);
 }
 

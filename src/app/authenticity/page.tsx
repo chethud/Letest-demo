@@ -1,12 +1,21 @@
-"use client";
+import React from "react";
+import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
+import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
+import { QualityCareSections } from "@/components/authenticity/QualityCareSections";
+import styles from "./Authenticity.module.css";
 
-import { useEffect } from "react";
+export const metadata = {
+  title: "Authenticity & Care | KSIC",
+  description:
+    "Verify Mysore Silk authenticity, quality checkpoints from cocoon to cloth, and care notes for KSIC sarees.",
+};
 
-/** Authenticity lives on the home page verification lab - keep old URLs working. */
 export default function AuthenticityPage() {
-  useEffect(() => {
-    window.location.replace("/#authenticity-lab");
-  }, []);
-
-  return null;
+  return (
+    <div className={styles.page}>
+      <MysoreSilkSubnav activeHref="/authenticity" />
+      <RoyalZariVerificationLab id="authenticity-lab" />
+      <QualityCareSections />
+    </div>
+  );
 }

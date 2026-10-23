@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AboutSubnav } from "@/components/about/AboutSubnav";
 import { INSTITUTIONAL_OVERVIEW } from "@/data/institution";
@@ -56,13 +57,19 @@ export default function AboutUsPage() {
             <h1 className={styles.pageTitle}>
               About <span>Us</span>
             </h1>
-            <p className={styles.pageLead}>
-              Mysore is rich for its royal heritage and grandeur, and the silk produced there reflects that
-              traditional splendour through rich yet delicate motifs. The name Mysore Silk is a befitting
-              tribute to its ancestry. Karnataka Silk Industries Corporation Limited (KSIC), the proud
-              inheritor of this royal legacy, has treasured it for over seven decades, producing 100% pure
-              silk with pure gold zari.
-            </p>
+            <div className={styles.leadSplit}>
+              <p className={styles.pageLead}>
+                Mysore is rich for its royal heritage and grandeur, and the silk produced there reflects that
+                traditional splendour through rich yet delicate motifs. The name Mysore Silk is a befitting
+                tribute to its ancestry. Karnataka Silk Industries Corporation Limited (KSIC) produces 100%
+                pure silk with pure gold zari under that name.
+              </p>
+              <p className={styles.pageLead}>
+                As a Government of Karnataka undertaking under the Department of Sericulture, KSIC safeguards
+                GI-tagged Mysore Silk for the state: certified pure zari, transparent provenance, and a living
+                link between Karnataka’s sericulture farmers and the looms of Mysuru.
+              </p>
+            </div>
             <div className={styles.diamondRule} aria-hidden="true">
               <span className={styles.diamond} />
             </div>
@@ -72,70 +79,61 @@ export default function AboutUsPage() {
             <div className={styles.legacyTitleCol}>
               <span className={styles.legacyLabel}>Our Legacy</span>
               <h2 className={styles.legacyHeading}>Proud inheritor of a royal craft</h2>
+              <ul className={styles.storyStats}>
+                <li>
+                  <span className={styles.statValue}>1912</span>
+                  <span className={styles.statLabel}>Factory established</span>
+                </li>
+                <li>
+                  <span className={styles.statValue}>1980</span>
+                  <span className={styles.statLabel}>KSIC formed</span>
+                </li>
+              </ul>
             </div>
             <div className={styles.legacyCopy}>
               <p className={styles.bodyCopy}>
-                We manufacture quality silk products of varied designs for end-user consumption: the finest
-                designer silk sarees, shirts, kurtas, silk dhotis and men’s ties. These products are made in
-                our factories in Mysuru district, Karnataka, India.
+                Among India’s largest silk producers, KSIC manufactures quality silk products of varied
+                designs for end-user consumption: the finest designer silk sarees, shirts, kurtas, silk
+                dhotis and men’s ties — made in our factories in Mysuru district, Karnataka, with the full
+                process kept in house.
               </p>
               <p className={styles.bodyCopy}>
-                The silk weaving factory in Mysuru, presently owned by KSIC, was established in 1912 by Sri
-                Nalvadi Krishnaraja Wodeyar, Maharaja of Mysore. Initially, silk fabrics were manufactured
-                and supplied to meet the requirements of the royal family, with ornamental fabrics for their
-                armed forces.
+                The Mysuru weaving works date to 1912; KSIC has held them since 1980.{" "}
+                <Link href="/our-heritage" className={styles.inlineLink}>
+                  Read the brief history of KSIC
+                </Link>
+                .
               </p>
+              <p className={styles.storyMission}>{INSTITUTIONAL_OVERVIEW.mandate}</p>
             </div>
           </div>
 
-          <ul className={styles.storyStats}>
-            <li>
-              <span className={styles.statValue}>1912</span>
-              <span className={styles.statLabel}>Factory established</span>
-            </li>
-            <li>
-              <span className={styles.statValue}>1980</span>
-              <span className={styles.statLabel}>KSIC formed</span>
-            </li>
-            <li>
-              <span className={styles.statValue}>100%</span>
-              <span className={styles.statLabel}>Pure silk and gold zari</span>
-            </li>
-          </ul>
-
           <div className={styles.diamondRule} aria-hidden="true">
             <span className={styles.diamond} />
           </div>
 
-          <p className={styles.storyMission}>{INSTITUTIONAL_OVERVIEW.mandate}</p>
+          <div className={styles.certBlock} id="certification">
+            <div className={styles.sectionIntro}>
+              <h2 className={`display-section ${styles.sectionHeading}`}>
+                CERTIFICATION {"&"} RECOGNITION
+              </h2>
+              <p className={styles.sectionLead}>
+                Having gained widespread recognition for authentic silk manufacturing, KSIC holds
+                Geographical Indication Registration (GI-11) for Mysore Silk and multiple management-system
+                certifications.
+              </p>
+            </div>
 
-          <div className={styles.diamondRule} aria-hidden="true">
-            <span className={styles.diamond} />
+            <ul className={styles.distinctionGrid}>
+              {DISTINCTIONS.map((item) => (
+                <li key={item.label} className={styles.distinction}>
+                  <h3 className={styles.distinctionLabel}>{item.label}</h3>
+                  <p className={styles.distinctionDetail}>{item.detail}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
 
-      <section className={styles.certBand}>
-        <div className={styles.content}>
-          <div className={styles.sectionIntro}>
-            <h2 className={`display-section ${styles.sectionHeading}`}>
-              CERTIFICATION {"&"} RECOGNITION
-            </h2>
-            <p className={styles.sectionLead}>
-              Having gained widespread recognition for authentic silk manufacturing, KSIC holds
-              Geographical Indication Registration (GI-11) for Mysore Silk and multiple management-system
-              certifications.
-            </p>
-          </div>
-
-          <ul className={styles.distinctionGrid}>
-            {DISTINCTIONS.map((item) => (
-              <li key={item.label} className={styles.distinction}>
-                <h3 className={styles.distinctionLabel}>{item.label}</h3>
-                <p className={styles.distinctionDetail}>{item.detail}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

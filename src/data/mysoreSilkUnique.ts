@@ -27,8 +27,8 @@ export const MYSORE_SILK_UNIQUE_PILLARS: UniquePillar[] = [
   {
     id: "wrinkle-resistant",
     number: "01",
-    title: "Naturally Wrinkle-Resistant",
-    short: "You don’t have to keep ironing it. Soft creases ease as you wear and hang it.",
+    title: "Wrinkle-Resistant",
+    short: "Naturally, you don’t have to keep ironing it. Soft creases ease as you wear and hang it.",
     detail:
       "The high-twist weave gives the yarn a gentle spring, so shallow folds release with body heat and hanging. Day to day, many wearers simply hang the saree and let gentle crinkles fall out.",
     image: "/assets/craft/unique-01-wrinkle-resistant.jpg",
@@ -70,8 +70,8 @@ export const MYSORE_SILK_UNIQUE_PILLARS: UniquePillar[] = [
 export const MYSORE_SILK_UNIQUE_ICON_PILLARS: UniqueIconPillar[] = [
   {
     id: "wrinkle-resistant",
-    title: "Naturally Wrinkle-Resistant",
-    detail: "You don’t have to keep ironing it. Soft creases ease as you wear and hang it.",
+    title: "Wrinkle-Resistant",
+    detail: "Naturally, you don’t have to keep ironing it. Soft creases ease as you wear and hang it.",
   },
   {
     id: "fluid-drape",

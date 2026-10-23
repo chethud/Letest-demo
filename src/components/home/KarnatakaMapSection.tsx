@@ -124,8 +124,8 @@ export const KarnatakaMapSection: React.FC = () => {
             </h2>
             <p className={styles.leadParagraph}>
               {lang === "kn"
-                ? "ಮೈಸೂರು ರೇಷ್ಮೆಯನ್ನು ಕರ್ನಾಟಕದ ಭೌಗೋಳಿಕತೆಯಿಂದ ಬೇರ್ಪಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. 114 ಕ್ಕೂ ಹೆಚ್ಚು ವರ್ಷಗಳ ರಾಜಪರಂಪರೆ, ಕಾವೇರಿ ಕಣಿವೆಯ ನೈಸರ್ಗಿಕ ಮೃದು ನೀರು, ರಾಜ್ಯದ ರೇಷ್ಮೆ ಕೃಷಿಕರ ಬೈವೋಲ್ಟಿನ್ ಮಲ್ಬರಿ ಗೂಡುಗಳು ಮತ್ತು ಮೈಸೂರು ನೇಯ್ಗೆ ಶಾಲೆಯ ವಿಶಿಷ್ಟ ಹವಾಮಾನವು ಈ ರೇಷ್ಮೆಗೆ ಅಪ್ರತಿಮ ಕ್ರೇಪ್ ವಿನ್ಯಾಸವನ್ನು ನೀಡಿದೆ."
-                : "Mysore Silk cannot be disassociated from the geography of Karnataka. Over 114 years of royal stewardship, the natural water chemistry of the Cauvery basin, certified bivoltine mulberry cocoons from regional farmers, and the calibrated micro-climate of the Mysuru weaving sheds impart its distinct, unreplicable pebble-crepe character."}
+                ? "ಮೈಸೂರು ರೇಷ್ಮೆಯನ್ನು ಕರ್ನಾಟಕದ ಭೌಗೋಳಿಕತೆಯಿಂದ ಬೇರ್ಪಡಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. 114 ಕ್ಕೂ ಹೆಚ್ಚು ವರ್ಷಗಳ ರಾಜಪರಂಪರೆ, ಕಾವೇರಿ ಕಣಿವೆಯ ನೈಸರ್ಗಿಕ ಮೃದು ನೀರು, ರಾಜ್ಯದ ರೇಷ್ಮೆ ಕೃಷಿಕರ ಮಲ್ಟಿವೋಲ್ಟಿನ್ ಮತ್ತು ಬೈವೋಲ್ಟಿನ್ ಮಲ್ಬರಿ ಗೂಡುಗಳು ಮತ್ತು ಮೈಸೂರು ನೇಯ್ಗೆ ಶಾಲೆಯ ವಿಶಿಷ್ಟ ಹವಾಮಾನವು ಈ ರೇಷ್ಮೆಗೆ ಅಪ್ರತಿಮ ಕ್ರೇಪ್ ವಿನ್ಯಾಸವನ್ನು ನೀಡಿದೆ."
+                : "Mysore Silk cannot be disassociated from the geography of Karnataka. Over 114 years of royal stewardship, the natural water chemistry of the Cauvery basin, mulberry cocoons from regional farmers, and the calibrated micro-climate of the Mysuru weaving sheds impart its distinct, unreplicable pebble-crepe character."}
             </p>
 
             {/* Operational Hubs Accordion / Cards */}

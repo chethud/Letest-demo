@@ -21,6 +21,80 @@
   gap: 96px;
 }
 
+.processStills {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2rem, 4vw, 2.75rem);
+  border-top: 1px solid rgba(176, 132, 63, 0.28);
+}
+
+.processStillsLabel {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-dm);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+}
+
+.processStillGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+}
+
+.processStillGridFour {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.processStillsLabelFollow {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+.processStill {
+  margin: 0;
+  min-width: 0;
+}
+
+.processStillMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  border: 1px solid rgba(23, 21, 19, 0.12);
+}
+
+.processStillImage {
+  object-fit: cover;
+}
+
+.processStillName {
+  margin: 0.65rem 0 0;
+  font-family: var(--font-dm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+@media (max-width: 900px) {
+  .processStillGridFour {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .processStillGrid,
+  .processStillGridFour {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
 @media (max-width: 900px) {
   .stagesList {
     gap: 52px;
@@ -118,12 +192,25 @@
 }
 
 .stageSpecBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   padding: 16px 20px;
   background-color: var(--color-bg-secondary);
   border-left: 3px solid var(--color-gold);
   font-size: 0.88rem;
   color: var(--color-text-primary);
   line-height: 1.6;
+}
+
+.stageSpecLead,
+.stageSpecExtra {
+  margin: 0;
+}
+
+.stageSpecExtra {
+  padding-left: 0;
+  white-space: pre-line;
 }
 
 @media (max-width: 480px) {
@@ -216,5 +303,176 @@
 @media (max-width: 480px) {
   .preservationBox {
     padding: 24px 20px;
+  }
+}
+
+.varietiesBand {
+  background:
+    linear-gradient(180deg, #fffafa 0%, #fbe9ed 48%, #fffafa 100%);
+  border-bottom: var(--border-rule);
+}
+
+.varietiesIntro {
+  max-width: 40rem;
+  margin: 0 0 2.5rem;
+}
+
+.varietiesHeading {
+  margin: 0 0 12px !important;
+}
+
+.varietiesLead {
+  margin: 0;
+  font-family: var(--font-dm);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.varietiesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(176, 132, 63, 0.3);
+}
+
+.varietyCard {
+  min-width: 0;
+}
+
+.varietyCard + .varietyCard {
+  padding-left: clamp(1.25rem, 2.5vw, 2rem);
+  border-left: 1px solid rgba(176, 132, 63, 0.3);
+}
+
+.varietyEra {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-dm);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+}
+
+.varietyLabel {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.6vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.varietyColour {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-dm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.varietyColour span {
+  color: var(--color-burgundy);
+}
+
+.varietyBody {
+  margin: 0;
+  max-width: 34rem;
+  font-family: var(--font-dm);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.varietiesPractice {
+  margin: 2rem 0 0;
+  max-width: 42rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(176, 132, 63, 0.28);
+  font-family: var(--font-dm);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+}
+
+.practiceNotes {
+  margin: 1.75rem 0 0;
+  max-width: 44rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(176, 132, 63, 0.28);
+  font-family: var(--font-dm);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.qualityBand {
+  background: var(--color-bg-paper);
+  border-bottom: var(--border-rule);
+}
+
+.qualityList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.25rem) clamp(1.5rem, 3vw, 2.75rem);
+  margin: 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(176, 132, 63, 0.3);
+}
+
+.qualityItem {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.qualityStage {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-dm);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+}
+
+.qualityCheck {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+}
+
+.qualityDetail {
+  margin: 0;
+  font-family: var(--font-dm);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 800px) {
+  .varietiesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .varietyCard + .varietyCard {
+    padding-left: 0;
+    padding-top: 1.75rem;
+    border-left: 0;
+    border-top: 1px solid rgba(176, 132, 63, 0.3);
+  }
+
+  .qualityList {
+    grid-template-columns: 1fr;
   }
 }

@@ -18,7 +18,8 @@ export const JOURNEY_STAGES: JourneyStage[] = [
     nameKn: "ಮೂಲ",
     headline: "Every thread has an origin.",
     headlineKn: "ಪ್ರತಿಯೊಂದು ಎಳೆಗೂ ಒಂದು ಪವಿತ್ರ ಮೂಲವಿದೆ.",
-    description: "It begins with nature’s finest silk cocoons, nurtured with care and tradition.",
+    description:
+      "It begins with nature’s finest silk cocoons, nurtured with care and tradition.",
     descriptionKn: "ಕಾಳಜಿ ಮತ್ತು ಪರಂಪರೆಯೊಂದಿಗೆ ಪೋಷಿಸಲ್ಪಟ್ಟ ಪ್ರಕೃತಿಯ ಶ್ರೇಷ್ಠ ರೇಷ್ಮೆ ಗೂಡುಗಳಿಂದ ಇದು ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.",
     image: "/assets/craft/journey-stage-1.jpg",
     detailBadge: "100% Pure Mulberry Silk",

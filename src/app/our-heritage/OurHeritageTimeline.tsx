@@ -25,6 +25,15 @@ const MILESTONES = [
     alt: "Expansion of the Mysuru weaving factory",
   },
   {
+    tab: "WWII",
+    year: "WWII era",
+    epoch: "Wartime silk",
+    title: "Parachute silk for the war",
+    body: "In its early days the Mysuru works also produced parachute silk for the Second World War — an industrial role beyond court and ceremonial cloth.",
+    image: "/assets/heritage/ksic-1932-jacquard.jpg",
+    alt: "Historical view of the Mysuru silk weaving works",
+  },
+  {
     tab: "1947",
     year: "Post-1947",
     epoch: "State succession",

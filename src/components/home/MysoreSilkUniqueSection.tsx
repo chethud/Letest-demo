@@ -30,10 +30,6 @@ export const MysoreSilkUniqueSection: React.FC = () => {
     >
       <div className={styles.wrap}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>
-            Distinctly Mysore Silk
-            <span className={styles.eyebrowRule} aria-hidden="true" />
-          </p>
           <h2 className={styles.title}>Why Mysuru Silk is Special</h2>
           <p className={styles.lead}>{MYSORE_SILK_UNIQUE_INTRO}</p>
           <Link href="/craft" className={styles.cta}>

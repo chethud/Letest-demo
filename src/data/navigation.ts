@@ -25,7 +25,7 @@ export const ABOUT_LINKS: NavLink[] = [
 export const MYSORE_SILK_LINKS: NavLink[] = [
   { label: "Our Story", href: "/heritage" },
   { label: "How It Is Made", href: "/craft" },
-  { label: "Authenticity", href: "/#authenticity-lab" },
+  { label: "Authenticity & Care", href: "/authenticity" },
 ];
 
 export const SHOP_LINKS: NavLink[] = [

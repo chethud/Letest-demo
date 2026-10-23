@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { RoyalZariVerificationLab } from "@/components/home/RoyalZariVerificationLab";
+import { QualityCareSections } from "@/components/authenticity/QualityCareSections";
 import { GandaberundaArt } from "@/components/brand/GandaberundaArt";
 import { MangoBorderRail } from "./MysoreBorderMotifs";
 import styles from "./GenerationsHeritage.module.css";
@@ -11,6 +12,7 @@ export const GenerationsHeritage: React.FC = () => {
   return (
     <section className={styles.heritage} id="generations" aria-label="Heritage">
       <RoyalZariVerificationLab id="authenticity-lab" />
+      <QualityCareSections idPrefix="home-" />
 
       <div className={styles.story}>
         <div className={styles.atmosphere} aria-hidden="true" />

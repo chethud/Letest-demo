@@ -33,8 +33,9 @@ export const INSTITUTIONAL_OVERVIEW = {
     {
       unit: "Silk Filature Division",
       location: "T. Narasipura, Mysuru District",
-      activity: "Raw silk unit. Cocoons from Ramanagara are brought here to be reeled.",
-      capacity: "The KSIC note says cocoons are purchased from the market.",
+      activity:
+        "Raw silk unit. Cocoons from the Ramanagara, Kanakapura, Kollegal, and Sidlaghatta belts are brought here to be reeled. Ramanagara’s cocoon market is one of Asia’s largest.",
+      capacity: "Market purchase from the named belts, as supplied.",
     },
     {
       unit: "Silk Weaving Unit",

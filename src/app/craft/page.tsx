@@ -1,9 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Flame, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
 import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
-import { CRAFT_STAGES } from "@/data/craft";
+import { QualityCareSections } from "@/components/authenticity/QualityCareSections";
+import { CRAFT_STAGES, YARN_LINE_STILLS, YARN_PREP_STILLS } from "@/data/craft";
+import { SILK_VARIETIES, SILK_VARIETY_INTRO } from "@/data/silkTypes";
+import { KSIC_IN_HOUSE, KSIC_ZERO_WASTE } from "@/data/ksicPractice";
 import styles from "./Craft.module.css";
 
 export const metadata = {
@@ -47,17 +49,31 @@ export default function CraftPage() {
                       {stage.title}
                     </h2>
 
-                    <p className={styles.stageSummary}>
-                      {stage.summary}
-                    </p>
+                    {stage.summary ? (
+                      <p className={styles.stageSummary}>{stage.summary}</p>
+                    ) : null}
 
                     <p className={styles.stageDetails}>
                       {stage.details}
                     </p>
 
                     <div className={styles.stageSpecBox}>
-                      <strong>Technical Spec: </strong>
-                      {stage.technicalSpec}
+                      {stage.technicalSpec.includes("\n") ? (
+                        <>
+                          <p className={styles.stageSpecLead}>
+                            <strong>Technical Spec: </strong>
+                            <span>{stage.technicalSpec.split("\n")[0]}</span>
+                          </p>
+                          <p className={styles.stageSpecExtra}>
+                            {stage.technicalSpec.split("\n").slice(1).join("\n")}
+                          </p>
+                        </>
+                      ) : (
+                        <p className={styles.stageSpecLead}>
+                          <strong>Technical Spec: </strong>
+                          <span>{stage.technicalSpec}</span>
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -77,6 +93,79 @@ export default function CraftPage() {
               );
             })}
           </div>
+
+          <div className={styles.processStills} aria-label="Soaking and yarn preparation">
+            <p className={styles.processStillsLabel}>After re-reeling · soak</p>
+            <ul className={styles.processStillGrid}>
+              {YARN_PREP_STILLS.map((still) => (
+                <li key={still.name} className={styles.processStill}>
+                  <div className={styles.processStillMedia}>
+                    <Image
+                      src={still.image}
+                      alt={still.alt}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 33vw"
+                      className={styles.processStillImage}
+                    />
+                  </div>
+                  <p className={styles.processStillName}>{still.name}</p>
+                </li>
+              ))}
+            </ul>
+
+            <p className={`${styles.processStillsLabel} ${styles.processStillsLabelFollow}`}>
+              Wind · double · twist · warp
+            </p>
+            <ul className={`${styles.processStillGrid} ${styles.processStillGridFour}`}>
+              {YARN_LINE_STILLS.map((still) => (
+                <li key={still.name} className={styles.processStill}>
+                  <div className={styles.processStillMedia}>
+                    <Image
+                      src={still.image}
+                      alt={still.alt}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 25vw"
+                      className={styles.processStillImage}
+                    />
+                  </div>
+                  <p className={styles.processStillName}>{still.name}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="silk-varieties"
+        className={`section-spacing ${styles.varietiesBand}`}
+        aria-labelledby="silk-varieties-heading"
+      >
+        <div className="container-institutional">
+          <div className={`reveal-up ${styles.varietiesIntro}`}>
+            <span className="editorial-label">Silk varieties</span>
+            <h2 id="silk-varieties-heading" className={`display-section ${styles.varietiesHeading}`}>
+              Multivoltine and bivoltine · a short history
+            </h2>
+            <p className={styles.varietiesLead}>{SILK_VARIETY_INTRO}</p>
+          </div>
+
+          <div className={styles.varietiesGrid}>
+            {SILK_VARIETIES.map((variety) => (
+              <article key={variety.id} className={styles.varietyCard}>
+                <p className={styles.varietyEra}>{variety.era}</p>
+                <h3 className={styles.varietyLabel}>{variety.label}</h3>
+                <p className={styles.varietyColour}>
+                  Natural colour · <span>{variety.colour}</span>
+                </p>
+                <p className={styles.varietyBody}>{variety.details}</p>
+              </article>
+            ))}
+          </div>
+
+          <p className={`reveal-up ${styles.practiceNotes}`}>
+            {KSIC_IN_HOUSE} {KSIC_ZERO_WASTE}
+          </p>
         </div>
       </section>
 
@@ -131,70 +220,7 @@ export default function CraftPage() {
         </div>
       </section>
 
-      {/* Official Silk Identification & Burning Test */}
-      <section className="section-spacing" id="care" style={{ backgroundColor: "var(--color-bg-primary)" }}>
-        <div className="container-institutional">
-          <div className={styles.burningGrid}>
-            <div className="reveal-left">
-              <span className="editorial-label">IDENTIFICATION AND CARE</span>
-              <h2 className="display-section" style={{ marginBottom: "20px" }}>
-                WHAT THE SUPPLIED ACCOUNTS ACTUALLY SAY
-              </h2>
-              <p style={{ marginBottom: "16px" }}>
-                Each saree is described as carrying a unique identification number and a hologram. This website does not check those numbers.
-              </p>
-              <p style={{ marginBottom: "24px" }}>
-                Care notes below are taken from the Madhurya article. No washing temperature or extra chemical instruction is added.
-              </p>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                  <CheckCircle2 size={18} color="var(--color-burgundy)" style={{ flexShrink: 0, marginTop: "3px" }} />
-                  <div>
-                    <strong>Dry clean: </strong>
-                    <span style={{ color: "var(--color-text-secondary)" }}>
-                      Madhurya recommends dry cleaning to help preserve the shine.
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                  <CheckCircle2 size={18} color="var(--color-burgundy)" style={{ flexShrink: 0, marginTop: "3px" }} />
-                  <div>
-                    <strong>Store: </strong>
-                    <span style={{ color: "var(--color-text-secondary)" }}>
-                      Keep the saree in soft muslin or cotton, away from sunlight and moisture.
-                    </span>
-                  </div>
-                </div>
-
-                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
-                  <CheckCircle2 size={18} color="var(--color-burgundy)" style={{ flexShrink: 0, marginTop: "3px" }} />
-                  <div>
-                    <strong>In use: </strong>
-                    <span style={{ color: "var(--color-text-secondary)" }}>
-                      Avoid spraying perfume directly on the saree, and refold a stored saree every few months.
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={`reveal-scale ${styles.preservationBox}`}>
-              <div style={{ fontFamily: "var(--font-serif)", fontSize: "1.8rem", color: "var(--color-burgundy)", marginBottom: "16px" }}>
-                Preservation Guidelines
-              </div>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px", fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                <li>• Dry clean, to help preserve the shine.</li>
-                <li>• Store in soft muslin or cotton.</li>
-                <li>• Keep away from sunlight and moisture.</li>
-                <li>• Do not spray perfume directly on the saree.</li>
-                <li>• Refold a stored saree every few months.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <QualityCareSections idPrefix="craft-" />
     </div>
   );
 }

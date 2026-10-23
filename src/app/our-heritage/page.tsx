@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AboutSubnav } from "@/components/about/AboutSubnav";
 import { OurHeritageTimeline } from "./OurHeritageTimeline";
 import styles from "./OurHeritage.module.css";
@@ -40,14 +41,14 @@ const PILLARS = [
   {
     eyebrow: "Integrated works",
     title: "Cocoon to cloth, under one roof",
-    body: "KSIC is the only organisation in the country commanding the entire gamut of silk production - from reeling of cocoons to weaving of pure silk fabric of various shades and designs - all under one roof.",
+    body: "KSIC is among India’s largest silk producers, and commands the entire gamut of silk production — from reeling cocoons to weaving pure silk fabric of various shades and designs — all under one roof. From start to finish, nothing is outsourced.",
     image: "/assets/factory/ksic-factory-heritage-cinematic.jpg",
     alt: "KSIC silk production works",
   },
   {
-    eyebrow: "Recognised standards",
-    title: "Certified management systems",
-    body: "The Company is certified to ISO 9001:2015 and EMS 14001:2015, and holds OHSAS 18001:2007 within a Combined Integrated Management System by M/s. TUV Rheinland. In 2016-17 it received the Chief Minister’s Ratna Award for best marketing of its products.",
+    eyebrow: "Public recognition",
+    title: "Chief Minister’s Ratna Award",
+    body: "In 2016-17 KSIC received the Chief Minister’s Ratna Award for best marketing of its products - recognition of how the corporation takes Mysore Silk to market while remaining a state enterprise.",
     image: "/assets/heritage/ksic-1980-incorporation.jpg",
     alt: "KSIC as a Government of Karnataka enterprise",
   },
@@ -58,14 +59,6 @@ export default function OurHeritagePage() {
     <div className={styles.page}>
       <AboutSubnav activeHref="/our-heritage" />
 
-      <section className={styles.importantBand} aria-label="Key statement">
-        <div className="container-institutional">
-          <p className={styles.importantLine}>
-            KSIC is the proud inheritor of this royal legacy - and its public steward since 1980.
-          </p>
-        </div>
-      </section>
-
       <section className={`section-spacing ${styles.hero}`} aria-labelledby="heritage-heading">
         <div className="container-institutional">
           <div className={styles.heroGrid}>
@@ -75,11 +68,9 @@ export default function OurHeritagePage() {
                 Brief History of KSIC
               </h1>
               <p className={styles.lead}>
-                For over seven decades Karnataka Silk Industries Corporation Limited has treasured
-                that inheritance - taking charge of the Mysuru silk weaving factory founded in 1912,
-                and carrying it forward as a Government of Karnataka enterprise. The Mysuru works,
-                the transfer through the Sericulture Department, and the corporation that now holds
-                GI-11: that is the heritage of KSIC.
+                This is the institutional history of Karnataka Silk Industries Corporation Limited:
+                the Mysuru weaving works founded in 1912, succession through the Sericulture
+                Department, incorporation in 1980, and custody of GI-11 for Mysore Silk.
               </p>
             </div>
             <div className={styles.heroMedia}>
@@ -159,8 +150,7 @@ export default function OurHeritagePage() {
                 After India gained Independence, the Mysore State Sericulture Department took
                 control of the silk weaving factory. In 1980 the factory was handed over to
                 Karnataka Silk Industries Corporation Limited - a Government of Karnataka enterprise,
-                popularly known as KSIC - which has treasured this royal legacy for over seven
-                decades.
+                popularly known as KSIC.
               </p>
             </div>
           </div>
@@ -175,8 +165,13 @@ export default function OurHeritagePage() {
               What KSIC holds in public trust
             </h2>
             <p className={styles.sectionLead}>
-              Legal custody of the Mysore Silk name, integrated production capacity, and certified
-              management systems - drawn from KSIC’s own brief history.
+              Legal custody of the Mysore Silk name, integrated production under one roof, and
+              public recognition - drawn from KSIC’s own brief history. Management-system
+              certifications are listed on{" "}
+              <Link href="/about-us#certification" className={styles.inlineLink}>
+                About Us
+              </Link>
+              .
             </p>
           </div>
 

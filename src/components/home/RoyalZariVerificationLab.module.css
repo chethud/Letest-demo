@@ -182,13 +182,28 @@
   top: calc(100% + 0.45rem);
   right: 0;
   z-index: 8;
-  width: min(17rem, calc(100vw - 2.5rem));
-  padding: 0.75rem 0.85rem;
+  width: min(15.5rem, calc(100vw - 2.5rem));
+  padding: 0.65rem;
   border: 1px solid rgba(198, 154, 91, 0.45);
   border-radius: 8px;
   background: var(--rz-white);
   box-shadow: 0 10px 24px rgba(33, 26, 25, 0.08);
   box-sizing: border-box;
+}
+
+.helpFigure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  margin: 0 0 0.65rem;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(122, 21, 48, 0.06);
+}
+
+.helpImage {
+  object-fit: cover;
+  object-position: center;
 }
 
 .helpPanel p {
