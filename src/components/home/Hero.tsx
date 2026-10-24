@@ -161,13 +161,6 @@ export const Hero: React.FC = () => {
         ))}
       </div>
 
-      <div className={styles.mobileScroll} aria-hidden="true">
-        <span className={styles.mobileScrollLine} />
-        <span className={styles.mobileScrollDot} />
-        <span className={styles.mobileScrollLabel}>
-          {kn ? "ರೇಷ್ಮೆಯ ಕಲೆ" : "Art of Silk"}
-        </span>
-      </div>
     </section>
   );
 };

@@ -150,4 +150,8 @@
   .panel {
     min-height: 420px;
   }
+
+  .palaceSketch {
+    display: none;
+  }
 }

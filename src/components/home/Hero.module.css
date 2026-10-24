@@ -433,8 +433,7 @@
   flex-shrink: 0;
 }
 
-.mobileCampaign,
-.mobileScroll {
+.mobileCampaign {
   display: none;
 }
 
@@ -590,41 +589,6 @@
     box-shadow: 0 2px 8px rgba(122, 22, 29, 0.25);
   }
 
-  .mobileScroll {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 7px;
-    position: absolute;
-    left: 50%;
-    bottom: calc(22px + env(safe-area-inset-bottom));
-    transform: translateX(-50%);
-    z-index: 4;
-    pointer-events: none;
-  }
-
-  .mobileScrollLine {
-    width: 1px;
-    height: 28px;
-    background: #A68445;
-  }
-
-  .mobileScrollDot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #A68445;
-  }
-
-  .mobileScrollLabel {
-    font-family: var(--font-dm);
-    font-size: 0.58rem;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #8A6A38;
-  }
-
   .bottomTransitionFade {
     height: 28px;
     background: linear-gradient(180deg, transparent 0%, rgba(247, 243, 236, 0.2) 100%);
@@ -654,10 +618,6 @@
 
   .mobileSupport {
     margin-bottom: 16px;
-  }
-
-  .mobileScroll {
-    display: none;
   }
 }
 
