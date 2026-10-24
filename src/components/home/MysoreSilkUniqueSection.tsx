@@ -30,6 +30,10 @@ export const MysoreSilkUniqueSection: React.FC = () => {
     >
       <div className={styles.wrap}>
         <div className={styles.intro}>
+          <p className={styles.eyebrow}>
+            <span className={styles.eyebrowRule} aria-hidden="true" />
+            The Essence of Mysore Silk
+          </p>
           <h2 className={styles.title}>Why Mysuru Silk is Special</h2>
           <p className={styles.lead}>{MYSORE_SILK_UNIQUE_INTRO}</p>
           <Link href="/craft" className={styles.cta}>
@@ -50,27 +54,20 @@ export const MysoreSilkUniqueSection: React.FC = () => {
                     src={pillar.image}
                     alt={pillar.alt}
                     fill
-                    sizes="(max-width: 900px) 45vw, 18vw"
+                    sizes="(max-width: 720px) 46vw, (max-width: 1100px) 28vw, 16vw"
                     className={styles.archImage}
                   />
                 </div>
                 <p className={styles.pillarNumber}>{pillar.number}</p>
                 <h3 className={styles.pillarTitle}>{pillar.title}</h3>
-                <p className={styles.pillarText}>
-                  {pillar.short.split("\n").map((line, index) => (
-                    <React.Fragment key={`${pillar.id}-${index}`}>
-                      {index > 0 ? <br /> : null}
-                      {line}
-                    </React.Fragment>
-                  ))}
-                </p>
+                <p className={styles.pillarText}>{pillar.short}</p>
                 {isUniqueCode ? (
                   <a
                     href="#saree-serial-form"
                     className={styles.verifyCue}
                     onClick={scrollToForm}
                   >
-                    <span className={styles.verifyCueLabel}>Verify here</span>
+                    Verify Authenticity <span aria-hidden="true">→</span>
                   </a>
                 ) : null}
               </li>

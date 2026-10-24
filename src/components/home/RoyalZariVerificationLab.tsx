@@ -153,8 +153,11 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
                   className={styles.helpTrigger}
                   aria-expanded={helpOpen}
                   aria-controls={helpId}
-                  onClick={() => setHelpOpen((open) => !open)}
-                  onFocus={() => setHelpOpen(true)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    setHelpOpen((open) => !open);
+                  }}
                 >
                   Where to find the code?
                   <HelpCircle size={14} strokeWidth={1.75} aria-hidden="true" />
@@ -166,13 +169,14 @@ export const RoyalZariVerificationLab: React.FC<{ id?: string }> = ({
                     className={styles.helpPanel}
                     role="region"
                     aria-label="Where to find the saree code"
+                    onMouseEnter={() => setHelpOpen(true)}
                   >
                     <div className={styles.helpFigure}>
                       <Image
                         src="/assets/craft/unique-04-unique-code.jpg"
                         alt="Unique identification code on an authentic KSIC Mysore Silk pallu"
                         fill
-                        sizes="220px"
+                        sizes="232px"
                         className={styles.helpImage}
                       />
                     </div>

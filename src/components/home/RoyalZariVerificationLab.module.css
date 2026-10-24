@@ -11,7 +11,8 @@
 
   position: relative;
   margin: 0.7rem;
-  overflow: hidden;
+  /* visible so the serial-code help popover is not clipped */
+  overflow: visible;
   background: var(--rz-ivory);
   border: 1px solid rgba(198, 154, 91, 0.28);
   color: var(--rz-charcoal);
@@ -21,10 +22,12 @@
 /* -- Hero -- */
 .hero {
   position: relative;
+  z-index: 5;
   display: grid;
   grid-template-columns: 1fr;
   min-height: 0;
-  overflow: hidden;
+  /* visible so help panel can sit above the form without clipping */
+  overflow: visible;
   background: var(--rz-ivory);
 }
 
@@ -152,6 +155,8 @@
 .helpWrap {
   position: relative;
   margin-left: auto;
+  flex: 0 0 auto;
+  z-index: 40;
 }
 
 .helpTrigger {
@@ -182,22 +187,40 @@
 
 .helpPanel {
   position: absolute;
-  top: calc(100% + 0.45rem);
+  /* Flush under the trigger, right edges aligned */
+  top: calc(100% + 0.4rem);
   right: 0;
-  z-index: 8;
-  width: min(15.5rem, calc(100vw - 2.5rem));
+  left: auto;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  width: min(14.5rem, calc(100vw - 2rem));
+  min-height: 18rem;
   padding: 0.65rem;
   border: 1px solid rgba(198, 154, 91, 0.45);
   border-radius: 8px;
   background: var(--rz-white);
-  box-shadow: 0 10px 24px rgba(33, 26, 25, 0.08);
+  box-shadow: 0 12px 28px rgba(33, 26, 25, 0.12);
   box-sizing: border-box;
+  pointer-events: auto;
+}
+
+/* Invisible hover bridge so the cursor can move from the link onto the panel
+   without crossing a gap that would fire mouseleave and close it. */
+.helpPanel::before {
+  content: "";
+  position: absolute;
+  top: -0.55rem;
+  left: 0;
+  right: 0;
+  height: 0.55rem;
 }
 
 .helpFigure {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  flex: 1 1 auto;
+  min-height: 11.5rem;
   margin: 0 0 0.65rem;
   overflow: hidden;
   border-radius: 4px;
@@ -206,13 +229,13 @@
 
 .helpImage {
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
 }
 
 .helpPanel p {
-  margin: 0 0 0.55rem !important;
+  margin: 0 !important;
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif !important;
-  font-size: 0.82rem !important;
+  font-size: 0.8rem !important;
   font-weight: 400 !important;
   line-height: 1.45 !important;
   letter-spacing: 0 !important;
@@ -220,16 +243,39 @@
 }
 
 .helpClose {
-  padding: 0;
-  border: 0;
-  background: none;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.75rem;
+  min-height: 2rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(159, 29, 45, 0.28);
+  border-radius: 999px;
+  background: rgba(159, 29, 45, 0.06);
   font-family: "DM Sans", "Avenir Next", system-ui, sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  line-height: 1;
   text-transform: uppercase;
   color: var(--rz-crimson);
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.helpClose:hover {
+  background: var(--rz-crimson);
+  border-color: var(--rz-crimson);
+  color: #fffafa;
+}
+
+.helpClose:focus-visible {
+  outline: 2px solid var(--rz-crimson);
+  outline-offset: 3px;
 }
 
 .formRow {
@@ -386,7 +432,8 @@
 /* -- Lower band -- */
 .lower {
   position: relative;
-  z-index: 2;
+  /* Keep below .hero so the serial-code help popup is not covered */
+  z-index: 1;
   width: 100%;
   max-width: none;
   margin-inline: 0;

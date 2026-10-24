@@ -60,10 +60,44 @@
 
 @media (max-width: 960px) {
   .wrap {
-    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .item:nth-child(3) {
-    border-left: 0;
+  .item {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 4px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .badge {
+    width: 32px;
+    height: 32px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item {
+    gap: 4px;
+    padding: 8px 2px;
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+  .badge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon {
+    width: 14px;
+    height: 14px;
   }
 }
