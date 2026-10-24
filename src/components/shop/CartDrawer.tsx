@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Image from "next/image";
+import { CatalogImage } from "@/components/common/CatalogImage";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Lock, Minus, Plus, ShoppingBag, X } from "lucide-react";
@@ -95,7 +95,7 @@ export function CartDrawer() {
                   className={styles.thumb}
                   onClick={() => setCartOpen(false)}
                 >
-                  <Image
+                  <CatalogImage
                     src={line.image}
                     alt=""
                     fill

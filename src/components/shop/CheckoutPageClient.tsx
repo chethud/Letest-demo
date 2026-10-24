@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import { CatalogImage } from "@/components/common/CatalogImage";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Lock } from "lucide-react";
@@ -215,7 +215,7 @@ export function CheckoutPageClient() {
               {cart.map((line) => (
                 <li key={line.key}>
                   <span className={styles.summaryThumb}>
-                    <Image src={line.image} alt="" fill sizes="56px" />
+                    <CatalogImage src={line.image} alt="" fill sizes="56px" />
                   </span>
                   <span>
                     <strong>{line.name}</strong>

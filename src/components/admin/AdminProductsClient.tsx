@@ -1,16 +1,48 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 import {
+  applyShopSection,
   createEmptyProduct,
+  shopSectionOf,
   useCatalog,
   type AdminProduct,
+  type ShopSection,
 } from "@/context/CatalogContext";
 import { useShop } from "@/context/ShopContext";
 import { AdminShell } from "@/components/admin/AdminShell";
 import styles from "./AdminShell.module.css";
 
 const emptyForm = (): AdminProduct => createEmptyProduct();
+
+type ImageSlotKey = "hero" | "detail" | "pallu" | "texture";
+
+const IMAGE_SLOTS: { key: ImageSlotKey; label: string; hint: string }[] = [
+  { key: "hero", label: "Main hero image", hint: "Primary product photo" },
+  { key: "detail", label: "Sub image · Detail", hint: "Close-up / weave detail" },
+  { key: "pallu", label: "Sub image · Pallu", hint: "Pallu view" },
+  { key: "texture", label: "Sub image · Texture", hint: "Texture / fabric shot" },
+];
+
+const MAX_UPLOAD_BYTES = 1.5 * 1024 * 1024;
+
+function readImageFile(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    if (file.size > MAX_UPLOAD_BYTES) {
+      reject(new Error("Please choose an image under 1.5 MB for this demo."));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === "string" ? reader.result : "";
+      if (!result) reject(new Error("Could not read that image."));
+      else resolve(result);
+    };
+    reader.onerror = () => reject(new Error("Could not read that image."));
+    reader.readAsDataURL(file);
+  });
+}
 
 export function AdminProductsClient() {
   const { products, upsertProduct, deleteProduct } = useCatalog();
@@ -36,32 +68,27 @@ export function AdminProductsClient() {
     setEditing(null);
   }
 
-  return (
-    <AdminShell title="Products" subtitle="Create, edit, feature, and stock articles.">
-      <div className={styles.actions} style={{ marginBottom: "1rem" }}>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => setEditing(emptyForm())}
-        >
-          Add product
-        </button>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search catalogue"
-          style={{
-            minHeight: "2rem",
-            padding: "0.35rem 0.65rem",
-            border: "1px solid rgba(122,21,48,0.18)",
-            minWidth: "12rem",
-          }}
-        />
-      </div>
+  const isNew =
+    !!editing && editing.adminManaged && editing.id.startsWith("admin-");
 
-      {editing ? (
-        <div className={styles.panel} style={{ marginBottom: "1.25rem" }}>
-          <h2>{editing.adminManaged && editing.id.startsWith("admin-") ? "New product" : "Edit product"}</h2>
+  if (editing) {
+    return (
+      <AdminShell
+        title={isNew ? "New product" : "Edit product"}
+        subtitle={editing.name || "Create, edit, feature, and stock articles."}
+      >
+        <div className={styles.actions} style={{ marginBottom: "1rem" }}>
+          <button
+            type="button"
+            className={styles.btnGhost}
+            onClick={() => setEditing(null)}
+          >
+            ← Back to catalogue
+          </button>
+        </div>
+
+        <div className={styles.panel}>
+          <h2>{isNew ? "New product" : "Edit product"}</h2>
           <form className={styles.form} onSubmit={save}>
             <div className={styles.row2}>
               <label>
@@ -116,28 +143,112 @@ export function AdminProductsClient() {
                 }
               />
             </label>
-            <div className={styles.row2}>
-              <label>
-                Primary colour
-                <input
-                  value={editing.primaryColor}
-                  onChange={(e) =>
-                    setEditing({ ...editing, primaryColor: e.target.value })
-                  }
-                />
-              </label>
-              <label>
-                Hero image URL
-                <input
-                  value={editing.images.hero}
-                  onChange={(e) =>
-                    setEditing({
-                      ...editing,
-                      images: { ...editing.images, hero: e.target.value },
-                    })
-                  }
-                />
-              </label>
+            <label>
+              Primary colour
+              <input
+                value={editing.primaryColor}
+                onChange={(e) =>
+                  setEditing({ ...editing, primaryColor: e.target.value })
+                }
+              />
+            </label>
+
+            <div>
+              <p className={styles.imageSlotTitle} style={{ marginBottom: "0.65rem" }}>
+                Product images
+              </p>
+              <p className={styles.muted} style={{ margin: "0 0 0.85rem" }}>
+                Set one main hero image and up to three sub images. All appear in the
+                product gallery on the storefront.
+              </p>
+              <div className={styles.imageSlots}>
+                {IMAGE_SLOTS.map((slot) => {
+                  const value = editing.images[slot.key] || "";
+                  const isData = value.startsWith("data:");
+                  return (
+                    <div key={slot.key} className={styles.imageSlot}>
+                      <p className={styles.imageSlotTitle}>
+                        {slot.label}
+                        {slot.key === "hero" ? " · required" : ""}
+                      </p>
+                      <p className={styles.muted} style={{ margin: 0 }}>
+                        {slot.hint}
+                      </p>
+                      {value ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={value} alt="" className={styles.imagePreview} />
+                      ) : (
+                        <div className={styles.imageEmpty}>No image yet</div>
+                      )}
+                      <label>
+                        Image URL
+                        <input
+                          value={isData ? "" : value}
+                          placeholder={isData ? "Uploaded from device" : "/assets/…"}
+                          onChange={(e) =>
+                            setEditing({
+                              ...editing,
+                              images: {
+                                ...editing.images,
+                                [slot.key]: e.target.value,
+                              },
+                            })
+                          }
+                        />
+                      </label>
+                      <label>
+                        Upload from device
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp,image/gif"
+                          onChange={async (e) => {
+                            const file = e.target.files?.[0];
+                            e.target.value = "";
+                            if (!file) return;
+                            try {
+                              const dataUrl = await readImageFile(file);
+                              setEditing((current) =>
+                                current
+                                  ? {
+                                      ...current,
+                                      images: {
+                                        ...current.images,
+                                        [slot.key]: dataUrl,
+                                      },
+                                    }
+                                  : current,
+                              );
+                            } catch (error) {
+                              window.alert(
+                                error instanceof Error
+                                  ? error.message
+                                  : "Could not upload that image.",
+                              );
+                            }
+                          }}
+                        />
+                      </label>
+                      {value && slot.key !== "hero" ? (
+                        <button
+                          type="button"
+                          className={styles.btnGhost}
+                          onClick={() =>
+                            setEditing({
+                              ...editing,
+                              images: {
+                                ...editing.images,
+                                [slot.key]: undefined,
+                              },
+                            })
+                          }
+                        >
+                          Remove image
+                        </button>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div className={styles.row2}>
               <label>
@@ -171,15 +282,20 @@ export function AdminProductsClient() {
                 />
               </label>
             </div>
-            <label style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <input
-                type="checkbox"
-                checked={editing.featured}
+            <label>
+              Shop section
+              <select
+                value={shopSectionOf(editing)}
                 onChange={(e) =>
-                  setEditing({ ...editing, featured: e.target.checked })
+                  setEditing(
+                    applyShopSection(editing, e.target.value as ShopSection),
+                  )
                 }
-              />
-              Featured / bestseller
+              >
+                <option value="standard">Standard catalogue (All sarees)</option>
+                <option value="bestseller">Bestseller</option>
+                <option value="new_arrival">New arrival</option>
+              </select>
             </label>
             <div className={styles.actions}>
               <button type="submit" className={styles.btn}>
@@ -195,7 +311,31 @@ export function AdminProductsClient() {
             </div>
           </form>
         </div>
-      ) : null}
+      </AdminShell>
+    );
+  }
+
+  return (
+    <AdminShell title="Products" subtitle="Create, edit, feature, and stock articles.">
+      <div className={styles.toolbar}>
+        <Link href="/admin" className={styles.btnGhost}>
+          ← Back to dashboard
+        </Link>
+        <button
+          type="button"
+          className={styles.btn}
+          onClick={() => setEditing(emptyForm())}
+        >
+          Add product
+        </button>
+        <input
+          className={styles.searchField}
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search catalogue"
+        />
+      </div>
 
       <div className={styles.panel}>
         <h2>Catalogue ({filtered.length})</h2>
@@ -205,7 +345,7 @@ export function AdminProductsClient() {
               <th>Article</th>
               <th>Status</th>
               <th>Stock</th>
-              <th>Featured</th>
+              <th>Shop section</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -216,9 +356,17 @@ export function AdminProductsClient() {
                   <strong>{product.name}</strong>
                   <div className={styles.muted}>{product.articleNumber}</div>
                 </td>
-                <td>{product.status}</td>
+                <td>
+                  <span className={styles.statusPill}>{product.status}</span>
+                </td>
                 <td>{product.stockQty ?? "—"}</td>
-                <td>{product.featured ? "Yes" : "No"}</td>
+                <td>
+                  {shopSectionOf(product) === "bestseller"
+                    ? "Bestseller"
+                    : shopSectionOf(product) === "new_arrival"
+                      ? "New arrival"
+                      : "Standard"}
+                </td>
                 <td>
                   <div className={styles.actions}>
                     <button

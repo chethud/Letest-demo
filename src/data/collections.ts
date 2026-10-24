@@ -31,6 +31,8 @@ export interface KSICProduct {
     texture?: string;
   };
   featured: boolean;
+  /** When true, product appears in Shop → New arrivals. */
+  newArrival?: boolean;
 }
 
 export interface CollectionCategory {
@@ -217,6 +219,7 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
       hero: "/assets/collection/ksic-butta-collection-green.jpg",
     },
     featured: false,
+    newArrival: true,
   },
   {
     id: "art-checks-stripes-purple",
@@ -249,6 +252,7 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
       detail: "/assets/collection/ksic-mysore-silk-sarees.jpg",
     },
     featured: false,
+    newArrival: true,
   },
   {
     id: "art-pure-georgette-zari",
@@ -281,6 +285,7 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
       detail: "/assets/collection/ksic-kasuti-embroidery.jpg",
     },
     featured: false,
+    newArrival: true,
   },
   {
     id: "art-royal-bridal-emerald",
@@ -348,5 +353,5 @@ export const KSIC_PRODUCTS: KSICProduct[] = [
   },
 ];
 
-export const NEW_ARRIVALS = KSIC_PRODUCTS.filter((product) => product.status === "in_production");
+export const NEW_ARRIVALS = KSIC_PRODUCTS.filter((product) => product.newArrival);
 export const BESTSELLERS = KSIC_PRODUCTS.filter((product) => product.featured);

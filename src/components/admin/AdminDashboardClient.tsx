@@ -5,23 +5,19 @@ import Link from "next/link";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { useCatalog } from "@/context/CatalogContext";
 import { useOrders } from "@/context/OrdersContext";
-import { useShop } from "@/context/ShopContext";
-import { useOnlineBookingActive } from "@/hooks/useOnlineBookingActive";
 import styles from "./AdminShell.module.css";
 
 export function AdminDashboardClient() {
   const { products } = useCatalog();
   const { orders } = useOrders();
-  const { cartCount, wishlistCount } = useShop();
   const openOrders = orders.filter(
     (order) => order.status === "new" || order.status === "confirmed",
   ).length;
-  const bookingOn = useOnlineBookingActive();
 
   return (
     <AdminShell
       title="Dashboard"
-      subtitle="Demo e-commerce control plane for this browser."
+      subtitle="Overview of catalogue and orders in this browser."
     >
       <div className={styles.grid}>
         <div className={styles.stat}>
@@ -33,12 +29,8 @@ export function AdminDashboardClient() {
           <span>Open orders</span>
         </div>
         <div className={styles.stat}>
-          <strong>{cartCount}</strong>
-          <span>Bag items</span>
-        </div>
-        <div className={styles.stat}>
-          <strong>{wishlistCount}</strong>
-          <span>Wishlist</span>
+          <strong>{orders.length}</strong>
+          <span>Total orders</span>
         </div>
       </div>
 
@@ -52,16 +44,12 @@ export function AdminDashboardClient() {
             Review orders
           </Link>
           <Link href="/admin/settings" className={styles.btnGhost}>
-            Booking settings
+            Settings
           </Link>
           <Link href="/collection" className={styles.btnGhost}>
             Open shop
           </Link>
         </div>
-        <p className={styles.muted} style={{ marginTop: "1rem" }}>
-          Online booking is currently <strong>{bookingOn ? "enabled" : "locked"}</strong>{" "}
-          in this browser.
-        </p>
       </div>
     </AdminShell>
   );

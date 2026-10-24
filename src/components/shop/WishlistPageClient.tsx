@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import { CatalogImage } from "@/components/common/CatalogImage";
 import Link from "next/link";
 import { Heart, ShoppingBag, Trash2 } from "lucide-react";
 import { useCatalog } from "@/context/CatalogContext";
@@ -56,7 +56,7 @@ export function WishlistPageClient() {
             {wishlist.map((item) => (
               <li key={item.productId} className={styles.card}>
                 <Link href={`/collection/${item.slug}`} className={styles.media}>
-                  <Image
+                  <CatalogImage
                     src={item.image}
                     alt=""
                     fill

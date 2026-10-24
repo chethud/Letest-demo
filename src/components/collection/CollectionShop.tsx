@@ -8,6 +8,7 @@ import { ChevronDown, Heart, SlidersHorizontal, X } from "lucide-react";
 import { COLLECTION_CATEGORIES, KSICProduct } from "@/data/collections";
 import { useShop } from "@/context/ShopContext";
 import { useCatalog } from "@/context/CatalogContext";
+import { CatalogImage } from "@/components/common/CatalogImage";
 import styles from "./CollectionShop.module.css";
 
 type ShopView = "all" | "new" | "bestsellers";
@@ -130,17 +131,22 @@ export default function CollectionShop({
   }, [sourceProducts]);
 
   const categoryCounts = useMemo(() => {
-    const base = bestsellersOnly ? sourceProducts.filter((p) => p.featured) : sourceProducts;
+    const base = bestsellersOnly
+      ? sourceProducts.filter((p) => p.featured)
+      : view === "new"
+        ? sourceProducts.filter((p) => p.newArrival)
+        : sourceProducts;
     const counts: Record<string, number> = { all: base.length };
     COLLECTION_CATEGORIES.forEach((cat) => {
       counts[cat.id] = base.filter((prod) => matchesCategory(prod, cat.id)).length;
     });
     return counts;
-  }, [sourceProducts, bestsellersOnly]);
+  }, [sourceProducts, bestsellersOnly, view]);
 
   const filteredProducts = useMemo(() => {
     const list = sourceProducts.filter((prod) => {
       if (bestsellersOnly && !prod.featured) return false;
+      if (view === "new" && !bestsellersOnly && !prod.newArrival) return false;
       if (!matchesCategory(prod, selectedCategory)) return false;
       if (selectedColor !== "all" && prod.primaryColor !== selectedColor) return false;
       if (selectedStatus !== "all" && prod.status !== selectedStatus) return false;
@@ -170,7 +176,7 @@ export default function CollectionShop({
       sorted.sort((a, b) => (b.weightGrams ?? 0) - (a.weightGrams ?? 0));
     }
     return sorted;
-  }, [sourceProducts, bestsellersOnly, selectedCategory, selectedColor, selectedStatus, sortBy]);
+  }, [sourceProducts, bestsellersOnly, view, selectedCategory, selectedColor, selectedStatus, sortBy]);
 
   const activeFilterCount =
     (selectedCategory !== "all" ? 1 : 0) +
@@ -296,6 +302,7 @@ export default function CollectionShop({
                   }}
                 >
                   <span>New arrivals</span>
+                  <span>{sourceProducts.filter((p) => p.newArrival).length}</span>
                 </button>
               </li>
               <li>
@@ -454,7 +461,7 @@ export default function CollectionShop({
                   <li key={prod.id} className={styles.card}>
                     <div className={styles.mediaWrap}>
                       <Link href={`/collection/${prod.slug}`} className={styles.media}>
-                        <Image
+                        <CatalogImage
                           src={prod.images.hero}
                           alt={prod.name}
                           fill
@@ -462,7 +469,7 @@ export default function CollectionShop({
                           className={`${styles.image} ${styles.imagePrimary}`}
                         />
                         {hasHover ? (
-                          <Image
+                          <CatalogImage
                             src={hoverSrc}
                             alt=""
                             fill
@@ -470,7 +477,11 @@ export default function CollectionShop({
                             className={`${styles.image} ${styles.imageSecondary}`}
                           />
                         ) : null}
-                        {prod.featured ? <span className={styles.featuredTag}>Bestseller</span> : null}
+                        {prod.featured ? (
+                          <span className={styles.featuredTag}>Bestseller</span>
+                        ) : prod.newArrival ? (
+                          <span className={styles.featuredTag}>New</span>
+                        ) : null}
                       </Link>
                       <button
                         type="button"

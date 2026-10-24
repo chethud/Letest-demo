@@ -1,11 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import styles from "./Hero.module.css";
 import { useLanguage } from "@/context/LanguageContext";
+import { CatalogImage } from "@/components/common/CatalogImage";
+import {
+  CMS_HOME_CHANGE,
+  DEFAULT_HERO_IMAGES,
+  readCmsHome,
+  resolveHeroImages,
+} from "@/lib/cmsHome";
 
 type HeroSlide = {
   src: string;
@@ -23,9 +29,8 @@ type HeroSlide = {
   align?: "center" | "right";
 };
 
-const HERO_SLIDES: HeroSlide[] = [
+const HERO_SLIDE_COPY: Omit<HeroSlide, "src">[] = [
   {
-    src: "/assets/heritage/rose-pink-silk-temple.png",
     alt: "Rose pink Mysore silk saree with a gold zari border, displayed in a sunlit temple setting",
     kickerEn: "A LEGACY OF INDIAN CRAFTSMANSHIP",
     kickerKn: "ಭಾರತೀಯ ಕರಕುಶಲದ ಪರಂಪರೆ",
@@ -39,7 +44,6 @@ const HERO_SLIDES: HeroSlide[] = [
     align: "center",
   },
   {
-    src: "/assets/heritage/hero-new-arrivals.png",
     alt: "Crimson Mysore silk with gold zari in a sunlit niche, for new arrivals",
     kickerEn: "JUST ARRIVED",
     kickerKn: "ಹೊಸದಾಗಿ ಬಂದಿದೆ",
@@ -60,15 +64,40 @@ export const Hero: React.FC = () => {
   const { lang } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [autoplayKey, setAutoplayKey] = useState(0);
-  const slide = HERO_SLIDES[activeIndex];
+  const [heroImages, setHeroImages] = useState<[string, string]>([
+    DEFAULT_HERO_IMAGES[0],
+    DEFAULT_HERO_IMAGES[1],
+  ]);
   const kn = lang === "kn";
 
   useEffect(() => {
+    const sync = () => setHeroImages(resolveHeroImages(readCmsHome()));
+    sync();
+    window.addEventListener(CMS_HOME_CHANGE, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(CMS_HOME_CHANGE, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  const slides = useMemo<HeroSlide[]>(
+    () =>
+      HERO_SLIDE_COPY.map((copy, index) => ({
+        ...copy,
+        src: heroImages[index] ?? DEFAULT_HERO_IMAGES[index],
+      })),
+    [heroImages],
+  );
+
+  const slide = slides[activeIndex] ?? slides[0];
+
+  useEffect(() => {
     const id = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % HERO_SLIDES.length);
+      setActiveIndex((current) => (current + 1) % slides.length);
     }, SLIDE_INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [autoplayKey]);
+  }, [autoplayKey, slides.length]);
 
   const goToSlide = (index: number) => {
     setActiveIndex(index);
@@ -83,13 +112,13 @@ export const Hero: React.FC = () => {
       aria-label="Official Karnataka Mysore Silk Heritage"
     >
       <div className={styles.heroBackground} style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-        {HERO_SLIDES.map((item, index) => (
+        {slides.map((item, index) => (
           <div
-            key={item.src}
+            key={`${index}-${item.src.slice(0, 48)}`}
             className={`${styles.heroSlide} ${index === activeIndex ? styles.heroSlideActive : ""}`}
             aria-hidden={index !== activeIndex}
           >
-            <Image
+            <CatalogImage
               src={item.src}
               alt={item.alt}
               fill
@@ -99,7 +128,7 @@ export const Hero: React.FC = () => {
                 item.align === "right" ? styles.heroImageRight : styles.heroImageCenter
               }`}
             />
-            <Image
+            <CatalogImage
               src={item.src}
               alt=""
               fill
@@ -115,7 +144,7 @@ export const Hero: React.FC = () => {
         <div className={styles.bottomTransitionFade} aria-hidden="true" />
       </div>
 
-      <div className={styles.heroInnerContainer} key={slide.src}>
+      <div className={styles.heroInnerContainer} key={slide.src.slice(0, 48)}>
         <div className={styles.leftEditorialBlock}>
           <div className={styles.kickerGroup}>
             <span className={styles.kickerEnglish}>{kn ? slide.kickerKn : slide.kickerEn}</span>
@@ -148,9 +177,9 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className={styles.heroDots} role="tablist" aria-label="Hero images">
-        {HERO_SLIDES.map((item, index) => (
+        {slides.map((item, index) => (
           <button
-            key={item.src}
+            key={`${index}-dot`}
             type="button"
             role="tab"
             aria-selected={index === activeIndex}
@@ -160,7 +189,6 @@ export const Hero: React.FC = () => {
           />
         ))}
       </div>
-
     </section>
   );
 };

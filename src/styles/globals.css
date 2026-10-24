@@ -635,3 +635,63 @@ a[class*="cta"] {
   letter-spacing: 0.14em !important;
 }
 
+/* CMS UI settings (html[data-ui-*]) */
+html[data-ui-bg="ivory"] {
+  --color-bg-primary: #fffcfa;
+  --color-bg-secondary: #f6efe8;
+  --color-bg-paper: #ffffff;
+  --color-bg-subtle: #f8f3ee;
+  --color-bg-blush: #efe6dc;
+}
+
+html[data-ui-bg="warm"] {
+  --color-bg-primary: #faf6ef;
+  --color-bg-secondary: #f0e6d6;
+  --color-bg-paper: #fffdf8;
+  --color-bg-subtle: #f5ecdf;
+  --color-bg-blush: #e9dcc8;
+}
+
+html[data-ui-accent="maroon"] {
+  --color-burgundy: #5c1024;
+  --color-burgundy-dark: #3f0a18;
+  --color-burgundy-soft: rgba(92, 16, 36, 0.1);
+}
+
+html[data-ui-accent="rose"] {
+  --color-burgundy: #9a3a4a;
+  --color-burgundy-dark: #7a1530;
+  --color-burgundy-soft: rgba(154, 58, 74, 0.1);
+}
+
+html[data-ui-density="compact"] {
+  --section-padding-y: 24px;
+  --section-padding-y-sm: 16px;
+}
+
+html[data-ui-reveals="off"] .reveal-on-scroll,
+html[data-ui-reveals="off"] .reveal-up,
+html[data-ui-reveals="off"] .reveal-fade,
+html[data-ui-reveals="off"] .reveal-scale,
+html[data-ui-reveals="off"] .reveal-left,
+html[data-ui-reveals="off"] .reveal-right,
+html[data-ui-reveals="off"] .reveal-stagger > *,
+html[data-ui-reveals="off"] .reveal-rule {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+html[data-ui-corners="sharp"] button,
+html[data-ui-corners="sharp"] input,
+html[data-ui-corners="sharp"] select,
+html[data-ui-corners="sharp"] textarea,
+html[data-ui-corners="sharp"] [class*="btn"],
+html[data-ui-corners="sharp"] [class*="Btn"],
+html[data-ui-corners="sharp"] [class*="card"],
+html[data-ui-corners="sharp"] [class*="Card"],
+html[data-ui-corners="sharp"] [class*="pill"],
+html[data-ui-corners="sharp"] [class*="link"] {
+  border-radius: 0 !important;
+}
+

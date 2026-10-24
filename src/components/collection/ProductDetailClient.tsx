@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useId, useMemo, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { CatalogImage } from "@/components/common/CatalogImage";
 import {
   ArrowRight,
   ChevronDown,
@@ -80,14 +80,14 @@ function ProductGallery({ product }: { product: KSICProduct }) {
               className={`${styles.thumb} ${index === safeIndex ? styles.thumbActive : ""}`}
               onClick={() => setActive(index)}
             >
-              <Image src={item.src} alt="" fill sizes="72px" className={styles.thumbImage} />
+              <CatalogImage src={item.src} alt="" fill sizes="72px" className={styles.thumbImage} />
             </button>
           ))}
         </div>
       ) : null}
 
       <div className={styles.heroFrame}>
-        <Image
+        <CatalogImage
           src={current.src}
           alt={`${product.name}: ${current.label}`}
           fill
@@ -558,7 +558,7 @@ export default function ProductDetailClient({
               {related.map((item) => (
                 <Link key={item.id} href={`/collection/${item.slug}`} className={styles.relatedCard}>
                   <span className={styles.relatedMedia}>
-                    <Image src={item.images.hero} alt="" fill sizes="(max-width: 700px) 50vw, 25vw" />
+                    <CatalogImage src={item.images.hero} alt="" fill sizes="(max-width: 700px) 50vw, 25vw" />
                     {item.featured ? <span className={styles.relatedTag}>Bestseller</span> : null}
                   </span>
                   <span className={styles.relatedCategory}>{item.category}</span>

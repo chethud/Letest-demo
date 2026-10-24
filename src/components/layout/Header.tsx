@@ -11,12 +11,14 @@ import { NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { useCatalog } from "@/context/CatalogContext";
 import { useShop } from "@/context/ShopContext";
+import { readUiSettings } from "@/lib/uiSettings";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const { cartCount, wishlistCount, setCartOpen, hydrated } = useShop();
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, hydrated: authHydrated } = useAuth();
+  const isSignedIn = Boolean(user);
   const { products: catalogProducts } = useCatalog();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState<string | null>(null);
@@ -24,10 +26,22 @@ export const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [utilityHidden, setUtilityHidden] = useState(false);
+  const [cmsHideUtility, setCmsHideUtility] = useState(false);
   const [portalReady, setPortalReady] = useState(false);
 
   useEffect(() => {
     setPortalReady(true);
+  }, []);
+
+  useEffect(() => {
+    const sync = () => setCmsHideUtility(readUiSettings().utilityBar === "hide");
+    sync();
+    window.addEventListener("ksic-ui-settings-change", sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener("ksic-ui-settings-change", sync);
+      window.removeEventListener("storage", sync);
+    };
   }, []);
 
   useEffect(() => {
@@ -106,7 +120,9 @@ export const Header: React.FC = () => {
   return (
     <>
       <header ref={headerRef} className={styles.headerContainer}>
-        <div className={`${styles.utilityBar} ${utilityHidden ? styles.utilityBarHidden : ""}`}>
+        <div
+          className={`${styles.utilityBar} ${utilityHidden || cmsHideUtility ? styles.utilityBarHidden : ""}`}
+        >
           <div className={styles.utilityInner}>
             <p className={styles.utilityHeritage}>
               <span className={styles.utilityFact}>
@@ -231,45 +247,66 @@ export const Header: React.FC = () => {
             >
               <Search size={19} strokeWidth={1.5} />
             </button>
-            <Link
-              href={isAdmin ? "/admin" : user ? "/account" : "/login"}
-              className={`${styles.iconButton} ${styles.iconDesktop}`}
-              aria-label={isAdmin ? "Admin dashboard" : user ? "My account" : "Sign in"}
-            >
-              <User size={19} strokeWidth={1.5} />
-            </Link>
-            <Link
-              href="/wishlist"
-              className={`${styles.iconButton} ${styles.iconDesktop} ${styles.bagButton}`}
-              aria-label={
-                hydrated && wishlistCount > 0
-                  ? `Wishlist, ${wishlistCount} saved`
-                  : "Wishlist"
-              }
-            >
-              <Heart size={19} strokeWidth={1.5} />
-              {hydrated && wishlistCount > 0 ? (
-                <span className={styles.cartBadge}>{wishlistCount > 9 ? "9+" : wishlistCount}</span>
-              ) : null}
-            </Link>
-            <button
-              type="button"
-              className={`${styles.iconButton} ${styles.bagButton}`}
-              aria-label={
-                hydrated && cartCount > 0
-                  ? `Shopping bag, ${cartCount} items`
-                  : "Shopping bag"
-              }
-              onClick={() => {
-                setSearchOpen(false);
-                setCartOpen(true);
-              }}
-            >
-              <ShoppingBag size={19} strokeWidth={1.5} />
-              {hydrated && cartCount > 0 ? (
-                <span className={styles.cartBadge}>{cartCount > 9 ? "9+" : cartCount}</span>
-              ) : null}
-            </button>
+
+            {authHydrated && isSignedIn ? (
+              <>
+                <Link
+                  href={isAdmin ? "/admin" : "/account"}
+                  className={`${styles.iconButton} ${styles.iconDesktop}`}
+                  aria-label={isAdmin ? "Admin dashboard" : "My account"}
+                >
+                  <User size={19} strokeWidth={1.5} />
+                </Link>
+                <Link
+                  href="/wishlist"
+                  className={`${styles.iconButton} ${styles.iconDesktop} ${styles.bagButton}`}
+                  aria-label={
+                    hydrated && wishlistCount > 0
+                      ? `Wishlist, ${wishlistCount} saved`
+                      : "Wishlist"
+                  }
+                >
+                  <Heart size={19} strokeWidth={1.5} />
+                  {hydrated && wishlistCount > 0 ? (
+                    <span className={styles.cartBadge}>
+                      {wishlistCount > 9 ? "9+" : wishlistCount}
+                    </span>
+                  ) : null}
+                </Link>
+                <button
+                  type="button"
+                  className={`${styles.iconButton} ${styles.bagButton}`}
+                  aria-label={
+                    hydrated && cartCount > 0
+                      ? `Shopping bag, ${cartCount} items`
+                      : "Shopping bag"
+                  }
+                  onClick={() => {
+                    setSearchOpen(false);
+                    setCartOpen(true);
+                  }}
+                >
+                  <ShoppingBag size={19} strokeWidth={1.5} />
+                  {hydrated && cartCount > 0 ? (
+                    <span className={styles.cartBadge}>
+                      {cartCount > 9 ? "9+" : cartCount}
+                    </span>
+                  ) : null}
+                </button>
+              </>
+            ) : authHydrated ? (
+              <div className={`${styles.authLinks} ${styles.iconDesktop}`}>
+                <Link href="/login" className={styles.authLink}>
+                  Login
+                </Link>
+                <span className={styles.authSep} aria-hidden="true">
+                  /
+                </span>
+                <Link href="/signup" className={styles.authLink}>
+                  Signup
+                </Link>
+              </div>
+            ) : null}
 
             {searchOpen && (
               <div className={styles.searchPanel}>
@@ -390,6 +427,39 @@ export const Header: React.FC = () => {
                 </nav>
 
                 <div className={styles.drawerFooter}>
+                  {authHydrated && isSignedIn ? (
+                    <>
+                      <Link
+                        href={isAdmin ? "/admin" : "/account"}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {isAdmin ? "Admin" : "My account"}
+                      </Link>
+                      <Link href="/wishlist" onClick={() => setIsMobileMenuOpen(false)}>
+                        Wishlist
+                      </Link>
+                      <button
+                        type="button"
+                        className={styles.drawerBagBtn}
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          setCartOpen(true);
+                        }}
+                      >
+                        Shopping bag
+                        {hydrated && cartCount > 0 ? ` (${cartCount})` : ""}
+                      </button>
+                    </>
+                  ) : authHydrated ? (
+                    <>
+                      <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                        Login
+                      </Link>
+                      <Link href="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                        Signup
+                      </Link>
+                    </>
+                  ) : null}
                   {UTILITY_LINKS.map((link) => (
                     <Link
                       key={link.label}

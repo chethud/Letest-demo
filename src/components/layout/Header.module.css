@@ -340,6 +340,44 @@
   padding-left: 18px;
 }
 
+.authLinks {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.authLink {
+  color: #292522;
+  text-decoration: none;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.authLink:hover {
+  color: #8e1b2b;
+}
+
+.authSep {
+  color: rgba(41, 37, 34, 0.35);
+  font-size: 0.75rem;
+}
+
+.drawerBagBtn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
 .iconRow::before {
   content: "";
   width: 1px;

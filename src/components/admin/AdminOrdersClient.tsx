@@ -52,7 +52,9 @@ export function AdminOrdersClient() {
                         .join(", ")}
                     </div>
                   </td>
-                  <td>{order.status}</td>
+                  <td>
+                    <span className={styles.statusPill}>{order.status}</span>
+                  </td>
                   <td>
                     <select
                       value={order.status}

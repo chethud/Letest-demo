@@ -12,7 +12,15 @@ import {
 import styles from "./AdminShell.module.css";
 
 export function AdminSettingsClient() {
-  const [flags, setFlags] = useState<BookingFlags>(getEffectiveBookingFlags());
+  const [flags, setFlags] = useState<BookingFlags>(() =>
+    typeof window === "undefined"
+      ? {
+          bookingEnabled: false,
+          inventoryValidationConfigured: false,
+          paymentConfigured: false,
+        }
+      : getEffectiveBookingFlags(),
+  );
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -25,48 +33,52 @@ export function AdminSettingsClient() {
     return () => window.removeEventListener("ksic-booking-change", sync);
   }, []);
 
-  function enableBooking() {
-    const next = {
+  function turnBookingOn() {
+    writeBookingOverride({
       bookingEnabled: true,
       inventoryValidationConfigured: true,
       paymentConfigured: true,
-    };
-    writeBookingOverride(next);
-    setFlags(next);
-    setActive(true);
+    });
   }
 
-  function disableBooking() {
+  function turnBookingOff() {
     clearBookingOverride();
-    const next = getEffectiveBookingFlags();
-    setFlags(next);
-    setActive(false);
   }
 
   return (
     <AdminShell
       title="Settings"
-      subtitle="Runtime booking flags for this browser (demo override)."
+      subtitle="Runtime controls for this browser (demo override)."
     >
       <div className={styles.panel}>
         <h2>Online booking</h2>
-        <p className={styles.muted}>
-          Status: <strong>{active ? "Enabled" : "Temporarily unavailable"}</strong>
+        <p className={styles.muted} style={{ margin: "0 0 0.85rem" }}>
+          Status:{" "}
+          <strong>{active ? "On — customers can book" : "Off — booking locked"}</strong>
         </p>
-        <ul className={styles.muted} style={{ margin: "0.75rem 0 1rem", paddingLeft: "1.1rem" }}>
+        <ul className={styles.muted} style={{ margin: "0 0 1rem", paddingLeft: "1.1rem" }}>
           <li>bookingEnabled: {String(flags.bookingEnabled)}</li>
           <li>
-            inventoryValidationConfigured:{" "}
-            {String(flags.inventoryValidationConfigured)}
+            inventoryValidationConfigured: {String(flags.inventoryValidationConfigured)}
           </li>
           <li>paymentConfigured: {String(flags.paymentConfigured)}</li>
         </ul>
         <div className={styles.actions}>
-          <button type="button" className={styles.btn} onClick={enableBooking}>
-            Enable booking
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={turnBookingOn}
+            disabled={active}
+          >
+            Turn booking on
           </button>
-          <button type="button" className={styles.btnGhost} onClick={disableBooking}>
-            Lock booking
+          <button
+            type="button"
+            className={styles.btnGhost}
+            onClick={turnBookingOff}
+            disabled={!active}
+          >
+            Turn booking off
           </button>
         </div>
       </div>

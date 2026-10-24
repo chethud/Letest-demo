@@ -96,9 +96,31 @@ export function createEmptyProduct(): AdminProduct {
       hero: "/assets/collection/editorial-sarees.jpg",
     },
     featured: false,
+    newArrival: false,
     stockQty: 10,
     adminManaged: true,
   };
+}
+
+export type ShopSection = "standard" | "bestseller" | "new_arrival";
+
+export function shopSectionOf(product: Pick<AdminProduct, "featured" | "newArrival">): ShopSection {
+  if (product.featured) return "bestseller";
+  if (product.newArrival) return "new_arrival";
+  return "standard";
+}
+
+export function applyShopSection(
+  product: AdminProduct,
+  section: ShopSection,
+): AdminProduct {
+  if (section === "bestseller") {
+    return { ...product, featured: true, newArrival: false };
+  }
+  if (section === "new_arrival") {
+    return { ...product, featured: false, newArrival: true };
+  }
+  return { ...product, featured: false, newArrival: false };
 }
 
 export function CatalogProvider({ children }: { children: React.ReactNode }) {
