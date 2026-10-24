@@ -12,7 +12,7 @@ export const HeritageSection: React.FC = () => {
     <section
       className={styles.heritageSection}
       id="heritage"
-      aria-label="Our Heritage, 1912: The Beginning of a Living Legacy"
+      aria-label="Our Story, 1912: The Beginning of a Living Legacy"
     >
       <div className={styles.heritageWatermark} aria-hidden="true">
         <GandaberundaArt
@@ -74,7 +74,7 @@ export const HeritageSection: React.FC = () => {
           <div className={styles.narrativeColumn}>
             {/* Eyebrow */}
             <div className={styles.eyebrowWrapper}>
-              <span className={styles.eyebrowText}>OUR HERITAGE</span>
+              <span className={styles.eyebrowText}>OUR STORY</span>
             </div>
 
             {/* Historical Year and Patronage Label */}
@@ -90,15 +90,18 @@ export const HeritageSection: React.FC = () => {
               THE BEGINNING OF A LIVING LEGACY.
             </h2>
 
-            {/* Historical Narrative Description */}
             <p className={styles.description}>
-              The Mysore Silk Weaving Factory was established in Mysuru in 1912 under Sri Nalvadi Krishnaraja Wadiyar, the Maharaja of Mysore province. Initially, the fabrics were crafted exclusively to meet the ceremonial requirements of the royal family and ornamental silk regalia for the state armed forces.
+              On a visit to Europe, Sri Nalvadi Krishnaraja Wadiyar IV was struck by the finish of Swiss
+              silks. He returned determined to weave silk in Mysore to that standard, while keeping the
+              spirit of local craft. He began with a weaving unit inside the Mysore Palace, gathering
+              artisans whose work grew into the Mysore Silk Weaving Factory of 1912, cloth first made
+              for the royal household and the state armed forces.
             </p>
 
-            {/* Historical Quotation Panel */}
             <div className={styles.quotePanel}>
               <p className={styles.quoteText}>
-                The factory produced premium silk for the royal family and the armed forces. Madhurya separately describes an interest in Swiss silk. The two accounts are not merged into one quotation.
+                He returned home with a dream to create silk in India that matched that same level of
+                perfection while carrying the spirit of Mysore’s own craftsmanship.
               </p>
             </div>
 

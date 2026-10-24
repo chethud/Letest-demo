@@ -16,7 +16,7 @@ export const JOURNAL_LINKS: NavLink[] = [
 
 export const ABOUT_LINKS: NavLink[] = [
   { label: "About Us", href: "/about-us" },
-  { label: "Our Heritage", href: "/our-heritage" },
+  { label: "History of KSIC", href: "/our-heritage" },
   { label: "Board of Directors", href: "/bod" },
   { label: "Shareholders", href: "/shareholders" },
   { label: "The Archive", href: "/the-archive" },
@@ -44,7 +44,7 @@ export const NAV_ITEMS: NavItem[] = [
   {
     id: "mysore-silk",
     label: "Mysore Silk",
-    href: "/craft",
+    href: "/heritage",
     children: MYSORE_SILK_LINKS,
   },
   {

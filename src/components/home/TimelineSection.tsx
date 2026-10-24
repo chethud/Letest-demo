@@ -23,13 +23,13 @@ export const TimelineSection: React.FC = () => {
     <section
       className={styles.timelineSection}
       id="timeline"
-      aria-label="Century of Stewardship: The Chronology of Mysore Silk"
+      aria-label="Through the years: the chronology of Mysore Silk"
     >
       <div className={styles.container}>
         {/* 01. Sophisticated Section Introduction */}
         <div className={styles.timelineHeader}>
           <div className={styles.eyebrowText}>
-            CENTURY OF STEWARDSHIP
+            THROUGH THE YEARS
           </div>
 
           <h2 className={styles.sectionTitle}>
@@ -172,7 +172,7 @@ export const TimelineSection: React.FC = () => {
         {/* 04. Bottom Navigation and Actions */}
         <div className={styles.controlsRow}>
           <div className={styles.stepCounter}>
-            EPOCH {activeIndex + 1} OF {HERITAGE_MILESTONES.length} · {current.year}
+            {activeIndex + 1} OF {HERITAGE_MILESTONES.length} · {current.year}
           </div>
 
           <div className={styles.navButtonGroup}>

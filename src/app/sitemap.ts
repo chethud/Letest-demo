@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/craft",
     "/collection",
     "/about-us",
+    "/our-heritage",
     "/bod",
     "/shareholders",
     "/stories",

@@ -6,9 +6,9 @@ import { OurHeritageTimeline } from "./OurHeritageTimeline";
 import styles from "./OurHeritage.module.css";
 
 export const metadata = {
-  title: "Our Heritage · Brief History of KSIC | KSIC",
+  title: "History of KSIC | KSIC",
   description:
-    "Brief history of Karnataka Silk Industries Corporation Limited: the 1912 Mysuru weaving factory, state stewardship, incorporation in 1980, GI-11, and the 2012 centenary.",
+    "Institutional history of Karnataka Silk Industries Corporation Limited: the 1912 Mysuru weaving factory, state stewardship, incorporation in 1980, GI-11, and the 2012 centenary.",
 };
 
 /**
@@ -63,14 +63,19 @@ export default function OurHeritagePage() {
         <div className="container-institutional">
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
-              <span className="editorial-label">About Us · Our Heritage</span>
+              <span className="editorial-label">About Us · History of KSIC</span>
               <h1 id="heritage-heading" className={styles.title}>
-                Brief History of KSIC
+                History of KSIC
               </h1>
               <p className={styles.lead}>
-                This is the institutional history of Karnataka Silk Industries Corporation Limited:
-                the Mysuru weaving works founded in 1912, succession through the Sericulture
-                Department, incorporation in 1980, and custody of GI-11 for Mysore Silk.
+                The institutional record of Karnataka Silk Industries Corporation Limited: the
+                Mysuru weaving works founded in 1912, succession through the Sericulture Department,
+                incorporation in 1980, and custody of GI-11 for Mysore Silk. For the cultural story
+                of the textile itself, see{" "}
+                <Link href="/heritage" className={styles.inlineLink}>
+                  Our Story
+                </Link>
+                .
               </p>
             </div>
             <div className={styles.heroMedia}>
@@ -87,7 +92,7 @@ export default function OurHeritagePage() {
         </div>
       </section>
 
-      <section className={`section-spacing ${styles.facts}`} aria-label="KSIC heritage facts">
+      <section className={`section-spacing ${styles.facts}`} aria-label="KSIC history facts">
         <div className="container-institutional">
           <div className={styles.factGrid}>
             {FACTS.map((fact) => (
@@ -187,11 +192,9 @@ export default function OurHeritagePage() {
                     className={styles.pillarImage}
                   />
                 </div>
-                <div className={styles.pillarCopy}>
-                  <p className={styles.pillarEyebrow}>{pillar.eyebrow}</p>
-                  <h3 className={styles.pillarTitle}>{pillar.title}</h3>
-                  <p className={styles.pillarBody}>{pillar.body}</p>
-                </div>
+                <p className={styles.pillarEyebrow}>{pillar.eyebrow}</p>
+                <h3 className={styles.pillarTitle}>{pillar.title}</h3>
+                <p className={styles.pillarBody}>{pillar.body}</p>
               </article>
             ))}
           </div>

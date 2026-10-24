@@ -1,3 +1,10 @@
+/** Compact process stills shown under the stage that names the method. */
+export type CraftProcessStill = {
+  name: string;
+  image: string;
+  alt: string;
+};
+
 export interface CraftStage {
   step: string;
   name: string;
@@ -8,15 +15,11 @@ export interface CraftStage {
   technicalSpec: string;
   image: string;
   attributes: string[];
+  /** Small method stills for this stage; open in a titled lightbox. */
+  stills?: CraftProcessStill[];
 }
 
-/** Compact name + image only: subprocesses after re-reeling (no long copy). */
-export type CraftProcessStill = {
-  name: string;
-  image: string;
-  alt: string;
-};
-
+/** After re-reeling · soak (stage 02). */
 export const YARN_PREP_STILLS: CraftProcessStill[] = [
   {
     name: "Soak",
@@ -30,7 +33,7 @@ export const YARN_PREP_STILLS: CraftProcessStill[] = [
   },
 ];
 
-/** Compact name + image only: wind through warp / wift prep. */
+/** Wind · double · twist · warp (stage 03). */
 export const YARN_LINE_STILLS: CraftProcessStill[] = [
   {
     name: "Wind",
@@ -79,6 +82,7 @@ export const CRAFT_STAGES: CraftStage[] = [
       "Soak and boil · Reel into raw silk\nNine cocoons · one silk yarn\nRe-reel for softness · Tensile-strength check",
     image: "/assets/craft/02-filature-reeling.jpg",
     attributes: ["SOAK · BOIL · REEL", "NINE COCOONS · ONE YARN", "RE-REEL"],
+    stills: YARN_PREP_STILLS,
   },
   {
     step: "03",
@@ -92,6 +96,7 @@ export const CRAFT_STAGES: CraftStage[] = [
       "Wind · Double · Twist\nTwisted · cone · wift (breadth)\nUntwisted · warp beam · up to ~900 m (length)",
     image: "/assets/craft/03-yarn-twisting.jpg",
     attributes: ["WIND · DOUBLE", "WIFT · TWISTED CONE", "WARP · ~900 M"],
+    stills: YARN_LINE_STILLS,
   },
   {
     step: "04",

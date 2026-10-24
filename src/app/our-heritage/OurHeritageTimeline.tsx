@@ -11,7 +11,7 @@ const MILESTONES = [
     year: "1912",
     epoch: "Royal works",
     title: "Royal factory founded",
-    body: "The silk weaving factory in Mysuru, presently owned by KSIC, was established by Sri Nalvadi Krishnaraja Wodeyar, Maharaja of Mysore. Silk fabrics were manufactured and supplied for the royal family, with ornamental fabrics for their armed forces.",
+    body: "Inspired by Swiss silk seen in Europe, Sri Nalvadi Krishnaraja Wodeyar began weaving inside the Mysore Palace. That work became the Mysore Silk Weaving Factory, making cloth for the royal family and ornamental fabrics for the armed forces. KSIC holds the works today.",
     image: "/assets/heritage/ksic-1912-foundation.jpg",
     alt: "Foundation of the Mysuru silk weaving works",
   },
@@ -125,7 +125,11 @@ export function OurHeritageTimeline() {
         </header>
 
         <div className={styles.timelineRail} aria-label="Chronological selector">
-          <div className={styles.timelineRailTrack} aria-hidden="true">
+          <div
+            className={styles.timelineRailTrack}
+            aria-hidden="true"
+            style={{ "--year-count": MILESTONES.length } as React.CSSProperties}
+          >
             <span className={styles.timelineRailBase} />
             <span
               className={styles.timelineRailProgress}
@@ -137,8 +141,9 @@ export function OurHeritageTimeline() {
             id={tablistId}
             className={styles.timelineYears}
             role="tablist"
-            aria-label="KSIC heritage years"
+            aria-label="KSIC history years"
             onKeyDown={onTabListKeyDown}
+            style={{ "--year-count": MILESTONES.length } as React.CSSProperties}
           >
             {MILESTONES.map((item, index) => {
               const selected = index === activeIndex;

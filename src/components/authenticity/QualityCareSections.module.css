@@ -5,8 +5,125 @@
 }
 
 .careBand {
-  background: var(--color-bg-primary);
+  background: var(--color-bg-secondary);
   border-bottom: var(--border-rule);
+}
+
+.careHeader {
+  margin: 0 0 clamp(24px, 3.5vw, 36px);
+}
+
+.careTitle {
+  margin: 0 !important;
+}
+
+.careSplit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: start;
+  padding-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid rgba(176, 132, 63, 0.3);
+}
+
+.careCol {
+  min-width: 0;
+}
+
+.careCol + .careCol {
+  padding-left: clamp(20px, 3vw, 36px);
+  border-left: 1px solid rgba(176, 132, 63, 0.28);
+}
+
+.careColLabel {
+  margin: 0 0 8px;
+  font-family: var(--font-dm);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-burgundy);
+}
+
+.careColTitle {
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.careColBody {
+  margin: 0 0 16px;
+  font-family: var(--font-dm);
+  font-size: var(--type-body-size);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  text-align: justify;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+.careDisclaimer {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(23, 21, 19, 0.1);
+  font-family: var(--font-dm);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  text-align: start;
+}
+
+.careList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.careItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem 0.85rem;
+  align-items: start;
+  margin: 0;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(176, 132, 63, 0.22);
+}
+
+.careItem:last-child {
+  padding-bottom: 0;
+}
+
+.careIndex {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: rgba(122, 21, 48, 0.45);
+}
+
+.careItemLabel {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+
+.careItemDetail {
+  margin: 0;
+  font-family: var(--font-dm);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  text-align: start;
 }
 
 .qualityHeader {
@@ -103,87 +220,6 @@
   hyphens: manual;
 }
 
-.careGrid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.careTitle {
-  margin-bottom: 20px !important;
-}
-
-.careCopy {
-  margin: 0 0 16px;
-  font-family: var(--font-dm);
-  font-size: var(--type-body-size);
-  line-height: 1.7;
-  color: var(--color-text-secondary);
-  text-align: justify !important;
-  text-wrap: pretty;
-  hyphens: auto;
-}
-
-.careCopy:last-of-type {
-  margin-bottom: 24px;
-}
-
-.carePoints {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.carePoint {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  font-family: var(--font-dm);
-  font-size: var(--type-body-size);
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-}
-
-.carePoint strong {
-  color: var(--color-text-primary);
-}
-
-.carePoint svg {
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-
-.preservationBox {
-  padding: 36px;
-  background-color: var(--color-bg-secondary);
-  border: 1px solid rgba(23, 21, 19, 0.15);
-}
-
-.preservationTitle {
-  margin: 0 0 16px;
-  font-family: var(--font-serif);
-  font-size: 1.8rem;
-  color: var(--color-burgundy);
-}
-
-.preservationList {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-dm);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--color-text-secondary);
-}
-
-.preservationList li::before {
-  content: "• ";
-}
-
 @media (max-width: 960px) {
   .qualityStrip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -206,9 +242,16 @@
 }
 
 @media (max-width: 900px) {
-  .careGrid {
+  .careSplit {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
+  }
+
+  .careCol + .careCol {
+    padding-left: 0;
+    padding-top: 28px;
+    border-left: 0;
+    border-top: 1px solid rgba(176, 132, 63, 0.28);
   }
 }
 
@@ -226,11 +269,5 @@
 
   .qualityStep + .qualityStep {
     border-top: 1px solid rgba(176, 132, 63, 0.22);
-  }
-}
-
-@media (max-width: 480px) {
-  .preservationBox {
-    padding: 24px 20px;
   }
 }

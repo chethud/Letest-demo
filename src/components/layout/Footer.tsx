@@ -84,15 +84,14 @@ export const Footer: React.FC = () => {
           <address className={styles.officeCard}>
             <p className={styles.navColumnTitle}>Corporate Office</p>
             <p className={styles.officeAddress}>
-              {INSTITUTIONAL_OVERVIEW.headOffice.building},
+              {INSTITUTIONAL_OVERVIEW.headOffice.building},{" "}
+              {INSTITUTIONAL_OVERVIEW.headOffice.street}
               <br />
-              {INSTITUTIONAL_OVERVIEW.headOffice.street},
-              <br />
-              {INSTITUTIONAL_OVERVIEW.headOffice.city},{" "}
+              {INSTITUTIONAL_OVERVIEW.headOffice.city}{" "}
               {INSTITUTIONAL_OVERVIEW.headOffice.pincode},{" "}
               {INSTITUTIONAL_OVERVIEW.headOffice.state}
             </p>
-            <p className={styles.officeLine}>
+            <p className={styles.officeContact}>
               <a href={`tel:${INSTITUTIONAL_OVERVIEW.headOffice.phone1.replace(/\s/g, "")}`}>
                 {INSTITUTIONAL_OVERVIEW.headOffice.phone1}
               </a>
@@ -100,8 +99,7 @@ export const Footer: React.FC = () => {
               <a href={`tel:${INSTITUTIONAL_OVERVIEW.headOffice.phone2.replace(/\s/g, "")}`}>
                 {INSTITUTIONAL_OVERVIEW.headOffice.phone2}
               </a>
-            </p>
-            <p className={styles.officeLine}>
+              <br />
               <a href={`mailto:${INSTITUTIONAL_OVERVIEW.headOffice.email}`}>
                 {INSTITUTIONAL_OVERVIEW.headOffice.email}
               </a>

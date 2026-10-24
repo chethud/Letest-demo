@@ -25,9 +25,7 @@ export default function HeritagePage() {
           <div className={styles.folioGrid}>
             <header className={styles.folioLead}>
               <h1 id="archival-heading" className={styles.archivalTitle}>
-                A royal legacy
-                <br />
-                woven in <span>Mysuru.</span>
+                A royal legacy woven in <span>Mysuru.</span>
               </h1>
               <p className={styles.archivalLead}>
                 Mysore Silk is older than the corporation that now stewards it: a textile tradition
@@ -37,28 +35,29 @@ export default function HeritagePage() {
 
             <div id="patronage" className={styles.folioOrigins}>
               <p className={styles.originsEyebrow}>Origins · Before the corporation</p>
-              <h2 className={styles.originsTitle}>Two roots of a living textile</h2>
 
-              <ol className={styles.originTimeline}>
-                <li className={styles.originStep}>
+              <article className={styles.originStep}>
+                <div className={styles.originHead}>
                   <p className={styles.originsYear}>18th c.</p>
                   <h3 className={styles.originsEraTitle}>Channapatna rearing</h3>
-                  <p className={styles.originsBody}>
-                    Silk rearing in the region reaches back to Tipu Sultan’s unit at Channapatna and
-                    the introduction of multivoltine silkworm rearing, long before the Mysuru weaving
-                    works of 1912.
-                  </p>
-                </li>
-                <li className={styles.originStep}>
+                </div>
+                <p className={styles.originsBody}>
+                  Silk rearing reaches back to Tipu Sultan’s unit at Channapatna and multivoltine
+                  silkworm rearing, long before the Mysuru weaving works of 1912.
+                </p>
+              </article>
+
+              <article className={styles.originStep}>
+                <div className={styles.originHead}>
                   <p className={styles.originsYear}>1912</p>
-                  <h3 className={styles.originsEraTitle}>Palace patronage</h3>
-                  <p className={styles.originsBody}>
-                    Under Sri Nalwadi Krishnaraja Wadiyar, palace-linked weaving drew on Swiss silk
-                    and European practice, shaping the motifs and finish still associated with Mysore
-                    Silk.
-                  </p>
-                </li>
-              </ol>
+                  <h3 className={styles.originsEraTitle}>Palace looms</h3>
+                </div>
+                <p className={styles.originsBody}>
+                  Inspired by Swiss silk seen in Europe, the Maharaja began a weaving unit inside the
+                  Mysore Palace. That royal workshop grew into the Mysore Silk Weaving Factory,
+                  supplying the court and the armed forces.
+                </p>
+              </article>
             </div>
           </div>
         </div>
@@ -78,7 +77,11 @@ export default function HeritagePage() {
             </div>
             <div>
               <p className={styles.eyebrow}>1930 · Industrial expansion</p>
-              <h2 className={styles.sectionTitle}>Looms, commercial weave, modern machinery</h2>
+              <h2 className={styles.sectionTitle}>
+                Looms, commercial weave,
+                <br />
+                modern machinery
+              </h2>
               <p className={styles.body}>
                 Factory operations expanded from 1930; commercial production followed after 1932. Swiss
                 looms and preparatory machines made the Mysuru unit the first of its kind in India -
@@ -89,7 +92,7 @@ export default function HeritagePage() {
                 associated with Korea and Japan. How those works passed into KSIC’s custody is told in
                 the{" "}
                 <Link href="/our-heritage" className={styles.inlineLink}>
-                  brief history of KSIC
+                  History of KSIC
                 </Link>
                 .
               </p>

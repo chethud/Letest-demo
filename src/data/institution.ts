@@ -27,7 +27,7 @@ export const INSTITUTIONAL_OVERVIEW = {
     {
       unit: "Silk Weaving Factory",
       location: "Mananthody Road, Mysuru - 570008",
-      activity: "Weaving factory named in the KSIC note. Weaving is described on dobby and jacquard looms; the note also records electric looms and e-jacquard machinery.",
+      activity: "Weaving on dobby and jacquard looms, with electric and e-jacquard machinery in the works.",
       capacity: "Operating counts are not published on this page.",
     },
     {
@@ -40,7 +40,7 @@ export const INSTITUTIONAL_OVERVIEW = {
     {
       unit: "Silk Weaving Unit",
       location: "Channapatna",
-      activity: "Named in the KSIC note as a silk weaving unit. No further process is added here.",
+      activity: "KSIC silk weaving unit.",
       capacity: "Operating counts are not published on this page.",
     },
   ],
@@ -49,7 +49,7 @@ export const INSTITUTIONAL_OVERVIEW = {
       code: "GI-11",
       title: "Geographical Indication Registry",
       authority: "Government of India (Geographical Indications of Goods Act, 1999)",
-      validity: "The note gives November 2005 and number GIR-11. Another supplied account refers to 2017. The date is not published as settled. ISO designations in the note are not published here.",
+      validity: "Mysore Silk holds GI registration GIR-11 from November 2005.",
     },
   ],
   keyMetrics: [

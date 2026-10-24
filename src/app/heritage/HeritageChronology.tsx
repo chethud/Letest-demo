@@ -12,10 +12,10 @@ export function HeritageChronology() {
   const current = HERITAGE_MILESTONES[activeIndex];
 
   return (
-    <section className={styles.timeline} id="timeline" aria-label="Century of Stewardship: The Chronology of Mysore Silk">
+    <section className={styles.timeline} id="timeline" aria-label="Through the years: the chronology of Mysore Silk">
       <div className={styles.inner}>
         <header className={styles.timelineHeader}>
-          <p className={styles.eyebrow}>Century of Stewardship</p>
+          <p className={styles.eyebrow}>Through the years</p>
           <h2 className={styles.sectionTitle}>
             The Chronology of <span>Mysore Silk</span>
           </h2>
@@ -24,7 +24,7 @@ export function HeritageChronology() {
           </p>
         </header>
 
-        <div className={styles.rail} role="tablist" aria-label="Chronological epochs">
+        <div className={styles.rail} role="tablist" aria-label="Chronological milestones">
           {HERITAGE_MILESTONES.map((milestone, index) => {
             const selected = index === activeIndex;
             return (

@@ -28,6 +28,7 @@ const REGIONS = ["Bengaluru", "Mysuru", "Channapatna", "Davanagere", "Hyderabad"
 export default function ContactPage() {
   const office = INSTITUTIONAL_OVERVIEW.headOffice;
   const [storeQuery, setStoreQuery] = useState("");
+  const [showAllStores, setShowAllStores] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,16 +54,20 @@ export default function ContactPage() {
 
   const storeSearch = storeQuery.trim().toLowerCase();
   const matchingStores = useMemo(() => {
-    if (!storeSearch) {
-      return SHOWROOMS_DATA.filter((store) => store.featured).slice(0, 6);
+    if (storeSearch) {
+      return SHOWROOMS_DATA.filter((store) =>
+        [store.name, store.city, store.address, store.pincode, store.type]
+          .join(" ")
+          .toLowerCase()
+          .includes(storeSearch),
+      );
     }
-    return SHOWROOMS_DATA.filter((store) =>
-      [store.name, store.city, store.address, store.pincode, store.type]
-        .join(" ")
-        .toLowerCase()
-        .includes(storeSearch),
-    );
-  }, [storeSearch]);
+    if (showAllStores) return SHOWROOMS_DATA;
+    return SHOWROOMS_DATA.filter((store) => store.featured).slice(0, 6);
+  }, [storeSearch, showAllStores]);
+
+  const canViewAll =
+    !storeSearch && !showAllStores && SHOWROOMS_DATA.length > matchingStores.length;
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -151,6 +156,15 @@ export default function ContactPage() {
                 Find a showroom
               </h2>
             </div>
+            {!storeSearch && (canViewAll || showAllStores) ? (
+              <button
+                type="button"
+                className={styles.viewAllButton}
+                onClick={() => setShowAllStores((open) => !open)}
+              >
+                {showAllStores ? "Show less" : "View all"}
+              </button>
+            ) : null}
           </div>
 
           <form className={styles.locatorForm} role="search" onSubmit={(event) => event.preventDefault()}>

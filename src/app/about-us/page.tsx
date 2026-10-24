@@ -93,7 +93,7 @@ export default function AboutUsPage() {
               <p className={styles.bodyCopy}>
                 The Mysuru weaving works date to 1912; KSIC has held them since 1980.{" "}
                 <Link href="/our-heritage" className={styles.inlineLink}>
-                  Read the brief history of KSIC
+                  Read the history of KSIC
                 </Link>
                 .
               </p>

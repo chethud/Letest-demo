@@ -70,9 +70,7 @@
   line-height: 1.7 !important;
   letter-spacing: 0 !important;
   color: var(--color-text-secondary) !important;
-  text-align: justify !important;
-  text-wrap: pretty;
-  hyphens: auto;
+  text-align: start !important;
 }
 
 .emphasis {

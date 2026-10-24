@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { MysoreSilkSubnav } from "@/components/mysore-silk/MysoreSilkSubnav";
-import { CRAFT_STAGES, YARN_LINE_STILLS, YARN_PREP_STILLS } from "@/data/craft";
+import { CraftStageStills } from "@/components/craft/CraftStageStills";
+import { CRAFT_STAGES } from "@/data/craft";
 import { SILK_VARIETIES, SILK_VARIETY_INTRO } from "@/data/silkTypes";
 import { KSIC_IN_HOUSE, KSIC_ZERO_WASTE } from "@/data/ksicPractice";
 import styles from "./Craft.module.css";
 
 export const metadata = {
   title: "Craft & Technical Monograph · From Cocoon to Silk | KSIC",
-  description: "From cocoon to saree: Ramanagara, T. Narasipura reeling, twisting, weaving in Mysore, degumming, dyeing, and finishing, as described in the supplied sources.",
+  description: "From cocoon to saree: Ramanagara, T. Narasipura reeling, twisting, weaving in Mysore, degumming, dyeing, and finishing.",
 };
 
 export default function CraftPage() {
@@ -74,6 +74,13 @@ export default function CraftPage() {
                         </p>
                       )}
                     </div>
+
+                    {stage.stills?.length ? (
+                      <CraftStageStills
+                        stills={stage.stills}
+                        stageLabel={`Stage ${stage.step} · ${stage.name}`}
+                      />
+                    ) : null}
                   </div>
 
                   <div className={`reveal-scale ${styles.mediaContent}`}>
@@ -91,46 +98,6 @@ export default function CraftPage() {
                 </div>
               );
             })}
-          </div>
-
-          <div className={styles.processStills} aria-label="Soaking and yarn preparation">
-            <p className={styles.processStillsLabel}>After re-reeling · soak</p>
-            <ul className={styles.processStillGrid}>
-              {YARN_PREP_STILLS.map((still) => (
-                <li key={still.name} className={styles.processStill}>
-                  <div className={styles.processStillMedia}>
-                    <Image
-                      src={still.image}
-                      alt={still.alt}
-                      fill
-                      sizes="(max-width: 800px) 100vw, 33vw"
-                      className={styles.processStillImage}
-                    />
-                  </div>
-                  <p className={styles.processStillName}>{still.name}</p>
-                </li>
-              ))}
-            </ul>
-
-            <p className={`${styles.processStillsLabel} ${styles.processStillsLabelFollow}`}>
-              Wind · double · twist · warp
-            </p>
-            <ul className={`${styles.processStillGrid} ${styles.processStillGridFour}`}>
-              {YARN_LINE_STILLS.map((still) => (
-                <li key={still.name} className={styles.processStill}>
-                  <div className={styles.processStillMedia}>
-                    <Image
-                      src={still.image}
-                      alt={still.alt}
-                      fill
-                      sizes="(max-width: 800px) 100vw, 25vw"
-                      className={styles.processStillImage}
-                    />
-                  </div>
-                  <p className={styles.processStillName}>{still.name}</p>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
@@ -175,7 +142,7 @@ export default function CraftPage() {
             <span className="editorial-label" style={{ justifyContent: "center" }}>ZARI SPECIFICATION</span>
             <h2 className="display-section">65% SILVER, 0.65% GOLD</h2>
             <p style={{ marginTop: "12px", color: "var(--color-text-secondary)" }}>
-              Zari is specified as 65% pure silver and 0.65% gold. Madhurya describes genuine gold and silver zari. Neither figure is extended into a no-tarnish guarantee.
+              KSIC zari is specified as 65% pure silver and 0.65% gold on genuine gold and silver thread.
             </p>
           </div>
 
@@ -188,7 +155,7 @@ export default function CraftPage() {
                 Pure Silver Ribbon
               </h3>
               <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                The supplied specification is 65% pure silver. The sources do not add a silk-core construction or a comparison with copper and polyester.
+                The ribbon is specified as 65% pure silver, giving the border its lasting lustre.
               </p>
             </div>
 
@@ -200,7 +167,7 @@ export default function CraftPage() {
                 Gold, as specified
               </h3>
               <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                The gold share is specified as 0.65%. Madhurya describes genuine gold zari. Electroplating, 24-carat baths, and a claim that the metal will never flake are not in those accounts.
+                The gold share is specified as 0.65% genuine gold, enough for a quiet, lasting gleam.
               </p>
             </div>
 
@@ -212,7 +179,7 @@ export default function CraftPage() {
                 Pure mulberry silk
               </h3>
               <p style={{ fontSize: "0.9rem", color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
-                Madhurya describes pure mulberry silk with a smooth feel, a light drape, and a natural sheen. It does not add a lifespan or a durability guarantee.
+                Pure mulberry silk: smooth to the touch, light in the drape, with a natural sheen.
               </p>
             </div>
           </div>
