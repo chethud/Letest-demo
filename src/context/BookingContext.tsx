@@ -6,6 +6,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
+  useState,
   useSyncExternalStore,
 } from "react";
 import { usePathname } from "next/navigation";
@@ -31,6 +32,7 @@ const BookingContext = createContext<BookingContextValue | null>(null);
 
 export function BookingProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [hydrated, setHydrated] = useState(false);
   const bookingActive = useSyncExternalStore(
     subscribeBooking,
     getBookingSnapshot,
@@ -39,6 +41,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     hydrateBookingFromStorage();
+    setHydrated(true);
 
     const sync = () => hydrateBookingFromStorage();
     const onStorage = (event: StorageEvent) => {
@@ -66,20 +69,21 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
 
   // Re-read whenever the route changes (admin ↔ shop).
   useEffect(() => {
+    if (!hydrated) return;
     hydrateBookingFromStorage();
-  }, [pathname]);
+  }, [pathname, hydrated]);
 
   const enableBooking = useCallback(() => enableOnlineBooking(), []);
   const disableBooking = useCallback(() => disableOnlineBooking(), []);
 
   const value = useMemo<BookingContextValue>(
     () => ({
-      hydrated: true,
-      bookingActive,
+      hydrated,
+      bookingActive: hydrated ? bookingActive : false,
       enableBooking,
       disableBooking,
     }),
-    [bookingActive, enableBooking, disableBooking],
+    [hydrated, bookingActive, enableBooking, disableBooking],
   );
 
   return (

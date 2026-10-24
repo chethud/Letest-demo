@@ -50,12 +50,17 @@ export function AccountPageClient() {
         </header>
 
         <section className={accountStyles.section}>
+          <h2>Online booking</h2>
+          <p className={styles.lead}>
+            Booking is temporarily unavailable. You can still browse the
+            collection, save sarees to your wishlist, and send an enquiry.
+          </p>
+        </section>
+
+        <section className={accountStyles.section}>
           <h2>Booking requests</h2>
           {mine.length === 0 ? (
-            <p className={styles.lead}>
-              No booking requests yet.{" "}
-              <Link href="/collection">Browse the collection</Link>
-            </p>
+            <p className={styles.lead}>No booking requests yet.</p>
           ) : (
             <ul className={accountStyles.list}>
               {mine.map((order) => (

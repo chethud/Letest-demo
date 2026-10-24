@@ -1,32 +1,24 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
-import {
-  getBookingServerSnapshot,
-  getBookingSnapshot,
-  hydrateBookingFromStorage,
-  subscribeBooking,
-} from "@/config/booking";
-import { useBooking } from "@/context/BookingContext";
 import { useEffect } from "react";
+import { hydrateBookingFromStorage } from "@/config/booking";
+import { useBooking } from "@/context/BookingContext";
 
-/** True after BookingProvider has mounted (always true when using provider). */
+/** True after booking storage has been read on the client. */
 export function useBookingHydrated() {
   return useBooking().hydrated;
 }
 
 /**
  * Live booking flag from Admin → Settings.
- * Uses the same external store as the admin toggle (always in sync).
+ * False until storage is hydrated, so the shop never treats “loading” as off.
  */
 export function useOnlineBookingActive() {
+  const { bookingActive } = useBooking();
+
   useEffect(() => {
     hydrateBookingFromStorage();
   }, []);
 
-  return useSyncExternalStore(
-    subscribeBooking,
-    getBookingSnapshot,
-    getBookingServerSnapshot,
-  );
+  return bookingActive;
 }

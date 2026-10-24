@@ -19,8 +19,10 @@ export function CartDrawer() {
     removeFromCart,
     cartCount,
     canAddToCart,
+    cartBlockReason,
   } = useShop();
   const bookingActive = useOnlineBookingActive();
+  const canCheckout = bookingActive && canAddToCart && cart.length > 0;
 
   useEffect(() => {
     if (!cartOpen) return;
@@ -37,7 +39,13 @@ export function CartDrawer() {
   }, [cartOpen, setCartOpen]);
 
   function continueToBook() {
-    if (!bookingActive || cart.length === 0) return;
+    if (!bookingActive) return;
+    if (cartBlockReason === "login") {
+      setCartOpen(false);
+      router.push("/login?next=/checkout");
+      return;
+    }
+    if (!canAddToCart || cart.length === 0) return;
     setCartOpen(false);
     router.push("/checkout");
   }
@@ -163,21 +171,36 @@ export function CartDrawer() {
           <button
             type="button"
             className={styles.bookBtn}
-            disabled={!bookingActive || cart.length === 0}
-            aria-disabled={!bookingActive || cart.length === 0}
+            disabled={
+              !bookingActive ||
+              cart.length === 0 ||
+              cartBlockReason === "admin" ||
+              (!canAddToCart && cartBlockReason !== "login")
+            }
+            aria-disabled={!canCheckout && cartBlockReason !== "login"}
             onClick={continueToBook}
           >
-            {!bookingActive ? <Lock size={14} aria-hidden /> : null}
+            {!bookingActive || cartBlockReason === "admin" ? (
+              <Lock size={14} aria-hidden />
+            ) : null}
             <span>
-              {bookingActive
-                ? "Continue to book"
-                : "Booking temporarily unavailable"}
+              {!bookingActive
+                ? "Booking temporarily unavailable"
+                : cartBlockReason === "admin"
+                  ? "Admin cannot book"
+                  : cartBlockReason === "login"
+                    ? "Sign in to book"
+                    : "Continue to book"}
             </span>
           </button>
           <p className={styles.note}>
-            {bookingActive
-              ? "Booking opens a showroom reservation request. Payment is not taken online."
-              : "The admin has paused online booking. Turn it on in Admin → Settings to take orders again."}
+            {!bookingActive
+              ? "The admin has paused online booking. Turn it on in Admin → Settings to take orders again."
+              : cartBlockReason === "admin"
+                ? "You are signed in as admin. Sign out and use customer@gmail.com to bag and book."
+                : cartBlockReason === "login"
+                  ? "Sign in as a customer to place a booking request."
+                  : "Booking opens a showroom reservation request. Payment is not taken online."}
           </p>
           <Link
             href="/wishlist"

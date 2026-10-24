@@ -163,9 +163,12 @@ export function CheckoutPageClient() {
               no payment was taken and no showroom stock was reserved.
             </p>
             <p className={styles.muted}>Preferred showroom: {showroom}</p>
-            <Link href="/collection" className={styles.primaryLink}>
-              Return to shop
-            </Link>
+            <div className={styles.lockedActions}>
+              <Link href="/account" className={styles.primaryLink}>
+                View my bookings
+              </Link>
+              <Link href="/collection">Return to shop</Link>
+            </div>
           </div>
         </div>
       </div>

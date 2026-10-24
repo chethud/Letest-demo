@@ -1,7 +1,11 @@
 /**
- * Online booking flag — controlled only from Admin → Settings.
- * Stored in localStorage + cookie so every tab/page stays in sync.
+ * Online booking flag.
+ * When BOOKING_TEMPORARILY_UNAVAILABLE is true, booking stays off for everyone
+ * (admin toggle removed). Set to false later to restore Admin → Settings control.
  */
+
+/** Pause online booking site-wide for now. */
+export const BOOKING_TEMPORARILY_UNAVAILABLE = true;
 
 export const BOOKING_OVERRIDE_KEY = "ksic-booking-override-v1";
 export const BOOKING_COOKIE = "ksic_booking_on";
@@ -48,41 +52,62 @@ function writeCookie(enabled: boolean) {
   document.cookie = `${BOOKING_COOKIE}=${enabled ? "1" : "0"}; path=/; max-age=31536000; SameSite=Lax`;
 }
 
-function readLocalFlag(): boolean | null {
-  if (typeof window === "undefined") return null;
+function readStoreFlag(storage: Storage): boolean | null {
   try {
-    const raw = window.localStorage.getItem(BOOKING_OVERRIDE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as Partial<BookingFlags>;
-      if (typeof parsed.bookingEnabled === "boolean") return parsed.bookingEnabled;
-    }
-  } catch {
-    /* ignore */
-  }
-  try {
-    const raw = window.sessionStorage.getItem(BOOKING_OVERRIDE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw) as Partial<BookingFlags>;
-      if (typeof parsed.bookingEnabled === "boolean") return parsed.bookingEnabled;
-    }
+    const raw = storage.getItem(BOOKING_OVERRIDE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<BookingFlags>;
+    if (typeof parsed.bookingEnabled === "boolean") return parsed.bookingEnabled;
   } catch {
     /* ignore */
   }
   return null;
 }
 
+function writeStoreFlag(storage: Storage, raw: string): boolean {
+  try {
+    storage.setItem(BOOKING_OVERRIDE_KEY, raw);
+    return true;
+  } catch {
+    try {
+      // Drop a stale value so cookie can win on the next read.
+      storage.removeItem(BOOKING_OVERRIDE_KEY);
+    } catch {
+      /* ignore */
+    }
+    return false;
+  }
+}
+
+function readCachedFlag(): boolean | null {
+  if (typeof window === "undefined") return null;
+  const fromLocal = readStoreFlag(window.localStorage);
+  if (fromLocal !== null) return fromLocal;
+  return readStoreFlag(window.sessionStorage);
+}
+
+function healCaches(enabled: boolean) {
+  if (typeof window === "undefined") return;
+  const raw = JSON.stringify(flagsFromEnabled(enabled));
+  writeStoreFlag(window.localStorage, raw);
+  writeStoreFlag(window.sessionStorage, raw);
+}
+
 function readStorageEnabled(): boolean | null {
   if (typeof window === "undefined") return null;
 
-  const fromLocal = readLocalFlag();
   const fromCookie = readCookie();
+  const fromCache = readCachedFlag();
 
-  // Prefer localStorage; heal a stale cookie so shop and admin never disagree.
-  if (fromLocal !== null) {
-    if (fromCookie !== fromLocal) writeCookie(fromLocal);
-    return fromLocal;
+  // Cookie always writes successfully — prefer it when sources disagree.
+  if (fromCookie !== null) {
+    if (fromCache !== fromCookie) healCaches(fromCookie);
+    return fromCookie;
   }
-  if (fromCookie !== null) return fromCookie;
+  if (fromCache !== null) {
+    writeCookie(fromCache);
+    return fromCache;
+  }
   return null;
 }
 
@@ -94,22 +119,11 @@ function persistEnabled(enabled: boolean): BookingPersistResult {
   writeCookie(enabled);
   const raw = JSON.stringify(flagsFromEnabled(enabled));
 
-  let stored = false;
-  try {
-    window.localStorage.setItem(BOOKING_OVERRIDE_KEY, raw);
-    stored = true;
-  } catch {
-    /* quota */
-  }
-  try {
-    window.sessionStorage.setItem(BOOKING_OVERRIDE_KEY, raw);
-    stored = true;
-  } catch {
-    /* quota */
-  }
+  const localOk = writeStoreFlag(window.localStorage, raw);
+  const sessionOk = writeStoreFlag(window.sessionStorage, raw);
 
   // Cookie alone is enough for cross-page sync.
-  if (!stored && readCookie() === null) {
+  if (!localOk && !sessionOk && readCookie() === null) {
     return {
       ok: false,
       error:
@@ -134,6 +148,17 @@ function emit() {
 
 /** Call on client boot and whenever storage may have changed. */
 export function hydrateBookingFromStorage() {
+  if (BOOKING_TEMPORARILY_UNAVAILABLE) {
+    memoryEnabled = false;
+    // Clear any leftover “on” flag from earlier demos.
+    try {
+      persistEnabled(false);
+    } catch {
+      /* ignore */
+    }
+    emit();
+    return false;
+  }
   const stored = readStorageEnabled();
   memoryEnabled = stored === null ? false : stored;
   emit();
@@ -141,11 +166,16 @@ export function hydrateBookingFromStorage() {
 }
 
 export function getBookingSnapshot() {
-  if (memoryEnabled === null) {
-    if (typeof window === "undefined") return false;
-    memoryEnabled = readStorageEnabled() ?? false;
+  if (BOOKING_TEMPORARILY_UNAVAILABLE) {
+    memoryEnabled = false;
+    return false;
   }
-  return memoryEnabled;
+  if (typeof window === "undefined") return false;
+  // Always re-read storage so a stale in-memory `false` (from an early paint
+  // before cookie/LS agreed) cannot keep the storefront closed.
+  const stored = readStorageEnabled() ?? false;
+  memoryEnabled = stored;
+  return stored;
 }
 
 export function getBookingServerSnapshot() {
@@ -174,7 +204,16 @@ export function getEffectiveBookingFlags(): BookingFlags {
 }
 
 export function enableOnlineBooking(): BookingPersistResult {
+  if (BOOKING_TEMPORARILY_UNAVAILABLE) {
+    memoryEnabled = false;
+    emit();
+    return {
+      ok: false,
+      error: "Online booking is temporarily unavailable.",
+    };
+  }
   const result = persistEnabled(true);
+  if (!result.ok) return result;
   memoryEnabled = true;
   emit();
   return result;
@@ -182,6 +221,7 @@ export function enableOnlineBooking(): BookingPersistResult {
 
 export function disableOnlineBooking(): BookingPersistResult {
   const result = persistEnabled(false);
+  if (!result.ok) return result;
   memoryEnabled = false;
   emit();
   return result;

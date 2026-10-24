@@ -14,6 +14,7 @@ import { useAuth } from "@/context/AuthContext";
 import {
   getBookingServerSnapshot,
   getBookingSnapshot,
+  hydrateBookingFromStorage,
   subscribeBooking,
 } from "@/config/booking";
 
@@ -114,9 +115,13 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
   const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
-    setCart(readJson<CartLine[]>(CART_KEY, []));
-    setWishlist(readJson<WishlistLine[]>(WISHLIST_KEY, []));
-    setHydrated(true);
+    try {
+      hydrateBookingFromStorage();
+      setCart(readJson<CartLine[]>(CART_KEY, []));
+      setWishlist(readJson<WishlistLine[]>(WISHLIST_KEY, []));
+    } finally {
+      setHydrated(true);
+    }
   }, []);
 
   useEffect(() => {

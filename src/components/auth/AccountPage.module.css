@@ -27,12 +27,51 @@
   cursor: pointer;
 }
 
+.section {
+  margin-bottom: 1.75rem;
+}
+
 .section h2 {
   margin: 0 0 0.85rem;
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--color-burgundy);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.primaryLink,
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.55rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.primaryLink {
+  background: var(--color-burgundy);
+  color: #fff;
+  border: 1px solid var(--color-burgundy);
+}
+
+.secondaryLink {
+  background: transparent;
+  color: var(--color-burgundy);
+  border: 1px solid rgba(122, 21, 48, 0.28);
 }
 
 .list {
