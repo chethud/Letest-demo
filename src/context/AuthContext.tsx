@@ -16,6 +16,9 @@ const SESSION_KEY = "ksic-session-v1";
 
 export const ADMIN_EMAIL = "admin@gmail.com";
 export const ADMIN_PASSWORD = "Admin@2026";
+/** Demo customer — use this to test bag/booking (admin cannot book). */
+export const CUSTOMER_EMAIL = "customer@gmail.com";
+export const CUSTOMER_PASSWORD = "Customer@2026";
 
 export type UserRole = "admin" | "customer";
 
@@ -85,6 +88,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return { ok: true as const };
       }
 
+      if (normalized === CUSTOMER_EMAIL && password === CUSTOMER_PASSWORD) {
+        persistSession({
+          email: CUSTOMER_EMAIL,
+          name: "Demo Customer",
+          role: "customer",
+        });
+        return { ok: true as const };
+      }
+
       const users = readJson<StoredUser[]>(USERS_KEY, []);
       const found = users.find((item) => item.email === normalized);
       if (!found || found.passwordHash !== demoHash(password)) {
@@ -112,7 +124,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (password.length < 6) {
         return { ok: false as const, error: "Password must be at least 6 characters." };
       }
-      if (normalized === ADMIN_EMAIL) {
+      if (normalized === ADMIN_EMAIL || normalized === CUSTOMER_EMAIL) {
         return { ok: false as const, error: "This email is reserved. Use another address." };
       }
 

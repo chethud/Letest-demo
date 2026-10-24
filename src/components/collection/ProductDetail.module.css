@@ -503,9 +503,14 @@
   cursor: pointer;
 }
 
-.addBagPill:hover {
+.addBagPill:hover:not(:disabled) {
   background: var(--pdp-maroon);
   border-color: var(--pdp-maroon);
+}
+
+.addBagPill:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .enquirePill {

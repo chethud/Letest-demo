@@ -16,8 +16,12 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { KSICProduct } from "@/data/collections";
+import { useAuth } from "@/context/AuthContext";
 import { useShop } from "@/context/ShopContext";
-import { useOnlineBookingActive } from "@/hooks/useOnlineBookingActive";
+import {
+  useBookingHydrated,
+  useOnlineBookingActive,
+} from "@/hooks/useOnlineBookingActive";
 import styles from "./ProductDetail.module.css";
 
 const ENQUIRY_EMAIL = "info@ksicsilk.com";
@@ -254,8 +258,11 @@ function EnquiryDialog({
 
 function PurchasePanel({ product }: { product: KSICProduct }) {
   const router = useRouter();
+  const { logout } = useAuth();
   const bookingActive = useOnlineBookingActive();
-  const { addToCart, isWishlisted, toggleWishlist } = useShop();
+  const bookingHydrated = useBookingHydrated();
+  const { addToCart, canAddToCart, cartBlockReason, isWishlisted, toggleWishlist } =
+    useShop();
   const shades = CREPE_SHADES;
   const [quantity, setQuantity] = useState(1);
   const [shadeIndex, setShadeIndex] = useState(0);
@@ -263,12 +270,51 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
   const qtyId = useId();
   const saved = isWishlisted(product.id);
   const shade = shades[shadeIndex];
+  // "Unavailable" ONLY when admin turned booking off — never while loading / login / admin.
+  const bookingOff = bookingHydrated && !bookingActive;
+  const bookLabel = !bookingHydrated
+    ? "Checking booking…"
+    : bookingOff
+      ? "Booking temporarily unavailable"
+      : cartBlockReason === "login"
+        ? "Sign in to book"
+        : cartBlockReason === "admin"
+          ? "Admin cannot book"
+          : "Continue to book";
+  const bagLabel = !bookingHydrated
+    ? "Checking booking…"
+    : bookingOff
+      ? "Bag closed — booking off"
+      : cartBlockReason === "login"
+        ? "Sign in to add to bag"
+        : cartBlockReason === "admin"
+          ? "Admin cannot use bag"
+          : "Add to bag";
+  const bookClickable =
+    bookingHydrated &&
+    bookingActive &&
+    (canAddToCart || cartBlockReason === "login");
+  const bagClickable =
+    bookingHydrated &&
+    bookingActive &&
+    (canAddToCart || cartBlockReason === "login");
+
+  function switchToCustomerAccount() {
+    logout();
+    router.push(`/login?next=${encodeURIComponent(`/collection/${product.slug}`)}`);
+  }
 
   useEffect(() => {
     setShadeIndex(0);
   }, [product.id]);
 
   function handleAddToBag() {
+    if (!bookingHydrated || bookingOff) return;
+    if (cartBlockReason === "login") {
+      router.push(`/login?next=${encodeURIComponent(`/collection/${product.slug}`)}`);
+      return;
+    }
+    if (!canAddToCart) return;
     addToCart({
       product,
       quantity,
@@ -278,15 +324,20 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
   }
 
   function handleContinueToBook() {
-    if (!bookingActive) return;
-    addToCart({
+    if (!bookingHydrated || bookingOff) return;
+    if (cartBlockReason === "login") {
+      router.push(`/login?next=${encodeURIComponent(`/collection/${product.slug}`)}`);
+      return;
+    }
+    if (!canAddToCart) return;
+    const added = addToCart({
       product,
       quantity,
       shadeName: shade.name,
       shadeHex: shade.hex,
       openDrawer: false,
     });
-    router.push("/checkout");
+    if (added) router.push("/checkout");
   }
 
   return (
@@ -295,7 +346,13 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
         <div>
           <p className={styles.priceLabel}>Availability</p>
           <p className={styles.priceValue}>
-            {bookingActive ? "Online booking open" : "Showroom enquiry"}
+            {!bookingHydrated
+              ? "Checking…"
+              : bookingOff
+                ? "Booking paused"
+                : cartBlockReason === "admin"
+                  ? "Open for customers"
+                  : "Online booking open"}
           </p>
         </div>
         <p
@@ -358,12 +415,14 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
         <button
           type="button"
           className={styles.bookPill}
-          disabled={!bookingActive}
-          aria-disabled={!bookingActive}
+          disabled={!bookClickable}
+          aria-disabled={!bookClickable}
           onClick={handleContinueToBook}
         >
-          {!bookingActive ? <Lock size={14} aria-hidden /> : null}
-          <span>{bookingActive ? "Continue to book" : "Booking temporarily unavailable"}</span>
+          {bookingOff || cartBlockReason === "admin" ? (
+            <Lock size={14} aria-hidden />
+          ) : null}
+          <span>{bookLabel}</span>
         </button>
         <button
           type="button"
@@ -376,8 +435,14 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
         </button>
       </div>
 
-      <button type="button" className={styles.addBagPill} onClick={handleAddToBag}>
-        Add to bag
+      <button
+        type="button"
+        className={styles.addBagPill}
+        disabled={!bagClickable}
+        aria-disabled={!bagClickable}
+        onClick={handleAddToBag}
+      >
+        {bagLabel}
         <ArrowRight size={16} aria-hidden />
       </button>
 
@@ -387,10 +452,25 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
       </button>
 
       <p className={styles.secureNote}>
-        {bookingActive
-          ? "Online booking submits a showroom reservation request. Payment is not taken on this site."
-          : "You can save sarees and add them to your bag now. Booking stays locked until online booking is enabled. Enquiry remains available."}
+        {bookingOff
+          ? "The admin has paused online booking. You can still save sarees and send an enquiry."
+          : cartBlockReason === "login"
+            ? "Sign in or create a customer account to add sarees to your bag and place a booking request."
+            : cartBlockReason === "admin"
+              ? "You are signed in as admin. Switch to a customer account to bag and book."
+              : "Online booking submits a showroom reservation request. Payment is not taken on this site."}
       </p>
+
+      {cartBlockReason === "admin" ? (
+        <button
+          type="button"
+          className={styles.enquirePill}
+          onClick={switchToCustomerAccount}
+        >
+          Sign out &amp; use customer login
+          <ArrowRight size={16} aria-hidden />
+        </button>
+      ) : null}
 
       {enquiryOpen ? (
         <EnquiryDialog product={product} quantity={quantity} onClose={() => setEnquiryOpen(false)} />

@@ -18,6 +18,7 @@ export function CartDrawer() {
     updateCartQuantity,
     removeFromCart,
     cartCount,
+    canAddToCart,
   } = useShop();
   const bookingActive = useOnlineBookingActive();
 
@@ -136,7 +137,7 @@ export function CartDrawer() {
                       <button
                         type="button"
                         aria-label="Increase quantity"
-                        disabled={line.quantity >= 9}
+                        disabled={!canAddToCart || line.quantity >= 9}
                         onClick={() =>
                           updateCartQuantity(line.key, line.quantity + 1)
                         }
@@ -176,7 +177,7 @@ export function CartDrawer() {
           <p className={styles.note}>
             {bookingActive
               ? "Booking opens a showroom reservation request. Payment is not taken online."
-              : "You can add sarees to your bag now. Booking unlocks when online booking is enabled."}
+              : "The admin has paused online booking. Turn it on in Admin → Settings to take orders again."}
           </p>
           <Link
             href="/wishlist"

@@ -3,15 +3,19 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
+import {
+  CUSTOMER_EMAIL,
+  CUSTOMER_PASSWORD,
+  useAuth,
+} from "@/context/AuthContext";
 import styles from "./AuthForm.module.css";
 
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, hydrated } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(CUSTOMER_EMAIL);
+  const [password, setPassword] = useState(CUSTOMER_PASSWORD);
   const [error, setError] = useState("");
 
   function submit(event: React.FormEvent) {
@@ -69,8 +73,9 @@ export function LoginForm() {
             New here? <Link href="/signup">Create an account</Link>
           </p>
           <p className={styles.note}>
-            Demo auth only — accounts are stored in this browser. Admin:
-            admin@gmail.com
+            Demo customer: {CUSTOMER_EMAIL} / {CUSTOMER_PASSWORD}
+            <br />
+            Admin (cannot book): admin@gmail.com
           </p>
         </div>
       </div>

@@ -248,12 +248,18 @@ export const Header: React.FC = () => {
               <Search size={19} strokeWidth={1.5} />
             </button>
 
-            {authHydrated && isSignedIn ? (
+            {authHydrated && isSignedIn && isAdmin ? (
+              <div className={`${styles.authLinks} ${styles.iconDesktop}`}>
+                <Link href="/admin" className={styles.authLink}>
+                  Admin
+                </Link>
+              </div>
+            ) : authHydrated && isSignedIn ? (
               <>
                 <Link
-                  href={isAdmin ? "/admin" : "/account"}
+                  href="/account"
                   className={`${styles.iconButton} ${styles.iconDesktop}`}
-                  aria-label={isAdmin ? "Admin dashboard" : "My account"}
+                  aria-label="My account"
                 >
                   <User size={19} strokeWidth={1.5} />
                 </Link>

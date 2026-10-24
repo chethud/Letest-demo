@@ -14,7 +14,7 @@ import styles from "./CheckoutPage.module.css";
 export function CheckoutPageClient() {
   const router = useRouter();
   const { cart, clearCart, hydrated, cartCount } = useShop();
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
   const { createOrder } = useOrders();
   const bookingActive = useOnlineBookingActive();
   const [name, setName] = useState("");
@@ -47,6 +47,27 @@ export function CheckoutPageClient() {
     );
   }
 
+  if (isAdmin) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.content}>
+          <div className={styles.locked}>
+            <Lock size={22} aria-hidden />
+            <h1>Admin cannot book</h1>
+            <p>
+              Admin accounts manage the catalogue and settings only. Sign out and
+              use a customer account to place a booking.
+            </p>
+            <div className={styles.lockedActions}>
+              <Link href="/admin">Back to admin</Link>
+              <Link href="/collection">View shop</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (!bookingActive) {
     return (
       <div className={styles.page}>
@@ -55,14 +76,31 @@ export function CheckoutPageClient() {
             <Lock size={22} aria-hidden />
             <h1>Booking temporarily unavailable</h1>
             <p>
-              Online booking is still locked. Your bag and wishlist keep working;
-              booking opens when inventory and payment configuration are enabled.
+              The admin has paused online booking (Turn booking off). Orders
+              open again when booking is turned on in Admin → Settings.
             </p>
             <div className={styles.lockedActions}>
               <Link href="/collection">Continue shopping</Link>
               <button type="button" onClick={() => router.back()}>
                 Go back
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.content}>
+          <div className={styles.locked}>
+            <h1>Sign in to book</h1>
+            <p>Create or sign in to a customer account to submit a booking request.</p>
+            <div className={styles.lockedActions}>
+              <Link href="/login?next=/checkout">Login</Link>
+              <Link href="/signup?next=/checkout">Signup</Link>
             </div>
           </div>
         </div>

@@ -10,7 +10,6 @@ import {
   type AdminProduct,
   type ShopSection,
 } from "@/context/CatalogContext";
-import { useShop } from "@/context/ShopContext";
 import { AdminShell } from "@/components/admin/AdminShell";
 import styles from "./AdminShell.module.css";
 
@@ -46,7 +45,6 @@ function readImageFile(file: File): Promise<string> {
 
 export function AdminProductsClient() {
   const { products, upsertProduct, deleteProduct } = useCatalog();
-  const { addToCart } = useShop();
   const [editing, setEditing] = useState<AdminProduct | null>(null);
   const [query, setQuery] = useState("");
 
@@ -375,21 +373,6 @@ export function AdminProductsClient() {
                       onClick={() => setEditing(product)}
                     >
                       Edit
-                    </button>
-                    <button
-                      type="button"
-                      className={styles.btnGhost}
-                      onClick={() =>
-                        addToCart({
-                          product,
-                          quantity: 1,
-                          shadeName: product.primaryColor || "Standard",
-                          shadeHex: "#7a1530",
-                          openDrawer: true,
-                        })
-                      }
-                    >
-                      Add to bag
                     </button>
                     <button
                       type="button"

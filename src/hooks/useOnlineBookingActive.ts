@@ -1,21 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { isOnlineBookingActive } from "@/config/booking";
+import { useSyncExternalStore } from "react";
+import {
+  getBookingServerSnapshot,
+  getBookingSnapshot,
+  hydrateBookingFromStorage,
+  subscribeBooking,
+} from "@/config/booking";
+import { useBooking } from "@/context/BookingContext";
+import { useEffect } from "react";
 
+/** True after BookingProvider has mounted (always true when using provider). */
+export function useBookingHydrated() {
+  return useBooking().hydrated;
+}
+
+/**
+ * Live booking flag from Admin → Settings.
+ * Uses the same external store as the admin toggle (always in sync).
+ */
 export function useOnlineBookingActive() {
-  const [active, setActive] = useState(false);
-
   useEffect(() => {
-    const sync = () => setActive(isOnlineBookingActive());
-    sync();
-    window.addEventListener("ksic-booking-change", sync);
-    window.addEventListener("storage", sync);
-    return () => {
-      window.removeEventListener("ksic-booking-change", sync);
-      window.removeEventListener("storage", sync);
-    };
+    hydrateBookingFromStorage();
   }, []);
 
-  return active;
+  return useSyncExternalStore(
+    subscribeBooking,
+    getBookingSnapshot,
+    getBookingServerSnapshot,
+  );
 }

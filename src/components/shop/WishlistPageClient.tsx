@@ -3,26 +3,57 @@
 import React from "react";
 import { CatalogImage } from "@/components/common/CatalogImage";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Heart, ShoppingBag, Trash2 } from "lucide-react";
 import { useCatalog } from "@/context/CatalogContext";
 import { useShop } from "@/context/ShopContext";
+import {
+  useBookingHydrated,
+  useOnlineBookingActive,
+} from "@/hooks/useOnlineBookingActive";
 import styles from "./WishlistPage.module.css";
 
 export function WishlistPageClient() {
-  const { wishlist, hydrated, removeFromWishlist, addToCart } = useShop();
+  const router = useRouter();
+  const bookingActive = useOnlineBookingActive();
+  const bookingHydrated = useBookingHydrated();
+  const { wishlist, hydrated, removeFromWishlist, addToCart, canAddToCart, cartBlockReason } =
+    useShop();
   const { getById } = useCatalog();
+  const bookingOff = bookingHydrated && !bookingActive;
 
   function moveToBag(productId: string) {
+    if (!bookingHydrated || bookingOff) return;
+    if (cartBlockReason === "login") {
+      router.push("/login?next=/wishlist");
+      return;
+    }
+    if (!canAddToCart) return;
     const product = getById(productId);
     if (!product) return;
-    addToCart({
+    const added = addToCart({
       product,
       quantity: 1,
       shadeName: product.primaryColor || "Standard",
       shadeHex: "#7a1530",
     });
-    removeFromWishlist(productId);
+    if (added) removeFromWishlist(productId);
   }
+
+  const addLabel = !bookingHydrated
+    ? "Checking…"
+    : bookingOff
+      ? "Booking off"
+      : cartBlockReason === "login"
+        ? "Sign in to add"
+        : cartBlockReason === "admin"
+          ? "Admin cannot bag"
+          : "Add to bag";
+
+  const addEnabled =
+    bookingHydrated &&
+    bookingActive &&
+    (canAddToCart || cartBlockReason === "login");
 
   return (
     <div className={styles.page}>
@@ -73,10 +104,11 @@ export function WishlistPageClient() {
                     <button
                       type="button"
                       className={styles.addBtn}
+                      disabled={!addEnabled}
                       onClick={() => moveToBag(item.productId)}
                     >
                       <ShoppingBag size={14} aria-hidden />
-                      Add to bag
+                      {addLabel}
                     </button>
                     <button
                       type="button"

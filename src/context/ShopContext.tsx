@@ -7,11 +7,20 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  useSyncExternalStore,
 } from "react";
 import type { KSICProduct } from "@/data/collections";
+import { useAuth } from "@/context/AuthContext";
+import {
+  getBookingServerSnapshot,
+  getBookingSnapshot,
+  subscribeBooking,
+} from "@/config/booking";
 
 const CART_KEY = "ksic-shop-cart-v1";
 const WISHLIST_KEY = "ksic-shop-wishlist-v1";
+
+export type CartBlockReason = "login" | "booking_off" | "admin" | null;
 
 export type CartLine = {
   key: string;
@@ -51,7 +60,10 @@ type ShopContextValue = {
   wishlistCount: number;
   cartOpen: boolean;
   setCartOpen: (open: boolean) => void;
-  addToCart: (input: AddToCartInput) => void;
+  /** True only for signed-in customers when online booking is on (not admins). */
+  canAddToCart: boolean;
+  cartBlockReason: CartBlockReason;
+  addToCart: (input: AddToCartInput) => boolean;
   updateCartQuantity: (key: string, quantity: number) => void;
   removeFromCart: (key: string) => void;
   clearCart: () => void;
@@ -90,6 +102,12 @@ function toWishlistLine(product: KSICProduct): WishlistLine {
 }
 
 export function ShopProvider({ children }: { children: React.ReactNode }) {
+  const { user, isAdmin, hydrated: authHydrated } = useAuth();
+  const bookingActive = useSyncExternalStore(
+    subscribeBooking,
+    getBookingSnapshot,
+    getBookingServerSnapshot,
+  );
   const [hydrated, setHydrated] = useState(false);
   const [cart, setCart] = useState<CartLine[]>([]);
   const [wishlist, setWishlist] = useState<WishlistLine[]>([]);
@@ -111,8 +129,28 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
   }, [wishlist, hydrated]);
 
+  // Priority: auth ready → booking off → login → admin role → open for customers
+  const cartBlockReason: CartBlockReason = !authHydrated
+    ? null
+    : !bookingActive
+      ? "booking_off"
+      : !user
+        ? "login"
+        : isAdmin
+          ? "admin"
+          : null;
+
+  const canAddToCart =
+    cartBlockReason === null &&
+    authHydrated &&
+    bookingActive &&
+    Boolean(user) &&
+    !isAdmin;
+
   const addToCart = useCallback(
     ({ product, quantity, shadeName, shadeHex, openDrawer = true }: AddToCartInput) => {
+      if (!user || isAdmin || !bookingActive) return false;
+
       const key = cartKey(product.id, shadeName);
       const qty = Math.min(9, Math.max(1, quantity));
       setCart((prev) => {
@@ -141,8 +179,9 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
         ];
       });
       if (openDrawer) setCartOpen(true);
+      return true;
     },
-    [],
+    [user, isAdmin, bookingActive],
   );
 
   const updateCartQuantity = useCallback((key: string, quantity: number) => {
@@ -191,6 +230,8 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
       wishlistCount: wishlist.length,
       cartOpen,
       setCartOpen,
+      canAddToCart,
+      cartBlockReason,
       addToCart,
       updateCartQuantity,
       removeFromCart,
@@ -205,6 +246,8 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
       wishlist,
       cartCount,
       cartOpen,
+      canAddToCart,
+      cartBlockReason,
       addToCart,
       updateCartQuantity,
       removeFromCart,

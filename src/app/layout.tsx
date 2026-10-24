@@ -75,6 +75,7 @@ export const metadata: Metadata = {
 
 import { LanguageProvider } from "@/context/LanguageContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { BookingProvider } from "@/context/BookingContext";
 import { CatalogProvider } from "@/context/CatalogContext";
 import { OrdersProvider } from "@/context/OrdersContext";
 import { ShopProvider } from "@/context/ShopContext";
@@ -119,13 +120,15 @@ export default function RootLayout({
       <body>
         <LanguageProvider>
           <AuthProvider>
-            <CatalogProvider>
-              <OrdersProvider>
-                <ShopProvider>
-                  <SiteChrome>{children}</SiteChrome>
-                </ShopProvider>
-              </OrdersProvider>
-            </CatalogProvider>
+            <BookingProvider>
+              <CatalogProvider>
+                <OrdersProvider>
+                  <ShopProvider>
+                    <SiteChrome>{children}</SiteChrome>
+                  </ShopProvider>
+                </OrdersProvider>
+              </CatalogProvider>
+            </BookingProvider>
           </AuthProvider>
         </LanguageProvider>
       </body>

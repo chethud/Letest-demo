@@ -1,85 +1,76 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import { AdminShell } from "@/components/admin/AdminShell";
-import {
-  clearBookingOverride,
-  getEffectiveBookingFlags,
-  isOnlineBookingActive,
-  writeBookingOverride,
-  type BookingFlags,
-} from "@/config/booking";
+import { useBooking } from "@/context/BookingContext";
 import styles from "./AdminShell.module.css";
 
 export function AdminSettingsClient() {
-  const [flags, setFlags] = useState<BookingFlags>(() =>
-    typeof window === "undefined"
-      ? {
-          bookingEnabled: false,
-          inventoryValidationConfigured: false,
-          paymentConfigured: false,
-        }
-      : getEffectiveBookingFlags(),
-  );
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    const sync = () => {
-      setFlags(getEffectiveBookingFlags());
-      setActive(isOnlineBookingActive());
-    };
-    sync();
-    window.addEventListener("ksic-booking-change", sync);
-    return () => window.removeEventListener("ksic-booking-change", sync);
-  }, []);
-
-  function turnBookingOn() {
-    writeBookingOverride({
-      bookingEnabled: true,
-      inventoryValidationConfigured: true,
-      paymentConfigured: true,
-    });
-  }
-
-  function turnBookingOff() {
-    clearBookingOverride();
-  }
+  const { bookingActive, enableBooking, disableBooking, hydrated } = useBooking();
+  const [error, setError] = useState("");
 
   return (
     <AdminShell
       title="Settings"
-      subtitle="Runtime controls for this browser (demo override)."
+      subtitle="Admin-only controls for this browser."
     >
       <div className={styles.panel}>
         <h2>Online booking</h2>
         <p className={styles.muted} style={{ margin: "0 0 0.85rem" }}>
           Status:{" "}
-          <strong>{active ? "On — customers can book" : "Off — booking locked"}</strong>
+          <strong>
+            {!hydrated
+              ? "Checking…"
+              : bookingActive
+                ? "On — customers can book on the storefront"
+                : "Off — customers see “Booking temporarily unavailable”"}
+          </strong>
         </p>
-        <ul className={styles.muted} style={{ margin: "0 0 1rem", paddingLeft: "1.1rem" }}>
-          <li>bookingEnabled: {String(flags.bookingEnabled)}</li>
-          <li>
-            inventoryValidationConfigured: {String(flags.inventoryValidationConfigured)}
-          </li>
-          <li>paymentConfigured: {String(flags.paymentConfigured)}</li>
-        </ul>
+        <p className={styles.muted} style={{ margin: "0 0 1rem" }}>
+          Only admins can turn booking on or off here. When it is on, sign in as a
+          customer (customer@gmail.com / Customer@2026) to bag and book — admin
+          accounts cannot place orders.
+        </p>
+        {error ? (
+          <p className={styles.loginError} style={{ marginBottom: "1rem" }}>
+            {error}
+          </p>
+        ) : null}
         <div className={styles.actions}>
           <button
             type="button"
             className={styles.btn}
-            onClick={turnBookingOn}
-            disabled={active}
+            onClick={() => {
+              const result = enableBooking();
+              if (!result.ok) {
+                setError(result.error);
+                return;
+              }
+              setError("");
+            }}
+            disabled={!hydrated || bookingActive}
           >
             Turn booking on
           </button>
           <button
             type="button"
             className={styles.btnGhost}
-            onClick={turnBookingOff}
-            disabled={!active}
+            onClick={() => {
+              const result = disableBooking();
+              if (!result.ok) {
+                setError(result.error);
+                return;
+              }
+              setError("");
+            }}
+            disabled={!hydrated || !bookingActive}
           >
             Turn booking off
           </button>
+          <Link href="/collection" className={styles.btnGhost}>
+            Open shop
+          </Link>
         </div>
       </div>
     </AdminShell>
