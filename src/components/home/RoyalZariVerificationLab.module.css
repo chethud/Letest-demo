@@ -653,19 +653,21 @@
 .giModalBackdrop {
   position: fixed;
   inset: 0;
-  z-index: 80;
+  z-index: 1200;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 1.25rem;
+  overflow-y: auto;
+  padding: calc(var(--site-header-offset, 118px) + 1.25rem) 1.25rem 1.5rem;
   background: rgba(23, 21, 19, 0.55);
   backdrop-filter: blur(4px);
 }
 
 .giModal {
   width: min(920px, 100%);
-  max-height: min(88vh, 900px);
+  max-height: min(calc(100vh - var(--site-header-offset, 118px) - 2.75rem), 900px);
   overflow: auto;
+  margin-top: 0.35rem;
   padding: 1.35rem 1.5rem 1.5rem;
   border-radius: 12px;
   border: 1px solid rgba(198, 154, 91, 0.35);
