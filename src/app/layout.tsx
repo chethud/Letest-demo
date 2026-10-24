@@ -75,6 +75,8 @@ export const metadata: Metadata = {
 };
 
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ShopProvider } from "@/context/ShopContext";
+import { CartDrawer } from "@/components/shop/CartDrawer";
 import { ScrollAnimator } from "@/components/common/ScrollAnimator";
 
 export default function RootLayout({
@@ -115,12 +117,15 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
-          <ScrollAnimator />
-          <Header />
-          <main id="main-content" style={{ minHeight: "100vh" }}>
-            {children}
-          </main>
-          <Footer />
+          <ShopProvider>
+            <ScrollAnimator />
+            <Header />
+            <CartDrawer />
+            <main id="main-content" style={{ minHeight: "100vh" }}>
+              {children}
+            </main>
+            <Footer />
+          </ShopProvider>
         </LanguageProvider>
       </body>
     </html>

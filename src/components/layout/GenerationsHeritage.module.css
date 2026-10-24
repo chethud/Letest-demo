@@ -206,22 +206,12 @@ a.cta:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .image {
-    min-height: 82vw;
+  .heritage {
+    gap: 0.45rem;
   }
 
-  .photo {
-    object-position: center 36%;
-  }
-
-  .borderTop,
-  .borderBottom {
-    gap: 0.4rem;
-    padding-block: 0.85rem;
-  }
-
-  .borderTop svg:nth-child(n + 7),
-  .borderBottom svg:nth-child(n + 7) {
+  /* Hide heritage story panel (and paired image) on mobile */
+  .story {
     display: none;
   }
 }

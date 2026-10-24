@@ -40,7 +40,7 @@ export const MYSORE_SILK_UNIQUE_PILLARS: UniquePillar[] = [
     number: "02",
     title: "Fluid Drape & Lightness",
     short:
-      "A fluid, graceful drape that feels light and comfortable throughout the day.",
+      "A graceful drape that feels light and comfortable throughout the day.",
     detail:
       "Mysore Silk has a buttery, liquid-like hand: moisture tends to bead and glide rather than cling, and the cloth drapes as if wrapped around you, exceptionally light and easy to wear.",
     image: "/assets/craft/unique-02-fluid-drape.jpg",
@@ -51,7 +51,7 @@ export const MYSORE_SILK_UNIQUE_PILLARS: UniquePillar[] = [
     number: "03",
     title: "Pure Gold & Silver Zari",
     short:
-      "Intricate zari craftsmanship creates a lustrous finish that celebrates traditional silk weaving.",
+      "Intricate zari craftsmanship brings traditional silk weaving to life.",
     detail:
       "KSIC zari is specified as 0.65% pure 24K gold with 65% pure silver. The border keeps a mellow lustre over years of use.",
     image: "/assets/craft/unique-03-pure-zari.jpg",

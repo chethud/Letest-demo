@@ -5,15 +5,15 @@
   right: 0;
   z-index: 100;
   width: 100%;
-  background: #FFFAFA;
+  background: var(--color-bg-paper, #FFFAFA);
   border-bottom: 1px solid #f2dbe0;
 }
 
 .utilityBar {
   height: 34px;
-  background: #fff9f7;
+  background: var(--color-bg-subtle, #fdf1f3);
   color: #5a3436;
-  border-bottom: 1px solid #e8d5cd;
+  border-bottom: 1px solid #f2dbe0;
   transition: height 220ms ease, opacity 180ms ease;
 }
 

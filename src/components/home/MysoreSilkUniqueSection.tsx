@@ -54,22 +54,24 @@ export const MysoreSilkUniqueSection: React.FC = () => {
                     src={pillar.image}
                     alt={pillar.alt}
                     fill
-                    sizes="(max-width: 720px) 46vw, (max-width: 1100px) 28vw, 16vw"
+                    sizes="(max-width: 820px) 34vw, (max-width: 1100px) 28vw, 16vw"
                     className={styles.archImage}
                   />
                 </div>
-                <p className={styles.pillarNumber}>{pillar.number}</p>
-                <h3 className={styles.pillarTitle}>{pillar.title}</h3>
-                <p className={styles.pillarText}>{pillar.short}</p>
-                {isUniqueCode ? (
-                  <a
-                    href="#saree-serial-form"
-                    className={styles.verifyCue}
-                    onClick={scrollToForm}
-                  >
-                    Verify Authenticity <span aria-hidden="true">→</span>
-                  </a>
-                ) : null}
+                <div className={styles.pillarBody}>
+                  <p className={styles.pillarNumber}>{pillar.number}</p>
+                  <h3 className={styles.pillarTitle}>{pillar.title}</h3>
+                  <p className={styles.pillarText}>{pillar.short}</p>
+                  {isUniqueCode ? (
+                    <a
+                      href="#saree-serial-form"
+                      className={styles.verifyCue}
+                      onClick={scrollToForm}
+                    >
+                      Verify Authenticity <span aria-hidden="true">→</span>
+                    </a>
+                  ) : null}
+                </div>
               </li>
             );
           })}

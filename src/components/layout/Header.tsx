@@ -8,10 +8,12 @@ import { Castle, Heart, Landmark, Menu, Search, ShoppingBag, User, X } from "luc
 import styles from "./Header.module.css";
 import { KSIC_PRODUCTS } from "@/data/collections";
 import { NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
+import { useShop } from "@/context/ShopContext";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
+  const { cartCount, wishlistCount, setCartOpen, hydrated } = useShop();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -221,13 +223,38 @@ export const Header: React.FC = () => {
             <Link href="/contact" className={`${styles.iconButton} ${styles.iconDesktop}`} aria-label="Account">
               <User size={19} strokeWidth={1.5} />
             </Link>
-            <Link href="/collection?category=heritage-bridal-series" className={`${styles.iconButton} ${styles.iconDesktop}`} aria-label="Wishlist">
+            <Link
+              href="/wishlist"
+              className={`${styles.iconButton} ${styles.iconDesktop} ${styles.bagButton}`}
+              aria-label={
+                hydrated && wishlistCount > 0
+                  ? `Wishlist, ${wishlistCount} saved`
+                  : "Wishlist"
+              }
+            >
               <Heart size={19} strokeWidth={1.5} />
+              {hydrated && wishlistCount > 0 ? (
+                <span className={styles.cartBadge}>{wishlistCount > 9 ? "9+" : wishlistCount}</span>
+              ) : null}
             </Link>
-            <Link href="/contact#store-locator" className={`${styles.iconButton} ${styles.bagButton}`} aria-label="Store locator">
+            <button
+              type="button"
+              className={`${styles.iconButton} ${styles.bagButton}`}
+              aria-label={
+                hydrated && cartCount > 0
+                  ? `Shopping bag, ${cartCount} items`
+                  : "Shopping bag"
+              }
+              onClick={() => {
+                setSearchOpen(false);
+                setCartOpen(true);
+              }}
+            >
               <ShoppingBag size={19} strokeWidth={1.5} />
-              <span className={styles.cartBadge}>0</span>
-            </Link>
+              {hydrated && cartCount > 0 ? (
+                <span className={styles.cartBadge}>{cartCount > 9 ? "9+" : cartCount}</span>
+              ) : null}
+            </button>
 
             {searchOpen && (
               <div className={styles.searchPanel}>

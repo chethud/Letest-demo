@@ -8,6 +8,21 @@
   overflow: hidden;
 }
 
+@media (max-width: 900px) {
+  .section {
+    margin: 0.45rem;
+    padding: 1.35rem 0 1.15rem;
+  }
+
+  .intro {
+    margin-bottom: 0.85rem;
+  }
+
+  .title {
+    font-size: clamp(1.35rem, 5.5vw, 1.75rem);
+  }
+}
+
 .intro {
   padding: 0 clamp(1.5rem, 4vw, 3.25rem);
   margin-bottom: clamp(1.35rem, 3vw, 1.85rem);

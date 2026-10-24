@@ -23,37 +23,39 @@
 }
 
 :root {
-  /* Rose petal theme: white blush and light pink */
-  --color-bg-primary: #FFFAFA;
+  /* Light pink theme — site-wide surfaces */
+  --color-bg-primary: #FFF5F7;
   --color-bg-secondary: #FBE9ED;
-  --color-bg-paper: #FFFFFF;
+  --color-bg-paper: #FFFAFA;
   --color-bg-subtle: #FDF1F3;
+  --color-bg-blush: #F7DFE6;
   --color-bg-dark: #2E1D1A;
   --color-bg-dark-surface: #4A2A32;
-  
+
   /* Rose-brown editorial text */
   --color-text-primary: #2E1D1A;
   --color-text-secondary: #4A3330;
   --color-text-muted: #776166;
   --color-text-light: #FFFFFF;
   --color-text-light-muted: #FBE9ED;
-  
-  /* Brand accents from the rose petal site */
+
+  /* Brand accents */
   --color-burgundy: #7A1530;
   --color-burgundy-dark: #5C1024;
   --color-burgundy-soft: rgba(122, 21, 48, 0.08);
-  
+
   --color-gold: #B0843F;
   --color-gold-muted: #8C6830;
   --color-gold-bright: #D4B072;
   --color-gold-subtle: rgba(176, 132, 63, 0.14);
   --color-gold-line: rgba(176, 132, 63, 0.35);
-  
-  /* 1px Editorial Rules & Borders */
-  --border-rule: 1px solid rgba(20, 16, 13, 0.14);
-  --border-rule-strong: 1px solid rgba(20, 16, 13, 0.26);
-  --border-rule-light: 1px solid rgba(247, 243, 236, 0.16);
+
+  /* Soft pink rules & borders */
+  --border-rule: 1px solid rgba(122, 21, 48, 0.12);
+  --border-rule-strong: 1px solid rgba(122, 21, 48, 0.22);
+  --border-rule-light: 1px solid rgba(251, 233, 237, 0.7);
   --border-rule-gold: 1px solid rgba(125, 93, 37, 0.35);
+  --border-pink: 1px solid #f2dbe0;
 
   /* One typeface site-wide: Playfair Display, matching the heritage title. */
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -531,7 +533,6 @@ p[class*="epochDescription"],
 p[class*="sectionLead"],
 p[class*="featureBody"],
 p[class*="pillarBody"],
-p[class*="pillarText"],
 p[class*="stageDetails"],
 p[class*="HeritageSection_description"],
 p[class*="EditorialPage_lead"],
@@ -564,6 +565,8 @@ p[class*="appearanceDetail"],
 p[class*="GenerationsHeritage_lead"],
 p[class*="cardBody"],
 p[class*="verifyCue"],
+p[class*="pillarText"],
+p[class*="MysoreSilkUniqueSection_pillarText"],
 .text-start {
   text-align: start !important;
   hyphens: manual !important;

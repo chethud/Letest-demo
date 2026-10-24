@@ -1,10 +1,10 @@
 .section {
-  --msu-ivory: #f8f3ed;
+  --msu-ivory: var(--color-bg-primary, #fff5f7);
   --msu-burgundy: #76152d;
   --msu-brown: #34231f;
   --msu-gold: #b58a48;
   --msu-muted: #6e625d;
-  --msu-white: #fffcf8;
+  --msu-white: var(--color-bg-paper, #ffffff);
 
   position: relative;
   z-index: 1;
@@ -18,10 +18,10 @@
 .wrap {
   width: min(100%, var(--container-max-width, 1280px));
   margin: 0 auto;
-  padding: clamp(2rem, 3.8vw, 3rem) clamp(1.25rem, 4vw, 3.5rem);
+  padding: clamp(1.15rem, 2.4vw, 1.85rem) clamp(1.25rem, 4vw, 3.5rem);
   display: grid;
   grid-template-columns: minmax(15rem, 0.32fr) minmax(0, 0.68fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
   align-items: center;
   box-sizing: border-box;
 }
@@ -34,29 +34,29 @@
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 0.7rem;
+  gap: 0.45rem;
+  margin: 0 0 0.4rem;
   font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--msu-gold);
 }
 
 .eyebrowRule {
   display: block;
-  width: 1.35rem;
+  width: 1.1rem;
   height: 1px;
   background: var(--msu-gold);
   flex-shrink: 0;
 }
 
 .title {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.45rem;
   max-width: 11ch;
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
-  font-size: clamp(1.7rem, 2.3vw, 2.25rem);
+  font-size: clamp(1.35rem, 1.9vw, 1.75rem);
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -65,11 +65,11 @@
 }
 
 .lead {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.85rem;
   font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: clamp(0.88rem, 1.05vw, 0.95rem);
+  font-size: clamp(0.78rem, 0.95vw, 0.86rem);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--msu-muted);
   text-align: left;
   text-wrap: pretty;
@@ -121,6 +121,13 @@
   flex-direction: column;
 }
 
+.pillarBody {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .pillarUniqueCode {
   position: relative;
 }
@@ -132,7 +139,7 @@
   margin: 0 0 0.7rem;
   overflow: hidden;
   border-radius: 999px 999px 12px 12px;
-  background: #efe6dc;
+  background: var(--color-bg-secondary, #fbe9ed);
 }
 
 .archImage {
@@ -157,13 +164,13 @@
 }
 
 .pillarTitle {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.3rem;
   /* Reserve two lines so every description starts on the same row */
-  min-height: calc(1.25em * 2);
+  min-height: calc(1.2em * 2);
   font-family: var(--font-display), "Playfair Display", Georgia, serif;
-  font-size: clamp(1rem, 1.15vw, 1.15rem);
+  font-size: clamp(0.88rem, 1vw, 1rem);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--msu-brown);
   text-wrap: balance;
@@ -172,13 +179,13 @@
 .pillarText {
   margin: 0;
   /* Keep description blocks the same height across the row */
-  min-height: calc(1.5em * 4);
+  min-height: calc(1.45em * 4);
   font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
-  font-size: 0.84rem;
+  font-size: 0.74rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--msu-muted);
-  text-align: left;
+  text-align: left !important;
   text-wrap: pretty;
 }
 
@@ -264,31 +271,178 @@
   }
 }
 
+/* Mobile: image left, copy right — two features per row */
 @media (max-width: 820px) {
   .wrap {
     grid-template-columns: 1fr;
-    gap: 2.25rem;
+    gap: 1.15rem;
     align-items: start;
+    padding-block: 1.1rem;
+    padding-inline: 16px;
   }
 
   .intro {
     max-width: 36rem;
   }
-}
 
-@media (max-width: 560px) {
-  .wrap {
-    padding-block: 2rem;
+  .eyebrow {
+    margin-bottom: 0.35rem;
+    font-size: 0.62rem;
+    gap: 0.4rem;
+  }
+
+  .title {
+    max-width: none;
+    font-size: clamp(1.3rem, 5.2vw, 1.55rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .lead {
+    margin-bottom: 0.7rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .cta {
+    min-height: 2.4rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.66rem;
   }
 
   .pillars {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem 0.75rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pillar {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    gap: 0 0.85rem;
+    align-items: start;
+    text-align: left;
   }
 
   .arch {
-    aspect-ratio: 3 / 4;
-    border-radius: 999px 999px 10px 10px;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: none;
+    margin: 0;
+    border-radius: 999px 999px 8px 8px;
+  }
+
+  .archImage {
+    object-fit: cover;
+    object-position: center 32%;
+  }
+
+  .pillarBody {
+    padding-top: 0.15rem;
+  }
+
+  .pillarNumber {
+    margin: 0 0 0.4rem;
+    min-height: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+  }
+
+  .pillarTitle {
+    margin: 0 0 0.45rem;
+    min-height: 0;
+    font-size: clamp(1.05rem, 4.2vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
+  }
+
+  .pillarText {
+    margin: 0;
+    min-height: 0;
+    font-size: clamp(0.84rem, 3.4vw, 0.92rem);
+    line-height: 1.55;
+    text-align: left !important;
+  }
+
+  .verifyCue {
+    display: inline-flex;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-self: flex-start;
+    min-height: 44px;
+    margin-top: 0.65rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 4px;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .pillar {
+    grid-template-columns: 5.75rem minmax(0, 1fr);
+    gap: 0 0.75rem;
+  }
+
+  .pillarTitle {
+    font-size: 1.1rem;
+  }
+
+  .pillarText {
+    font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .wrap {
+    padding-inline: 14px;
+  }
+
+  .pillars {
+    gap: 0.9rem;
+  }
+
+  .pillar {
+    grid-template-columns: 5.25rem minmax(0, 1fr);
+    gap: 0 0.7rem;
+  }
+
+  .pillarNumber {
+    font-size: 0.7rem;
+  }
+
+  .pillarTitle {
+    font-size: 1.05rem;
+  }
+
+  .pillarText {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .verifyCue {
+    white-space: normal;
+    font-size: 0.58rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrap {
+    padding-inline: 12px;
+  }
+
+  .pillars {
+    gap: 0.85rem;
+  }
+
+  .pillar {
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+    gap: 0 0.65rem;
   }
 
   .pillarTitle {
@@ -297,10 +451,5 @@
 
   .pillarText {
     font-size: 0.8rem;
-  }
-
-  .verifyCue {
-    width: 100%;
-    justify-content: center;
   }
 }

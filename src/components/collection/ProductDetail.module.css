@@ -6,7 +6,7 @@
   --pdp-gold: #b0843f;
   --pdp-ink: #2e1d1a;
   --pdp-muted: #5c524f;
-  --pdp-ivory: #fffafa;
+  --pdp-ivory: var(--color-bg-primary, #fff5f7);
   --pdp-border: rgba(122, 21, 48, 0.14);
   padding-top: var(--site-header-offset);
   color: var(--pdp-ink);
@@ -89,7 +89,7 @@
   height: 96px;
   padding: 0;
   border: 1px solid transparent;
-  background: #efe8df;
+  background: var(--color-bg-secondary, #fbe9ed);
   overflow: hidden;
   cursor: pointer;
 }
@@ -103,7 +103,7 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: #efe8df;
+  background: var(--color-bg-secondary, #fbe9ed);
 }
 
 .heroImage,
@@ -135,6 +135,7 @@
 .swatch:focus-visible,
 .bookPill:focus-visible,
 .enquirePill:focus-visible,
+.addBagPill:focus-visible,
 .submitPill:focus-visible,
 .accTrigger:focus-visible,
 .crumbs a:focus-visible,
@@ -444,6 +445,7 @@
 
 .bookPill,
 .enquirePill,
+.addBagPill,
 .submitPill {
   display: inline-flex;
   align-items: center;
@@ -492,6 +494,18 @@
 .wishBtnActive {
   color: var(--pdp-burgundy);
   border-color: rgba(122, 21, 48, 0.35);
+}
+
+.addBagPill {
+  border: 1px solid var(--pdp-burgundy);
+  background: var(--pdp-burgundy);
+  color: #fffafa;
+  cursor: pointer;
+}
+
+.addBagPill:hover {
+  background: var(--pdp-maroon);
+  border-color: var(--pdp-maroon);
 }
 
 .enquirePill {
@@ -752,7 +766,7 @@
   display: block;
   aspect-ratio: 3 / 4;
   margin-bottom: 12px;
-  background: #efe8df;
+  background: var(--color-bg-secondary, #fbe9ed);
   overflow: hidden;
 }
 

@@ -1,7 +1,7 @@
 .strip {
   position: relative;
   min-height: var(--heritage-strip-height, 78px);
-  background: #fffafa;
+  background: var(--color-bg-primary, #fff5f7);
   border-top: 1px solid #f2dbe0;
   border-bottom: 1px solid #f2dbe0;
   color: #2e1d1a;
@@ -59,6 +59,10 @@
 }
 
 @media (max-width: 960px) {
+  .strip {
+    min-height: 0;
+  }
+
   .wrap {
     width: 100%;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -66,15 +70,15 @@
 
   .item {
     flex-direction: column;
-    gap: 6px;
-    padding: 10px 4px;
+    gap: 4px;
+    padding: 8px 4px;
     font-size: 10px;
     text-align: center;
   }
 
   .badge {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .icon {

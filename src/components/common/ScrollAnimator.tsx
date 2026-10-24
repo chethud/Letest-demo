@@ -25,7 +25,8 @@ export const ScrollAnimator: React.FC = () => {
             setScrollProgress(progress);
           }
 
-          setShowBackToTop(currentScroll > 420);
+          const nearBottom = totalHeight > 0 && currentScroll / totalHeight > 0.88;
+          setShowBackToTop(currentScroll > 420 && !nearBottom);
           ticking = false;
         });
         ticking = true;

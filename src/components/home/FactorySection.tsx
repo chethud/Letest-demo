@@ -2,8 +2,30 @@
 
 import React from "react";
 import Link from "next/link";
+import { Crown, Gem, Layers } from "lucide-react";
 import styles from "./FactorySection.module.css";
 import { useLanguage } from "@/context/LanguageContext";
+
+const HIGHLIGHTS = [
+  {
+    id: "regal",
+    Icon: Crown,
+    labelEn: "Regal Heritage",
+    labelKn: "ರಾಜಸಂಪನ್ನ ಪರಂಪರೆ",
+  },
+  {
+    id: "craft",
+    Icon: Layers,
+    labelEn: "Exceptional Craftsmanship",
+    labelKn: "ಅಸಾಧಾರಣ ಕರಕುಶಲ",
+  },
+  {
+    id: "exclusive",
+    Icon: Gem,
+    labelEn: "Timeless Exclusivity",
+    labelKn: "ಶಾಶ್ವತ ವಿಶಿಷ್ಟತೆ",
+  },
+] as const;
 
 export const FactorySection: React.FC = () => {
   const { lang } = useLanguage();
@@ -22,42 +44,62 @@ export const FactorySection: React.FC = () => {
           preload="metadata"
           aria-label={isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಕಥೆ" : "The story of Mysore Silk"}
         />
+        <p className={styles.filmCaption}>
+          {isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಸಾರ" : "The Essence of Mysore Silk"}
+        </p>
       </div>
 
       <div className={styles.panel}>
-        <p className={styles.eyebrow}>{isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಕಲೆ" : "The Art of Mysore Silk"}</p>
-        <h2 className={styles.display}>
-          {isKn ? (
-            <>
-              ಸೀರೆಗಿಂತ ಹೆಚ್ಚು.
-              <br />
-              ಜೀವಂತ ಪರಂಪರೆ.
-            </>
-          ) : (
-            <>
-              More than a saree.
-              <br />
-              <span className={styles.displayLine}>A living tradition.</span>
-            </>
-          )}
-        </h2>
-        <p className={styles.body}>
-          {isKn ? (
-            "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದ ನಮ್ಮ ರೇಷ್ಮೆ ಕರಕುಶಲ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ಶಾಶ್ವತ ಸೌಂದರ್ಯದ ಆಚರಣೆ. ಪ್ರತಿ ತುಂಡೂ ಇತಿಹಾಸ, ಪರಂಪರೆ ಮತ್ತು ತಲೆಮಾರುಗಳಿಗೆ ಉಳಿಯುವ ಭರವಸೆಯನ್ನು ಹೊತ್ತಿದೆ."
-          ) : (
-            <>
-              Mysuru silk has flourished through centuries, symbolising{" "}
-              <strong className={styles.emphasis}>regality</strong>,{" "}
-              <strong className={styles.emphasis}>craftsmanship</strong> and{" "}
-              <strong className={styles.emphasis}>exclusivity</strong>. Each piece
-              carries a history, a heritage and a promise to last for generations.
-            </>
-          )}
-        </p>
-        <Link href="/craft" className={styles.craftLink}>
-          {isKn ? "ನಮ್ಮ ಕರಕುಶಲ ನೋಡಿ" : "Explore Our Craft"}{" "}
-          <span aria-hidden="true">→</span>
-        </Link>
+        <div className={styles.panelInner}>
+          <p className={styles.eyebrow}>
+            {isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಕಲೆ" : "The Art of Mysore Silk"}
+          </p>
+          <h2 className={styles.display}>
+            {isKn ? (
+              <>
+                ಸೀರೆಗಿಂತ ಹೆಚ್ಚು.
+                <span className={styles.displayLine}>ಜೀವಂತ ಪರಂಪರೆ.</span>
+              </>
+            ) : (
+              <>
+                More than a saree.
+                <span className={styles.displayLine}>A living tradition.</span>
+              </>
+            )}
+          </h2>
+          <p className={styles.body}>
+            {isKn ? (
+              "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದ ನಮ್ಮ ರೇಷ್ಮೆ ಕರಕುಶಲ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ಶಾಶ್ವತ ಸೌಂದರ್ಯದ ಆಚರಣೆ. ಪ್ರತಿ ತುಂಡೂ ಇತಿಹಾಸ, ಪರಂಪರೆ ಮತ್ತು ತಲೆಮಾರುಗಳಿಗೆ ಉಳಿಯುವ ಭರವಸೆಯನ್ನು ಹೊತ್ತಿದೆ."
+            ) : (
+              <>
+                Mysuru silk has flourished through centuries, symbolising{" "}
+                <strong className={styles.emphasis}>regality</strong>,{" "}
+                <strong className={styles.emphasis}>craftsmanship</strong> and{" "}
+                <strong className={styles.emphasis}>exclusivity</strong>. Each piece
+                carries a history, a heritage and a promise to last for generations.
+              </>
+            )}
+          </p>
+
+          <ul className={styles.highlights} aria-label="Heritage highlights">
+            {HIGHLIGHTS.map(({ id, Icon, labelEn, labelKn }) => (
+              <li key={id} className={styles.highlight}>
+                <span className={styles.highlightIcon} aria-hidden="true">
+                  <Icon size={18} strokeWidth={1.6} />
+                </span>
+                <span className={styles.highlightLabel}>
+                  {isKn ? labelKn : labelEn}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <Link href="/craft" className={styles.craftLink}>
+            {isKn ? "ನಮ್ಮ ಕರಕುಶಲ ನೋಡಿ" : "Explore Our Craft"}{" "}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+
         <div className={styles.palaceSketch} aria-hidden="true">
           <svg viewBox="0 0 340 148" fill="none" stroke="currentColor">
             <g className={styles.watermarkPalace} strokeWidth="0.7">

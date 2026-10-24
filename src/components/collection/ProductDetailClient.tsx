@@ -14,8 +14,10 @@ import {
   Plus,
   X,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { KSICProduct } from "@/data/collections";
 import { isOnlineBookingActive } from "@/config/booking";
+import { useShop } from "@/context/ShopContext";
 import styles from "./ProductDetail.module.css";
 
 const ENQUIRY_EMAIL = "info@ksicsilk.com";
@@ -251,24 +253,50 @@ function EnquiryDialog({
 }
 
 function PurchasePanel({ product }: { product: KSICProduct }) {
+  const router = useRouter();
   const bookingActive = isOnlineBookingActive();
+  const { addToCart, isWishlisted, toggleWishlist } = useShop();
   const shades = CREPE_SHADES;
   const [quantity, setQuantity] = useState(1);
   const [shadeIndex, setShadeIndex] = useState(0);
   const [enquiryOpen, setEnquiryOpen] = useState(false);
-  const [saved, setSaved] = useState(false);
   const qtyId = useId();
+  const saved = isWishlisted(product.id);
+  const shade = shades[shadeIndex];
 
   useEffect(() => {
     setShadeIndex(0);
   }, [product.id]);
+
+  function handleAddToBag() {
+    addToCart({
+      product,
+      quantity,
+      shadeName: shade.name,
+      shadeHex: shade.hex,
+    });
+  }
+
+  function handleContinueToBook() {
+    if (!bookingActive) return;
+    addToCart({
+      product,
+      quantity,
+      shadeName: shade.name,
+      shadeHex: shade.hex,
+      openDrawer: false,
+    });
+    router.push("/checkout");
+  }
 
   return (
     <div className={styles.purchase}>
       <div className={styles.priceRow}>
         <div>
           <p className={styles.priceLabel}>Availability</p>
-          <p className={styles.priceValue}>Showroom enquiry</p>
+          <p className={styles.priceValue}>
+            {bookingActive ? "Online booking open" : "Showroom enquiry"}
+          </p>
         </div>
         <p
           className={`${styles.stockBadge} ${
@@ -282,18 +310,18 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
       <div className={styles.colourBlock}>
         <div className={styles.optionHead}>
           <p id="colour-label">Colour</p>
-          <span>{shades[shadeIndex].name}</span>
+          <span>{shade.name}</span>
         </div>
         <div className={styles.swatchRow} role="radiogroup" aria-labelledby="colour-label">
-          {shades.map((shade, index) => (
+          {shades.map((item, index) => (
             <button
-              key={shade.name}
+              key={item.name}
               type="button"
               role="radio"
               className={styles.swatch}
-              style={{ backgroundColor: shade.hex }}
+              style={{ backgroundColor: item.hex }}
               aria-checked={shadeIndex === index}
-              aria-label={shade.name}
+              aria-label={item.name}
               onClick={() => setShadeIndex(index)}
             />
           ))}
@@ -332,6 +360,7 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
           className={styles.bookPill}
           disabled={!bookingActive}
           aria-disabled={!bookingActive}
+          onClick={handleContinueToBook}
         >
           {!bookingActive ? <Lock size={14} aria-hidden /> : null}
           <span>{bookingActive ? "Continue to book" : "Booking temporarily unavailable"}</span>
@@ -341,11 +370,16 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
           className={`${styles.wishBtn}${saved ? ` ${styles.wishBtnActive}` : ""}`}
           aria-label={saved ? "Remove from saved" : "Save article"}
           aria-pressed={saved}
-          onClick={() => setSaved((value) => !value)}
+          onClick={() => toggleWishlist(product)}
         >
           <Heart size={18} strokeWidth={1.5} fill={saved ? "currentColor" : "none"} />
         </button>
       </div>
+
+      <button type="button" className={styles.addBagPill} onClick={handleAddToBag}>
+        Add to bag
+        <ArrowRight size={16} aria-hidden />
+      </button>
 
       <button type="button" className={styles.enquirePill} onClick={() => setEnquiryOpen(true)}>
         Enquire about this saree
@@ -353,8 +387,9 @@ function PurchasePanel({ product }: { product: KSICProduct }) {
       </button>
 
       <p className={styles.secureNote}>
-        Online checkout is not offered on this site. Purchase assistance is through KSIC showrooms and
-        official enquiry.
+        {bookingActive
+          ? "Online booking submits a showroom reservation request. Payment is not taken on this site."
+          : "You can save sarees and add them to your bag now. Booking stays locked until online booking is enabled. Enquiry remains available."}
       </p>
 
       {enquiryOpen ? (

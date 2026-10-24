@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, Heart, SlidersHorizontal, X } from "lucide-react";
 import { COLLECTION_CATEGORIES, KSICProduct } from "@/data/collections";
+import { useShop } from "@/context/ShopContext";
 import styles from "./CollectionShop.module.css";
 
 type ShopView = "all" | "new" | "bestsellers";
@@ -94,7 +95,7 @@ export default function CollectionShop({
   const [bestsellersOnly, setBestsellersOnly] = useState(view === "bestsellers");
   const [sortBy, setSortBy] = useState<SortBy>(view === "bestsellers" ? "featured" : "newest");
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [saved, setSaved] = useState<Record<string, boolean>>({});
+  const { isWishlisted, toggleWishlist } = useShop();
 
   // Keep local filter/sort in sync when Shop subnav changes the URL view
   useEffect(() => {
@@ -187,10 +188,6 @@ export default function CollectionShop({
     setBestsellersOnly(on);
     setSortBy(on ? "featured" : "newest");
     setViewInUrl(on ? "bestsellers" : view === "new" ? "new" : "all");
-  };
-
-  const toggleSaved = (id: string) => {
-    setSaved((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   return (
@@ -474,15 +471,19 @@ export default function CollectionShop({
                       </Link>
                       <button
                         type="button"
-                        className={`${styles.wish}${saved[prod.id] ? ` ${styles.wishActive}` : ""}`}
-                        aria-label={saved[prod.id] ? `Remove ${prod.name} from saved` : `Save ${prod.name}`}
-                        aria-pressed={Boolean(saved[prod.id])}
-                        onClick={() => toggleSaved(prod.id)}
+                        className={`${styles.wish}${isWishlisted(prod.id) ? ` ${styles.wishActive}` : ""}`}
+                        aria-label={
+                          isWishlisted(prod.id)
+                            ? `Remove ${prod.name} from saved`
+                            : `Save ${prod.name}`
+                        }
+                        aria-pressed={isWishlisted(prod.id)}
+                        onClick={() => toggleWishlist(prod)}
                       >
                         <Heart
                           size={15}
                           strokeWidth={1.5}
-                          fill={saved[prod.id] ? "currentColor" : "none"}
+                          fill={isWishlisted(prod.id) ? "currentColor" : "none"}
                         />
                       </button>
                       <Link href={`/collection/${prod.slug}`} className={styles.quickView}>
