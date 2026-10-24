@@ -16,15 +16,35 @@ const SECTIONS = [
     title: "Master Collection images",
     description: "Edit Sarees, Festive, Wedding, Menswear, and Gifts tiles.",
   },
+  {
+    href: "/admin/cms/factory",
+    title: "Video text",
+    description: "Upload or link the factory film, and edit English panel copy.",
+  },
+  {
+    href: "/admin/cms/unique",
+    title: "Essence of Mysore Silk",
+    description: "Edit intro copy, pillar titles/text, and pillar images.",
+  },
+  {
+    href: "/admin/cms/generations",
+    title: "Silk for generations",
+    description: "Edit the heritage portrait image and story copy.",
+  },
+  {
+    href: "/admin/cms/testimonials",
+    title: "Testimonials",
+    description: "Edit customer quotes, names, and places.",
+  },
 ];
 
 export function AdminCmsClient() {
   return (
-    <AdminShell title="CMS" subtitle="Choose a section to edit storefront images.">
+    <AdminShell title="CMS" subtitle="Choose a section to edit storefront content.">
       <div className={styles.panel}>
         <h2>Sections</h2>
         <p className={styles.muted} style={{ margin: "0 0 1.15rem" }}>
-          Open a section to upload or change images. Edits apply in this browser.
+          Open a section to edit images or text. Changes apply in this browser.
         </p>
         <div className={styles.actions} style={{ flexDirection: "column", alignItems: "stretch" }}>
           {SECTIONS.map((section) => (

@@ -11,45 +11,47 @@ import {
   readImageFile,
 } from "./cmsShared";
 import {
+  DEFAULT_CMS_HOME,
   readCmsHome,
   writeCmsHome,
   type CmsHomeSettings,
   type CollectionTileId,
 } from "@/lib/cmsHome";
 
-function emptySettings(): CmsHomeSettings {
-  return { heroSlide1Image: "", heroSlide2Image: "", collectionImages: {} };
-}
-
 export function AdminCmsCollectionClient() {
-  const [settings, setSettings] = useState<CmsHomeSettings>(() =>
-    typeof window === "undefined" ? emptySettings() : readCmsHome(),
+  const [draft, setDraft] = useState<CmsHomeSettings>(() =>
+    typeof window === "undefined" ? DEFAULT_CMS_HOME : readCmsHome(),
   );
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setSettings(readCmsHome());
+    setDraft(readCmsHome());
   }, []);
 
-  function persist(next: CmsHomeSettings) {
-    setSettings(next);
-    writeCmsHome(next);
-    setError("");
-    setMessage("Saved — open the homepage Master Collection to see the change.");
-  }
-
   function setCollectionSlot(id: CollectionTileId, value: string) {
-    persist({
-      ...settings,
-      collectionImages: { ...settings.collectionImages, [id]: value },
-    });
+    setDraft((prev) => ({
+      ...prev,
+      collectionImages: { ...prev.collectionImages, [id]: value },
+    }));
+    setMessage("");
+    setError("");
   }
 
   function clearCollectionSlot(id: CollectionTileId) {
-    const nextImages = { ...settings.collectionImages };
-    delete nextImages[id];
-    persist({ ...settings, collectionImages: nextImages });
+    setDraft((prev) => {
+      const nextImages = { ...prev.collectionImages };
+      delete nextImages[id];
+      return { ...prev, collectionImages: nextImages };
+    });
+    setMessage("");
+    setError("");
+  }
+
+  function save() {
+    writeCmsHome(draft);
+    setError("");
+    setMessage("Saved — open the homepage Master Collection to see the change.");
   }
 
   return (
@@ -69,8 +71,8 @@ export function AdminCmsCollectionClient() {
       <div className={styles.panel}>
         <h2>Collection tiles</h2>
         <p className={styles.muted} style={{ margin: "0 0 1rem" }}>
-          Upload from your device or paste an image URL for Sarees, Festive, Wedding,
-          Menswear, and Gifts.
+          Upload from your device or paste an image URL for each tile, then Save. Reset
+          restores that tile only.
         </p>
 
         {message ? (
@@ -84,11 +86,18 @@ export function AdminCmsCollectionClient() {
           </p>
         ) : null}
 
-        <div className={styles.form} style={{ maxWidth: "none" }}>
+        <form
+          className={styles.form}
+          style={{ maxWidth: "none" }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            save();
+          }}
+        >
           <div className={styles.imageSlots}>
             {COLLECTION_TILE_IDS.map((id) => {
               const meta = COLLECTION_LABELS[id];
-              const value = (settings.collectionImages[id] ?? "").trim();
+              const value = (draft.collectionImages[id] ?? "").trim();
               const defaultSrc = DEFAULT_COLLECTION_IMAGES[id];
               const preview = value || defaultSrc;
               const isCustom = Boolean(value);
@@ -149,7 +158,12 @@ export function AdminCmsCollectionClient() {
               );
             })}
           </div>
-        </div>
+          <div className={styles.actions}>
+            <button type="submit" className={styles.btn}>
+              Save
+            </button>
+          </div>
+        </form>
       </div>
     </AdminShell>
   );

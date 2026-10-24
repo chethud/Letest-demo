@@ -5,36 +5,40 @@ import Link from "next/link";
 import { AdminShell } from "./AdminShell";
 import styles from "./AdminShell.module.css";
 import { HERO_SLOTS, readImageFile } from "./cmsShared";
-import { readCmsHome, writeCmsHome, type CmsHomeSettings } from "@/lib/cmsHome";
-
-function emptySettings(): CmsHomeSettings {
-  return { heroSlide1Image: "", heroSlide2Image: "", collectionImages: {} };
-}
+import {
+  DEFAULT_CMS_HOME,
+  readCmsHome,
+  writeCmsHome,
+  type CmsHomeSettings,
+} from "@/lib/cmsHome";
 
 export function AdminCmsHeroClient() {
-  const [settings, setSettings] = useState<CmsHomeSettings>(() =>
-    typeof window === "undefined" ? emptySettings() : readCmsHome(),
+  const [draft, setDraft] = useState<CmsHomeSettings>(() =>
+    typeof window === "undefined" ? DEFAULT_CMS_HOME : readCmsHome(),
   );
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setSettings(readCmsHome());
+    setDraft(readCmsHome());
   }, []);
 
-  function persist(next: CmsHomeSettings) {
-    setSettings(next);
-    writeCmsHome(next);
-    setError("");
-    setMessage("Saved — open the homepage to see the change.");
-  }
-
   function setHeroSlot(key: (typeof HERO_SLOTS)[number]["key"], value: string) {
-    persist({ ...settings, [key]: value });
+    setDraft((prev) => ({ ...prev, [key]: value }));
+    setMessage("");
+    setError("");
   }
 
   function clearHeroSlot(key: (typeof HERO_SLOTS)[number]["key"]) {
-    persist({ ...settings, [key]: "" });
+    setDraft((prev) => ({ ...prev, [key]: "" }));
+    setMessage("");
+    setError("");
+  }
+
+  function save() {
+    writeCmsHome(draft);
+    setError("");
+    setMessage("Saved — open the homepage to see the change.");
   }
 
   return (
@@ -54,7 +58,8 @@ export function AdminCmsHeroClient() {
       <div className={styles.panel}>
         <h2>Hero slides</h2>
         <p className={styles.muted} style={{ margin: "0 0 1rem" }}>
-          Upload from your device or paste an image URL. Changes apply in this browser.
+          Upload from your device or paste an image URL, then Save. Reset restores that
+          slide only.
         </p>
 
         {message ? (
@@ -68,10 +73,17 @@ export function AdminCmsHeroClient() {
           </p>
         ) : null}
 
-        <div className={styles.form} style={{ maxWidth: "none" }}>
+        <form
+          className={styles.form}
+          style={{ maxWidth: "none" }}
+          onSubmit={(event) => {
+            event.preventDefault();
+            save();
+          }}
+        >
           <div className={styles.imageSlots}>
             {HERO_SLOTS.map((slot) => {
-              const value = settings[slot.key].trim();
+              const value = draft[slot.key].trim();
               const preview = value || slot.defaultSrc;
               const isCustom = Boolean(value);
 
@@ -131,7 +143,12 @@ export function AdminCmsHeroClient() {
               );
             })}
           </div>
-        </div>
+          <div className={styles.actions}>
+            <button type="submit" className={styles.btn}>
+              Save
+            </button>
+          </div>
+        </form>
       </div>
     </AdminShell>
   );

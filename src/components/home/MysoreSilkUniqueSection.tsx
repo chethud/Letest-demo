@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import {
-  MYSORE_SILK_UNIQUE_INTRO,
-  MYSORE_SILK_UNIQUE_PILLARS,
-} from "@/data/mysoreSilkUnique";
+import { CatalogImage } from "@/components/common/CatalogImage";
+import { MYSORE_SILK_UNIQUE_PILLARS } from "@/data/mysoreSilkUnique";
+import { useCmsHome } from "@/hooks/useCmsHome";
+import { resolveUniqueContent, type UniquePillarId } from "@/lib/cmsHome";
 import styles from "./MysoreSilkUniqueSection.module.css";
 
 export const MysoreSilkUniqueSection: React.FC = () => {
+  const cms = resolveUniqueContent(useCmsHome());
+
   const scrollToForm = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -32,10 +33,10 @@ export const MysoreSilkUniqueSection: React.FC = () => {
         <div className={styles.intro}>
           <p className={styles.eyebrow}>
             <span className={styles.eyebrowRule} aria-hidden="true" />
-            The Essence of Mysore Silk
+            {cms.eyebrow}
           </p>
-          <h2 className={styles.title}>Why Mysuru Silk is Special</h2>
-          <p className={styles.lead}>{MYSORE_SILK_UNIQUE_INTRO}</p>
+          <h2 className={styles.title}>{cms.title}</h2>
+          <p className={styles.lead}>{cms.intro}</p>
           <Link href="/craft" className={styles.cta}>
             Discover Our Process <span aria-hidden="true">→</span>
           </Link>
@@ -44,14 +45,17 @@ export const MysoreSilkUniqueSection: React.FC = () => {
         <ul className={styles.pillars}>
           {MYSORE_SILK_UNIQUE_PILLARS.map((pillar) => {
             const isUniqueCode = pillar.id === "unique-code";
+            const pillarId = pillar.id as UniquePillarId;
+            const image = cms.pillarImages[pillarId] ?? pillar.image;
+            const copy = cms.pillarCopy[pillarId];
             return (
               <li
                 key={pillar.id}
                 className={`${styles.pillar}${isUniqueCode ? ` ${styles.pillarUniqueCode}` : ""}`}
               >
                 <div className={styles.arch}>
-                  <Image
-                    src={pillar.image}
+                  <CatalogImage
+                    src={image}
                     alt={pillar.alt}
                     fill
                     sizes="(max-width: 820px) 34vw, (max-width: 1100px) 28vw, 16vw"
@@ -60,8 +64,8 @@ export const MysoreSilkUniqueSection: React.FC = () => {
                 </div>
                 <div className={styles.pillarBody}>
                   <p className={styles.pillarNumber}>{pillar.number}</p>
-                  <h3 className={styles.pillarTitle}>{pillar.title}</h3>
-                  <p className={styles.pillarText}>{pillar.short}</p>
+                  <h3 className={styles.pillarTitle}>{copy?.title || pillar.title}</h3>
+                  <p className={styles.pillarText}>{copy?.short || pillar.short}</p>
                   {isUniqueCode ? (
                     <a
                       href="#saree-serial-form"

@@ -1,10 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Crown, Gem, Layers } from "lucide-react";
 import styles from "./FactorySection.module.css";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCmsHome } from "@/hooks/useCmsHome";
+import { DEFAULT_FACTORY, resolveFactoryContent } from "@/lib/cmsHome";
+import {
+  getFactoryVideoObjectUrl,
+  isFactoryVideoIdbRef,
+} from "@/lib/cmsFactoryVideo";
 
 const HIGHLIGHTS = [
   {
@@ -30,13 +36,44 @@ const HIGHLIGHTS = [
 export const FactorySection: React.FC = () => {
   const { lang } = useLanguage();
   const isKn = lang === "kn";
+  const cms = resolveFactoryContent(useCmsHome());
+  const [videoSrc, setVideoSrc] = useState(cms.videoUrl);
+
+  useEffect(() => {
+    let revoked: string | null = null;
+    let cancelled = false;
+
+    async function loadVideo() {
+      if (isFactoryVideoIdbRef(cms.videoUrl)) {
+        const objectUrl = await getFactoryVideoObjectUrl();
+        if (cancelled) {
+          if (objectUrl) URL.revokeObjectURL(objectUrl);
+          return;
+        }
+        if (objectUrl) {
+          revoked = objectUrl;
+          setVideoSrc(objectUrl);
+        } else {
+          setVideoSrc(DEFAULT_FACTORY.videoUrl);
+        }
+        return;
+      }
+      setVideoSrc(cms.videoUrl);
+    }
+
+    void loadVideo();
+    return () => {
+      cancelled = true;
+      if (revoked) URL.revokeObjectURL(revoked);
+    };
+  }, [cms.videoUrl]);
 
   return (
     <section id="factory" className={styles.art} aria-label="The Art of Mysore Silk">
       <div className={styles.film}>
         <video
           className={styles.video}
-          src="/films/mysore-silk-story.mp4?v=2"
+          src={videoSrc}
           autoPlay
           muted
           loop
@@ -52,7 +89,7 @@ export const FactorySection: React.FC = () => {
       <div className={styles.panel}>
         <div className={styles.panelInner}>
           <p className={styles.eyebrow}>
-            {isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಕಲೆ" : "The Art of Mysore Silk"}
+            {isKn ? "ಮೈಸೂರು ರೇಷ್ಮೆಯ ಕಲೆ" : cms.eyebrow}
           </p>
           <h2 className={styles.display}>
             {isKn ? (
@@ -62,8 +99,8 @@ export const FactorySection: React.FC = () => {
               </>
             ) : (
               <>
-                More than a saree.
-                <span className={styles.displayLine}>A living tradition.</span>
+                {cms.headlineLine1}
+                <span className={styles.displayLine}>{cms.headlineLine2}</span>
               </>
             )}
           </h2>
@@ -71,13 +108,7 @@ export const FactorySection: React.FC = () => {
             {isKn ? (
               "ಮೈಸೂರಿನಲ್ಲಿ ನೇಯ್ದ ನಮ್ಮ ರೇಷ್ಮೆ ಕರಕುಶಲ, ಸಂಸ್ಕೃತಿ ಮತ್ತು ಶಾಶ್ವತ ಸೌಂದರ್ಯದ ಆಚರಣೆ. ಪ್ರತಿ ತುಂಡೂ ಇತಿಹಾಸ, ಪರಂಪರೆ ಮತ್ತು ತಲೆಮಾರುಗಳಿಗೆ ಉಳಿಯುವ ಭರವಸೆಯನ್ನು ಹೊತ್ತಿದೆ."
             ) : (
-              <>
-                Mysuru silk has flourished through centuries, symbolising{" "}
-                <strong className={styles.emphasis}>regality</strong>,{" "}
-                <strong className={styles.emphasis}>craftsmanship</strong> and{" "}
-                <strong className={styles.emphasis}>exclusivity</strong>. Each piece
-                carries a history, a heritage and a promise to last for generations.
-              </>
+              cms.body
             )}
           </p>
 
