@@ -475,6 +475,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   transform: translateX(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-up,
+  .reveal-fade,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right,
+  .reveal-stagger > *,
+  .reveal-rule {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* 8. Global Interactive Transitions */
 .hover-lift {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);

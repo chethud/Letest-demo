@@ -1,18 +1,22 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Lock } from "lucide-react";
-import { isOnlineBookingActive } from "@/config/booking";
+import { useAuth } from "@/context/AuthContext";
+import { useOrders } from "@/context/OrdersContext";
 import { useShop } from "@/context/ShopContext";
+import { useOnlineBookingActive } from "@/hooks/useOnlineBookingActive";
 import styles from "./CheckoutPage.module.css";
 
 export function CheckoutPageClient() {
   const router = useRouter();
   const { cart, clearCart, hydrated, cartCount } = useShop();
-  const bookingActive = isOnlineBookingActive();
+  const { user } = useAuth();
+  const { createOrder } = useOrders();
+  const bookingActive = useOnlineBookingActive();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -21,6 +25,11 @@ export function CheckoutPageClient() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [confirmed, setConfirmed] = useState(false);
   const [refCode, setRefCode] = useState("");
+
+  useEffect(() => {
+    if (user?.name) setName(user.name);
+    if (user?.email) setEmail(user.email);
+  }, [user]);
 
   const summary = useMemo(
     () =>
@@ -88,8 +97,18 @@ export function CheckoutPageClient() {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
-    const code = `KSIC-${Date.now().toString(36).toUpperCase()}`;
-    setRefCode(code);
+    const order = createOrder({
+      customer: {
+        name: name.trim(),
+        phone: phone.trim(),
+        email: email.trim(),
+        showroom,
+        notes: notes.trim(),
+        userEmail: user?.email,
+      },
+      items: cart,
+    });
+    setRefCode(order.id);
     setConfirmed(true);
     clearCart();
   }

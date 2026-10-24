@@ -1,0 +1,75 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { AdminShell } from "@/components/admin/AdminShell";
+import {
+  clearBookingOverride,
+  getEffectiveBookingFlags,
+  isOnlineBookingActive,
+  writeBookingOverride,
+  type BookingFlags,
+} from "@/config/booking";
+import styles from "./AdminShell.module.css";
+
+export function AdminSettingsClient() {
+  const [flags, setFlags] = useState<BookingFlags>(getEffectiveBookingFlags());
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const sync = () => {
+      setFlags(getEffectiveBookingFlags());
+      setActive(isOnlineBookingActive());
+    };
+    sync();
+    window.addEventListener("ksic-booking-change", sync);
+    return () => window.removeEventListener("ksic-booking-change", sync);
+  }, []);
+
+  function enableBooking() {
+    const next = {
+      bookingEnabled: true,
+      inventoryValidationConfigured: true,
+      paymentConfigured: true,
+    };
+    writeBookingOverride(next);
+    setFlags(next);
+    setActive(true);
+  }
+
+  function disableBooking() {
+    clearBookingOverride();
+    const next = getEffectiveBookingFlags();
+    setFlags(next);
+    setActive(false);
+  }
+
+  return (
+    <AdminShell
+      title="Settings"
+      subtitle="Runtime booking flags for this browser (demo override)."
+    >
+      <div className={styles.panel}>
+        <h2>Online booking</h2>
+        <p className={styles.muted}>
+          Status: <strong>{active ? "Enabled" : "Temporarily unavailable"}</strong>
+        </p>
+        <ul className={styles.muted} style={{ margin: "0.75rem 0 1rem", paddingLeft: "1.1rem" }}>
+          <li>bookingEnabled: {String(flags.bookingEnabled)}</li>
+          <li>
+            inventoryValidationConfigured:{" "}
+            {String(flags.inventoryValidationConfigured)}
+          </li>
+          <li>paymentConfigured: {String(flags.paymentConfigured)}</li>
+        </ul>
+        <div className={styles.actions}>
+          <button type="button" className={styles.btn} onClick={enableBooking}>
+            Enable booking
+          </button>
+          <button type="button" className={styles.btnGhost} onClick={disableBooking}>
+            Lock booking
+          </button>
+        </div>
+      </div>
+    </AdminShell>
+  );
+}

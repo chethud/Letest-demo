@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Lock, Minus, Plus, ShoppingBag, X } from "lucide-react";
-import { isOnlineBookingActive } from "@/config/booking";
 import { useShop } from "@/context/ShopContext";
+import { useOnlineBookingActive } from "@/hooks/useOnlineBookingActive";
 import styles from "./CartDrawer.module.css";
 
 export function CartDrawer() {
@@ -19,7 +19,7 @@ export function CartDrawer() {
     removeFromCart,
     cartCount,
   } = useShop();
-  const bookingActive = isOnlineBookingActive();
+  const bookingActive = useOnlineBookingActive();
 
   useEffect(() => {
     if (!cartOpen) return;

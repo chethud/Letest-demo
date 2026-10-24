@@ -1,25 +1,34 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Castle, Heart, Landmark, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import styles from "./Header.module.css";
-import { KSIC_PRODUCTS } from "@/data/collections";
 import { NAV_ITEMS, UTILITY_LINKS } from "@/data/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { useCatalog } from "@/context/CatalogContext";
 import { useShop } from "@/context/ShopContext";
 
 export const Header: React.FC = () => {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const { cartCount, wishlistCount, setCartOpen, hydrated } = useShop();
+  const { user, isAdmin } = useAuth();
+  const { products: catalogProducts } = useCatalog();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [pinnedMenu, setPinnedMenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [utilityHidden, setUtilityHidden] = useState(false);
+  const [portalReady, setPortalReady] = useState(false);
+
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
 
   useEffect(() => {
     setOpenMenu(null);
@@ -71,14 +80,16 @@ export const Header: React.FC = () => {
 
   const searchResults = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
-    if (!query) return KSIC_PRODUCTS.slice(0, 5);
-    return KSIC_PRODUCTS.filter((product) =>
-      [product.name, product.articleNumber, product.category, product.collection]
-        .join(" ")
-        .toLowerCase()
-        .includes(query)
-    ).slice(0, 6);
-  }, [searchQuery]);
+    if (!query) return catalogProducts.slice(0, 5);
+    return catalogProducts
+      .filter((product) =>
+        [product.name, product.articleNumber, product.category, product.collection]
+          .join(" ")
+          .toLowerCase()
+          .includes(query),
+      )
+      .slice(0, 6);
+  }, [searchQuery, catalogProducts]);
 
   const pathOf = (href: string) => href.split("?")[0].split("#")[0];
 
@@ -220,7 +231,11 @@ export const Header: React.FC = () => {
             >
               <Search size={19} strokeWidth={1.5} />
             </button>
-            <Link href="/contact" className={`${styles.iconButton} ${styles.iconDesktop}`} aria-label="Account">
+            <Link
+              href={isAdmin ? "/admin" : user ? "/account" : "/login"}
+              className={`${styles.iconButton} ${styles.iconDesktop}`}
+              aria-label={isAdmin ? "Admin dashboard" : user ? "My account" : "Sign in"}
+            >
               <User size={19} strokeWidth={1.5} />
             </Link>
             <Link
@@ -288,78 +303,108 @@ export const Header: React.FC = () => {
           <button
             type="button"
             className={styles.mobileHamburgerBtn}
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            onClick={(event) => {
+              event.stopPropagation();
+              setSearchOpen(false);
+              setCartOpen(false);
+              setIsMobileMenuOpen((open) => !open);
+            }}
             aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation-drawer"
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
       </header>
 
-      <div
-        className={`${styles.mobileDrawerBackdrop} ${isMobileMenuOpen ? styles.mobileDrawerBackdropOpen : ""}`}
-        onClick={() => setIsMobileMenuOpen(false)}
-        aria-hidden="true"
-      />
-
-      <aside
-        className={`${styles.mobileDrawer} ${isMobileMenuOpen ? styles.mobileDrawerOpen : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile Navigation Menu"
-      >
-        <div className={styles.drawerHeader}>
-          <Link href="/" className={styles.drawerBrandLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <Image
-              src="/assets/brand/ksic-logo.png"
-              alt="KSIC Mysore Silk"
-              width={132}
-              height={40}
-              className={styles.drawerLogo}
-            />
-          </Link>
-          <button type="button" className={styles.drawerCloseBtn} onClick={() => setIsMobileMenuOpen(false)} aria-label="Close menu">
-            <X size={18} />
-          </button>
-        </div>
-
-        <nav className={styles.drawerNav}>
-          {NAV_ITEMS.map((item) => (
-            <div key={item.id} className={styles.drawerGroup}>
-              <Link
-                href={item.href}
-                className={`${styles.drawerLink} ${isActive(item.href) ? styles.drawerLinkActive : ""}`}
+      {portalReady
+        ? createPortal(
+            <>
+              <div
+                className={`${styles.mobileDrawerBackdrop}${isMobileMenuOpen ? ` ${styles.mobileDrawerBackdropOpen}` : ""}`}
+                data-open={isMobileMenuOpen ? "true" : "false"}
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-hidden={!isMobileMenuOpen}
+              />
+
+              <aside
+                id="mobile-navigation-drawer"
+                className={`${styles.mobileDrawer}${isMobileMenuOpen ? ` ${styles.mobileDrawerOpen}` : ""}`}
+                data-open={isMobileMenuOpen ? "true" : "false"}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Mobile Navigation Menu"
+                aria-hidden={!isMobileMenuOpen}
               >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className={styles.drawerChildren}>
-                  {item.children.map((child) => (
+                <div className={styles.drawerHeader}>
+                  <Link
+                    href="/"
+                    className={styles.drawerBrandLink}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Image
+                      src="/assets/brand/ksic-logo.png"
+                      alt="KSIC Mysore Silk"
+                      width={132}
+                      height={40}
+                      className={styles.drawerLogo}
+                    />
+                  </Link>
+                  <button
+                    type="button"
+                    className={styles.drawerCloseBtn}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+
+                <nav className={styles.drawerNav}>
+                  {NAV_ITEMS.map((item) => (
+                    <div key={item.id} className={styles.drawerGroup}>
+                      <Link
+                        href={item.href}
+                        className={`${styles.drawerLink} ${isActive(item.href) ? styles.drawerLinkActive : ""}`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                      {item.children && (
+                        <div className={styles.drawerChildren}>
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.href + child.label}
+                              href={child.href}
+                              className={styles.drawerChildLink}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </nav>
+
+                <div className={styles.drawerFooter}>
+                  {UTILITY_LINKS.map((link) => (
                     <Link
-                      key={child.href + child.label}
-                      href={child.href}
-                      className={styles.drawerChildLink}
+                      key={link.label}
+                      href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      {child.label}
+                      {link.label}
                     </Link>
                   ))}
                 </div>
-              )}
-            </div>
-          ))}
-        </nav>
-
-        <div className={styles.drawerFooter}>
-          {UTILITY_LINKS.map((link) => (
-            <Link key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)}>
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </aside>
+              </aside>
+            </>,
+            document.body,
+          )
+        : null}
     </>
   );
 };

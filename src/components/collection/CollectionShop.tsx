@@ -7,6 +7,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChevronDown, Heart, SlidersHorizontal, X } from "lucide-react";
 import { COLLECTION_CATEGORIES, KSICProduct } from "@/data/collections";
 import { useShop } from "@/context/ShopContext";
+import { useCatalog } from "@/context/CatalogContext";
 import styles from "./CollectionShop.module.css";
 
 type ShopView = "all" | "new" | "bestsellers";
@@ -96,6 +97,8 @@ export default function CollectionShop({
   const [sortBy, setSortBy] = useState<SortBy>(view === "bestsellers" ? "featured" : "newest");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const { isWishlisted, toggleWishlist } = useShop();
+  const { products: catalogProducts, hydrated: catalogHydrated } = useCatalog();
+  const sourceProducts = catalogHydrated ? catalogProducts : products;
 
   // Keep local filter/sort in sync when Shop subnav changes the URL view
   useEffect(() => {
@@ -122,21 +125,21 @@ export default function CollectionShop({
   };
 
   const colors = useMemo(() => {
-    const set = new Set(products.map((p) => p.primaryColor).filter(Boolean));
+    const set = new Set(sourceProducts.map((p) => p.primaryColor).filter(Boolean));
     return Array.from(set).sort((a, b) => a.localeCompare(b));
-  }, [products]);
+  }, [sourceProducts]);
 
   const categoryCounts = useMemo(() => {
-    const base = bestsellersOnly ? products.filter((p) => p.featured) : products;
+    const base = bestsellersOnly ? sourceProducts.filter((p) => p.featured) : sourceProducts;
     const counts: Record<string, number> = { all: base.length };
     COLLECTION_CATEGORIES.forEach((cat) => {
       counts[cat.id] = base.filter((prod) => matchesCategory(prod, cat.id)).length;
     });
     return counts;
-  }, [products, bestsellersOnly]);
+  }, [sourceProducts, bestsellersOnly]);
 
   const filteredProducts = useMemo(() => {
-    const list = products.filter((prod) => {
+    const list = sourceProducts.filter((prod) => {
       if (bestsellersOnly && !prod.featured) return false;
       if (!matchesCategory(prod, selectedCategory)) return false;
       if (selectedColor !== "all" && prod.primaryColor !== selectedColor) return false;
@@ -167,7 +170,7 @@ export default function CollectionShop({
       sorted.sort((a, b) => (b.weightGrams ?? 0) - (a.weightGrams ?? 0));
     }
     return sorted;
-  }, [products, bestsellersOnly, selectedCategory, selectedColor, selectedStatus, sortBy]);
+  }, [sourceProducts, bestsellersOnly, selectedCategory, selectedColor, selectedStatus, sortBy]);
 
   const activeFilterCount =
     (selectedCategory !== "all" ? 1 : 0) +
@@ -279,7 +282,7 @@ export default function CollectionShop({
                   }}
                 >
                   <span>All sarees</span>
-                  <span>{products.length}</span>
+                  <span>{sourceProducts.length}</span>
                 </button>
               </li>
               <li>
@@ -302,7 +305,7 @@ export default function CollectionShop({
                   onClick={() => toggleBestsellers(true)}
                 >
                   <span>Bestsellers</span>
-                  <span>{products.filter((p) => p.featured).length}</span>
+                  <span>{sourceProducts.filter((p) => p.featured).length}</span>
                 </button>
               </li>
             </ul>
@@ -410,8 +413,8 @@ export default function CollectionShop({
         <section className={styles.main} aria-label="Shop products">
           <div className={styles.toolbar}>
             <p className={styles.count}>
-              Showing <strong>{filteredProducts.length}</strong> of {products.length} article
-              {products.length === 1 ? "" : "s"}
+              Showing <strong>{filteredProducts.length}</strong> of {sourceProducts.length} article
+              {sourceProducts.length === 1 ? "" : "s"}
               {bestsellersOnly ? " · Bestsellers" : null}
               {view === "new" && !bestsellersOnly ? " · Newest first" : null}
             </p>

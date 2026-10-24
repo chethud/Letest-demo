@@ -2,6 +2,7 @@
   --about-gutter: 20px;
   --about-content-max: 1210px;
   padding-top: var(--site-header-offset);
+  /* clip avoids creating a scroll container (overflow-x:hidden does) which breaks sticky under the fixed header */
   overflow-x: clip;
 }
 
@@ -18,6 +19,17 @@
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
+}
+
+/* Match Header_navMain padding + centered link row */
+.subnavTrack {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-left: clamp(24px, 2.6vw, 40px);
+  padding-right: clamp(24px, 2.6vw, 40px);
+  box-sizing: border-box;
+  justify-content: center;
 }
 
 .storyBand {

@@ -1,0 +1,126 @@
+.page {
+  padding-top: var(--site-header-offset);
+  min-height: 70vh;
+  background: var(--color-bg-primary, #fff5f7);
+  color: var(--color-text-primary);
+}
+
+.wrap {
+  width: min(100% - 2rem, 28rem);
+  margin: 0 auto;
+  padding: 2rem 0 3.5rem;
+}
+
+.card {
+  padding: 1.5rem 1.35rem 1.6rem;
+  border: 1px solid rgba(122, 21, 48, 0.12);
+  background: var(--color-bg-paper, #fffcf8);
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display), "Playfair Display", Georgia, serif;
+  font-size: clamp(1.55rem, 3vw, 1.9rem);
+  font-weight: 500;
+  color: var(--color-burgundy);
+}
+
+.lead {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.35rem;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5c524f;
+}
+
+.form input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(122, 21, 48, 0.18);
+  border-radius: 2px;
+  background: #fff;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+
+.error {
+  margin: 0;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.82rem;
+  color: var(--color-burgundy);
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  margin-top: 0.25rem;
+  border: 0;
+  border-radius: 2px;
+  background: var(--color-burgundy);
+  color: #fffafa;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background: var(--color-burgundy-dark);
+}
+
+.footer {
+  margin: 1.15rem 0 0;
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.footer a {
+  color: var(--color-burgundy);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.note {
+  margin: 1rem 0 0;
+  padding: 0.75rem 0.85rem;
+  background: var(--color-bg-subtle, #fdf1f3);
+  border: 1px solid rgba(122, 21, 48, 0.1);
+  font-family: var(--font-dm), "DM Sans", system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}

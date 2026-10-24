@@ -55,8 +55,8 @@ export const ScrollAnimator: React.FC = () => {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      rootMargin: "0px 0px -40px 0px",
-      threshold: 0.08,
+      rootMargin: "0px 0px 0px 0px",
+      threshold: 0,
     });
 
     const revealSelector =
@@ -65,8 +65,9 @@ export const ScrollAnimator: React.FC = () => {
     const revealIfInView = (el: Element) => {
       const rect = el.getBoundingClientRect();
       const viewHeight = window.innerHeight || document.documentElement.clientHeight;
-      if (rect.height === 0 && rect.width === 0) return;
-      if (rect.bottom > 0 && rect.top < viewHeight) {
+      if (rect.width === 0 && rect.height === 0) return;
+      // Reveal when any part of the element is in (or near) the viewport
+      if (rect.bottom > -80 && rect.top < viewHeight + 80) {
         el.classList.add("revealed");
       }
     };
@@ -82,9 +83,16 @@ export const ScrollAnimator: React.FC = () => {
       });
     };
 
-    // Scan initially and after small delay for hydration
+    const revealAllPending = () => {
+      document.querySelectorAll(revealSelector).forEach((el) => {
+        el.classList.add("revealed");
+      });
+    };
+
+    // Scan initially and after hydration / layout settle
     scanAndObserve();
-    const timeout = setTimeout(scanAndObserve, 250);
+    const timeout = window.setTimeout(scanAndObserve, 250);
+    const safety = window.setTimeout(revealAllPending, 1200);
     window.addEventListener("scroll", scanAndObserve, { passive: true });
     window.addEventListener("resize", scanAndObserve);
 
@@ -99,7 +107,8 @@ export const ScrollAnimator: React.FC = () => {
     });
 
     return () => {
-      clearTimeout(timeout);
+      window.clearTimeout(timeout);
+      window.clearTimeout(safety);
       window.removeEventListener("scroll", scanAndObserve);
       window.removeEventListener("resize", scanAndObserve);
       observer.disconnect();

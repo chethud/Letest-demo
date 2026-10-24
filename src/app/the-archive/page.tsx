@@ -12,7 +12,7 @@ export const metadata = {
 export default function TheArchivePage() {
   return (
     <div className={styles.page}>
-      <AboutSubnav activeHref="/the-archive" />
+      <AboutSubnav activeHref="/the-archive" contentClassName={styles.subnavTrack} />
       <EditorialPage
         omitHeaderOffset
         kicker="About Us"

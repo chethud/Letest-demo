@@ -4,15 +4,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Heart, ShoppingBag, Trash2 } from "lucide-react";
-import { KSIC_PRODUCTS } from "@/data/collections";
+import { useCatalog } from "@/context/CatalogContext";
 import { useShop } from "@/context/ShopContext";
 import styles from "./WishlistPage.module.css";
 
 export function WishlistPageClient() {
   const { wishlist, hydrated, removeFromWishlist, addToCart } = useShop();
+  const { getById } = useCatalog();
 
   function moveToBag(productId: string) {
-    const product = KSIC_PRODUCTS.find((item) => item.id === productId);
+    const product = getById(productId);
     if (!product) return;
     addToCart({
       product,

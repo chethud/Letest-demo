@@ -19,7 +19,7 @@ export function SegmentSubnav({
 }: SegmentSubnavProps) {
   return (
     <nav className={styles.subnav} aria-label={ariaLabel}>
-      <div className={innerClassName ? `${styles.inner} ${styles.innerFlush} ${innerClassName}` : styles.inner}>
+      <div className={innerClassName ? `${styles.row} ${innerClassName}` : styles.inner}>
         {links.map((item) => {
           const active = activeHref === item.href;
           return (

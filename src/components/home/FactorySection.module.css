@@ -232,16 +232,16 @@
   }
 
   .eyebrow {
-    margin-bottom: 0.55rem !important;
-    font-size: 0.6rem !important;
+    margin-bottom: 0.4rem !important;
+    font-size: 0.52rem !important;
     letter-spacing: 0.14em !important;
     color: var(--factory-burgundy) !important;
   }
 
   .display {
-    gap: 0.12em;
-    font-size: clamp(1.25rem, 5.5vw, 1.55rem) !important;
-    line-height: 1.15 !important;
+    gap: 0.1em;
+    font-size: clamp(1.05rem, 4.6vw, 1.28rem) !important;
+    line-height: 1.18 !important;
     color: var(--factory-burgundy) !important;
   }
 
@@ -252,10 +252,10 @@
   }
 
   .body {
-    margin: 0.55rem 0 0.75rem !important;
+    margin: 0.4rem 0 0.6rem !important;
     max-width: none;
-    font-size: clamp(0.8rem, 3.4vw, 0.88rem) !important;
-    line-height: 1.5 !important;
+    font-size: clamp(0.72rem, 3vw, 0.8rem) !important;
+    line-height: 1.45 !important;
     color: var(--factory-muted) !important;
   }
 

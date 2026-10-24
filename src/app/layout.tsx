@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import "@/components/layout/chrome-styles";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -75,9 +74,11 @@ export const metadata: Metadata = {
 };
 
 import { LanguageProvider } from "@/context/LanguageContext";
+import { AuthProvider } from "@/context/AuthContext";
+import { CatalogProvider } from "@/context/CatalogContext";
+import { OrdersProvider } from "@/context/OrdersContext";
 import { ShopProvider } from "@/context/ShopContext";
-import { CartDrawer } from "@/components/shop/CartDrawer";
-import { ScrollAnimator } from "@/components/common/ScrollAnimator";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 
 export default function RootLayout({
   children,
@@ -117,15 +118,15 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
-          <ShopProvider>
-            <ScrollAnimator />
-            <Header />
-            <CartDrawer />
-            <main id="main-content" style={{ minHeight: "100vh" }}>
-              {children}
-            </main>
-            <Footer />
-          </ShopProvider>
+          <AuthProvider>
+            <CatalogProvider>
+              <OrdersProvider>
+                <ShopProvider>
+                  <SiteChrome>{children}</SiteChrome>
+                </ShopProvider>
+              </OrdersProvider>
+            </CatalogProvider>
+          </AuthProvider>
         </LanguageProvider>
       </body>
     </html>

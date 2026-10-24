@@ -35,10 +35,10 @@ const DISTINCTIONS = [
 export default function AboutUsPage() {
   return (
     <div className={styles.page}>
-      <AboutSubnav activeHref="/about-us" contentClassName={styles.content} />
+      <AboutSubnav activeHref="/about-us" contentClassName={styles.subnavTrack} />
 
       <section className={styles.storyBand} aria-label="About KSIC">
-        <div className={`${styles.content} reveal-up`}>
+        <div className={styles.content}>
           <div className={styles.storyIntro}>
             <div className={styles.heroBadge}>
               <Image
@@ -129,7 +129,7 @@ export default function AboutUsPage() {
       <section className={styles.rtiBand} id="rti">
         <div className={styles.content}>
           <div className={styles.rtiGrid}>
-            <div className="reveal-left">
+            <div>
               <span className="editorial-label">PUBLIC DISCLOSURE {"&"} TRANSPARENCY</span>
               <h2 className={`display-section ${styles.sectionHeading}`}>
                 RIGHT TO INFORMATION (RTI) ACT, 2005

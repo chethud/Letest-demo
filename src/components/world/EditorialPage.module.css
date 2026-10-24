@@ -8,6 +8,17 @@
   padding-top: 0;
 }
 
+/* Match About Us content gutter when nested under the About segment shell */
+.pageFlush .heroCopy,
+.pageFlush .copy {
+  padding-left: var(--about-gutter, 32px);
+}
+
+.pageFlush .close {
+  padding-left: var(--about-gutter, 32px);
+  padding-right: var(--about-gutter, 32px);
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);

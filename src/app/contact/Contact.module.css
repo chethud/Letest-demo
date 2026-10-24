@@ -1,5 +1,5 @@
 .page {
-  --contact-gutter: 20px;
+  --contact-gutter: clamp(24px, 2.6vw, 40px);
   --contact-max: 1210px;
   --c-ivory: #fffafa;
   --c-blush: #fbe9ed;
@@ -15,17 +15,13 @@
   overflow-x: clip;
 }
 
-@media (min-width: 768px) {
-  .page {
-    --contact-gutter: 32px;
-  }
-}
-
 .content {
-  width: calc(100% - (2 * var(--contact-gutter)));
+  width: 100%;
   max-width: var(--contact-max);
   margin-left: auto;
   margin-right: auto;
+  padding-left: var(--contact-gutter);
+  padding-right: var(--contact-gutter);
   box-sizing: border-box;
 }
 

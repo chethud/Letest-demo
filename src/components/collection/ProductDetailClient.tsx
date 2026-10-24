@@ -16,8 +16,8 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { KSICProduct } from "@/data/collections";
-import { isOnlineBookingActive } from "@/config/booking";
 import { useShop } from "@/context/ShopContext";
+import { useOnlineBookingActive } from "@/hooks/useOnlineBookingActive";
 import styles from "./ProductDetail.module.css";
 
 const ENQUIRY_EMAIL = "info@ksicsilk.com";
@@ -254,7 +254,7 @@ function EnquiryDialog({
 
 function PurchasePanel({ product }: { product: KSICProduct }) {
   const router = useRouter();
-  const bookingActive = isOnlineBookingActive();
+  const bookingActive = useOnlineBookingActive();
   const { addToCart, isWishlisted, toggleWishlist } = useShop();
   const shades = CREPE_SHADES;
   const [quantity, setQuantity] = useState(1);
